@@ -1,12 +1,15 @@
 import React, { CSSProperties } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
+import Header from "./Header";
+import QuantityCounter from "./QuantityCounter";
 
 function Layout() {
   return (
     <div style={rootStyle}>
       <Switch>
-        <div>hej</div>
+        <Header />
       </Switch>
+      <QuantityCounter />
     </div>
   );
 }
