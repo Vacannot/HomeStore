@@ -1,19 +1,20 @@
 import React, { CSSProperties } from 'react';
-import { Switch } from 'react-router-dom';
+import Card from "../components/Card";
+import { Switch, Route } from 'react-router-dom';
 import Header from '../components/header';
 import Banner from '../components/Banner';
-import QuantityCounter from '../components/quantityCounter';
-import Card from "../components/Card";
+import CartPage from '../pages/cartPage';
 
 function Layout() {
 	return (
 		<div style={rootStyle}>
+			<Header />
 			<Switch>
-				<Header />
+				{/* <Route path="/" exact/> */}
+				<Route path="/cartpage" component={CartPage} />
+				<Banner/> {/* Ska läggas i startpage */}
 			</Switch>
-			<QuantityCounter />
-				<Banner></Banner>
-				<Card />
+
 		</div>
 	);
 }
