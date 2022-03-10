@@ -13,6 +13,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.(png|jpe?g|gif)$/i, loader: 'file-loader',},
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
     ],
   },
