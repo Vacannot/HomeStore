@@ -1,11 +1,12 @@
 import React, { CSSProperties } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
+import Banner from "./Banner";
 
 function Layout() {
   return (
     <div style={rootStyle}>
       <Switch>
-        <div>hej</div>
+        <Banner></Banner>
       </Switch>
     </div>
   );
