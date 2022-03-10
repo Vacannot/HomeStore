@@ -1,8 +1,8 @@
 import React, { CSSProperties } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 
-import Header from "./Header";
-import QuantityCounter from "./QuantityCounter";
+import Header from "./header";
+import QuantityCounter from "./quantityCounter";
 
 import Banner from "./Banner";
 

@@ -7,17 +7,23 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 const SearchBar = styled('div')(({ theme })=> ({
-    // border: "2px solid red",
+    //border: "2px solid red",
     position: "relative",
     borderRadius: "100px",
-    backgroundColor: alpha(theme.palette.common.white, 0.7),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.9),
+    backgroundColor: alpha(theme.palette.common.white, 0.5
+      ),
+    '&:focus': {
+      backgroundColor: alpha(theme.palette.common.white, 0.9),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: '4rem',
+    width: 'auto',
     [theme.breakpoints.up('sm')]: {
+
+        backgroundColor: alpha(theme.palette.common.white, 0.5),
+        '&:hover': {
+          backgroundColor: alpha(theme.palette.common.white, 0.7),
+      },
         marginLeft: theme.spacing(3),
         width: 'auto',
     },
@@ -35,15 +41,19 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
+   // border: "2px solid green",
+    color: 'black',
     '& .MuiInputBase-input': {
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
       width: '0',
+      '&:focus': {
+        width: '15ch',
+      },
       [theme.breakpoints.up('sm')]: {
-        width: '100%',
+        width: '15ch',
         '&:focus': {
           width: '20ch',
         },
