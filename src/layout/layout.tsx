@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react';
 import { Switch } from 'react-router-dom';
 import Header from '../components/Header';
 import Banner from '../components/Banner';
-import QuantityCounter from '../components/QuantityCounter';
+import Footer from './footer';
 
 function Layout() {
 	return (
@@ -11,7 +11,7 @@ function Layout() {
 				<Header />
 				<Banner></Banner>
 			</Switch>
-			<QuantityCounter />
+			<Footer />
 		</div>
 	);
 }
