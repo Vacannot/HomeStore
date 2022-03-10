@@ -1,16 +1,13 @@
 import React, { CSSProperties } from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import { CssBaseline } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/system';
+import { createTheme } from '@mui/system';
 import Search from '../components/search';
-import Logo from './logo';
+import Logo from '../components/logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 

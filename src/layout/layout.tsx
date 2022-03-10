@@ -1,17 +1,15 @@
 import React, { CSSProperties } from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
-
+import { Switch } from 'react-router-dom';
 import Header from './header';
 import QuantityCounter from '../components/quantityCounter';
-
-import Banner from '../layout/Banner';
+import Banner from './../components/Banner';
 
 function Layout() {
 	return (
 		<div style={rootStyle}>
 			<Switch>
 				<Header />
-				<Banner></Banner>
+				<Banner />
 			</Switch>
 			<QuantityCounter />
 		</div>
