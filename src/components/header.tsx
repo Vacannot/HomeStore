@@ -32,7 +32,7 @@ function Header() {
         <CssBaseline/>
             <AppBar >
                 <Toolbar variant="regular" sx={toolbarStyle}>
-                    {matches === true ? <Logo /> : ''}      
+                    <Logo />     
                     <Search />   
                     <div style={iconsDivStyle}>
                         <FavoriteIcon />

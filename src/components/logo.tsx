@@ -1,9 +1,18 @@
-import image from "../assets/logo.jpg";
+import bigLogo from "../assets/logo.png";
+import smallLogo from "../assets/small-logo.png"
 import React from 'react';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function Logo() {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
     return(
-        <span>HOMESTORE</span>
+        <>
+           {matches === true ? <img src={bigLogo} /> :  <img src={smallLogo} />}
+        </>
+        
     )
 }
 export default Logo;
