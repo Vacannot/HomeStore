@@ -22,7 +22,6 @@ function QuantityCounter() {
 }
 
 const iconsDivStyle: CSSProperties = {
-    marginTop: "10rem",
     display: "flex", 
     flexDirection: "row",
     justifyContent: "space-between",

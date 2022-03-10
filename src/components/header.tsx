@@ -13,6 +13,7 @@ import Search from './search';
 import Logo from './logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { Link } from 'react-router-dom';
 
 
 
@@ -32,11 +33,15 @@ function Header() {
         <CssBaseline/>
             <AppBar >
                 <Toolbar variant="regular" sx={toolbarStyle}>
-                    <Logo />     
+                   <Link to="/">
+                       <Logo />  
+                   </Link>  
                     <Search />   
                     <div style={iconsDivStyle}>
                         <FavoriteIcon />
-                        <ShoppingCartIcon />
+                        <Link to='/cartpage'>
+                            <ShoppingCartIcon />
+                        </Link>
                         <MenuIcon />
                     </div>
                 </Toolbar>
@@ -48,7 +53,7 @@ function Header() {
 
 const iconsDivStyle: CSSProperties = {
     display: "flex", 
-    width: "10rem", 
+    width: "6rem", 
     justifyContent: "space-between"
 }
 
