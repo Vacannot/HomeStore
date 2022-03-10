@@ -1,8 +1,8 @@
 import React, { CSSProperties } from 'react';
 import { Switch } from 'react-router-dom';
-import Header from '../components/Header';
+import Header from '../components/header';
 import Banner from '../components/Banner';
-import QuantityCounter from '../components/QuantityCounter';
+import QuantityCounter from '../components/quantityCounter';
 
 function Layout() {
 	return (
