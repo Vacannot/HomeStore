@@ -3,21 +3,25 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import image from '../assets/furniture.jpeg';
 import QuantityCounter from './quantityCounter';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function CartItemCard() {
-    const [price, setPrice] = useState(123)
+    const [price, setPrice] = useState(123);
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'), {nSsr: true});
+
     return(
         <Card sx={rootCardStyle}>
             <div style={{display: "flex"}}>
                 <CardMedia sx={CardMediaStyle}  component="img" image={image} alt="placeholder"/>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">Produkt Title</Typography>
+                <CardContent >
+                    <Typography gutterBottom variant="body1" component="div">Produkt Title</Typography>
                     <Typography variant="body2" color="GrayText.secondary">
                         <p>Pris: {price} kr</p>
                     </Typography>
@@ -43,10 +47,10 @@ const rootCardStyle: CSSProperties = {
 
 }
 const CardActionsStyle: CSSProperties = {
-    border: "2px solid red", 
     display: "flex", 
     justifyContent: "space-around"
 }
+
 const CardMediaStyle: CSSProperties = {
      height: "100%",
      width: "50%"

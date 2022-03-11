@@ -3,7 +3,7 @@
 import { Button, Typography } from "@mui/material";
 import React, { CSSProperties } from "react";
 import CartItemCard from "../components/cartItemCard";
-import Header from "../components/header";
+
 
 
 function CartPage() {
@@ -14,7 +14,7 @@ function CartPage() {
             <CartItemCard/>
 
             <div style={{display: "flex", flexDirection: "row", justifyContent: "space-around"}}>
-                <Button variant="contained">GO TO PAYMENT</Button>
+                <Button sx={{backgroundColor: "green"}} variant="contained">GO TO PAYMENT</Button>
                 <Typography variant="h6">
                     Total:
                 </Typography>
