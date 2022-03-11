@@ -1,17 +1,14 @@
 import React, { CSSProperties } from 'react';
-import { Switch } from 'react-router-dom';
 import Header from '../components/header';
 import Banner from '../components/Banner';
-import StartPageView from './../pages/startPage';
+import StartPage from './../pages/startPage';
 
 function Layout() {
 	return (
 		<div style={rootStyle}>
-			<Switch>
-				<Header />
-				<Banner />
-				<StartPageView />
-			</Switch>
+			<Header />
+			<Banner />
+			<StartPage />
 		</div>
 	);
 }

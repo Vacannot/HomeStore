@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { CSSProperties } from 'react';
 import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -9,22 +10,28 @@ const Item = styled(Paper)(({ theme }) => ({
 	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
 	...theme.typography.body2,
 	padding: theme.spacing(2),
-	textAlign: 'center',
+	textAlign: 'start',
 	color: theme.palette.text.secondary,
 }));
 
 export default function ProductGrid() {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-				{Array.from(Array(6)).map((_, index) => (
-					<Grid item xs={2} sm={4} md={4} key={index}>
-						<Item>
-							<CartItemCard />
-						</Item>
+			<Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 1, sm: 6, md: 8, lg: 12 }}>
+				{Array.from(Array(12)).map((_, index) => (
+					<Grid style={rootStyle} item xs={12} sm={6} md={4} lg={3} key={index}>
+						<CartItemCard />
 					</Grid>
 				))}
 			</Grid>
 		</Box>
 	);
 }
+
+const rootStyle: CSSProperties = {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	flexDirection: 'column',
+	padding: '1rem',
+};

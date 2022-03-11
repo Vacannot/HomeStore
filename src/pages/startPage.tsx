@@ -2,7 +2,7 @@ import React from 'react';
 import { CSSProperties } from 'react';
 import ProductGrid from './../components/productGrid';
 
-const StartPageView = () => {
+const StartPage = () => {
 	return (
 		<div style={rootStyle}>
 			<ProductGrid />
@@ -10,10 +10,9 @@ const StartPageView = () => {
 	);
 };
 
-export default StartPageView;
+export default StartPage;
 
 const rootStyle: CSSProperties = {
-	minHeight: '100vh',
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
