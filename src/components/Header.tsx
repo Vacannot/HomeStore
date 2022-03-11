@@ -6,8 +6,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import { CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/system';
-import Search from '../components/search';
-import Logo from '../components/logo';
+import Search from './Search';
+import Logo from './Logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
