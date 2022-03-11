@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Header from '../components/header';
+import Header from '../components/Header';
 import StartPage from './../pages/startPage';
 import CartPage from '../pages/cartPage';
 
