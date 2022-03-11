@@ -1,7 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import React, { CSSProperties } from 'react';
 import CartItemCard from '../components/CartItemCard';
-import Header from '../components/Header';
 
 function CartPage() {
 	return (

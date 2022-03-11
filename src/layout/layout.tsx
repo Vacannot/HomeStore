@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from '../components/Header';
 import StartPage from './../pages/startPage';
 import CartPage from '../pages/cartPage';
+import Footer from './footer';
 
 function Layout() {
 	return (
@@ -12,6 +13,7 @@ function Layout() {
 				<Route path='/' exact component={StartPage} />
 				<Route path='/cartpage' component={CartPage} />
 			</Switch>
+			<Footer />
 		</div>
 	);
 }
