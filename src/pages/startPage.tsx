@@ -1,10 +1,12 @@
 import React from 'react';
 import { CSSProperties } from 'react';
+import Banner from '../components/Banner';
 import ProductGrid from './../components/productGrid';
 
 const StartPage = () => {
 	return (
 		<div style={rootStyle}>
+			<Banner />
 			<ProductGrid />
 		</div>
 	);

@@ -1,14 +1,17 @@
 import React, { CSSProperties } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Header from '../components/header';
-import Banner from '../components/Banner';
 import StartPage from './../pages/startPage';
+import CartPage from '../pages/cartPage';
 
 function Layout() {
 	return (
 		<div style={rootStyle}>
 			<Header />
-			<Banner />
-			<StartPage />
+			<Switch>
+				<Route path='/' exact component={StartPage} />
+				<Route path='/cartpage' component={CartPage} />
+			</Switch>
 		</div>
 	);
 }
