@@ -1,8 +1,8 @@
 import React, { CSSProperties } from 'react';
-import Card from "../components/Card";
 import { Switch, Route } from 'react-router-dom';
 import Header from '../components/header';
 import Banner from '../components/Banner';
+import QuantityCounter from '../components/quantityCounter';
 import CartPage from '../pages/cartPage';
 
 function Layout() {
