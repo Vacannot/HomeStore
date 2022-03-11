@@ -4,11 +4,11 @@ import Layout from './layout/layout';
 
 function App() {
 	return (
-		<React.StrictMode>
+		<StrictMode>
 			<BrowserRouter>
 				<Layout />
 			</BrowserRouter>
-		</React.StrictMode>
+		</StrictMode>
 	);
 }
 

@@ -1,18 +1,20 @@
 import React from 'react';
-import { Component, CSSProperties } from 'react';
-// import ProductGrid from './../components/ProductGrid';
+import { CSSProperties } from 'react';
+import Banner from '../components/Banner';
+// import ProductGrid from '../components/ProductGrid';
 
-interface Props {}
-interface State {}
+const StartPage = () => {
+	return (
+		<div style={rootStyle}>
+			<Banner />
+			{/* <ProductGrid /> */}
+		</div>
+	);
+};
 
-export default class StartPageView extends Component<Props, State> {
-	render() {
-		return <div style={rootStyle}>{/* <ProductGrid /> */}</div>;
-	}
-}
+export default StartPage;
 
 const rootStyle: CSSProperties = {
-	minHeight: '100vh',
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
