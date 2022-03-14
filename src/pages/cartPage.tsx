@@ -1,12 +1,33 @@
 
 
-import { Button, Typography } from "@mui/material";
+import { makeStyles, Button, Typography, useTheme, Theme } from "@mui/material";
 import React, { CSSProperties } from "react";
 import CartItemCard from "../components/cartItemCard";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
+declare module '@mui/material/styles' {
+    interface useStyles {
+        pagetitle: {
+            fontSize: string,
+        }
+    }
+}
+
+const useStyles = makeStyles((theme: Theme) => ({
+    pageTitle: {
+        fontSize: "1.5rem",
+        [theme.breakpoints.up('sm')]: {
+            fontSize: "2rem",
+        }
+    }
+}))
 
 
 function CartPage() {
+    const classes = useStyles();
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
     return(
         <div style={rootStyle}>
             <Typography align="center" variant="h4">Shopping Cart</Typography>
