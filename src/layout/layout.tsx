@@ -1,9 +1,9 @@
 import React, { CSSProperties } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Header from '../components/header';
+import Header from '../components/Header';
 import Banner from '../components/Banner';
-import QuantityCounter from '../components/quantityCounter';
-import CartPage from '../pages/cartPage';
+import QuantityCounter from '../components/QuantityCounter';
+import CartPage from '../pages/CartPage';
 
 function Layout() {
 	return (

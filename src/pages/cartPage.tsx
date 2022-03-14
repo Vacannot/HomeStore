@@ -2,29 +2,29 @@
 
 import { makeStyles, Button, Typography, useTheme, Theme } from "@mui/material";
 import React, { CSSProperties } from "react";
-import CartItemCard from "../components/cartItemCard";
+import CartItemCard from "../components/CartItemCard";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-declare module '@mui/material/styles' {
-    interface useStyles {
-        pagetitle: {
-            fontSize: string,
-        }
-    }
-}
+// declare module '@mui/material/styles' {
+//     interface useStyles {
+//         pagetitle: {
+//             fontSize: string,
+//         }
+//     }
+// }
 
-const useStyles = makeStyles((theme: Theme) => ({
-    pageTitle: {
-        fontSize: "1.5rem",
-        [theme.breakpoints.up('sm')]: {
-            fontSize: "2rem",
-        }
-    }
-}))
+// const useStyles = makeStyles((theme: Theme) => ({
+//     pageTitle: {
+//         fontSize: "1.5rem",
+//         [theme.breakpoints.up('sm')]: {
+//             fontSize: "2rem",
+//         }
+//     }
+// }))
 
 
 function CartPage() {
-    const classes = useStyles();
+    // const classes = useStyles();
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
