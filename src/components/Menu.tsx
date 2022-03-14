@@ -1,64 +1,51 @@
-import React, { CSSProperties } from "react";
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import { useMediaQuery } from '@material-ui/core';
-import {useTheme} from '@material-ui/core/styles';
+import React, {CSSProperties} from 'react';
+import Box from '@mui/material/Box';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { makeStyles } from '@mui/styles';
 
+type Anchor = 'left' | 'right';
 
-type Anchor =  'left' | 'right';
+export default function SwipeableTemporaryDrawer() {
 
-export default function Menu() {
-  const theme = useTheme();
-  const classes = useStyles();
-
-  const sizeSmall = useMediaQuery(theme.breakpoints.up('sm'));
-
-
-
+    const classes = useStyles();
+    const theme = useTheme();
+    const sizeSmall = useMediaQuery(theme.breakpoints.up('sm'));
 
   const [state, setState] = React.useState({
     left: false,
     right: false,
   });
 
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event && event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
 
-
-  const toggleDrawer = (anchor: Anchor, open: boolean) => (
-    event: React.KeyboardEvent | React.MouseEvent,
-  ) => {
-    if (
-      event && event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-
-
+      setState({ ...state, [anchor]: open });
+    };
 
   const list = (anchor: Anchor) => (
-    <div 
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'left' || anchor === 'right',
-      })}
+    <Box
+      sx={{ width: anchor === 'left' || anchor === 'right' ? 'auto' : 250 }}
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem>
+      <ListItem>
           <ListItemText>WELCOME
             </ListItemText>
         </ListItem>
@@ -84,9 +71,10 @@ export default function Menu() {
           <ListItemText> MITT KONTO </ListItemText>
         </ListItem>
       </List>
-      <Divider />
-    </div>
+    </Box>
   );
+
+
 
   if(sizeSmall === true) {
     return (
@@ -130,18 +118,19 @@ export default function Menu() {
 };
 
 
+
 const useStyles = makeStyles({
-  list: {
-    width: 250,
-    background: '#BFD8D5',
-    color: 'black',
-  },
-  fullList: {
-    width: 'auto',
-    background: '#BFD8D5',
-    color: 'black',
-  },
-  paper:{
-    background: '#BFD8D5',
-  }
-});
+    list: {
+      width: 250,
+      background: '#BFD8D5',
+      color: 'black',
+    },
+    fullList: {
+      width: 'auto',
+      background: '#BFD8D5',
+      color: 'black',
+    },
+    paper:{
+      background: '#BFD8D5',
+    }
+  });
