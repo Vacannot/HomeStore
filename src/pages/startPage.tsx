@@ -2,11 +2,13 @@ import React from 'react';
 import { CSSProperties } from 'react';
 import Banner from '../components/Banner';
 // import ProductGrid from '../components/ProductGrid';
+import ProductCard from './../components/ProductCard';
 
 const StartPage = () => {
 	return (
 		<div style={rootStyle}>
 			<Banner />
+			<ProductCard />
 			{/* <ProductGrid /> */}
 		</div>
 	);
