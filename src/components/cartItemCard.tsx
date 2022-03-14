@@ -14,7 +14,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 function CartItemCard() {
     const [price, setPrice] = useState(123);
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('sm'), {nSsr: true});
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+    
 
     return(
         <Card sx={rootCardStyle}>
@@ -40,20 +41,19 @@ function CartItemCard() {
 }
 
 const rootCardStyle: CSSProperties = {
-    width:"70%", 
-    margin: "1rem auto",
-    display: "flex",
-    flexDirection: "column"
-
-}
+	width: '70%',
+	margin: '1rem auto',
+	display: 'flex',
+	flexDirection: 'column',
+};
 const CardActionsStyle: CSSProperties = {
     display: "flex", 
     justifyContent: "space-around"
 }
 
 const CardMediaStyle: CSSProperties = {
-     height: "100%",
-     width: "50%"
-}             
+	height: '100%',
+	width: '50%',
+};
 
 export default CartItemCard;

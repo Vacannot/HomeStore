@@ -52,7 +52,7 @@ function CartPage() {
 }
 
 const rootStyle: CSSProperties = {
-    marginTop: "4rem",
-}
+	marginTop: '4rem',
+};
 
 export default CartPage;
