@@ -10,12 +10,15 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { makeStyles } from '@mui/styles';
+import MenuIcon from '@mui/icons-material/Menu';
 
 type Anchor = 'left' | 'right';
 
 export default function SwipeableTemporaryDrawer() {
 
     const classes = useStyles();
+
+
     const theme = useTheme();
     const sizeSmall = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -81,7 +84,7 @@ export default function SwipeableTemporaryDrawer() {
       <div>
         {(['left'] as Anchor[]).map((anchor) => (
           <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+            <MenuIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuIcon>
             <SwipeableDrawer
               classes={{paper: classes.paper}}
               anchor={anchor}
@@ -100,7 +103,7 @@ export default function SwipeableTemporaryDrawer() {
       <div>
         {(['right'] as Anchor[]).map((anchor) => (
           <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+            <MenuIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuIcon>
             <SwipeableDrawer
               classes={{paper: classes.paper}}
               anchor={anchor}

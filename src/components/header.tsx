@@ -14,6 +14,7 @@ import Logo from './logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
+import Menu from './Menu';
 
 
 
@@ -42,7 +43,7 @@ function Header() {
                         <Link to='/cartpage'>
                             <ShoppingCartIcon />
                         </Link>
-                        <MenuIcon />
+                            <Menu/>
                     </div>
                 </Toolbar>
             </AppBar>
