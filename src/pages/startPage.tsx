@@ -3,6 +3,7 @@ import { CSSProperties } from 'react';
 import Banner from '../components/Banner';
 import CategoryCarousel from '../components/CategoryCarousel';
 // import ProductGrid from '../components/ProductGrid';
+import ProductCard from './../components/ProductCard';
 
 const StartPage = () => {
 	return (
