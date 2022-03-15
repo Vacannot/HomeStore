@@ -40,6 +40,7 @@ const arrowStyleLeft: CSSProperties = {
     height: "100%",
     display: 'flex',
     alignItems: 'center',
+    left: -1,
 }
 
 const arrowStyleRight: CSSProperties = {
@@ -52,6 +53,7 @@ const arrowStyleRight: CSSProperties = {
     right: 0,
 }
 const carouselItemsContainer: CSSProperties = {
+    height: '70%',
     display: 'flex',
     overflow: 'hidden', 
     overflowX: 'scroll'
