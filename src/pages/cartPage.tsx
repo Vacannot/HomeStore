@@ -1,58 +1,36 @@
 
 
-import { makeStyles, Button, Typography, useTheme, Theme } from "@mui/material";
+import { Button, Typography, useTheme, Theme } from "@mui/material";
 import React, { CSSProperties } from "react";
-import CartItemCard from "../components/CartItemCard";
-import useMediaQuery from '@mui/material/useMediaQuery';
-
-// declare module '@mui/material/styles' {
-//     interface useStyles {
-//         pagetitle: {
-//             fontSize: string,
-//         }
-//     }
-// }
-
-// const useStyles = makeStyles((theme: Theme) => ({
-//     pageTitle: {
-//         fontSize: "1.5rem",
-//         [theme.breakpoints.up('sm')]: {
-//             fontSize: "2rem",
-//         }
-//     }
-// }))
-
+import CartItemCard from "../components/cartItemCard";
 
 function CartPage() {
-    // const classes = useStyles();
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  
+
+
 
     return(
         <div style={rootStyle}>
-            <Typography align="center" variant="h4">Shopping Cart</Typography>
+            <Typography align="center" variant="h4" sx={{ m:1 }}>Shopping Cart</Typography>
             <CartItemCard/>
             <CartItemCard/>
-
-            <div style={{display: "flex", flexDirection: "row", justifyContent: "space-around"}}>
-                <Button sx={{backgroundColor: "green"}} variant="contained">GO TO PAYMENT</Button>
-                <Typography variant="h6">
-                    Total:
-                </Typography>
-                <Typography variant="h6">
-                    Kr
-                </Typography>
+            <div style={paymentDivStyle}>
+                <Button sx={{backgroundColor: "green", m: 1}} variant="contained">GO TO PAYMENT</Button>
+                <Typography variant="h6">Total: Kr</Typography>
             </div>
-
         </div>
-        
-        
-        
     )
 }
 
 const rootStyle: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
 	marginTop: '4rem',
 };
+
+const paymentDivStyle: CSSProperties = {
+    maxWidth: '20rem', 
+}
 
 export default CartPage;

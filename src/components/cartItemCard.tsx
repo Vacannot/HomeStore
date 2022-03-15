@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import image from '../assets/furniture.jpeg';
 import QuantityCounter from './QuantityCounter';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useTheme } from '@mui/material/styles';
+import { ThemeProvider, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 function CartItemCard() {
@@ -18,6 +18,7 @@ function CartItemCard() {
     
 
     return(
+        
         <Card sx={rootCardStyle}>
             <div style={{display: "flex"}}>
                 <CardMedia sx={CardMediaStyle}  component="img" image={image} alt="placeholder"/>
@@ -29,7 +30,6 @@ function CartItemCard() {
                  </CardContent>
             </div>
             
-            
             <CardActions sx={CardActionsStyle}>
                 <QuantityCounter/>
                 <IconButton sx={{backgroundColor: "#DB7575"}} aria-label="remove item from cart">
@@ -37,11 +37,13 @@ function CartItemCard() {
                 </IconButton>
             </CardActions>
         </Card>
+    
     )
 }
 
 const rootCardStyle: CSSProperties = {
 	width: '70%',
+    maxWidth: '30rem;',
 	margin: '1rem auto',
 	display: 'flex',
 	flexDirection: 'column',
@@ -49,7 +51,7 @@ const rootCardStyle: CSSProperties = {
 const CardActionsStyle: CSSProperties = {
     display: "flex", 
     justifyContent: "space-around"
-}
+};
 
 const CardMediaStyle: CSSProperties = {
 	height: '100%',
