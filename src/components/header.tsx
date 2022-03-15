@@ -11,6 +11,7 @@ import Logo from './Logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
+import Menu from './Menu';
 
 const theme = createTheme({
 	palette: {
@@ -19,28 +20,28 @@ const theme = createTheme({
 });
 
 function Header() {
-	const theme = useTheme();
-	const matches = useMediaQuery(theme.breakpoints.up('sm'));
-	return (
-		<>
-			<CssBaseline />
-			<AppBar>
-				<Toolbar variant='regular' sx={toolbarStyle}>
-					<Link to='/'>
-						<Logo />
-					</Link>
-					<Search />
-					<div style={iconsDivStyle}>
-						<FavoriteIcon />
-						<Link to='/cartpage'>
-							<ShoppingCartIcon />
-						</Link>
-						<MenuIcon />
-					</div>
-				</Toolbar>
-			</AppBar>
-		</>
-	);
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+    return(
+    <>
+        <CssBaseline/>
+            <AppBar >
+                <Toolbar variant="regular" sx={toolbarStyle}>
+                   <Link to="/">
+                       <Logo />  
+                   </Link>  
+                    <Search />   
+                    <div style={iconsDivStyle}>
+                        <FavoriteIcon />
+                        <Link to='/cartpage'>
+                            <ShoppingCartIcon />
+                        </Link>
+                            <Menu/>
+                    </div>
+                </Toolbar>
+            </AppBar>
+    </>
+    )
 }
 
 const iconsDivStyle: CSSProperties = {
