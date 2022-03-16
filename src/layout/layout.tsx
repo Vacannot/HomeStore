@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import StartPage from '../pages/startPage';
 import Header from '../components/header';
 import CartPage from '../pages/cartPage';
-import Footer from './Footer';
+import Footer from './footer';
 
 function Layout() {
 	return (
