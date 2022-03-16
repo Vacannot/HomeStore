@@ -1,6 +1,7 @@
 import React from 'react';
 import { CSSProperties } from 'react';
 import Banner from '../components/Banner';
+import CategoryCarousel from '../components/CategoryCarousel';
 // import ProductGrid from '../components/ProductGrid';
 import ProductCard from './../components/ProductCard';
 
@@ -8,7 +9,7 @@ const StartPage = () => {
 	return (
 		<div style={rootStyle}>
 			<Banner />
-			<ProductCard />
+			<CategoryCarousel />
 			{/* <ProductGrid /> */}
 		</div>
 	);
