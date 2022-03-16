@@ -1,15 +1,15 @@
 import React, { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Context from './context/context';
+// import Context from './context/context';
 import Layout from './layout/layout';
 
 function App() {
 	return (
 		<StrictMode>
 			<BrowserRouter>
-			<Context>
+			{/* <Context> */}
 				<Layout />
-			</Context>
+			{/* </Context> */}
 			</BrowserRouter>
 		</StrictMode>
 	);
