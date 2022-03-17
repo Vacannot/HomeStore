@@ -1,16 +1,13 @@
 import React from 'react';
 import { CSSProperties } from 'react';
-import Banner from '../components/Banner';
-import CategoryCarousel from '../components/CategoryCarousel';
-// import ProductGrid from '../components/ProductGrid';
-import ProductCard from './../components/ProductCard';
+import Banner from './../components/Banner';
+import ProductGrid from '../components/ProductGrid';
 
 const StartPage = () => {
 	return (
 		<div style={rootStyle}>
 			<Banner />
-			<CategoryCarousel />
-			{/* <ProductGrid /> */}
+			<ProductGrid />
 		</div>
 	);
 };

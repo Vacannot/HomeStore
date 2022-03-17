@@ -1,3 +1,4 @@
+
 import React from "react";
 import image from "../assets/bannerimage.jpg";
 
@@ -8,6 +9,4 @@ function Banner() {
     </div>
   );
 }
-
-
 export default Banner;
