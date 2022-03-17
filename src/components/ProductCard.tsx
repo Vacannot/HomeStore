@@ -8,6 +8,7 @@ import stolar from '../assets/stolar.jpg';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import { Favorite } from '@mui/icons-material';
+import AddToCartSnackbar from './AddToCartSnackbar';
 
 export default function ProductCard() {
 	return (
@@ -18,7 +19,7 @@ export default function ProductCard() {
 					Två stolar
 				</Typography>
 				<Typography variant='body2' color='text.secondary' component='div'>
-					Två snygga stolar gjord i björk
+					Två snygga stolar gjord i björk.
 				</Typography>
 				<Typography gutterBottom variant='h6' component='div'>
 					299kr
@@ -28,10 +29,7 @@ export default function ProductCard() {
 				<IconButton sx={ButtonStyle} aria-label='favorite' size='large'>
 					<Favorite />
 				</IconButton>
-
-				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
-					<ShoppingCart />
-				</IconButton>
+				<AddToCartSnackbar />
 			</CardActions>
 		</Card>
 	);
