@@ -3,6 +3,7 @@
 import { Button, Typography, useTheme, Theme } from "@mui/material";
 import React, { CSSProperties } from "react";
 import CartItemCard from "../components/cartItemCard";
+import { Link } from "react-router-dom";
 
 function CartPage() {
   
@@ -14,8 +15,11 @@ function CartPage() {
             <Typography align="center" variant="h4" sx={{ m:1 }}>Shopping Cart</Typography>
             <CartItemCard/>
             <CartItemCard/>
-            <div style={paymentDivStyle}>
-                <Button sx={{backgroundColor: "green", m: 1}} variant="contained">GO TO PAYMENT</Button>
+            <div style={paymentDivStyle}> 
+            <Link to="/formpage">
+            <Button sx={{backgroundColor: "green", m: 1}} variant="contained">GO TO PAYMENT</Button>
+            </Link>
+
                 <Typography variant="h6">Total: Kr</Typography>
             </div>
         </div>
