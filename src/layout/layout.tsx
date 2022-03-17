@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import StartPage from '../pages/startPage';
-import Header from '../components/header';
+import Header from '../components/Header';
 import CartPage from '../pages/cartPage';
 import Footer from './Footer';
 
@@ -19,7 +19,7 @@ function Layout() {
 }
 
 const rootStyle: CSSProperties = {
-	height: '100%',
+	height: '100vh',
 	display: 'flex',
 	flexDirection: 'column',
 };
