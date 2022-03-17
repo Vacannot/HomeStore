@@ -1,5 +1,4 @@
 import React from 'react';
-// import React, { CSSProperties } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -19,7 +18,8 @@ const Footer = () => {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				minHeight: '100vh',
+				height: '100vh',
+				alignItems: 'center',
 			}}>
 			<CssBaseline />
 			<Box
@@ -28,9 +28,7 @@ const Footer = () => {
 					py: 3,
 					px: 2,
 					mt: 'auto',
-				}}
-				// style={rootStyle}
-			>
+				}}>
 				<Container maxWidth='sm'>
 					<Copyright />
 				</Container>
@@ -38,9 +36,5 @@ const Footer = () => {
 		</Box>
 	);
 };
-
-// const rootStyle: CSSProperties = {
-// 	margin: 'auto',
-// };
 
 export default Footer;

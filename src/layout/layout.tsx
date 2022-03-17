@@ -19,7 +19,7 @@ function Layout() {
 }
 
 const rootStyle: CSSProperties = {
-	height: '100%',
+	height: '100vh',
 	display: 'flex',
 	flexDirection: 'column',
 };
