@@ -49,7 +49,7 @@ function Header() {
 const iconsDivStyle: CSSProperties = {
 	display: 'flex',
 	width: '10rem',
-	// justifyContent: 'space-between',
+	justifyContent: 'space-between',
 };
 
 const toolbarStyle: CSSProperties = {

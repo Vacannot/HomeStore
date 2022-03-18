@@ -1,10 +1,15 @@
 import * as React from 'react';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Switch, { SwitchProps } from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
 
-const ThemeSwitch = styled(Switch)(({ theme }) => ({
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+
+const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 	width: 62,
 	height: 34,
 	padding: 7,
@@ -28,8 +33,8 @@ const ThemeSwitch = styled(Switch)(({ theme }) => ({
 	},
 	'& .MuiSwitch-thumb': {
 		backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
-		width: 30,
-		height: 30,
+		width: 32,
+		height: 32,
 		'&:before': {
 			content: "''",
 			position: 'absolute',
@@ -51,10 +56,55 @@ const ThemeSwitch = styled(Switch)(({ theme }) => ({
 	},
 }));
 
-export default function CustomizedSwitches() {
+function MyApp() {
+	const theme = useTheme();
+	const colorMode = React.useContext(ColorModeContext);
 	return (
-		<FormGroup>
-			<FormControlLabel control={<ThemeSwitch sx={{ m: 1 }} defaultChecked />} label='' />
-		</FormGroup>
+		<Box
+			sx={{
+				display: 'flex',
+				width: '100%',
+				alignItems: 'center',
+				justifyContent: 'center',
+				bgcolor: 'background.default',
+				color: 'text.primary',
+				borderRadius: 1,
+				p: 3,
+			}}>
+			{theme.palette.mode} mode
+			<IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color='inherit'>
+				{theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+			</IconButton>
+		</Box>
+	);
+}
+
+export default function ToggleColorMode() {
+	const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+	const colorMode = React.useMemo(
+		() => ({
+			toggleColorMode: () => {
+				setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+			},
+		}),
+		[],
+	);
+
+	const theme = React.useMemo(
+		() =>
+			createTheme({
+				palette: {
+					mode,
+				},
+			}),
+		[mode],
+	);
+
+	return (
+		<ColorModeContext.Provider value={colorMode}>
+			<ThemeProvider theme={theme}>
+				<MyApp />
+			</ThemeProvider>
+		</ColorModeContext.Provider>
 	);
 }
