@@ -11,6 +11,8 @@ import Logo from './Logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
+import ThemeSwitch from './ThemeSwitch';
+import StartPage from './../pages/startPage';
 
 const theme = createTheme({
 	palette: {
@@ -26,11 +28,12 @@ function Header() {
 			<CssBaseline />
 			<AppBar>
 				<Toolbar variant='regular' sx={toolbarStyle}>
-					<Link to='/'>
+					<Link to='/StartPage'>
 						<Logo />
 					</Link>
 					<Search />
 					<div style={iconsDivStyle}>
+						<ThemeSwitch />
 						<FavoriteIcon />
 						<Link to='/cartpage'>
 							<ShoppingCartIcon />
@@ -45,8 +48,8 @@ function Header() {
 
 const iconsDivStyle: CSSProperties = {
 	display: 'flex',
-	width: '6rem',
-	justifyContent: 'space-between',
+	width: '10rem',
+	// justifyContent: 'space-between',
 };
 
 const toolbarStyle: CSSProperties = {
