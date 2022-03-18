@@ -6,6 +6,7 @@ import CartPage from '../pages/cartPage';
 import FormPage from '../pages/formPage';
 import Footer from './footer';
 import ShippingPage from '../pages/shippingPage';
+import OrderInfoPage from '../pages/OrderInfoPage';
 
 function Layout() {
 	return (
@@ -16,6 +17,7 @@ function Layout() {
 				<Route path='/cartpage' component={CartPage} />
 				<Route path='/formpage' component={FormPage} />
 				<Route path='/shippingpage' component={ShippingPage} />
+				<Route path='/orderinfopage' component={OrderInfoPage} />
 			</Switch>
 			<Footer />
 		</div>
