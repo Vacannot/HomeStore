@@ -14,7 +14,7 @@ const theme = createTheme({
 	},
 });
 
-function CartHeader() {
+export default function CheckoutHeader() {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
 	return (
@@ -37,5 +37,3 @@ const toolbarStyle: CSSProperties = {
 	justifyContent: 'space-between',
 	backgroundColor: '#BFD8D5',
 };
-
-export default CartHeader;
