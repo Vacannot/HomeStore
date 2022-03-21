@@ -12,7 +12,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 import ThemeSwitch from './ThemeSwitch';
-import StartPage from './../pages/startPage';
+import StartPage from '../pages/startPage';
 
 const theme = createTheme({
 	palette: {
