@@ -7,12 +7,24 @@ import { TextField, Typography } from '@mui/material';
 
 export default function Address() {
 	return (
-		<Box sx={{ display: 'flex', justifyContent: 'center' }} component='form' autoComplete='on'>
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+			}}
+			component='form'
+			autoComplete='on'>
 			<form>
-				<div style={{ display: 'flex', flexDirection: 'row' }}>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'row',
+						justifyContent: 'center',
+					}}>
 					<div style={{ display: 'flex', flexDirection: 'column', margin: '.5rem' }}>
 						<TextField
-							sx={{ marginTop: '.5rem', width: '40ch' }}
+							sx={{ marginTop: '.5rem', width: '35ch' }}
 							required
 							id='outlined-required'
 							type='name'
@@ -20,7 +32,7 @@ export default function Address() {
 							placeholder='Förnamn'
 						/>
 						<TextField
-							sx={{ marginTop: '.5rem', width: '40ch' }}
+							sx={{ marginTop: '.5rem', width: '35ch' }}
 							required
 							id='outlined-required'
 							type='name'
@@ -28,7 +40,7 @@ export default function Address() {
 							placeholder='Efternamn'
 						/>
 						<TextField
-							sx={{ marginTop: '.5rem', width: '40ch' }}
+							sx={{ marginTop: '.5rem', width: '35ch' }}
 							required
 							id='outlined-number'
 							type='number '
@@ -38,7 +50,7 @@ export default function Address() {
 					</div>
 					<div style={{ display: 'flex', flexDirection: 'column', margin: '.5rem' }}>
 						<TextField
-							sx={{ marginTop: '.5rem', width: '40ch' }}
+							sx={{ marginTop: '.5rem', width: '35ch' }}
 							required
 							id='outlined-required'
 							type='adress'
@@ -46,7 +58,7 @@ export default function Address() {
 							placeholder='Adress'
 						/>
 						<TextField
-							sx={{ marginTop: '.5rem', width: '40ch' }}
+							sx={{ marginTop: '.5rem', width: '35ch' }}
 							required
 							id='outlined-required'
 							type='postcode'
@@ -54,28 +66,26 @@ export default function Address() {
 							placeholder='Postnummer'
 						/>
 						<TextField
-							sx={{ marginTop: '.5rem', width: '40ch' }}
+							sx={{ marginTop: '.5rem', width: '35ch' }}
 							required
 							id='outlined-required'
 							type='city'
-							label='Stad'
-							placeholder='Stad'
+							label='Ort'
+							placeholder='Ort'
 						/>
 					</div>
 				</div>
-				<div
-					style={{
-						display: 'flex',
-						justifyContent: 'end',
-						gap: '2rem',
-					}}>
-					{/* <Link to='/shippingpage'> */}
-					<Button sx={ButtonStyle} variant='contained'>
-						Fortsätt
-					</Button>
-					{/* </Link> */}
-				</div>
 			</form>
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'end',
+					gap: '2rem',
+				}}>
+				<Button sx={ButtonStyle} variant='contained'>
+					Fortsätt
+				</Button>
+			</div>
 		</Box>
 	);
 }
@@ -86,4 +96,5 @@ const ButtonStyle: CSSProperties = {
 	padding: '.5rem',
 	width: '8rem',
 	boxShadow: 'none',
+	textDecoration: 'none',
 };

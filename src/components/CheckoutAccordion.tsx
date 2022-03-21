@@ -5,10 +5,12 @@ import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import CheckoutPage from '../pages/checkoutPage';
+// import CartPage from './../pages/cartPage';
+import Address from './Address';
+import Shipping from './Shipping';
 
 const Accordion = styled((props: AccordionProps) => (
-	<MuiAccordion disableGutters elevation={0} square {...props} />
+	<MuiAccordion disableGutters elevation={6} square {...props} />
 ))(({ theme }) => ({
 	border: `1px solid ${theme.palette.divider}`,
 	'&:not(:last-child)': {
@@ -21,7 +23,7 @@ const Accordion = styled((props: AccordionProps) => (
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
 	<MuiAccordionSummary
-		expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+		expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '1rem' }} />}
 		{...props}
 	/>
 ))(({ theme }) => ({
@@ -41,7 +43,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 	borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-export default function CustomizedAccordions() {
+export default function CheckoutAccordion() {
 	const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
 	const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -49,33 +51,41 @@ export default function CustomizedAccordions() {
 	};
 
 	return (
-		<div>
+		<div
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+			}}>
 			<Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
 				<AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-					<Typography>Collapsible Group Item #1</Typography>
+					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+						<h3>Mina uppgifter</h3>
+					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
 					<Typography>
-						<CheckoutPage />
+						<Address />
 					</Typography>
 				</AccordionDetails>
 			</Accordion>
 			<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
 				<AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
-					<Typography>Collapsible Group Item #2</Typography>
+					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+						<h3>Fraktsätt</h3>
+					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
 					<Typography>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-						lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
-						lobortis eget.
+						<Shipping />
 					</Typography>
 				</AccordionDetails>
 			</Accordion>
 			<Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-					<Typography>Collapsible Group Item #3</Typography>
+					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+						<h3>Betalning</h3>
+					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
 					<Typography>
