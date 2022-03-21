@@ -1,6 +1,6 @@
 import React from 'react';
 import { CSSProperties } from 'react';
-import Banner from './../components/Banner';
+import Banner from '../components/Banner';
 import ProductGrid from '../components/ProductGrid';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';

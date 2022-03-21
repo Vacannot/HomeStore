@@ -1,7 +1,7 @@
 import React, { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 // import Context from './context/context';
-import Layout from './layout/layout';
+import Layout from './layout/Layout';
 
 function App() {
 	return (
