@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import StartPage from '../pages/startPage';
 import Header from '../components/Header';
 import CartPage from '../pages/cartPage';
+import CheckoutPage from '../pages/checkoutPage';
 import Footer from '../components/Footer';
-import CheckoutPage from './../pages/checkoutPage';
 
 function Layout() {
 	return (
