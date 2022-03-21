@@ -1,12 +1,10 @@
 import React, { CSSProperties } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import StartPage from '../pages/StartPage';
+import StartPage from '../pages/startPage';
 import Header from '../components/Header';
-import CartPage from '../pages/CartPage';
-import FormPage from '../pages/FormPage';
-import Footer from './footer';
-import ShippingPage from '../pages/ShippingPage';
-import OrderInfoPage from '../pages/OrderInfoPage';
+import CartPage from '../pages/cartPage';
+import Footer from '../components/Footer';
+import CheckoutPage from './../pages/checkoutPage';
 
 function Layout() {
 	return (
@@ -14,10 +12,8 @@ function Layout() {
 			<Header />
 			<Switch>
 				<Route path='/' exact component={StartPage} />
-				<Route path='/cartpage' component={CartPage} />
-				<Route path='/formpage' component={FormPage} />
-				<Route path='/shippingpage' component={ShippingPage} />
-				<Route path='/orderinfopage' component={OrderInfoPage} />
+				<Route path='/cart-page' component={CartPage} />
+				<Route path='/checkout-page' component={CheckoutPage} />
 			</Switch>
 			<Footer />
 		</div>
