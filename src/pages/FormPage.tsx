@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { CSSProperties } from "@mui/styled-engine";
 import { TextField, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function FormPage() {
   return (
@@ -12,6 +13,7 @@ export default function FormPage() {
       autoComplete="on"
     >
       <form>
+      <h1>MINA UPPGIFTER</h1>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{ display: "flex", justifyContent: "center" }}>
             <h1>MINA UPPGIFTER</h1>
@@ -69,12 +71,16 @@ export default function FormPage() {
           <div
             style={{ display: "flex", justifyContent: "center", gap: "2rem" }}
           >
+            <Link to="/cartpage">
             <Button sx={ButtonStyle} variant="contained">
               Föregående
             </Button>
+            </Link>
+            <Link to="/shippingpage">
             <Button sx={ButtonStyle} variant="contained">
               Gå vidare
             </Button>
+            </Link>
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button
