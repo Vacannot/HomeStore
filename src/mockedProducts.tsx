@@ -10,7 +10,7 @@ import fallstone from './assets/fallstone.png';
 import buddy from './assets/buddy.png';
 import ocean from './assets/ocean.png';
 
-export interface Product {
+export interface Products {
 	id: number;
 	category: string;
 	title: string;
@@ -21,7 +21,7 @@ export interface Product {
 
 // För dig som vill sitta riktigt gott framför en bra film eller brasan så är soffan Happy ett måste. Den har ett stort härligt sittdjup på 65 cm, kuddar med 80% dun. Sittdynorna har duntopp och är vändbara!
 
-export const products: Product[] = [
+export const productss: Products[] = [
 	{
 		id: 0,
 		category: 'sofa',
