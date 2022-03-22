@@ -1,7 +1,9 @@
 import React, { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 // import Context from './context/context';
+
 import CartProvider, { useCart } from './context/CartContext'
+
 import Layout from './layout/layout';
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
 			<CartProvider>
 				<Layout />
 			</CartProvider>
+
 			</BrowserRouter>
 		</StrictMode>
 	);
