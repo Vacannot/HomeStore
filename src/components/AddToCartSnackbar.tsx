@@ -3,6 +3,8 @@ import Button from '@mui/material/Button';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
+// import { Products, products } from '../mockedProducts';
+import CartProvider, { useCart } from '../context/CartContext';
 
 export interface State extends SnackbarOrigin {
 	open: boolean;
@@ -15,6 +17,20 @@ export default function AddToCartSnackbar() {
 		horizontal: 'center',
 	});
 	const { vertical, horizontal, open } = state;
+	const { 
+		cart, 
+		addProductToCart,
+		removeProductFromCart,
+		emptyCart,
+		sumPriceProducts,
+		totalSum,
+		addQuantity,
+		reduceQuantity,
+		totalQuantity,
+		createOrderId,
+		calculateVatPrice
+	} = useCart(); 
+
 
 	const handleClick = (newState: SnackbarOrigin) => () => {
 		setState({ open: true, ...newState });

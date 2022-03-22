@@ -4,15 +4,15 @@ import { Button, Typography, useTheme, Theme } from "@mui/material";
 import React, { CSSProperties } from "react";
 import CartItemCard from "../components/cartItemCard";
 import { Link } from "react-router-dom";
+import { CartContext } from '../context/CartContext'
 
 function CartPage() {
-  
-
-
+    const { cart } = CartContext();
 
     return(
         <div style={rootStyle}>
             <Typography align="center" variant="h4" sx={{ m:1 }}>Shopping Cart</Typography>
+
             <CartItemCard/>
             <CartItemCard/>
             <div style={paymentDivStyle}> 
