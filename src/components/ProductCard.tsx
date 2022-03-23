@@ -4,7 +4,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import stolar from '../assets/stolar.jpg';
 import IconButton from '@mui/material/IconButton';
 import { Favorite } from '@mui/icons-material';
 import AddToCartSnackbar from './AddToCartSnackbar';
@@ -16,29 +15,82 @@ type Props = {
 
 export default function ProductCard({ product }) {
 	return (
-		<Card sx={{ maxWidth: 400 }}>
-			<CardMedia component='img' height='260' image={product.image} alt='image' />
-			{/* <img src={product.image} alt='product' /> */}
-			<CardContent>
-				<Typography gutterBottom variant='h4' component='div'>
+		<Card sx={CardStyle}>
+			<CardMedia
+				sx={ImageStyle}
+				component='img'
+				height='260'
+				image={product.image}
+				alt='image'
+			/>
+			<CardContent sx={CardContentStyle}>
+				<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
 					{product.title}
 				</Typography>
-				<Typography variant='body2' color='text.secondary' component='div'>
+				<Typography
+					sx={DescriptionStyle}
+					variant='body2'
+					paddingBottom={1}
+					color='text.secondary'
+					component='div'>
 					{product.description}
 				</Typography>
-				<Typography gutterBottom variant='h6' component='div'>
+			</CardContent>
+			<div style={CardActionStyle}>
+				<Typography sx={PriceStyle} gutterBottom variant='h6' component='div'>
 					{product.price} kr
 				</Typography>
-			</CardContent>
-			<CardActions style={{ justifyContent: 'right' }}>
-				<IconButton sx={ButtonStyle} aria-label='favorite' size='large'>
-					<Favorite />
-				</IconButton>
-				<AddToCartSnackbar />
-			</CardActions>
+				<CardActions style={CardAction}>
+					<IconButton sx={ButtonStyle} aria-label='favorite' size='large'>
+						<Favorite />
+					</IconButton>
+					<AddToCartSnackbar />
+				</CardActions>
+			</div>
 		</Card>
 	);
 }
+
+const CardStyle: CSSProperties = {
+	maxWidth: 300,
+	height: 450,
+};
+
+const CardContentStyle: CSSProperties = {
+	marginBottom: '.5px',
+	paddingTop: '8px',
+	paddingRight: '8px',
+	paddingBottom: '0',
+	paddingLeft: '16px',
+};
+
+const ImageStyle: CSSProperties = {
+	border: '1px solid grey',
+};
+
+const TitleStyle: CSSProperties = {
+	paddingBottom: '0',
+	marginBottom: '2px',
+};
+
+const DescriptionStyle: CSSProperties = {
+	height: '85px',
+};
+
+const CardActionStyle: CSSProperties = {
+	display: 'flex',
+	justifyContent: 'space-between',
+};
+
+const CardAction: CSSProperties = {
+	paddingTop: '0',
+};
+
+const PriceStyle: CSSProperties = {
+	alignSelf: 'center',
+	paddingLeft: '16px',
+	paddingTop: '16px',
+};
 
 const ButtonStyle: CSSProperties = {
 	backgroundColor: '#BFD8D5',
