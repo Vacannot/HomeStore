@@ -1,12 +1,8 @@
 import React, { CSSProperties } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import MenuIcon from '@mui/icons-material/Menu';
 import { CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/system';
-import Search from './Search';
 import Logo from './Logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -18,7 +14,7 @@ const theme = createTheme({
 	},
 });
 
-function Header() {
+export default function CheckoutHeader() {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
 	return (
@@ -29,25 +25,11 @@ function Header() {
 					<Link to='/'>
 						<Logo />
 					</Link>
-					<Search />
-					<div style={iconsDivStyle}>
-						<FavoriteIcon />
-						<Link to='/cartpage'>
-							<ShoppingCartIcon />
-						</Link>
-						<MenuIcon />
-					</div>
 				</Toolbar>
 			</AppBar>
 		</>
 	);
 }
-
-const iconsDivStyle: CSSProperties = {
-	display: 'flex',
-	width: '6rem',
-	justifyContent: 'space-between',
-};
 
 const toolbarStyle: CSSProperties = {
 	display: 'flex',
@@ -55,5 +37,3 @@ const toolbarStyle: CSSProperties = {
 	justifyContent: 'space-between',
 	backgroundColor: '#BFD8D5',
 };
-
-export default Header;

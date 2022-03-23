@@ -1,9 +1,11 @@
 import React, { CSSProperties } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import StartPage from '../pages/startPage';
-import Header from '../components/Header';
+import Header from '../components/header';
 import CartPage from '../pages/cartPage';
-import Footer from '../components/Footer';
+import FormPage from '../pages/formPage';
+import Footer from './footer';
+import ShippingPage from '../pages/shippingPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
 
 function Layout() {
@@ -13,7 +15,8 @@ function Layout() {
 			<Switch>
 				<Route path='/' exact component={StartPage} />
 				<Route path='/cartpage' component={CartPage} />
-				<Route path='/cartpage' component={CartPage} />
+				<Route path='/formpage' component={FormPage} />
+				<Route path='/shippingpage' component={ShippingPage} />
 				<Route path='/orderinfopage' component={OrderInfoPage} />
 			</Switch>
 			<Footer />
