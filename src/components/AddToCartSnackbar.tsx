@@ -17,8 +17,8 @@ export default function AddToCartSnackbar() {
 		horizontal: 'center',
 	});
 	const { vertical, horizontal, open } = state;
-	const { 
-		cart, 
+	const {
+		cart,
 		addProductToCart,
 		removeProductFromCart,
 		emptyCart,
@@ -26,11 +26,10 @@ export default function AddToCartSnackbar() {
 		totalSum,
 		addQuantity,
 		reduceQuantity,
-		totalQuantity,
+		// totalQuantity,
 		createOrderId,
-		calculateVatPrice
-	} = useCart(); 
-
+		calculateVatPrice,
+	} = useCart();
 
 	const handleClick = (newState: SnackbarOrigin) => () => {
 		setState({ open: true, ...newState });
