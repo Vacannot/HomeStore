@@ -11,7 +11,7 @@ interface ICartContextValue {
   shipping: IShippingProvider;
   addProductToCart: (product: IProduct) => void;
   removeProductFromCart: (product: IProduct) => void;
-  // emptyCart: () => void;
+  emptyCart: () => void;
   getSumPriceProducts: (product: ICartItem) => number;
   getTotalSum: (cartItem: ICartItem[]) => number;
   addQuantity: (product: ICartItem) => void;
@@ -30,7 +30,7 @@ export const CartContext = createContext<ICartContextValue>({
   },
   addProductToCart: () => {},
   removeProductFromCart: () => {},
-  // emptyCart: () => {},
+  emptyCart: () => {},
   getSumPriceProducts: () => 0,
   getTotalSum: () => 0,
   addQuantity: () => 0,
@@ -161,7 +161,7 @@ const CartProvider: FC = (props) => {
       return productSum * vat;
     };
 
-    // const emptyCart = () => setCart([]);
+    const emptyCart = () => setCart([]);
 
     return (
        
@@ -175,7 +175,7 @@ const CartProvider: FC = (props) => {
           },
           addProductToCart,
           removeProductFromCart,
-          // emptyCart,
+          emptyCart,
           getSumPriceProducts,
           getTotalSum,
           addQuantity,
