@@ -6,23 +6,28 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import stolar from '../assets/stolar.jpg';
 import IconButton from '@mui/material/IconButton';
-import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import { Favorite } from '@mui/icons-material';
 import AddToCartSnackbar from './AddToCartSnackbar';
+import { IProduct } from './../mockedProducts';
 
-export default function ProductCard() {
+type Props = {
+	product: IProduct;
+};
+
+export default function ProductCard({ product }) {
 	return (
 		<Card sx={{ maxWidth: 400 }}>
-			<CardMedia component='img' height='260' image={stolar} alt='image' />
+			<CardMedia component='img' height='260' image={product.image} alt='image' />
+			{/* <img src={product.image} alt='product' /> */}
 			<CardContent>
 				<Typography gutterBottom variant='h4' component='div'>
-					Två stolar
+					{product.title}
 				</Typography>
 				<Typography variant='body2' color='text.secondary' component='div'>
-					Två snygga stolar gjord i björk.
+					{product.description}
 				</Typography>
 				<Typography gutterBottom variant='h6' component='div'>
-					299kr
+					{product.price} kr
 				</Typography>
 			</CardContent>
 			<CardActions style={{ justifyContent: 'right' }}>

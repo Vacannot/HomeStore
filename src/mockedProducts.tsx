@@ -10,7 +10,7 @@ import fallstone from './assets/fallstone.png';
 import buddy from './assets/buddy.png';
 import ocean from './assets/ocean.png';
 
-export interface Products {
+export interface IProduct {
 	id: number;
 	category: string;
 	title: string;
@@ -21,14 +21,14 @@ export interface Products {
 
 // För dig som vill sitta riktigt gott framför en bra film eller brasan så är soffan Happy ett måste. Den har ett stort härligt sittdjup på 65 cm, kuddar med 80% dun. Sittdynorna har duntopp och är vändbara!
 
-export const products: Products[] = [
+export const products: IProduct[] = [
 	{
 		id: 0,
 		category: 'sofa',
 		title: 'Justine',
 		image: justine,
 		description:
-			'Justine är en trivsam 3-sits soffa i ljust tyg med 2 plymåer. Kombinera gärna med Justine fåtölj för fler sociala sittplatser. Tillhörande ben i ek.',
+			'Justine är en trivsam 3-sits soffa i läder med 2 plymåer. Tillhörande ben i ek.',
 		price: 19899,
 	},
 	{
@@ -43,20 +43,20 @@ export const products: Products[] = [
 	{
 		id: 2,
 		category: 'sofa',
-		title: 'Fallstone',
-		image: fallstone,
-		description:
-			'Fallstone är en klassisk soffa med mjukt rundade former och med en stomme av björkplywood. ',
-		price: 18499,
-	},
-	{
-		id: 3,
-		category: 'sofa',
 		title: 'Boom',
 		image: boom,
 		description:
 			'Boom är en en perfekt 3-sits soffa till inredningsfantasten. Soffan är klädd i tyg och är underbart mjuk att sitta i. En snygg detalj till soffan är de svarta metallbenen som ger ett modernt och rustikt intryck.',
 		price: 27499,
+	},
+	{
+		id: 3,
+		category: 'sofa',
+		title: 'Fallstone',
+		image: fallstone,
+		description:
+			'Fallstone är en klassisk soffa med mjukt rundade former och med en stomme av björkplywood. ',
+		price: 18499,
 	},
 	{
 		id: 4,
