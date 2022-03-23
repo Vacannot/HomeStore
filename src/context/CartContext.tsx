@@ -12,11 +12,11 @@ interface ICartContextValue {
   addProductToCart: (product: Products) => void;
   removeProductFromCart: (product: Products) => void;
   emptyCart: () => void;
-  sumPriceProducts: (product: ICartItem) => number;
-  totalSum: (cartItem: ICartItem[]) => number;
-  addQuantity: (product: ICartItem) => number;
-  reduceQuantity: (product: ICartItem) => number;
-  totalQuantity: (cartItem: ICartItem[]) => number;
+  getSumPriceProducts: (product: ICartItem) => number;
+  getTotalSum: (cartItem: ICartItem[]) => number;
+  addQuantity: (product: ICartItem) => void;
+  reduceQuantity: (product: ICartItem) => void;
+  getTotalQuantity: (cartItem: ICartItem[]) => void
   createOrderId: () => number;
   calculateVatPrice: (cartItem: ICartItem[]) => number;
 }
@@ -31,11 +31,11 @@ export const CartContext = createContext<ICartContextValue>({
   addProductToCart: () => {},
   removeProductFromCart: () => {},
   emptyCart: () => {},
-  sumPriceProducts: () => 0,
-  totalSum: () => 0,
+  getSumPriceProducts: () => 0,
+  getTotalSum: () => 0,
   addQuantity: () => 0,
   reduceQuantity: () => 0,
-  totalQuantity: () => 0,
+  getTotalQuantity: () => 0,
   createOrderId: () => 0,
   calculateVatPrice: () => 0,
 });
@@ -46,10 +46,9 @@ export function useCart() {
 
 const CartProvider: FC = (props) => {
   const [cart, setCart] = useState<ICartItem[]>([]);
-  const [totalQuantity, setTotalQuantity] = useState(0);
   const vat = 0.25;
-//   return <p></p>;
 
+ 
   const addProductToCart = (product: Products) => {
     let cartToSave = [...cart];
     const cartItem = cart.find((cartItem) => cartItem.id === product.id);
@@ -59,7 +58,6 @@ const CartProvider: FC = (props) => {
       cartToSave = [...cartToSave, { ...product, quantity: 1 }];
     }
     setCart(cartToSave);
-    console.log(cartToSave);
   };
 
   const removeProductFromCart = (product: Products) => {
@@ -72,16 +70,13 @@ const CartProvider: FC = (props) => {
       }
       setCart(cartToSave);
     }
-}
-
-    const emptyCart = () => setCart([]);
-
+  }
     /**
      *
      * @param product
-     * @returns total sum for a product times its quantity
+     * @returns total sum = price for a product times its quantity
      */
-    const sumPriceProducts = (product: ICartItem) => {
+    const getSumPriceProducts = (product: ICartItem) => {
       let priceSum = 0;
       priceSum += product.price * product.quantity;
       return priceSum;
@@ -92,7 +87,7 @@ const CartProvider: FC = (props) => {
      * @param cartItem
      * @returns total sum of all products (ex. shipping, ink vat)
      */
-    const totalSum = (cartItem: ICartItem[]) => {
+    const getTotalSum = (cartItem: ICartItem[]) => {
       let sum = 0;
       for (let i = 0; i < cartItem.length; i++) {
         sum += cartItem[i].price * cartItem[i].quantity;
@@ -100,21 +95,73 @@ const CartProvider: FC = (props) => {
       return sum;
     };
 
+    /**
+     * 
+     * @param product 
+     * @returns quantity of one product type in cart
+     */
     const addQuantity = (product: ICartItem) => {
-      return 0;
+      const updatedQuantity = cart.map((item) => {
+        if (item.id === product.id) {
+          return {...item, quantity: item.quantity++};
+        };
+        return item;
+      });
+      setCart(updatedQuantity);
     };
+
+    /**
+     * 
+     * @param product 
+     * reduced quantity of product type in cart
+     */
     const reduceQuantity = (product: ICartItem) => {
-      return 0;
+      const updatedQuantity = cart.map((item) => {
+        if(item.id === product.id && item.quantity >= 1) {
+          item.quantity--;
+          return {...item, quantity: item.quantity};
+        } 
+        return item;
+      });
+      setCart(updatedQuantity);
     };
-    // const totalQuantity = (cartItem: ICartItem[]) => {
-    //   return 0;
-    // };
+
+    /**
+     * 
+     * @param cartItem 
+     * gets total quantity of all products in cart
+     */
+    const getTotalQuantity = (cartItem: ICartItem[]) => {
+      // plussa ihop alla items quantity i carten
+      let updatedQuantity;
+      for (let i = 0; i < cartItem.length; i++) {
+       updatedQuantity = updatedQuantity + cartItem[i].quantity;
+      }
+    };
+
+    /**
+     * 
+     * @returns order id
+     * from order-id api
+     */
     const createOrderId = () => {
-      return 0;
+      //https://www.npmjs.com/package/order-id
+      const orderid = require('order-id')('key');
+      const id = orderid.generate();
+      return id;
     };
+
+    /**
+     * 
+     * @param cartItem 
+     * @returns vat/moms of the order
+     */
     const calculateVatPrice = (cartItem: ICartItem[]) => {
-      return 0;
+      let productSum = getTotalSum(cartItem);
+      return productSum * vat;
     };
+
+    const emptyCart = () => setCart([]);
 
     return (
        
@@ -129,11 +176,11 @@ const CartProvider: FC = (props) => {
           addProductToCart,
           removeProductFromCart,
           emptyCart,
-          sumPriceProducts,
-          totalSum,
+          getSumPriceProducts,
+          getTotalSum,
           addQuantity,
           reduceQuantity,
-          totalQuantity,
+          getTotalQuantity,
           createOrderId,
           calculateVatPrice,
         }}

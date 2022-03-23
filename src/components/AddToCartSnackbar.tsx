@@ -22,11 +22,11 @@ export default function AddToCartSnackbar() {
 		addProductToCart,
 		removeProductFromCart,
 		emptyCart,
-		sumPriceProducts,
-		totalSum,
+		getSumPriceProducts,
+		getTotalSum,
 		addQuantity,
 		reduceQuantity,
-		totalQuantity,
+		getTotalQuantity,
 		createOrderId,
 		calculateVatPrice
 	} = useCart(); 
