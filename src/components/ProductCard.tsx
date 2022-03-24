@@ -9,23 +9,23 @@ import { Favorite } from '@mui/icons-material';
 import AddToCartSnackbar from './AddToCartSnackbar';
 import { IProduct } from './../mockedProducts';
 
-type Props = {
-	product: IProduct;
+interface Props {
+	product: IProduct
 };
 
-export default function ProductCard({ product }) {
+export default function ProductCard(props:Props) {
 	return (
 		<Card sx={CardStyle}>
 			<CardMedia
 				sx={ImageStyle}
 				component='img'
 				height='260'
-				image={product.image}
+				image={props.product.image}
 				alt='image'
 			/>
 			<CardContent sx={CardContentStyle}>
 				<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
-					{product.title}
+					{props.product.title}
 				</Typography>
 				<Typography
 					sx={DescriptionStyle}
@@ -33,18 +33,18 @@ export default function ProductCard({ product }) {
 					paddingBottom={1}
 					color='text.secondary'
 					component='div'>
-					{product.description}
+					{props.product.description}
 				</Typography>
 			</CardContent>
 			<div style={CardActionStyle}>
 				<Typography sx={PriceStyle} gutterBottom variant='h6' component='div'>
-					{product.price} kr
+					{props.product.price} kr
 				</Typography>
 				<CardActions style={CardAction}>
 					<IconButton sx={ButtonStyle} aria-label='favorite' size='large'>
 						<Favorite />
 					</IconButton>
-					<AddToCartSnackbar  />
+					<AddToCartSnackbar product={props.product}/>
 				</CardActions>
 			</div>
 		</Card>

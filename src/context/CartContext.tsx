@@ -11,7 +11,7 @@ interface ICartContextValue {
   shipping: IShippingProvider;
   addProductToCart: (product: IProduct) => void;
   removeProductFromCart: (product: IProduct) => void;
-  // emptyCart: () => void;
+  emptyCart: () => void;
   getSumPriceProducts: (product: ICartItem) => number;
   getTotalSum: (cartItem: ICartItem[]) => number;
   addQuantity: (product: ICartItem) => void;
@@ -30,7 +30,7 @@ export const CartContext = createContext<ICartContextValue>({
   },
   addProductToCart: () => {},
   removeProductFromCart: () => {},
-  // emptyCart: () => {},
+  emptyCart: () => {},
   getSumPriceProducts: () => 0,
   getTotalSum: () => 0,
   addQuantity: () => 0,
@@ -50,7 +50,7 @@ const CartProvider: FC = (props) => {
 
  
   const addProductToCart = (product: IProduct) => {
-    let cartToSave = [...cart];
+    let cartToSave = cart;
     const cartItem = cart.find((cartItem) => cartItem.id === product.id);
     if (cartItem) {
       cartItem.quantity++;
@@ -58,6 +58,7 @@ const CartProvider: FC = (props) => {
       cartToSave = [...cartToSave, { ...product, quantity: 1 }];
     }
     setCart(cartToSave);
+	saveToLocalStorage();
   };
 
   const removeProductFromCart = (product: IProduct) => {
@@ -71,6 +72,8 @@ const CartProvider: FC = (props) => {
       setCart(cartToSave);
     }
   }
+  
+
     /**
      *
      * @param product
@@ -161,7 +164,7 @@ const CartProvider: FC = (props) => {
       return productSum * vat;
     };
 
-    // const emptyCart = () => setCart([]);
+    const emptyCart = () => setCart([]);
 
     return (
        
@@ -175,7 +178,7 @@ const CartProvider: FC = (props) => {
           },
           addProductToCart,
           removeProductFromCart,
-          // emptyCart,
+          emptyCart,
           getSumPriceProducts,
           getTotalSum,
           addQuantity,

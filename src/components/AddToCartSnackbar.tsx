@@ -4,49 +4,56 @@ import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 // import { Products, products } from '../mockedProducts';
-import { products } from '../mockedProducts';
+import { products, IProduct } from '../mockedProducts';
 import CartProvider, { useCart } from '../context/CartContext';
 
 export interface State extends SnackbarOrigin {
 	open: boolean;
 }
 
-export default function AddToCartSnackbar() {
-	const [state, setState] = React.useState<State>({
+interface Props {
+ 	product: IProduct; 
+}
+
+export default function AddToCartSnackbar(props: Props) {
+	const [popUpState, setPopUpState] = React.useState<State>({
 		open: false,
 		vertical: 'top',
 		horizontal: 'center',
 	});
-	const { vertical, horizontal, open } = state;
+
+	const { vertical, horizontal, open } = popUpState;
 	const {
 		cart,
 		addProductToCart,
 		removeProductFromCart,
 		emptyCart,
-		sumPriceProducts,
-		totalSum,
+		getSumPriceProducts,
+		getTotalSum,
 		addQuantity,
 		reduceQuantity,
-		totalQuantity,
+		getTotalQuantity,
 		createOrderId,
 		calculateVatPrice,
 	} = useCart();
 
-	const handleClick = (newState: SnackbarOrigin) => () => {
-		setState({ open: true, ...newState });
+	const handleOnClickAdd = () => {
+		
+		// setState({ open: true, vertical: 'top', horizontal: 'right' });
+		addProductToCart(props.product);
+		console.log('snackbarAdd')
 	};
 
-	const handleClose = () => {
-		setState({ ...state, open: false });
+	const handleOnClickClose = () => {
+		setPopUpState({ ...popUpState, open: false });
 	};
 
 	const buttons = (
 		<React.Fragment>
+			{/* Ändrade till div så länge. Console klagade på att en knapp inte 
+			kan vara decendant till knapp */}
 			<div
-				onClick={handleClick({
-					vertical: 'top',
-					horizontal: 'right',
-				})}>
+				onClick={handleOnClickAdd}>
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
 					<ShoppingCart />
 				</IconButton>
@@ -61,7 +68,7 @@ export default function AddToCartSnackbar() {
 				anchorOrigin={{ vertical, horizontal }}
 				open={open}
 				autoHideDuration={2000}
-				onClose={handleClose}
+				onClose={handleOnClickClose}
 				message='Produkten har lagts till i varukorgen!'
 				key={vertical + horizontal}
 			/>
@@ -71,10 +78,11 @@ export default function AddToCartSnackbar() {
 
 const ButtonStyle: CSSProperties = {
 	backgroundColor: '#BFD8D5',
+	
 };
 
 {
-	/* <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
+	/* <Alert onClose={handleOnClickClose} severity='success' sx={{ width: '100%' }}>
 	Produkten har lagts till i varukorgen!
 </Alert>; */
 }
