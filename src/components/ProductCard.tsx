@@ -5,15 +5,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import { Favorite } from '@mui/icons-material';
 import AddToCartSnackbar from './AddToCartSnackbar';
 import { IProduct } from './../mockedProducts';
+import AddToFavoritesSnackbar from './AddToFavoritesSnackbar';
 
-interface Props {
-	product: IProduct
-};
+interface IProps {
+	product: IProduct;
+}
 
-export default function ProductCard(props:Props) {
+export default function ProductCard(props: IProps) {
 	return (
 		<Card sx={CardStyle}>
 			<CardMedia
@@ -41,10 +41,8 @@ export default function ProductCard(props:Props) {
 					{props.product.price} kr
 				</Typography>
 				<CardActions style={CardAction}>
-					<IconButton sx={ButtonStyle} aria-label='favorite' size='large'>
-						<Favorite />
-					</IconButton>
-					<AddToCartSnackbar product={props.product}/>
+					<AddToFavoritesSnackbar product={props.product} />
+					<AddToCartSnackbar product={props.product} />
 				</CardActions>
 			</div>
 		</Card>
@@ -52,6 +50,7 @@ export default function ProductCard(props:Props) {
 }
 
 const CardStyle: CSSProperties = {
+	minWidth: 265,
 	maxWidth: 300,
 	height: 450,
 };
@@ -90,8 +89,4 @@ const PriceStyle: CSSProperties = {
 	alignSelf: 'center',
 	paddingLeft: '16px',
 	paddingTop: '16px',
-};
-
-const ButtonStyle: CSSProperties = {
-	backgroundColor: '#BFD8D5',
 };

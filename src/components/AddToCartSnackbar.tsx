@@ -12,7 +12,7 @@ export interface State extends SnackbarOrigin {
 }
 
 interface Props {
- 	product: IProduct; 
+	product: IProduct;
 }
 
 export default function AddToCartSnackbar(props: Props) {
@@ -38,10 +38,9 @@ export default function AddToCartSnackbar(props: Props) {
 	} = useCart();
 
 	const handleOnClickAdd = () => {
-		
-		// setState({ open: true, vertical: 'top', horizontal: 'right' });
+		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
 		addProductToCart(props.product);
-		console.log('snackbarAdd')
+		console.log('Product added to cart');
 	};
 
 	const handleOnClickClose = () => {
@@ -52,8 +51,7 @@ export default function AddToCartSnackbar(props: Props) {
 		<React.Fragment>
 			{/* Ändrade till div så länge. Console klagade på att en knapp inte 
 			kan vara decendant till knapp */}
-			<div
-				onClick={handleOnClickAdd}>
+			<div onClick={handleOnClickAdd}>
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
 					<ShoppingCart />
 				</IconButton>
@@ -78,11 +76,61 @@ export default function AddToCartSnackbar(props: Props) {
 
 const ButtonStyle: CSSProperties = {
 	backgroundColor: '#BFD8D5',
-	
 };
 
-{
-	/* <Alert onClose={handleOnClickClose} severity='success' sx={{ width: '100%' }}>
-	Produkten har lagts till i varukorgen!
-</Alert>; */
-}
+// import React, { useContext, CSSProperties } from 'react';
+// import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+// import IconButton from '@mui/material/IconButton';
+// import ShoppingCart from '@mui/icons-material/ShoppingCart';
+// import { CartContext } from '../context/CartContext';
+
+// export interface State extends SnackbarOrigin {
+// 	open: boolean;
+// }
+
+// export default function AddToCartSnackbar({ product }) {
+// 	const [popUpState, setPopUpState] = React.useState<State>({
+// 		open: false,
+// 		vertical: 'top',
+// 		horizontal: 'center',
+// 	});
+// 	const { vertical, horizontal, open } = popUpState;
+// 	const { addProductToCart } = useContext(CartContext);
+
+// 	const handleOnClickAdd = () => {
+// 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
+// 	};
+
+// 	const handleOnClickClose = () => {
+// 		setPopUpState({ ...popUpState, open: false });
+// 	};
+
+// 	const buttons = (
+// 		<React.Fragment>
+// 			<div>
+// 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
+// 					<ShoppingCart onClick={() => addProductToCart(product)} />
+// 				</IconButton>
+// 			</div>
+// 		</React.Fragment>
+// 	);
+// 	console.log(addProductToCart);
+
+// 	return (
+// 		<div>
+// 			{buttons}
+// 			<Snackbar
+// 				anchorOrigin={{ vertical, horizontal }}
+// 				open={open}
+// 				autoHideDuration={2000}
+// 				onClose={handleOnClickClose}
+// 				message='Produkten har lagts till i varukorgen!'
+// 				key={vertical + horizontal}
+// 			/>
+// 		</div>
+// 	);
+// }
+
+// const ButtonStyle: CSSProperties = {
+// 	backgroundColor: '#BFD8D5',
+// };
