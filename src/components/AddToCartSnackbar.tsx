@@ -3,20 +3,19 @@ import Button from '@mui/material/Button';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
-// import { Products, products } from '../mockedProducts';
-import CartProvider, { useCart } from '../context/CartContext';
+import { useCart } from '../context/CartContext';
 
-export interface State extends SnackbarOrigin {
+export interface IPopUpState extends SnackbarOrigin {
 	open: boolean;
 }
 
 export default function AddToCartSnackbar() {
-	const [state, setState] = React.useState<State>({
+	const [popUpState, setPopUpState] = React.useState<IPopUpState>({
 		open: false,
 		vertical: 'top',
 		horizontal: 'center',
 	});
-	const { vertical, horizontal, open } = state;
+	const { vertical, horizontal, open } = popUpState;
 	const {
 		cart,
 		addProductToCart,
@@ -32,11 +31,11 @@ export default function AddToCartSnackbar() {
 	} = useCart();
 
 	const handleClick = (newState: SnackbarOrigin) => () => {
-		setState({ open: true, ...newState });
+		setPopUpState({ open: true, ...newState });
 	};
 
 	const handleClose = () => {
-		setState({ ...state, open: false });
+		setPopUpState({ ...popUpState, open: false });
 	};
 
 	const buttons = (
