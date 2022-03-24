@@ -44,7 +44,7 @@ export default function ProductCard({ product }) {
 					<IconButton sx={ButtonStyle} aria-label='favorite' size='large'>
 						<Favorite />
 					</IconButton>
-					<AddToCartSnackbar />
+					<AddToCartSnackbar  />
 				</CardActions>
 			</div>
 		</Card>

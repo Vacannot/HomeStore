@@ -4,6 +4,7 @@ import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 // import { Products, products } from '../mockedProducts';
+import { products } from '../mockedProducts';
 import CartProvider, { useCart } from '../context/CartContext';
 
 export interface State extends SnackbarOrigin {
@@ -26,7 +27,7 @@ export default function AddToCartSnackbar() {
 		totalSum,
 		addQuantity,
 		reduceQuantity,
-		// totalQuantity,
+		totalQuantity,
 		createOrderId,
 		calculateVatPrice,
 	} = useCart();
@@ -41,7 +42,7 @@ export default function AddToCartSnackbar() {
 
 	const buttons = (
 		<React.Fragment>
-			<Button
+			<div
 				onClick={handleClick({
 					vertical: 'top',
 					horizontal: 'right',
@@ -49,7 +50,7 @@ export default function AddToCartSnackbar() {
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
 					<ShoppingCart />
 				</IconButton>
-			</Button>
+			</div>
 		</React.Fragment>
 	);
 

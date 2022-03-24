@@ -16,7 +16,7 @@ interface ICartContextValue {
 	totalSum: (cartItem: ICartItem[]) => number;
 	addQuantity: (product: ICartItem) => number;
 	reduceQuantity: (product: ICartItem) => number;
-	// totalQuantity: (cartItem: ICartItem[]) => number;
+	totalQuantity: (cartItem: ICartItem[]) => number;
 	createOrderId: () => number;
 	calculateVatPrice: (cartItem: ICartItem[]) => number;
 }
@@ -35,7 +35,7 @@ export const CartContext = createContext<ICartContextValue>({
 	totalSum: () => 0,
 	addQuantity: () => 0,
 	reduceQuantity: () => 0,
-	// totalQuantity: () => 0,
+	totalQuantity: () => 0,
 	createOrderId: () => 0,
 	calculateVatPrice: () => 0,
 });

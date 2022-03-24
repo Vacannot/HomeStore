@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { useState, CSSProperties } from 'react';
@@ -7,15 +7,32 @@ import { useState, CSSProperties } from 'react';
 
 
 function QuantityCounter() {
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
+    const [disabled, setDisabled] = useState();
+    
+
+    const handleOnReduce = () => {
+        // quantity === 1 ? setQuantity(1) : 
+        if (quantity === 1) {
+            setQuantity(1);
+            setDisabled(disabled);
+        }
+        
+        setQuantity(quantity - 1);
+    }
+
+    const handleOnAdd = () => {
+        setDisabled(undefined);
+        setQuantity(quantity + 1)
+    }
 
     return(
         <div style={iconsDivStyle}>
-            <RemoveCircleIcon onClick={() => 
-                quantity === 0 ? setQuantity(0) : setQuantity(quantity - 1)}
-            />
+            <Button {...disabled}>
+                <RemoveCircleIcon onClick={handleOnReduce} />
+            </Button>
             <Typography>Antal {quantity}</Typography>
-            <AddCircleIcon onClick={() => setQuantity(quantity + 1)}/>
+            <AddCircleIcon onClick={handleOnAdd}/>
         </div>
         
     )

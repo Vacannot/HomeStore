@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function CartPage() {
 	return (
 		<div style={rootStyle}>
-			<Typography align='center' variant='h4' sx={{ m: 1 }}>
+			<Typography component={'span'} align='center' variant='h4' sx={{ m: 1 }}>
 				Shopping Cart
 			</Typography>
 			<CartItemCard />
