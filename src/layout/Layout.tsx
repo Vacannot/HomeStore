@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import CartPage from '../pages/cartPage';
 import Footer from '../components/Footer';
 import CheckoutPage from '../pages/checkoutPage';
+import ProductPage from '../pages/productPage';
 
 function Layout() {
 	return (
@@ -12,8 +13,9 @@ function Layout() {
 			<Header />
 			<Switch>
 				<Route path='/' exact component={StartPage} />
-				<Route path='/cartpage' component={CartPage} />
-				<Route path='/formpage' component={CheckoutPage} />
+				<Route path='/produkt/:id' component={ProductPage} />
+				<Route path='/varukorg' component={CartPage} />
+				<Route path='/kassa' component={CheckoutPage} />
 			</Switch>
 			<Footer />
 		</div>

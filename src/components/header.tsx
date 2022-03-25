@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/system';
 import Search from './Search';
-import Logo from './logo';
+import Logo from './Logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
@@ -32,7 +32,7 @@ function Header() {
 					<Search />
 					<div style={iconsDivStyle}>
 						<FavoriteIcon />
-						<Link to='/cartpage'>
+						<Link to='/varukorg'>
 							<ShoppingCartIcon />
 						</Link>
 						<MenuIcon />
