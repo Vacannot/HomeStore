@@ -46,7 +46,6 @@ export function useCart() {
   return useContext(CartContext);
 }
 
-
 const CartProvider: FC = (props) => {
   const [cart, setCart] = useLocalStorageState<ICartItem[]>([], 'cart');
   const vat = 0.25;
@@ -170,6 +169,8 @@ const CartProvider: FC = (props) => {
       // const orderid = require('order-id')('key');
       // const id = orderid.generate();
       return 123;
+
+
     };
 
     /**
