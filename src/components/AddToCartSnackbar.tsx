@@ -39,7 +39,7 @@ export default function AddToCartSnackbar(props: Props) {
 
 	const handleOnClickAdd = () => {
 		
-		// setState({ open: true, vertical: 'top', horizontal: 'right' });
+		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
 		addProductToCart(props.product);
 		console.log('snackbarAdd')
 	};
@@ -52,12 +52,12 @@ export default function AddToCartSnackbar(props: Props) {
 		<React.Fragment>
 			{/* Ändrade till div så länge. Console klagade på att en knapp inte 
 			kan vara decendant till knapp */}
-			<div
+			<Button
 				onClick={handleOnClickAdd}>
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
 					<ShoppingCart />
 				</IconButton>
-			</div>
+			</Button>
 		</React.Fragment>
 	);
 
