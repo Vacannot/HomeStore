@@ -1,9 +1,11 @@
-import React, { createContext, FC, useContext, useState } from "react";
+import React, { createContext, FC, useContext, useState} from "react";
+import { useLocalStorageState } from "../hooks/useLocalStorage";
 import { IProduct } from "../mockedProducts";
 import { IShippingProvider } from "../shippigProvider";
 
-interface ICartItem extends IProduct {
-  quantity: number;
+export interface ICartItem {
+	product: IProduct;
+  	quantity: number;
 }
 
 interface ICartContextValue {
@@ -11,7 +13,7 @@ interface ICartContextValue {
   shipping: IShippingProvider;
   addProductToCart: (product: IProduct) => void;
   removeProductFromCart: (product: IProduct) => void;
-  // emptyCart: () => void;
+  emptyCart: () => void;
   getSumPriceProducts: (product: ICartItem) => number;
   getTotalSum: (cartItem: ICartItem[]) => number;
   addQuantity: (product: ICartItem) => void;
@@ -30,7 +32,7 @@ export const CartContext = createContext<ICartContextValue>({
   },
   addProductToCart: () => {},
   removeProductFromCart: () => {},
-  // emptyCart: () => {},
+  emptyCart: () => {},
   getSumPriceProducts: () => 0,
   getTotalSum: () => 0,
   addQuantity: () => 0,
@@ -45,40 +47,47 @@ export function useCart() {
 }
 
 const CartProvider: FC = (props) => {
-  const [cart, setCart] = useState<ICartItem[]>([]);
+  const [cart, setCart] = useLocalStorageState<ICartItem[]>([], 'cart');
   const vat = 0.25;
 
  
   const addProductToCart = (product: IProduct) => {
     let cartToSave = [...cart];
-    const cartItem = cart.find((cartItem) => cartItem.id === product.id);
-    if (cartItem) {
-      cartItem.quantity++;
+    const foundIndex = cartToSave.findIndex((cartItem) => cartItem.product.id === product.id);
+    if (foundIndex >= 0) {
+		cartToSave[foundIndex].quantity++;
     } else {
-      cartToSave = [...cartToSave, { ...product, quantity: 1 }];
+      cartToSave.push({ product, quantity: 1 });
     }
     setCart(cartToSave);
+	console.log(cartToSave);
+	setTimeout(() => {
+		console.log("CART", cart);
+		
+	}, 1000);
   };
 
   const removeProductFromCart = (product: IProduct) => {
     let cartToSave = [...cart];
-    const cartItem = cart.find((cartItem) => cartItem.id === product.id);
+    const cartItem = cart.find((cartItem) => cartItem.product.id === product.id);
     if (cartItem) {
       cartItem.quantity--;
       if (cartItem.quantity === 0) {
-        cartToSave = cart.filter((cartItem) => cartItem.id !== product.id);
+        cartToSave = cart.filter((cartItem) => cartItem.product.id !== product.id);
       }
       setCart(cartToSave);
     }
   }
+  
+
     /**
      *
      * @param product
      * @returns total sum = price for a product times its quantity
      */
-    const getSumPriceProducts = (product: ICartItem) => {
+    const getSumPriceProducts = (cartItem: ICartItem) => {
       let priceSum = 0;
-      priceSum += product.price * product.quantity;
+      priceSum += cartItem.product.price * cartItem.quantity;
       return priceSum;
     };
 
@@ -90,7 +99,7 @@ const CartProvider: FC = (props) => {
     const getTotalSum = (cartItem: ICartItem[]) => {
       let sum = 0;
       for (let i = 0; i < cartItem.length; i++) {
-        sum += cartItem[i].price * cartItem[i].quantity;
+        sum += cartItem[i].product.price * cartItem[i].quantity;
       }
       return sum;
     };
@@ -100,9 +109,9 @@ const CartProvider: FC = (props) => {
      * @param product 
      * @returns quantity of one product type in cart
      */
-    const addQuantity = (product: ICartItem) => {
+    const addQuantity = (cartItem: ICartItem) => {
       const updatedQuantity = cart.map((item) => {
-        if (item.id === product.id) {
+        if (item.product.id === cartItem.product.id) {
           return {...item, quantity: item.quantity++};
         };
         return item;
@@ -115,9 +124,9 @@ const CartProvider: FC = (props) => {
      * @param product 
      * reduced quantity of product type in cart
      */
-    const reduceQuantity = (product: ICartItem) => {
+    const reduceQuantity = (cartItem: ICartItem) => {
       const updatedQuantity = cart.map((item) => {
-        if(item.id === product.id && item.quantity >= 1) {
+        if(item.product.id === cartItem.product.id && item.quantity >= 1) {
           item.quantity--;
           return {...item, quantity: item.quantity};
         } 
@@ -161,7 +170,7 @@ const CartProvider: FC = (props) => {
       return productSum * vat;
     };
 
-    // const emptyCart = () => setCart([]);
+    const emptyCart = () => setCart([]);
 
     return (
        
@@ -175,7 +184,7 @@ const CartProvider: FC = (props) => {
           },
           addProductToCart,
           removeProductFromCart,
-          // emptyCart,
+          emptyCart,
           getSumPriceProducts,
           getTotalSum,
           addQuantity,

@@ -1,16 +1,21 @@
 import { Button, Typography } from '@mui/material';
-import React, { CSSProperties } from 'react';
-import CartItemCard from '../components/CartItemCard';
+import React, { CSSProperties, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import CartItemCard from '../components/cartItemCard';
+import { CartContext } from '../context/CartContext';
 
 function CartPage() {
+	let { cart } = useContext(CartContext)
 	return (
 		<div style={rootStyle}>
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
 				Shopping Cart
 			</Typography>
-			<CartItemCard />
-			<CartItemCard />
+			{cart.map((cartItem) => {
+				return (
+					<CartItemCard key={cartItem.product.id}/>
+				)
+			})}
 			<div style={paymentDivStyle}>
 				<Link to='/formpage'>
 					<Button sx={{ backgroundColor: 'green', m: 1 }} variant='contained'>

@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ProductCard from './ProductCard';
-import { products } from '../mockedProducts';
+import { product } from '../mockedProducts';
 
 const Item = styled(Paper)(({ theme }) => ({
 	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -19,10 +19,10 @@ export default function ProductGrid() {
 	return (
 		<div style={container}>
 			<Box sx={{ flexGrow: 1 }}>
-				<Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 1, sm: 6, md: 8, lg: 12 }}>
-					{products.map((product, id) => (
-						<Grid style={gridItem} item xs={12} sm={6} md={4} lg={3}>
-							<ProductCard key={id} product={product} />
+				<Grid container spacing={{ xs: 1 }} columns={{ xs: 6, sm: 8, md: 12, lg: 12 }}>
+					{product.map((product, id) => (
+						<Grid key={id} style={gridItem} item xs={6} sm={4} md={4} lg={3}>
+							<ProductCard product={product} />
 						</Grid>
 					))}
 				</Grid>
@@ -30,14 +30,6 @@ export default function ProductGrid() {
 		</div>
 	);
 }
-
-// {
-// 	products.map((product) => (
-// 		<Grid item justify='center' className={classes.gridItem} xs={12} sm={6} md={4} xl={3}>
-// 			<ProductCard product={product} handleReadMore={() => {}} />
-// 		</Grid>
-// 	));
-// }
 
 const container: CSSProperties = {
 	display: 'flex',
