@@ -7,17 +7,17 @@ import Typography from '@mui/material/Typography';
 import AddToCartSnackbar from './AddToCartSnackbar';
 import AddToFavoritesSnackbar from './AddToFavoritesSnackbar';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 export default function ProductCard({ product }) {
-	const history = useHistory();
-	const goToProductPage = () => {
-		history.push('/product/' + product.id);
-	};
-	// style = { LinkStyle };
+	// const history = useHistory();
+	// const goToProduct = () => {
+	// 	history.push('/product/' + product.id);
+	// };
+
 	return (
 		<Card sx={CardStyle}>
-			<CardActionArea onClick={goToProductPage}>
+			<Link to={'/product' + product.id} style={LinkStyle}>
 				<CardMedia
 					sx={ImageStyle}
 					component='img'
@@ -25,7 +25,9 @@ export default function ProductCard({ product }) {
 					image={product.image}
 					alt='image'
 				/>
-				<CardContent sx={CardContentStyle}>
+			</Link>
+			<CardContent sx={CardContentStyle}>
+				<Link to={'/product' + product.id} style={LinkStyle}>
 					<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
 						{product.title}
 					</Typography>
@@ -37,17 +39,17 @@ export default function ProductCard({ product }) {
 						component='div'>
 						{product.description}
 					</Typography>
-				</CardContent>
-				<div style={CardActionStyle}>
-					<Typography sx={PriceStyle} gutterBottom variant='h6' component='div'>
-						{product.price} kr
-					</Typography>
-					<CardActions style={CardAction}>
-						<AddToFavoritesSnackbar product={product} />
-						<AddToCartSnackbar product={product} />
-					</CardActions>
-				</div>
-			</CardActionArea>
+				</Link>
+			</CardContent>
+			<div style={CardActionStyle}>
+				<Typography sx={PriceStyle} gutterBottom variant='h6' component='div'>
+					{product.price} kr
+				</Typography>
+				<CardActions style={CardAction}>
+					<AddToFavoritesSnackbar product={product} />
+					<AddToCartSnackbar product={product} />
+				</CardActions>
+			</div>
 		</Card>
 	);
 }
