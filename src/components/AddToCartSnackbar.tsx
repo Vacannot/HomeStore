@@ -15,7 +15,7 @@ interface Props {
  	product: IProduct; 
 }
 
-export default function AddToCartSnackbar(props: Props, newState: SnackbarOrigin) {
+export default function AddToCartSnackbar(props: Props) {
 	const [popUpState, setPopUpState] = React.useState<State>({
 		open: false,
 		vertical: 'top',
@@ -37,7 +37,7 @@ export default function AddToCartSnackbar(props: Props, newState: SnackbarOrigin
 		calculateVatPrice,
 	} = useCart();
 
-	const handleOnClickAdd = () => {
+	const handleOnClickAdd = (newState: SnackbarOrigin) => {
 		
 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
 		addProductToCart(props.product);
