@@ -161,12 +161,3 @@ const shippingButton: CSSProperties = {
 	marginTop: '1rem',
 	width: '25rem',
 };
-
-const cancelButton: CSSProperties = {
-	marginTop: '2rem',
-	color: 'black',
-	borderColor: 'black',
-	padding: '0.5rem',
-	width: '8rem',
-	textDecoration: 'none',
-};

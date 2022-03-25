@@ -1,8 +1,9 @@
 import React, { CSSProperties } from 'react';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import CardActionArea from '@mui/material/CardActionArea';
 import IconButton from '@mui/material/IconButton';
 import { Favorite } from '@mui/icons-material';
-import { useCart } from '../context/CartContext';
+// import { useCart } from '../context/CartContext';
 import { IProduct } from '../mockedProducts';
 
 export interface State extends SnackbarOrigin {
@@ -19,21 +20,20 @@ export default function AddToFavoritesSnackbar(props: Props) {
 		vertical: 'top',
 		horizontal: 'center',
 	});
-
 	const { vertical, horizontal, open } = popUpState;
-	const {
-		cart,
-		addProductToCart,
-		removeProductFromCart,
-		emptyCart,
-		getSumPriceProducts,
-		getTotalSum,
-		addQuantity,
-		reduceQuantity,
-		getTotalQuantity,
-		createOrderId,
-		calculateVatPrice,
-	} = useCart();
+	// const {
+	// 	cart,
+	// 	addProductToCart,
+	// 	removeProductFromCart,
+	// 	emptyCart,
+	// 	getSumPriceProducts,
+	// 	getTotalSum,
+	// 	addQuantity,
+	// 	reduceQuantity,
+	// 	getTotalQuantity,
+	// 	// createOrderId,
+	// 	calculateVatPrice,
+	// } = useCart();
 
 	const handleOnClickAdd = () => {
 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });

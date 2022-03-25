@@ -1,50 +1,53 @@
 import React, { CSSProperties } from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
+import { CardActionArea, CardActions } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import AddToCartSnackbar from './AddToCartSnackbar';
-import { IProduct } from './../mockedProducts';
 import AddToFavoritesSnackbar from './AddToFavoritesSnackbar';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-interface IProps {
-	product: IProduct;
-}
-
-export default function ProductCard(props: IProps) {
+export default function ProductCard({ product }) {
+	const history = useHistory();
+	const goToProductPage = () => {
+		history.push('/product/' + product.id);
+	};
+	// style = { LinkStyle };
 	return (
 		<Card sx={CardStyle}>
-			<CardMedia
-				sx={ImageStyle}
-				component='img'
-				height='260'
-				image={props.product.image}
-				alt='image'
-			/>
-			<CardContent sx={CardContentStyle}>
-				<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
-					{props.product.title}
-				</Typography>
-				<Typography
-					sx={DescriptionStyle}
-					variant='body2'
-					paddingBottom={1}
-					color='text.secondary'
-					component='div'>
-					{props.product.description}
-				</Typography>
-			</CardContent>
-			<div style={CardActionStyle}>
-				<Typography sx={PriceStyle} gutterBottom variant='h6' component='div'>
-					{props.product.price} kr
-				</Typography>
-				<CardActions style={CardAction}>
-					<AddToFavoritesSnackbar product={props.product} />
-					<AddToCartSnackbar product={props.product} />
-				</CardActions>
-			</div>
+			<CardActionArea onClick={goToProductPage}>
+				<CardMedia
+					sx={ImageStyle}
+					component='img'
+					height='260'
+					image={product.image}
+					alt='image'
+				/>
+				<CardContent sx={CardContentStyle}>
+					<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
+						{product.title}
+					</Typography>
+					<Typography
+						sx={DescriptionStyle}
+						variant='body2'
+						paddingBottom={1}
+						color='text.secondary'
+						component='div'>
+						{product.description}
+					</Typography>
+				</CardContent>
+				<div style={CardActionStyle}>
+					<Typography sx={PriceStyle} gutterBottom variant='h6' component='div'>
+						{product.price} kr
+					</Typography>
+					<CardActions style={CardAction}>
+						<AddToFavoritesSnackbar product={product} />
+						<AddToCartSnackbar product={product} />
+					</CardActions>
+				</div>
+			</CardActionArea>
 		</Card>
 	);
 }
@@ -61,6 +64,11 @@ const CardContentStyle: CSSProperties = {
 	paddingRight: '8px',
 	paddingBottom: '0',
 	paddingLeft: '16px',
+};
+
+const LinkStyle: CSSProperties = {
+	textDecoration: 'none',
+	textDecorationColor: 'black',
 };
 
 const ImageStyle: CSSProperties = {
