@@ -4,7 +4,7 @@ import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import { product, IProduct } from '../mockedProducts';
-// import CartProvider, { useCart } from '../context/CartContext';
+import CartProvider, { useCart } from '../context/CartContext';
 
 export interface State extends SnackbarOrigin {
 	open: boolean;
@@ -38,7 +38,7 @@ export default function AddToCartSnackbar(props: Props) {
 
 	const handleOnClickAdd = () => {
 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
-		// addProductToCart(props.product);
+		addProductToCart(props.product);
 		console.log('Product added to cart');
 	};
 
