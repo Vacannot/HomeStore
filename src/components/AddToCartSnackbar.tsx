@@ -3,8 +3,7 @@ import Button from '@mui/material/Button';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
-// import { Products, products } from '../mockedProducts';
-import { products, IProduct } from '../mockedProducts';
+import { product, IProduct } from '../mockedProducts';
 import CartProvider, { useCart } from '../context/CartContext';
 
 export interface State extends SnackbarOrigin {
@@ -37,11 +36,10 @@ export default function AddToCartSnackbar(props: Props) {
 		calculateVatPrice,
 	} = useCart();
 
-	const handleOnClickAdd = (newState: SnackbarOrigin) => () => {
-		// setPopUpState({ open: true, ...newState });
+	const handleOnClickAdd = () => {
 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
 		addProductToCart(props.product);
-		console.log('snackbarAdd')
+		console.log('Product added to cart');
 	};
 
 	const handleOnClickClose = () => {
@@ -50,16 +48,11 @@ export default function AddToCartSnackbar(props: Props) {
 
 	const buttons = (
 		<React.Fragment>
-			<Button
-				onClick={handleOnClickAdd({
-				vertical: 'top', 
-				horizontal: 'right'
-				})}>
-
+			<div onClick={handleOnClickAdd}>
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
 					<ShoppingCart />
 				</IconButton>
-			</Button>
+			</div>
 		</React.Fragment>
 	);
 

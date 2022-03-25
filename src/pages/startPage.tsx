@@ -3,6 +3,7 @@ import { CSSProperties } from 'react';
 import Banner from '../components/Banner';
 import ProductGrid from '../components/ProductGrid';
 
+
 const StartPage = () => {
 	return (
 		<div style={rootStyle}>
