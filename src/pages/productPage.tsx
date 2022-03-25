@@ -12,9 +12,9 @@ export default function ProductPage(props: Props) {
 	return (
 		<div style={ProductContainer}>
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
-				Product info
+				Produkt detaljer
 			</Typography>
-			<ProductCard product={product} />
+			<ProductCard product={props.product.id} />
 		</div>
 	);
 }
@@ -24,5 +24,5 @@ const ProductContainer: CSSProperties = {
 	justifyContent: 'center',
 	alignItems: 'center',
 	flexDirection: 'column',
-	marginTop: '5rem',
+	marginTop: '7rem',
 };

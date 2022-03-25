@@ -27,7 +27,7 @@ export default function ProductCard({ product }) {
 				/>
 			</Link>
 			<CardContent sx={CardContentStyle}>
-				<Link to={'/product' + product.id} style={LinkStyle}>
+				<Link to={'/produkt' + product.id} style={LinkStyle}>
 					<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
 						{product.title}
 					</Typography>

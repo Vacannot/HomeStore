@@ -9,15 +9,15 @@ function CartPage() {
 	return (
 		<div style={rootStyle}>
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
-				Shopping Cart
+				Varukorg
 			</Typography>
 			{cart.map((cartItem) => {
 				return <CartItemCard key={cartItem.product.id} />;
 			})}
 			<div style={paymentDivStyle}>
-				<Link to='/checkout'>
+				<Link to='/kassa'>
 					<Button sx={{ backgroundColor: 'green', m: 1 }} variant='contained'>
-						GO TO PAYMENT
+						Gå till kassan
 					</Button>
 				</Link>
 				<Typography variant='h6'>Total: Kr</Typography>
@@ -30,7 +30,7 @@ const rootStyle: CSSProperties = {
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
-	marginTop: '4rem',
+	marginTop: '7rem',
 };
 
 const paymentDivStyle: CSSProperties = {

@@ -13,9 +13,9 @@ function Layout() {
 			<Header />
 			<Switch>
 				<Route path='/' exact component={StartPage} />
-				<Route path='/product/:id' component={ProductPage} />
-				<Route path='/cart' component={CartPage} />
-				<Route path='/checkout' component={CheckoutPage} />
+				<Route path='/produkt/:id' component={ProductPage} />
+				<Route path='/varukorg' component={CartPage} />
+				<Route path='/kassa' component={CheckoutPage} />
 			</Switch>
 			<Footer />
 		</div>
