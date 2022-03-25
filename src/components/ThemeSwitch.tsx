@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import { useTheme, useThemeUpdate } from '../context/themeContext';
 
 const ThemeSwitch = styled(Switch)(({ theme }) => ({
 	width: 62,
@@ -52,9 +53,15 @@ const ThemeSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function CustomizedSwitches() {
+	const darkTheme = useTheme();
+	const toggleTheme = useThemeUpdate();
+
 	return (
 		<FormGroup>
-			<FormControlLabel control={<ThemeSwitch sx={{ m: 1 }} defaultChecked />} label='' />
+			<FormControlLabel>
+				control={<ThemeSwitch onClick={toggleTheme} sx={{ m: 1 }} defaultChecked />}
+				label=''
+			</FormControlLabel>
 		</FormGroup>
 	);
 }
