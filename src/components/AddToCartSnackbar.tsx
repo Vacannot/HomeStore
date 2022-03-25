@@ -37,8 +37,8 @@ export default function AddToCartSnackbar(props: Props) {
 		calculateVatPrice,
 	} = useCart();
 
-	const handleOnClickAdd = (newState: SnackbarOrigin) => {
-		
+	const handleOnClickAdd = (newState: SnackbarOrigin) => () => {
+		// setPopUpState({ open: true, ...newState });
 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
 		addProductToCart(props.product);
 		console.log('snackbarAdd')
@@ -51,7 +51,11 @@ export default function AddToCartSnackbar(props: Props) {
 	const buttons = (
 		<React.Fragment>
 			<Button
-				onClick={handleOnClickAdd}>
+				onClick={handleOnClickAdd({
+				vertical: 'top', 
+				horizontal: 'right'
+				})}>
+
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
 					<ShoppingCart />
 				</IconButton>
