@@ -18,7 +18,7 @@ interface IOrderData {
 interface IOrderContextValue {
     order: IOrderData[],
     generateOrderId: () => string,
-    getOrderInformation: () => void,
+    getOrderInformation: (customerInfo: ICustomer) => void,
 }
 
 const OrderContext = createContext<IOrderContextValue>({
