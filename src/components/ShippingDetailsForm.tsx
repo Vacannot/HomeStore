@@ -2,11 +2,10 @@ import React, { CSSProperties } from "react";
 import ReactDOM from "react-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-interface UserInputFormValues {
+interface ShippingDetailsFormValues {
 firstName: string;
 lastName: string;
 email: string;
@@ -31,7 +30,7 @@ const validationSchema = yup.object({
   country: yup.string().required("Enter your country").min(2)
 });
 
-const UserInputForm = () => {
+const ShippingDetailsForm = () => {
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -177,4 +176,4 @@ const formDiv: CSSProperties = {
 };
 
 
-export default UserInputForm;
+export default ShippingDetailsForm;
