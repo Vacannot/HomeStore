@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/system';
 import Search from './Search';
-import Logo from './Logo';
+import Logo from './logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';

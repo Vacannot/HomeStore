@@ -46,6 +46,8 @@ export function useCart() {
   return useContext(CartContext);
 }
 
+
+
 const CartProvider: FC = (props) => {
   const [cart, setCart] = useLocalStorageState<ICartItem[]>([], 'cart');
   const vat = 0.25;
@@ -154,10 +156,10 @@ const CartProvider: FC = (props) => {
      * from order-id api
      */
     const createOrderId = () => {
-      //https://www.npmjs.com/package/order-id
+      /* //https://www.npmjs.com/package/order-id
       const orderid = require('order-id')('key');
-      const id = orderid.generate();
-      return id;
+      const id = orderid.generate(); */
+      return 0;
     };
 
     /**
