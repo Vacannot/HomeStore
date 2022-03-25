@@ -50,8 +50,6 @@ export default function AddToCartSnackbar(props: Props, newState: SnackbarOrigin
 
 	const buttons = (
 		<React.Fragment>
-			{/* Ändrade till div så länge. Console klagade på att en knapp inte 
-			kan vara decendant till knapp */}
 			<Button
 				onClick={handleOnClickAdd}>
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
