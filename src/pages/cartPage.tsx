@@ -2,20 +2,20 @@ import { Button, Typography } from '@mui/material';
 import React, { CSSProperties, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartItemCard from '../components/CartItemCard';
-// import { CartContext } from '../context/CartContext';
+import { CartContext } from '../context/CartContext';
 
 function CartPage() {
-	// let { cart } = useContext(CartContext);
+	let { cart } = useContext(CartContext);
 	return (
 		<div style={rootStyle}>
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
 				Shopping Cart
 			</Typography>
-			{/* {cart.map((cartItem) => {
+			{cart.map((cartItem) => {
 				return <CartItemCard key={cartItem.product.id} />;
-			})} */}
+			})}
 			<div style={paymentDivStyle}>
-				<Link to='/cart'>
+				<Link to='/checkout'>
 					<Button sx={{ backgroundColor: 'green', m: 1 }} variant='contained'>
 						GO TO PAYMENT
 					</Button>

@@ -22,19 +22,19 @@ export default function AddToCartSnackbar(props: Props) {
 	});
 
 	const { vertical, horizontal, open } = popUpState;
-	// const {
-	// 	cart,
-	// 	addProductToCart,
-	// 	removeProductFromCart,
-	// 	emptyCart,
-	// 	getSumPriceProducts,
-	// 	getTotalSum,
-	// 	addQuantity,
-	// 	reduceQuantity,
-	// 	getTotalQuantity,
-	// 	createOrderId,
-	// 	calculateVatPrice,
-	// } = useCart();
+	const {
+		cart,
+		addProductToCart,
+		removeProductFromCart,
+		emptyCart,
+		getSumPriceProducts,
+		getTotalSum,
+		addQuantity,
+		reduceQuantity,
+		getTotalQuantity,
+		createOrderId,
+		calculateVatPrice,
+	} = useCart();
 
 	const handleOnClickAdd = () => {
 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
