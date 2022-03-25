@@ -15,7 +15,7 @@ interface Props {
  	product: IProduct; 
 }
 
-export default function AddToCartSnackbar(props: Props) {
+export default function AddToCartSnackbar(props: Props, newState: SnackbarOrigin) {
 	const [popUpState, setPopUpState] = React.useState<State>({
 		open: false,
 		vertical: 'top',
