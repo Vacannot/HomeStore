@@ -33,7 +33,7 @@ function MyFormControlLabel(props: FormControlLabelProps) {
 	return <StyledFormControlLabel checked={checked} {...props} />;
 }
 
-export default function Shipping() {
+export default function ShippingForm() {
 	return (
 		<Box
 			sx={{
@@ -42,38 +42,6 @@ export default function Shipping() {
 				justifyContent: 'center',
 			}}>
 			<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-				<Paper
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						justifyContent: 'center',
-						backgroundColor: '#F4F3F3',
-						borderRadius: '0.5rem',
-						padding: '1rem',
-						width: '28rem',
-						height: '12rem',
-					}}>
-					<div
-						style={{
-							display: 'flex',
-							flexDirection: 'row',
-							justifyContent: 'space-between',
-						}}>
-						<Typography style={{ fontWeight: '600' }}>Dina uppgifter</Typography>
-						<div>
-							<Button variant='text' style={{ color: 'black' }}>
-								Edit
-							</Button>
-						</div>
-					</div>
-					<div style={{ display: 'flex', flexDirection: 'column' }}>
-						<Typography>Namn Efternamn</Typography> {/* Import from previous page */}
-						<Typography>Mail</Typography> {/* Import from previous page */}
-						<Typography>Telefonnummer</Typography> {/* Import from previous page */}
-						<Typography>Adress</Typography> {/* Import from previous page */}
-						<Typography>Postnummer, Stad</Typography> {/* Import from previous page */}
-					</div>
-				</Paper>
 				<div
 					style={{
 						display: 'flex',
@@ -119,37 +87,10 @@ export default function Shipping() {
 					</RadioGroup>
 				</div>
 			</div>
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'end',
-					gap: '2rem',
-				}}>
-				<Button sx={ButtonStyle} variant='contained'>
-					Fortsätt
-				</Button>
-			</div>
 		</Box>
 	);
 }
 
-const ButtonStyle: CSSProperties = {
-	backgroundColor: '#BFD8D5',
-	marginTop: '2rem',
-	padding: '0.5rem',
-	width: '8rem',
-	boxShadow: 'none',
-	textDecoration: 'none',
-};
-
-const ButtonStyleSmall: CSSProperties = {
-	backgroundColor: '#BFD8D5',
-	padding: '0.5rem',
-	width: '4rem',
-	boxShadow: 'none',
-	textDecoration: 'none',
-	color: 'black',
-};
 
 const shippingButton: CSSProperties = {
 	display: 'flex',

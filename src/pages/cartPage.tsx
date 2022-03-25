@@ -6,6 +6,7 @@ import { CartContext } from '../context/CartContext';
 
 function CartPage() {
 	let { cart } = useContext(CartContext);
+
 	return (
 		<div style={rootStyle}>
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>

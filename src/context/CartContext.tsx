@@ -50,6 +50,12 @@ const CartProvider: FC = (props) => {
 	const [cart, setCart] = useLocalStorageState<ICartItem[]>([], 'cart');
 	const vat = 0.25;
 
+	/**
+	 *
+	 * @param product
+	 * Makes a copy of cart and finds index number for cart item id that matches product id.
+	 * if found (if item is already in cart) add quantity. if not found (item is not already on cart) add product to cart.
+	 */
 	const addProductToCart = (product: IProduct) => {
 		let cartToSave = [...cart];
 		const foundIndex = cartToSave.findIndex((cartItem) => cartItem.product.id === product.id);
@@ -65,16 +71,22 @@ const CartProvider: FC = (props) => {
 		}, 1000);
 	};
 
+	/**
+	 *
+	 * @param product
+	 *   Makes a copy of cart and finds index number for cart item id that matches product id.
+	 *  When found reduce item quantity and then saves updated cart to cart
+	 */
 	const removeProductFromCart = (product: IProduct) => {
 		let cartToSave = [...cart];
-		const cartItem = cart.find((cartItem) => cartItem.product.id === product.id);
-		if (cartItem) {
-			cartItem.quantity--;
-			if (cartItem.quantity === 0) {
-				cartToSave = cart.filter((cartItem) => cartItem.product.id !== product.id);
-			}
-			setCart(cartToSave);
+		const foundIndex = cartToSave.findIndex((cartItem) => cartItem.product.id === product.id);
+		if (foundIndex >= 0) {
+			cartToSave[foundIndex].quantity--;
+			// if (cartToSave[foundIndex].quantity === 0) {
+			//   cartToSave = cart.filter((cartItem) => cartItem.product.id !== product.id);
+			// }
 		}
+		setCart(cartToSave);
 	};
 
 	/**
@@ -148,13 +160,13 @@ const CartProvider: FC = (props) => {
 	/**
 	 *
 	 * @returns order id
-	 * from order-id api
+	 *
 	 */
 	const createOrderId = () => {
-		//https://www.npmjs.com/package/order-id
-		const orderid = require('order-id')('key');
-		const id = orderid.generate();
-		return id;
+		// https://www.npmjs.com/package/order-id
+		// const orderid = require('order-id')('key');
+		// const id = orderid.generate();
+		return 123;
 	};
 
 	/**
