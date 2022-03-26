@@ -24,7 +24,7 @@ function Header() {
 	return (
 		<>
 			<CssBaseline />
-			<AppBar>
+			<AppBar style={appBarStyle}>
 				<Toolbar variant='regular' sx={toolbarStyle}>
 					<Link to='/'>
 						<Logo />
@@ -42,6 +42,9 @@ function Header() {
 		</>
 	);
 }
+const appBarStyle: CSSProperties = {
+	backgroundColor: '#BFD8D5',
+};
 
 const iconsDivStyle: CSSProperties = {
 	display: 'flex',
@@ -51,7 +54,10 @@ const iconsDivStyle: CSSProperties = {
 
 const toolbarStyle: CSSProperties = {
 	display: 'flex',
-	padding: '0 2rem',
+	alignSelf: 'center',
+	width: '82%',
+	maxWidth: '82rem',
+	padding: '0 1rem',
 	justifyContent: 'space-between',
 	backgroundColor: '#BFD8D5',
 };
