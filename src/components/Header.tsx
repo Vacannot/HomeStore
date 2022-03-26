@@ -12,10 +12,24 @@ import Logo from './Logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 export default function Header() {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
+	const {
+		cart,
+		addProductToCart,
+		removeProductFromCart,
+		emptyCart,
+		getSumPriceProducts,
+		getTotalSum,
+		addQuantity,
+		reduceQuantity,
+		getTotalQuantity,
+		createOrderId,
+		calculateVatPrice,
+	} = useCart();
 
 	const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 		'& .MuiBadge-badge': {
@@ -25,6 +39,12 @@ export default function Header() {
 			padding: '0 4px',
 		},
 	}));
+
+	let cartLength = 0;
+
+	cart.forEach((cartItem) => {
+		cartLength = cartLength + cartItem.quantity;
+	});
 
 	return (
 		<>
@@ -42,7 +62,7 @@ export default function Header() {
 							</StyledBadge>
 						</Link>
 						<Link to='/varukorg'>
-							<StyledBadge badgeContent={1} color='success'>
+							<StyledBadge badgeContent={cartLength} color='success'>
 								<ShoppingCartOutlinedIcon sx={{ fontSize: 28, color: 'black' }} />
 							</StyledBadge>
 						</Link>

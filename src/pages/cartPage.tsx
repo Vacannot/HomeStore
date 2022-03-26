@@ -17,7 +17,7 @@ function CartPage() {
 			})}
 			<div style={paymentDivStyle}>
 				<Link to='/kassa'>
-					<Button sx={{ backgroundColor: 'green', m: 1 }} variant='contained'>
+					<Button sx={buttonStyle} variant='contained'>
 						Gå till kassan
 					</Button>
 				</Link>
@@ -32,6 +32,18 @@ const rootStyle: CSSProperties = {
 	flexDirection: 'column',
 	alignItems: 'center',
 	marginTop: '7rem',
+};
+
+const buttonStyle: CSSProperties = {
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
+	margin: '1rem',
+	marginTop: '2rem',
+	backgroundColor: '#BFD8D5',
+	textDecorationColor: 'black',
+	color: 'black',
+	textDecoration: 'none',
 };
 
 const paymentDivStyle: CSSProperties = {
