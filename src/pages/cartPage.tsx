@@ -16,12 +16,12 @@ function CartPage() {
 				return <CartItemCard key={cartItem.product.id} />;
 			})}
 			<div style={paymentDivStyle}>
-				<Link to='/kassa'>
-					<Button sx={buttonStyle} variant='contained'>
-						Gå till kassan
-					</Button>
-				</Link>
 				<Typography variant='h6'>Total: Kr</Typography>
+				<Button sx={buttonStyle} variant='contained'>
+					<Link style={linkStyle} to='/kassa'>
+						Gå till kassan
+					</Link>
+				</Button>
 			</div>
 		</div>
 	);
@@ -41,9 +41,12 @@ const buttonStyle: CSSProperties = {
 	margin: '1rem',
 	marginTop: '2rem',
 	backgroundColor: '#BFD8D5',
-	textDecorationColor: 'black',
-	color: 'black',
+	fontWeight: '700',
+};
+
+const linkStyle: CSSProperties = {
 	textDecoration: 'none',
+	color: 'black',
 };
 
 const paymentDivStyle: CSSProperties = {
