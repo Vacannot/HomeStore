@@ -6,8 +6,13 @@ import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/Accord
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 // import CartPage from './../pages/cartPage';
-import Address from './Address';
-import Shipping from './Shipping';
+import UserInputForm from './UserInputForm';
+import ShippingForm from './ShippingForm';
+import CardPaymentForm from './CardPaymentForm';
+import PaymentOptionsForm from './PaymentOptionsForm';
+import ShippingDetailsForm from './ShippingDetailsForm';
+import FakturaPaymentForm from './FakturaPaymentForm';
+import SwishPaymentForm from './SwishPaymentForm'
 
 const Accordion = styled((props: AccordionProps) => (
 	<MuiAccordion disableGutters elevation={6} square {...props} />
@@ -65,19 +70,27 @@ export default function CheckoutAccordion() {
 				</AccordionSummary>
 				<AccordionDetails>
 					<Typography>
-						<Address />
+						<UserInputForm />
 					</Typography>
 				</AccordionDetails>
 			</Accordion>
 			<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
 				<AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
 					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-						<h3>Fraktsätt</h3>
+						<h3>Betalningsalternativ</h3>
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
 					<Typography>
-						<Shipping />
+{/* 						<Accordion expanded={expanded === 'panelPayment'} onChange={handleChange('panelPayment')}>
+							<AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
+								<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+									<h3>Betalningsalternativ</h3>
+								</Typography>
+							</AccordionSummary>
+						</Accordion> */}
+
+						<PaymentOptionsForm />
 					</Typography>
 				</AccordionDetails>
 			</Accordion>
@@ -89,13 +102,38 @@ export default function CheckoutAccordion() {
 				</AccordionSummary>
 				<AccordionDetails>
 					<Typography>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-						lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
-						lobortis eget.
+
+						<CardPaymentForm />
+						<SwishPaymentForm />
+						<FakturaPaymentForm />
 					</Typography>
 				</AccordionDetails>
 			</Accordion>
+			<Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
+					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+						<h3>Fraktalternativ</h3>
+					</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>
+						<ShippingForm />
+					</Typography>
+				</AccordionDetails>
+			</Accordion>
+			<Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
+					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+						<h3>Leveransuppgifter</h3>
+					</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>
+						<ShippingDetailsForm />
+					</Typography>
+				</AccordionDetails>
+			</Accordion>
+
 		</div>
 	);
 }

@@ -1,12 +1,18 @@
-
-import React from "react";
-import image from "../assets/bannerimage.jpg";
+import React, { CSSProperties } from 'react';
+import image from '../assets/banner.png';
 
 function Banner() {
-  return (
-    <div>
-        <img src={image} alt="Banner Glasbulb Image" height={178} width={1097}/>
-    </div>
-  );
+	return (
+		<div>
+			<img style={BannerStyle} src={image} alt='Banner Glasbulb Image' />
+		</div>
+	);
 }
+
 export default Banner;
+
+const BannerStyle: CSSProperties = {
+	height: 'auto',
+	maxWidth: '80rem',
+	marginTop: '5rem',
+};

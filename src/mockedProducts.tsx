@@ -10,7 +10,7 @@ import fallstone from './assets/fallstone.png';
 import buddy from './assets/buddy.png';
 import ocean from './assets/ocean.png';
 
-export interface Product {
+export interface IProduct {
 	id: number;
 	category: string;
 	title: string;
@@ -20,15 +20,17 @@ export interface Product {
 }
 
 // För dig som vill sitta riktigt gott framför en bra film eller brasan så är soffan Happy ett måste. Den har ett stort härligt sittdjup på 65 cm, kuddar med 80% dun. Sittdynorna har duntopp och är vändbara!
+// En snygg detalj till soffan är de svarta metallbenen som ger ett modernt och rustikt intryck.
+// Både lådor och dörrar är mjukstängande.
 
-export const products: Product[] = [
+export const product: IProduct[] = [
 	{
 		id: 0,
 		category: 'sofa',
 		title: 'Justine',
 		image: justine,
 		description:
-			'Justine är en trivsam 3-sits soffa i ljust tyg med 2 plymåer. Kombinera gärna med Justine fåtölj för fler sociala sittplatser. Tillhörande ben i ek.',
+			'Justine är en trivsam 3-sits soffa i läder med 2 plymåer. Tillhörande ben i ek.',
 		price: 19899,
 	},
 	{
@@ -43,6 +45,15 @@ export const products: Product[] = [
 	{
 		id: 2,
 		category: 'sofa',
+		title: 'Boom',
+		image: boom,
+		description:
+			'Boom är en en perfekt 3-sits soffa till inredningsfantasten. Soffan är klädd i tyg och är underbart mjuk att sitta i.',
+		price: 27499,
+	},
+	{
+		id: 3,
+		category: 'sofa',
 		title: 'Fallstone',
 		image: fallstone,
 		description:
@@ -50,22 +61,13 @@ export const products: Product[] = [
 		price: 18499,
 	},
 	{
-		id: 3,
-		category: 'sofa',
-		title: 'Boom',
-		image: boom,
-		description:
-			'Boom är en en perfekt 3-sits soffa till inredningsfantasten. Soffan är klädd i tyg och är underbart mjuk att sitta i. En snygg detalj till soffan är de svarta metallbenen som ger ett modernt och rustikt intryck.',
-		price: 27499,
-	},
-	{
 		id: 4,
 		category: 'drawer',
 		title: 'Cora',
 		image: cora,
 		description:
-			'I Cora sideboard förvarar du dina saker snyggt och praktiskt! Med både dolda och öppna utrymmen väljer du själv vad som ska gömmas undan och vad som gärna får synas. Både lådor och dörrar är mjukstängande.',
-		price: 35,
+			'I Cora sideboard förvarar du dina saker snyggt och praktiskt! Med både dolda och öppna utrymmen väljer du själv vad som ska gömmas undan och vad som gärna får synas.',
+		price: 1499,
 	},
 	{
 		id: 5,
@@ -73,7 +75,7 @@ export const products: Product[] = [
 		title: 'Edge',
 		image: edge,
 		description: 'Edge är en stilren byrå som passar lika bra i sovrummet som i hallen. ',
-		price: 35,
+		price: 1299,
 	},
 	{
 		id: 6,
@@ -82,7 +84,7 @@ export const products: Product[] = [
 		image: buddy,
 		description:
 			'Buddy taklampa har en stilren och tidlös design som passar in i många olika inredningsstilar. ',
-		price: 35,
+		price: 349,
 	},
 	{
 		id: 7,
@@ -91,7 +93,7 @@ export const products: Product[] = [
 		image: waterfall,
 		description:
 			'Med sina nio inglasade ljuskällor lyser Waterfall upp vilket rum som helst, i dubbel bemärkelse.',
-		price: 35,
+		price: 799,
 	},
 	{
 		id: 8,
@@ -99,8 +101,8 @@ export const products: Product[] = [
 		title: 'Ocean',
 		image: ocean,
 		description:
-			'Ocean är en stilren och modern lampa med ett tidlöst formspråk. Den sprider ett skönt ljus som och är dimbar vilket gör att den passar lika bra över matbordet som soffbordet.',
-		price: 35,
+			'Ocean är en stilren och modern lampa med ett tidlöst formspråk. Den sprider ett skönt ljus och är dimbar vilket gör att den passar lika bra över matbordet som soffbordet.',
+		price: 299,
 	},
 	{
 		id: 9,
@@ -109,7 +111,7 @@ export const products: Product[] = [
 		image: cato,
 		description:
 			'Taklampan Cato är otroligt fin och stilren. Materialet är glas och den sprider både vacker glans och ett behagligt ljus.',
-		price: 35,
+		price: 999,
 	},
 	{
 		id: 10,
@@ -118,6 +120,6 @@ export const products: Product[] = [
 		image: air,
 		description:
 			'En liten nätt taklampa i metall. Gör sig bra som solitär men har du möjlighet att hänga flera lampor tillsammans',
-		price: 35,
+		price: 499,
 	},
 ];

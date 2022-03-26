@@ -1,40 +1,102 @@
 import React, { CSSProperties } from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
+import { CardActionArea, CardActions } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import stolar from '../assets/stolar.jpg';
-import IconButton from '@mui/material/IconButton';
-import ShoppingCart from '@mui/icons-material/ShoppingCart';
-import { Favorite } from '@mui/icons-material';
 import AddToCartSnackbar from './AddToCartSnackbar';
+import AddToFavoritesSnackbar from './AddToFavoritesSnackbar';
+import { Link } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
-export default function ProductCard() {
+export default function ProductCard({ product }) {
+	// const history = useHistory();
+	// const goToProduct = () => {
+	// 	history.push('/product/' + product.id);
+	// };
+
 	return (
-		<Card sx={{ maxWidth: 400 }}>
-			<CardMedia component='img' height='260' image={stolar} alt='image' />
-			<CardContent>
-				<Typography gutterBottom variant='h4' component='div'>
-					Två stolar
-				</Typography>
-				<Typography variant='body2' color='text.secondary' component='div'>
-					Två snygga stolar gjord i björk.
-				</Typography>
-				<Typography gutterBottom variant='h6' component='div'>
-					299kr
-				</Typography>
+		<Card sx={CardStyle}>
+			<Link to={'/product' + product.id} style={LinkStyle}>
+				<CardMedia
+					sx={ImageStyle}
+					component='img'
+					height='260'
+					image={product.image}
+					alt='image'
+				/>
+			</Link>
+			<CardContent sx={CardContentStyle}>
+				<Link to={'/produkt' + product.id} style={LinkStyle}>
+					<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
+						{product.title}
+					</Typography>
+					<Typography
+						sx={DescriptionStyle}
+						variant='body2'
+						paddingBottom={1}
+						color='text.secondary'
+						component='div'>
+						{product.description}
+					</Typography>
+				</Link>
 			</CardContent>
-			<CardActions style={{ justifyContent: 'right' }}>
-				<IconButton sx={ButtonStyle} aria-label='favorite' size='large'>
-					<Favorite />
-				</IconButton>
-				<AddToCartSnackbar />
-			</CardActions>
+			<div style={CardActionStyle}>
+				<Typography sx={PriceStyle} gutterBottom variant='h6' component='div'>
+					{product.price} kr
+				</Typography>
+				<CardActions style={CardAction}>
+					<AddToFavoritesSnackbar product={product} />
+					<AddToCartSnackbar product={product} />
+				</CardActions>
+			</div>
 		</Card>
 	);
 }
 
-const ButtonStyle: CSSProperties = {
-	backgroundColor: '#BFD8D5',
+const CardStyle: CSSProperties = {
+	minWidth: 265,
+	maxWidth: 300,
+	height: 450,
+};
+
+const CardContentStyle: CSSProperties = {
+	marginBottom: '.5px',
+	paddingTop: '8px',
+	paddingRight: '8px',
+	paddingBottom: '0',
+	paddingLeft: '16px',
+};
+
+const LinkStyle: CSSProperties = {
+	textDecoration: 'none',
+	textDecorationColor: 'black',
+};
+
+const ImageStyle: CSSProperties = {
+	border: '1px solid grey',
+};
+
+const TitleStyle: CSSProperties = {
+	paddingBottom: '0',
+	marginBottom: '2px',
+};
+
+const DescriptionStyle: CSSProperties = {
+	height: '85px',
+};
+
+const CardActionStyle: CSSProperties = {
+	display: 'flex',
+	justifyContent: 'space-between',
+};
+
+const CardAction: CSSProperties = {
+	paddingTop: '0',
+};
+
+const PriceStyle: CSSProperties = {
+	alignSelf: 'center',
+	paddingLeft: '16px',
+	paddingTop: '16px',
 };

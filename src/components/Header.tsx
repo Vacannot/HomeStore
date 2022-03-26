@@ -32,7 +32,7 @@ function Header() {
 					<Search />
 					<div style={iconsDivStyle}>
 						<FavoriteIcon />
-						<Link to='/cartpage'>
+						<Link to='/varukorg'>
 							<ShoppingCartIcon />
 						</Link>
 						<MenuIcon />
