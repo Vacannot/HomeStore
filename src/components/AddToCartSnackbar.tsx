@@ -1,12 +1,11 @@
 import React, { CSSProperties } from 'react';
-import Button from '@mui/material/Button';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
-import ShoppingCart from '@mui/icons-material/ShoppingCart';
-import { product, IProduct } from '../mockedProducts';
-import CartProvider, { useCart } from '../context/CartContext';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { IProduct } from '../mockedProducts';
+import { useCart } from '../context/CartContext';
 
-export interface State extends SnackbarOrigin {
+export interface IPopUpState extends SnackbarOrigin {
 	open: boolean;
 }
 
@@ -15,7 +14,7 @@ interface Props {
 }
 
 export default function AddToCartSnackbar(props: Props) {
-	const [popUpState, setPopUpState] = React.useState<State>({
+	const [popUpState, setPopUpState] = React.useState<IPopUpState>({
 		open: false,
 		vertical: 'top',
 		horizontal: 'center',
@@ -50,7 +49,7 @@ export default function AddToCartSnackbar(props: Props) {
 		<React.Fragment>
 			<div onClick={handleOnClickAdd}>
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
-					<ShoppingCart />
+					<ShoppingCartOutlinedIcon />
 				</IconButton>
 			</div>
 		</React.Fragment>
@@ -62,7 +61,7 @@ export default function AddToCartSnackbar(props: Props) {
 			<Snackbar
 				anchorOrigin={{ vertical, horizontal }}
 				open={open}
-				autoHideDuration={2000}
+				autoHideDuration={1000}
 				onClose={handleOnClickClose}
 				message='Produkten har lagts till i varukorgen!'
 				key={vertical + horizontal}
@@ -73,61 +72,7 @@ export default function AddToCartSnackbar(props: Props) {
 
 const ButtonStyle: CSSProperties = {
 	backgroundColor: '#BFD8D5',
+	textDecoration: 'none',
+	textDecorationColor: 'black',
+	color: 'black',
 };
-
-// import React, { useContext, CSSProperties } from 'react';
-// import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
-// import IconButton from '@mui/material/IconButton';
-// import ShoppingCart from '@mui/icons-material/ShoppingCart';
-// import { CartContext } from '../context/CartContext';
-
-// export interface State extends SnackbarOrigin {
-// 	open: boolean;
-// }
-
-// export default function AddToCartSnackbar({ product }) {
-// 	const [popUpState, setPopUpState] = React.useState<State>({
-// 		open: false,
-// 		vertical: 'top',
-// 		horizontal: 'center',
-// 	});
-// 	const { vertical, horizontal, open } = popUpState;
-// 	const { addProductToCart } = useContext(CartContext);
-
-// 	const handleOnClickAdd = () => {
-// 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
-// 	};
-
-// 	const handleOnClickClose = () => {
-// 		setPopUpState({ ...popUpState, open: false });
-// 	};
-
-// 	const buttons = (
-// 		<React.Fragment>
-// 			<div>
-// 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
-// 					<ShoppingCart onClick={() => addProductToCart(product)} />
-// 				</IconButton>
-// 			</div>
-// 		</React.Fragment>
-// 	);
-// 	console.log(addProductToCart);
-
-// 	return (
-// 		<div>
-// 			{buttons}
-// 			<Snackbar
-// 				anchorOrigin={{ vertical, horizontal }}
-// 				open={open}
-// 				autoHideDuration={2000}
-// 				onClose={handleOnClickClose}
-// 				message='Produkten har lagts till i varukorgen!'
-// 				key={vertical + horizontal}
-// 			/>
-// 		</div>
-// 	);
-// }
-
-// const ButtonStyle: CSSProperties = {
-// 	backgroundColor: '#BFD8D5',
-// };

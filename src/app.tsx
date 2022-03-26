@@ -2,7 +2,7 @@ import React, { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 // import CartProvider, { useCart } from './context/CartContext';
 import Layout from './layout/layout';
-import ThemeProvider, { useTheme } from './context/themeContext';
+import ThemeProvider, { useTheme } from './context/ThemeContext';
 // import { useTheme } from '@mui/material';
 
 function App() {

@@ -71,6 +71,7 @@ const CardContentStyle: CSSProperties = {
 const LinkStyle: CSSProperties = {
 	textDecoration: 'none',
 	textDecorationColor: 'black',
+	color: 'black',
 };
 
 const ImageStyle: CSSProperties = {

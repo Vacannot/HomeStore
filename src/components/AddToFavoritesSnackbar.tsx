@@ -2,8 +2,7 @@ import React, { CSSProperties } from 'react';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import CardActionArea from '@mui/material/CardActionArea';
 import IconButton from '@mui/material/IconButton';
-import { Favorite } from '@mui/icons-material';
-// import { useCart } from '../context/CartContext';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { IProduct } from '../mockedProducts';
 
 export interface State extends SnackbarOrigin {
@@ -49,7 +48,7 @@ export default function AddToFavoritesSnackbar(props: Props) {
 		<React.Fragment>
 			<div onClick={handleOnClickAdd}>
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
-					<Favorite />
+					<FavoriteBorderOutlinedIcon />
 				</IconButton>
 			</div>
 		</React.Fragment>
@@ -61,7 +60,7 @@ export default function AddToFavoritesSnackbar(props: Props) {
 			<Snackbar
 				anchorOrigin={{ vertical, horizontal }}
 				open={open}
-				autoHideDuration={2000}
+				autoHideDuration={1000}
 				onClose={handleOnClickClose}
 				message='Produkten har lagts till i din lista!'
 				key={vertical + horizontal}
@@ -72,4 +71,7 @@ export default function AddToFavoritesSnackbar(props: Props) {
 
 const ButtonStyle: CSSProperties = {
 	backgroundColor: '#BFD8D5',
+	textDecoration: 'none',
+	textDecorationColor: 'black',
+	color: 'black',
 };

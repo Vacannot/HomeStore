@@ -19,5 +19,5 @@ const rootStyle: CSSProperties = {
 	justifyContent: 'center',
 	alignItems: 'center',
 	flexDirection: 'column',
-	margin: '2rem',
+	margin: '1rem',
 };

@@ -19,7 +19,7 @@ export default function ProductGrid() {
 	return (
 		<div style={container}>
 			<Box sx={{ flexGrow: 1 }}>
-				<Grid container spacing={{ xs: 1 }} columns={{ xs: 6, sm: 8, md: 12, lg: 12 }}>
+				<Grid container spacing={{ xs: 1.5 }} columns={{ xs: 6, sm: 8, md: 12, lg: 12 }}>
 					{product.map((product, id) => (
 						<Grid key={id} style={gridItem} item xs={6} sm={4} md={4} lg={3}>
 							<ProductCard product={product} />
@@ -36,7 +36,7 @@ const container: CSSProperties = {
 	flexGrow: 1,
 	flexBasis: 0,
 	maxWidth: '80rem',
-	marginBlockStart: '3rem',
+	marginBlockStart: '1rem',
 };
 
 const gridItem: CSSProperties = {
@@ -44,5 +44,4 @@ const gridItem: CSSProperties = {
 	justifyContent: 'center',
 	alignItems: 'center',
 	flexDirection: 'column',
-	padding: '1rem',
 };
