@@ -1,4 +1,5 @@
 import React, { createContext, FC, useContext, useState } from 'react';
+import { number } from 'yup';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { IProduct } from '../mockedProducts';
 import { IShippingProvider } from '../shippigProvider';
@@ -8,7 +9,17 @@ export interface ICartItem {
 	quantity: number;
 }
 
-interface ICartContextValue {
+export type CartItemType = {
+	id: number;
+	category: string;
+	title: string;
+	image: string;
+	description: string;
+	price: number;
+	quantity: number;
+};
+
+export interface ICartContextValue {
 	cart: ICartItem[];
 	shipping: IShippingProvider;
 	addProductToCart: (product: IProduct) => void;
@@ -19,6 +30,7 @@ interface ICartContextValue {
 	addQuantity: (product: ICartItem) => void;
 	reduceQuantity: (product: ICartItem) => void;
 	getTotalQuantity: (cartItem: ICartItem[]) => void;
+	getTotalCartItems: (items: CartItemType[]) => void;
 	createOrderId: () => number;
 	calculateVatPrice: (cartItem: ICartItem[]) => number;
 }
@@ -38,6 +50,7 @@ export const CartContext = createContext<ICartContextValue>({
 	addQuantity: () => 0,
 	reduceQuantity: () => 0,
 	getTotalQuantity: () => 0,
+	getTotalCartItems: () => null,
 	createOrderId: () => 0,
 	calculateVatPrice: () => 0,
 });
@@ -159,6 +172,14 @@ const CartProvider: FC = (props) => {
 
 	/**
 	 *
+	 * @param cartItem
+	 * gets total quantity of all products in cart
+	 */
+	const getTotalCartItems = (items: CartItemType[]) =>
+		items.reduce((ack: number, cartItem) => ack + cartItem.quantity, 0);
+
+	/**
+	 *
 	 * @returns order id
 	 *
 	 */
@@ -198,6 +219,7 @@ const CartProvider: FC = (props) => {
 				addQuantity,
 				reduceQuantity,
 				getTotalQuantity,
+				getTotalCartItems,
 				createOrderId,
 				calculateVatPrice,
 			}}>

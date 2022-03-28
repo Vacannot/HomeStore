@@ -1,43 +1,51 @@
-import React, { useContext, useState } from 'react';
-// import { Theme, ThemeContextType } from '@types/theme';
+import { createContext, useContext } from 'react';
 
-export type Theme = 'light' | 'dark';
+export enum Theme {
+	Dark = 'Dark',
+	Light = 'Light',
+}
+
 export type ThemeContextType = {
 	theme: Theme;
-	changeTheme: (theme: Theme) => null;
+	setTheme: (theme: Theme) => void;
 };
 
-export const ThemeContext = React.createContext<ThemeContextType | null>(null);
-const ThemeUpdateContext = React.createContext<ThemeContextType | null>(null);
+// export const ThemeContext = React.createContext<ThemeContextType | null>(null);
+// const ThemeUpdateContext = React.createContext<ThemeContextType | null>(null);
 
-export function useTheme() {
-	return useContext(ThemeContext);
-}
+// export function useTheme() {
+// 	return useContext(ThemeContext);
+// }
 
-export function useThemeUpdate() {
-	return useContext(ThemeUpdateContext);
-}
+export const ThemeContext = createContext<ThemeContextType>({
+	theme: Theme.Dark,
+	setTheme: (theme) => console.warn('no theme provider'),
+});
 
-const ThemeProvider: React.FC<React.ReactNode> = ({ children }) => {
-	const [darkTheme, setDarkTheme] = useState(true);
+export const useThemeContext = () => useContext(ThemeContext);
 
-	function toggleTheme() {
-		setDarkTheme((prevDarkTheme) => !prevDarkTheme);
-	}
+// export function useThemeUpdate() {
+// 	return useContext(ThemeUpdateContext);
+// }
 
-	return (
-		<ThemeContext.Provider value={darkTheme}>
-			<ThemeUpdateContext.Provider value={toggleTheme}>{children}</ThemeUpdateContext.Provider>
-		</ThemeContext.Provider>
-	);
-};
+// const ThemeProvider: React.FC<React.ReactNode> = ({ children }) => {
+// 	const [themeMode, setThemeMode] = React.useState<Theme>('Light');
+// 	const { theme, changeTheme } = React.useContext(ThemeContext) as ThemeContextType;
+// 	const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+// 		changeTheme(event.target.value as Theme);
+// 	};
 
-export default ThemeProvider;
+// 	// function toggleTheme() {
+// 	// 	setThemeMode((prevDarkTheme) => !prevDarkTheme);
+// 	// }
 
-// import React from 'react';
-
-// const themeContext = () => {
-// 	return <div>themeContext</div>;
+// 	return (
+// 		<ThemeContext.Provider value={{ theme: themeMode, changeTheme: setThemeMode }}>
+// 			{/* <ThemeUpdateContext.Provider value={toggleTheme}> */}
+// 			{children}
+// 			{/* </ThemeUpdateContext.Provider> */}
+// 		</ThemeContext.Provider>
+// 	);
 // };
 
-// export default themeContext;
+// export default ThemeProvider;

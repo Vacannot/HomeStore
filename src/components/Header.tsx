@@ -13,9 +13,13 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+// import { useThemeContext, Theme } from '../context/ThemeContext';
+import ThemeSwitch from './ThemeSwitch';
 
 export default function Header() {
 	const theme = useTheme();
+	// const { theme, setTheme } = useThemeContext();
+
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
 	const {
 		cart,
@@ -46,6 +50,9 @@ export default function Header() {
 		cartLength = cartLength + cartItem.quantity;
 	});
 
+	// const getTotalCartItems = (items: CartItemType[]) =>
+	// 	items.reduce((ack: number, item) => ack + item.quantity, 0);
+
 	return (
 		<>
 			<CssBaseline />
@@ -56,6 +63,7 @@ export default function Header() {
 					</Link>
 					<Search />
 					<div style={iconsDivStyle}>
+						<ThemeSwitch />
 						<Link to='/favoriter'>
 							<StyledBadge badgeContent={0} color='success'>
 								<FavoriteBorderOutlinedIcon sx={{ fontSize: 28, color: 'black' }} />
@@ -63,6 +71,7 @@ export default function Header() {
 						</Link>
 						<Link to='/varukorg'>
 							<StyledBadge badgeContent={cartLength} color='success'>
+								{/* <StyledBadge badgeContent={getTotalCartItems(cartItems)} color='success'> */}
 								<ShoppingCartOutlinedIcon sx={{ fontSize: 28, color: 'black' }} />
 							</StyledBadge>
 						</Link>
@@ -79,7 +88,7 @@ const appBarStyle: CSSProperties = {
 
 const iconsDivStyle: CSSProperties = {
 	display: 'flex',
-	width: '8rem',
+	width: '12rem',
 	justifyContent: 'space-between',
 	textDecoration: 'none',
 	textDecorationColor: 'black',

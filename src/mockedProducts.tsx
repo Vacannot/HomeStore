@@ -23,7 +23,7 @@ export interface IProduct {
 // En snygg detalj till soffan är de svarta metallbenen som ger ett modernt och rustikt intryck.
 // Både lådor och dörrar är mjukstängande.
 
-export const product: IProduct[] = [
+export let product: IProduct[] = [
 	{
 		id: 0,
 		category: 'sofa',
@@ -123,3 +123,7 @@ export const product: IProduct[] = [
 		price: 499,
 	},
 ];
+
+export function getProductById(id: number) {
+	return product.find((product) => product.id === id);
+}

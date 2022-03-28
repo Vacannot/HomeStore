@@ -1,23 +1,25 @@
 import React, { CSSProperties } from 'react';
 import Card from '@mui/material/Card';
-import { CardActionArea, CardActions } from '@mui/material';
+import { CardActions, CardActionArea } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import AddToCartSnackbar from './AddToCartSnackbar';
 import AddToFavoritesSnackbar from './AddToFavoritesSnackbar';
-import { Link } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
+import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
 
 export default function ProductCard({ product }) {
-	// const history = useHistory();
-	// const goToProduct = () => {
-	// 	history.push('/product/' + product.id);
-	// };
+	let [searchParams] = useSearchParams();
+	let Product = searchParams.get('Product');
+	const navigate = useNavigate();
+	const handleClick = () => {
+		// navigate('/produkt' + product.id);
+		navigate(`/product/${product.id}`);
+	};
 
 	return (
 		<Card sx={CardStyle}>
-			<Link to={'/product' + product.id} style={LinkStyle}>
+			<CardActionArea onClick={handleClick}>
 				<CardMedia
 					sx={ImageStyle}
 					component='img'
@@ -25,9 +27,7 @@ export default function ProductCard({ product }) {
 					image={product.image}
 					alt='image'
 				/>
-			</Link>
-			<CardContent sx={CardContentStyle}>
-				<Link to={'/produkt' + product.id} style={LinkStyle}>
+				<CardContent sx={CardContentStyle}>
 					<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
 						{product.title}
 					</Typography>
@@ -39,8 +39,9 @@ export default function ProductCard({ product }) {
 						component='div'>
 						{product.description}
 					</Typography>
-				</Link>
-			</CardContent>
+					{/* </Link> */}
+				</CardContent>
+			</CardActionArea>
 			<div style={CardActionStyle}>
 				<Typography sx={PriceStyle} gutterBottom variant='h6' component='div'>
 					{product.price} kr

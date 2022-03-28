@@ -1,22 +1,23 @@
 import React, { CSSProperties } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import StartPage from '../pages/startPage';
 import Header from '../components/Header';
 import CartPage from '../pages/cartPage';
 import Footer from '../components/Footer';
 import CheckoutPage from '../pages/checkoutPage';
 import ProductPage from '../pages/productPage';
+import { product } from '../mockedProducts';
 
 export default function Layout() {
 	return (
 		<div style={rootStyle}>
 			<Header />
-			<Switch>
-				<Route path='/' exact component={StartPage} />
-				<Route path='/produkt/:id' component={ProductPage} />
-				<Route path='/varukorg' component={CartPage} />
-				<Route path='/kassa' component={CheckoutPage} />
-			</Switch>
+			<Routes>
+				<Route path='/' element={<StartPage />} />
+				<Route path='/product/:id' element={<ProductPage product={product} />} />
+				<Route path='/varukorg' element={<CartPage />} />
+				<Route path='/kassa' element={<CheckoutPage />} />
+			</Routes>
 			<Footer />
 		</div>
 	);

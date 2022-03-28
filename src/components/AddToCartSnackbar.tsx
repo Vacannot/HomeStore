@@ -13,7 +13,7 @@ interface Props {
 	product: IProduct;
 }
 
-export default function AddToCartSnackbar(props: Props) {
+export default function AddToCartSnackbar({ product }) {
 	const [popUpState, setPopUpState] = React.useState<IPopUpState>({
 		open: false,
 		vertical: 'top',
@@ -37,7 +37,7 @@ export default function AddToCartSnackbar(props: Props) {
 
 	const handleOnClickAdd = () => {
 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
-		addProductToCart(props.product);
+		addProductToCart(product);
 		console.log('Product added to cart');
 	};
 
@@ -49,7 +49,11 @@ export default function AddToCartSnackbar(props: Props) {
 		<React.Fragment>
 			<div onClick={handleOnClickAdd}>
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
-					<ShoppingCartOutlinedIcon />
+					<ShoppingCartOutlinedIcon
+						onClick={() => {
+							handleOnClickAdd();
+						}}
+					/>
 				</IconButton>
 			</div>
 		</React.Fragment>

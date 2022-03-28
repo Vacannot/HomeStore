@@ -21,7 +21,7 @@ export default function ProductGrid() {
 			<Box sx={{ flexGrow: 1 }}>
 				<Grid container spacing={{ xs: 1.5 }} columns={{ xs: 6, sm: 8, md: 12, lg: 12 }}>
 					{product.map((product, id) => (
-						<Grid key={id} style={gridItem} item xs={6} sm={4} md={4} lg={3}>
+						<Grid key={product.id} style={gridItem} item xs={6} sm={4} md={4} lg={3}>
 							<ProductCard product={product} />
 						</Grid>
 					))}
