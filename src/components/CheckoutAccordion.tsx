@@ -82,30 +82,7 @@ export default function CheckoutAccordion() {
 				</AccordionSummary>
 				<AccordionDetails>
 					<Typography>
-{/* 						<Accordion expanded={expanded === 'panelPayment'} onChange={handleChange('panelPayment')}>
-							<AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
-								<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-									<h3>Betalningsalternativ</h3>
-								</Typography>
-							</AccordionSummary>
-						</Accordion> */}
-
 						<PaymentOptionsForm />
-					</Typography>
-				</AccordionDetails>
-			</Accordion>
-			<Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-						<h3>Betalning</h3>
-					</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-					<Typography>
-
-						<CardPaymentForm />
-						<SwishPaymentForm />
-						<FakturaPaymentForm />
 					</Typography>
 				</AccordionDetails>
 			</Accordion>
