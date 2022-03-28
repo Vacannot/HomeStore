@@ -1,11 +1,11 @@
 import React, { CSSProperties } from 'react';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import CardActionArea from '@mui/material/CardActionArea';
 import IconButton from '@mui/material/IconButton';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { IProduct } from '../mockedProducts';
-import { useCart } from '../context/CartContext';
 
-export interface IPopUpState extends SnackbarOrigin {
+export interface State extends SnackbarOrigin {
 	open: boolean;
 }
 
@@ -13,32 +13,31 @@ interface Props {
 	product: IProduct;
 }
 
-export default function AddToCartSnackbar(props: Props) {
-	const [popUpState, setPopUpState] = React.useState<IPopUpState>({
+export default function AddToFavoritesSnackbar(props: Props) {
+	const [popUpState, setPopUpState] = React.useState<State>({
 		open: false,
 		vertical: 'top',
 		horizontal: 'center',
 	});
-
 	const { vertical, horizontal, open } = popUpState;
-	const {
-		cart,
-		addProductToCart,
-		removeProductFromCart,
-		emptyCart,
-		getSumPriceProducts,
-		getTotalSum,
-		addQuantity,
-		reduceQuantity,
-		getTotalQuantity,
-		createOrderId,
-		calculateVatPrice,
-	} = useCart();
+	// const {
+	// 	cart,
+	// 	addProductToCart,
+	// 	removeProductFromCart,
+	// 	emptyCart,
+	// 	getSumPriceProducts,
+	// 	getTotalSum,
+	// 	addQuantity,
+	// 	reduceQuantity,
+	// 	getTotalQuantity,
+	// 	// createOrderId,
+	// 	calculateVatPrice,
+	// } = useCart();
 
 	const handleOnClickAdd = () => {
 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
-		addProductToCart(props.product);
-		console.log('Product added to cart');
+		// addProductToFavorites(props.product);
+		console.log('Product added to list');
 	};
 
 	const handleOnClickClose = () => {
@@ -49,7 +48,7 @@ export default function AddToCartSnackbar(props: Props) {
 		<React.Fragment>
 			<div onClick={handleOnClickAdd}>
 				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large'>
-					<ShoppingCartOutlinedIcon />
+					<FavoriteBorderOutlinedIcon />
 				</IconButton>
 			</div>
 		</React.Fragment>
@@ -63,7 +62,7 @@ export default function AddToCartSnackbar(props: Props) {
 				open={open}
 				autoHideDuration={1000}
 				onClose={handleOnClickClose}
-				message='Produkten har lagts till i varukorgen!'
+				message='Produkten har lagts till i din lista!'
 				key={vertical + horizontal}
 			/>
 		</div>
