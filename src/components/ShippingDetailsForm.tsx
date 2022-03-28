@@ -2,11 +2,10 @@ import React, { CSSProperties } from "react";
 import ReactDOM from "react-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-interface UserInputFormValues {
+interface ShippingDetailsFormValues {
 firstName: string;
 lastName: string;
 email: string;
@@ -31,7 +30,7 @@ const validationSchema = yup.object({
   country: yup.string().required("Enter your country").min(2)
 });
 
-const UserInputForm = () => {
+const ShippingDetailsForm = () => {
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -45,8 +44,7 @@ const UserInputForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert('hi');
-
+      alert(JSON.stringify(values, null, 2));
     },
   });
 
@@ -54,7 +52,11 @@ const UserInputForm = () => {
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <Typography variant="subtitle1" >Mina uppgifter</Typography>
+		<div 
+			style={{
+			display: 'flex',
+			flexDirection: 'row',
+			}}>
           <TextField
             style={textFieldStyle}
             id="firstName"
@@ -88,7 +90,7 @@ const UserInputForm = () => {
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
           />
-		    </div>
+		  </div>
 		  	<div 
 			  style={{
 			  display: 'flex',
@@ -127,8 +129,8 @@ const UserInputForm = () => {
             error={formik.touched.zipcode && Boolean(formik.errors.zipcode)}
             helperText={formik.touched.zipcode && formik.errors.zipcode}
           />
-        </div>
-        <div 
+          </div>
+          <div 
 			      style={{
 			      display: 'flex',
 			      flexDirection: 'row',
@@ -143,7 +145,7 @@ const UserInputForm = () => {
             onChange={formik.handleChange}
             error={formik.touched.city && Boolean(formik.errors.city)}
             helperText={formik.touched.city && formik.errors.city}
-            />
+          />
             <TextField
             style={textFieldStyle}
             id="country"
@@ -154,8 +156,9 @@ const UserInputForm = () => {
             onChange={formik.handleChange}
             error={formik.touched.country && Boolean(formik.errors.country)}
             helperText={formik.touched.country && formik.errors.country}
-            />
-          </div>
+          />
+        </div>
+		    </div>
       </form>
     </div>
   );
@@ -173,4 +176,4 @@ const formDiv: CSSProperties = {
 };
 
 
-export default UserInputForm;
+export default ShippingDetailsForm;

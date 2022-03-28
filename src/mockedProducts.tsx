@@ -101,7 +101,7 @@ export const product: IProduct[] = [
 		title: 'Ocean',
 		image: ocean,
 		description:
-			'Ocean är en stilren och modern lampa med ett tidlöst formspråk. Den sprider ett skönt ljus som och är dimbar vilket gör att den passar lika bra över matbordet som soffbordet.',
+			'Ocean är en stilren och modern lampa med ett tidlöst formspråk. Den sprider ett skönt ljus och är dimbar vilket gör att den passar lika bra över matbordet som soffbordet.',
 		price: 299,
 	},
 	{

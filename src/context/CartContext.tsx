@@ -1,11 +1,11 @@
-import React, { createContext, FC, useContext, useState} from "react";
-import { useLocalStorageState } from "../hooks/useLocalStorage";
-import { IProduct } from "../mockedProducts";
-import { IShippingProvider } from "../shippigProvider";
+import React, { createContext, FC, useContext, useState } from 'react';
+import { useLocalStorageState } from '../hooks/useLocalStorage';
+import { IProduct } from '../mockedProducts';
+import { IShippingProvider } from '../shippigProvider';
 
 export interface ICartItem {
 	product: IProduct;
-  	quantity: number;
+	quantity: number;
 }
 
 interface ICartContextValue {
@@ -45,9 +45,8 @@ export const CartContext = createContext<ICartContextValue>({
 });
 
 export function useCart() {
-  return useContext(CartContext);
+	return useContext(CartContext);
 }
-
 
 const CartProvider: FC = (props) => {
   const [cart, setCart] = useLocalStorageState<ICartItem[]>([], 'cart');
