@@ -17,7 +17,7 @@ city: string;
 }
 
 const validationSchema = yup.object({
-  firstnName: yup.string().required("Please enter first name").min(2),
+  firstName: yup.string().required("Please enter first name").min(2),
   lastName: yup.string().required("Please enter last name").min(2),
   email: yup
     .string()

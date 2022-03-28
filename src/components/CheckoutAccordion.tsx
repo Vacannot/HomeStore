@@ -9,7 +9,7 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 // import CartPage from './../pages/cartPage';
 import UserInputForm from "./UserInputForm";
-import Shipping from "./Shipping";
+import ShippingDetailsForm from "./ShippingDetailsForm";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={6} square {...props} />
@@ -73,9 +73,7 @@ export default function CheckoutAccordion() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          {/* <Typography> */}
             <UserInputForm />
-          {/* </Typography> */}
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -88,9 +86,7 @@ export default function CheckoutAccordion() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          {/* <Typography> */}
-            <Shipping />
-          {/* </Typography> */}
+            <ShippingDetailsForm />
         </AccordionDetails>
       </Accordion>
       <Accordion
