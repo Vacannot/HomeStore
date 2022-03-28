@@ -73,9 +73,9 @@ export default function CheckoutAccordion() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          {/* <Typography> */}
             <UserInputForm />
-          </Typography>
+          {/* </Typography> */}
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -88,9 +88,9 @@ export default function CheckoutAccordion() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          {/* <Typography> */}
             <Shipping />
-          </Typography>
+          {/* </Typography> */}
         </AccordionDetails>
       </Accordion>
       <Accordion
