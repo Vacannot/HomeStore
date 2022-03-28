@@ -1,19 +1,22 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { useOrderContext } from '../context/OrderContext';
 
 const validationSchema = yup.object({
     swishNumber: yup.string().required("Please enter number").min(10),
 });
 
 const SwishPaymentForm = () => {
+  const { order } = useOrderContext();
+  console.log(order.customer.number)
   const formik = useFormik({
     initialValues: {
-      swishNumber: "",
+      swishNumber: order.customer.number,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -21,7 +24,13 @@ const SwishPaymentForm = () => {
     },
   });
 
+  useEffect(() => {
+    console.log(order)
+  }, [order])
+
   return (
+
+  
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
 		<div 

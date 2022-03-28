@@ -5,6 +5,7 @@ import * as yup from "yup";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { useOrderContext } from "../context/OrderContext";
 
 interface UserInputFormValues {
 firstName: string;
@@ -18,7 +19,7 @@ city: string;
 }
 
 const validationSchema = yup.object({
-  firstnName: yup.string().required("Please enter first name").min(2),
+  firstName: yup.string().required("Please enter first name").min(2),
   lastName: yup.string().required("Please enter last name").min(2),
   email: yup
     .string()
@@ -32,12 +33,14 @@ const validationSchema = yup.object({
 });
 
 const UserInputForm = () => {
+  const {createNewOrder} = useOrderContext();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
       email: "",
-      number: "",
+      number: 0,
       address: "",
       zipcode: "",
       city: "",
@@ -46,6 +49,8 @@ const UserInputForm = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      console.log(values);
+      createNewOrder(values);
     },
   });
 
@@ -160,6 +165,7 @@ const UserInputForm = () => {
           />
         </div>
 		    </div>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );
