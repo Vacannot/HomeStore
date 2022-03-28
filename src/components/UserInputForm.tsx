@@ -36,7 +36,8 @@ const UserInputForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      alert('hi');
+
     },
   });
 
@@ -44,9 +45,7 @@ const UserInputForm = () => {
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <Typography style={header}>
-            <h1>MINA UPPGIFTER</h1>
-          </Typography>
+          <Typography variant="subtitle1" style={header}>Mina uppgifter</Typography>
           <TextField
             style={textFieldStyle}
             id="firstName"

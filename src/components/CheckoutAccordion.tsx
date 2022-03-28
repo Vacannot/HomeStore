@@ -69,7 +69,7 @@ export default function CheckoutAccordion() {
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography sx={{ display: "flex", justifyContent: "start" }}>
-            <h3>Mina uppgifter</h3>
+            Mina uppgifter
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -84,7 +84,7 @@ export default function CheckoutAccordion() {
       >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
           <Typography sx={{ display: "flex", justifyContent: "start" }}>
-            <h3>Fraktsätt</h3>
+            Fraktsätt
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -99,7 +99,7 @@ export default function CheckoutAccordion() {
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography sx={{ display: "flex", justifyContent: "start" }}>
-            <h3>Betalning</h3>
+            Betalning
           </Typography>
         </AccordionSummary>
         <AccordionDetails>

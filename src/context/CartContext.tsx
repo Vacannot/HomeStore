@@ -11,6 +11,7 @@ export interface ICartItem {
 interface ICartContextValue {
   cart: ICartItem[];
   shipping: IShippingProvider;
+  // paymentMethod: string,
   addProductToCart: (product: IProduct) => void;
   removeProductFromCart: (product: IProduct) => void;
   emptyCart: () => void;
@@ -30,6 +31,7 @@ export const CartContext = createContext<ICartContextValue>({
     price: 0,
     time: "",
   },
+  // paymentMethod: "",
   addProductToCart: () => {},
   removeProductFromCart: () => {},
   emptyCart: () => {},
@@ -50,6 +52,8 @@ export function useCart() {
 const CartProvider: FC = (props) => {
   const [cart, setCart] = useLocalStorageState<ICartItem[]>([], 'cart');
   const vat = 0.25;
+
+
 
  /**
   * 
@@ -194,6 +198,7 @@ const CartProvider: FC = (props) => {
             price: 0,
             time: "",
           },
+          // paymentMethod,
           addProductToCart,
           removeProductFromCart,
           emptyCart,
