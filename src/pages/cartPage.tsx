@@ -16,12 +16,12 @@ function CartPage() {
 				return <CartItemCard key={cartItem.product.id} />;
 			})}
 			<div style={paymentDivStyle}>
-				<Link to='/kassa'>
-					<Button sx={{ backgroundColor: 'green', m: 1 }} variant='contained'>
-						Gå till kassan
-					</Button>
-				</Link>
 				<Typography variant='h6'>Total: Kr</Typography>
+				<Button sx={buttonStyle} variant='contained'>
+					<Link style={linkStyle} to='/kassa'>
+						Gå till kassan
+					</Link>
+				</Button>
 			</div>
 		</div>
 	);
@@ -32,6 +32,21 @@ const rootStyle: CSSProperties = {
 	flexDirection: 'column',
 	alignItems: 'center',
 	marginTop: '7rem',
+};
+
+const buttonStyle: CSSProperties = {
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
+	margin: '1rem',
+	marginTop: '2rem',
+	backgroundColor: '#BFD8D5',
+	fontWeight: '700',
+};
+
+const linkStyle: CSSProperties = {
+	textDecoration: 'none',
+	color: 'black',
 };
 
 const paymentDivStyle: CSSProperties = {

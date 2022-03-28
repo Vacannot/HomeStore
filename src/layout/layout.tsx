@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import CheckoutPage from '../pages/checkoutPage';
 import ProductPage from '../pages/productPage';
 
-function Layout() {
+export default function Layout() {
 	return (
 		<div style={rootStyle}>
 			<Header />
@@ -27,5 +27,3 @@ const rootStyle: CSSProperties = {
 	display: 'flex',
 	flexDirection: 'column',
 };
-
-export default Layout;

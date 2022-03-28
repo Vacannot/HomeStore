@@ -61,11 +61,8 @@ const CardPaymentForm = () => {
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <div 
-            style={{
-            display: 'flex',
-            flexDirection: 'row',
-            }}>
+        <div style={{ display: 'flex', flexDirection: 'column',}}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
         
             <TextField
               style={textFieldStyle}
@@ -90,9 +87,11 @@ const CardPaymentForm = () => {
               error={formik.touched.cardNumber && Boolean(formik.errors.cardNumber)}
               helperText={formik.touched.cardNumber && formik.errors.cardNumber}
             />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
 
             <TextField
-              style={textFieldStyle}
+              style={textFieldStyleSmall}
               id="cardMonth"
               name="cardMonth"
               label="Card Month"
@@ -104,7 +103,7 @@ const CardPaymentForm = () => {
             />
             
             <TextField
-              style={textFieldStyle}
+              style={textFieldStyleSmall}
               id="cardYear"
               name="cardYear"
               label="Card Year"
@@ -115,7 +114,7 @@ const CardPaymentForm = () => {
               helperText={formik.touched.cardYear && formik.errors.cardYear}
             />
             <TextField
-              style={textFieldStyle}
+              style={textFieldStyleSmall}
               id="cvc"
               name="cvc"
               label="Cvc Code"
@@ -125,6 +124,7 @@ const CardPaymentForm = () => {
               error={formik.touched.cvc && Boolean(formik.errors.cvc)}
               helperText={formik.touched.cvc && formik.errors.cvc}
             />
+            </div>
 		      </div>
         </div>
       </form>
@@ -136,6 +136,12 @@ const textFieldStyle: CSSProperties = {
   margin: "1rem",
   display: "flex",
   width: "40ch",
+};
+
+const textFieldStyleSmall: CSSProperties = {
+  margin: "1rem",
+  display: "flex",
+  width: "20ch",
 };
 
 const formDiv: CSSProperties = {
