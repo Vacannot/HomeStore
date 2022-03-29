@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import image from '../assets/furniture.jpeg';
-import QuantityCounter from './quantityCounter';
+import QuantityCounter from './QuantityCounter';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -25,7 +25,7 @@ function CartItemCard() {
 						Produkt Title
 					</Typography>
 					<Typography variant='body2' color='GrayText.secondary'>
-						Pris: {price} kr
+						<p>Pris: {price} kr</p>
 					</Typography>
 				</CardContent>
 			</div>

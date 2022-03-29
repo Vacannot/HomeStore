@@ -24,27 +24,21 @@ const StyledFormControlLabel = styled((props: StyledFormControlLabelProps) => (
 
 function MyFormControlLabel(props: FormControlLabelProps) {
 	const { order } = useOrderContext();
-
 	const radioGroup = useRadioGroup();
-
 	let checked = false;
 
 	if (radioGroup) {
 		checked = radioGroup.value === props.value;
 	}
-
 	return <StyledFormControlLabel checked={checked} {...props} />;
 }
 
 export default function ShippingForm() {
-	const {  } = useOrderContext(); 
-
+	const { setShippingMethod } = useOrderContext(); 
 	const [shippingState, setShippingState] = useState('')
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
-		setShippingState(event.target.value);
-		console.log(shippingState);
+		setShippingMethod(event.target.value);
 	}
 
 	return (
@@ -63,9 +57,9 @@ export default function ShippingForm() {
 						justifyContent: 'center',
 						gap: '1rem',
 					}}>
-					<RadioGroup name='use-radio-group' defaultValue='DHL' onChange={handleChange}>
+					<RadioGroup name='use-radio-group' defaultValue='none' onChange={handleChange}>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='DHL' label='1' control={<Radio />} />
+							<MyFormControlLabel value='DHL' label='' control={<Radio />} />
 							<Paper sx={shippingButton}>
 								<h4 style={{ margin: '0' }}>Express 24h</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -75,7 +69,7 @@ export default function ShippingForm() {
 							</Paper>
 						</Box>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='Postnord' label='2' control={<Radio />} />
+							<MyFormControlLabel value='Postnord' label='' control={<Radio />} />
 							<Paper sx={shippingButton}>
 								<h4 style={{ margin: '0' }}>Standard 48h</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -85,7 +79,7 @@ export default function ShippingForm() {
 							</Paper>
 						</Box>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='Flaskpost' label='3' control={<Radio />} />
+							<MyFormControlLabel value='Flaskpost' label='' control={<Radio />} />
 							<Paper sx={shippingButton}>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 									<h4 style={{ margin: '0' }}>Långsam Flaskpost</h4>
@@ -103,7 +97,6 @@ export default function ShippingForm() {
 		</Box>
 	);
 }
-
 
 const shippingButton: CSSProperties = {
 	display: 'flex',

@@ -61,7 +61,7 @@ export default function PaymentOptionsForm() {
 					}}>
 					<RadioGroup name='use-radio-group' defaultValue='none' onChange={handleChange}>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='card' label='card' control={<Radio />}/>
+							<MyFormControlLabel value='card' label='' control={<Radio />}/>
 
 							<Paper sx={paymentOptionButton}>
 								<h4 style={{ margin: '0' }}>Direktbetalning med kort</h4>
@@ -78,7 +78,7 @@ export default function PaymentOptionsForm() {
 						)}
 
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='swish' label='swish' control={<Radio />} />
+							<MyFormControlLabel value='swish' label='' control={<Radio />} />
 							<Paper sx={paymentOptionButton}>
 								<h4 style={{ margin: '0' }}>Direktbetalning med Swish</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -92,7 +92,7 @@ export default function PaymentOptionsForm() {
 
 						</Box>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='faktura' label='faktura' control={<Radio />} />
+							<MyFormControlLabel value='faktura' label='' control={<Radio />} />
 							<Paper sx={paymentOptionButton}>
                                 <h4 style={{ margin: '0' }}>Betala med Faktura</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -123,6 +123,7 @@ export default function PaymentOptionsForm() {
 
 const ButtonStyle: CSSProperties = {
 	backgroundColor: '#BFD8D5',
+	color: '#333333',
 	marginTop: '2rem',
 	padding: '0.5rem',
 	width: '8rem',

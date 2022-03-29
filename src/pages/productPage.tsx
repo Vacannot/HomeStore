@@ -24,17 +24,9 @@ function getProductById(id: number) {
 export default function ProductPage({ product }) {
 	let { id } = useParams<"id">();
 
-//   if (!id) {
-//     return <NoMatch />;
-//   }
-	
 	let Product = getProductById(id);
 
-//   if (!Product) {
-//     return <NoMatch />;
-//   }
-
-  let name = `${Product.brand} ${Product.model} ${Product.colorway}`;
+  let name = `${Product.title} ${Product.description} ${Product.price}`;
 	
 	return (
 		<div style={ProductContainer}>
