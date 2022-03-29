@@ -5,6 +5,7 @@ import * as yup from "yup";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { useOrderContext } from "../context/OrderContext";
 
 interface UserInputFormValues {
 firstName: string;
@@ -18,7 +19,7 @@ city: string;
 }
 
 const validationSchema = yup.object({
-  firstnName: yup.string().required("Please enter first name").min(2),
+  firstName: yup.string().required("Please enter first name").min(2),
   lastName: yup.string().required("Please enter last name").min(2),
   email: yup
     .string()
@@ -32,12 +33,14 @@ const validationSchema = yup.object({
 });
 
 const UserInputForm = () => {
+  const {createNewOrder} = useOrderContext();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
       email: "",
-      number: "",
+      number: 0,
       address: "",
       zipcode: "",
       city: "",
@@ -46,6 +49,8 @@ const UserInputForm = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      console.log(values);
+      createNewOrder(values);
     },
   });
 
@@ -53,11 +58,11 @@ const UserInputForm = () => {
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
         <div>
-		<div 
-			style={{
-			display: 'flex',
-			flexDirection: 'row',
-			}}>
+        <div 
+          style={{
+          display: 'flex',
+          flexDirection: 'row',
+          }}>
           <TextField
             style={textFieldStyle}
             id="firstName"
@@ -91,7 +96,7 @@ const UserInputForm = () => {
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
           />
-		  </div>
+		   </div>
 		  	<div 
 			  style={{
 			  display: 'flex',
@@ -160,6 +165,9 @@ const UserInputForm = () => {
           />
         </div>
 		    </div>
+        <div style={ButtonDiv}>
+        <Button sx={SubmitButton} type="submit" variant="contained">Fortsätt</Button>
+        </div>
       </form>
     </div>
   );
@@ -175,6 +183,17 @@ const formDiv: CSSProperties = {
   display: "flex",
   justifyContent: "center",
 };
+
+const ButtonDiv: CSSProperties = {
+  display: 'flex',
+  justifyContent: 'right',
+}
+
+const SubmitButton: CSSProperties = {
+  display: 'flex',
+  backgroundColor: '#BFD8D5',
+  width: '10rem',
+}
 
 
 export default UserInputForm;

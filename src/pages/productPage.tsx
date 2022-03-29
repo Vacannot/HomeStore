@@ -1,20 +1,47 @@
 import React from 'react';
+import {
+//   Routes,
+  Route,
+//   Outlet,
+  Link,
+//   useSearchParams,
+  useParams,
+} from "react-router-dom";
+import type { LinkProps } from "react-router-dom";
 import { CSSProperties } from 'react';
 import ProductCard from '../components/ProductCard';
 import { Typography } from '@mui/material';
-import { IProduct, product } from '../mockedProducts';
+import { IProduct, products } from '../mockedProducts';
 
 interface Props {
 	product: IProduct;
 }
 
-export default function ProductPage(props: Props) {
+function getProductById(id: number) {
+  return products.find((product) => product.id === id);
+}
+
+export default function ProductPage({ product }) {
+	let { id } = useParams<"id">();
+
+//   if (!id) {
+//     return <NoMatch />;
+//   }
+	
+	let Product = getProductById(id);
+
+//   if (!Product) {
+//     return <NoMatch />;
+//   }
+
+  let name = `${Product.brand} ${Product.model} ${Product.colorway}`;
+	
 	return (
 		<div style={ProductContainer}>
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
 				Produkt detaljer
 			</Typography>
-			<ProductCard product={props.product.id} />
+			<ProductCard product={product.id} />
 		</div>
 	);
 }
