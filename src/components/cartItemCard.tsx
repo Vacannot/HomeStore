@@ -25,7 +25,7 @@ function CartItemCard() {
 						Produkt Title
 					</Typography>
 					<Typography variant='body2' color='GrayText.secondary'>
-						Pris: {price} kr
+						<p>Pris: {price} kr</p>
 					</Typography>
 				</CardContent>
 			</div>
