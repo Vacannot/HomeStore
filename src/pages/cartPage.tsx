@@ -7,13 +7,15 @@ import { CartContext } from '../context/CartContext';
 function CartPage() {
 	let { cart } = useContext(CartContext);
 
+
 	return (
 		<div style={rootStyle}>
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
 				Varukorg
 			</Typography>
+		
 			{cart.map((cartItem) => {
-				return <CartItemCard key={cartItem.product.id} />;
+				return <CartItemCard key={cartItem.product.id} product={cartItem}/>;
 			})}
 			<div style={paymentDivStyle}>
 				<Typography variant='h6'>Total: Kr</Typography>

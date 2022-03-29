@@ -1,6 +1,7 @@
 import React, { createContext, FC, useContext, useState } from 'react';
+import CartItemCard from '../components/CartItemCard';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
-import { IProduct } from '../mockedProducts';
+import { IProduct, products } from '../mockedProducts';
 import { IShippingProvider } from '../shippigProvider';
 
 export interface ICartItem {
@@ -93,7 +94,21 @@ const CartProvider: FC = (props) => {
     }
     setCart(cartToSave);
   }
-  
+
+/**
+ * 
+ * @param product 
+ * 
+ */
+  const addQuantity = (product: ICartItem) => {
+      let quantityToSave = [...cart];
+      const foundIndex = quantityToSave.findIndex((cartItem) => cartItem.product.id === product.product.id);
+      if (foundIndex >= 0) {
+        quantityToSave[foundIndex].quantity++;
+      }
+      setCart(quantityToSave);
+      console.log(quantityToSave);
+  }
 
     /**
      *
@@ -122,21 +137,6 @@ const CartProvider: FC = (props) => {
     /**
      * 
      * @param product 
-     * @returns quantity of one product type in cart
-     */
-    const addQuantity = (cartItem: ICartItem) => {
-      const updatedQuantity = cart.map((item) => {
-        if (item.product.id === cartItem.product.id) {
-          return {...item, quantity: item.quantity++};
-        };
-        return item;
-      });
-      setCart(updatedQuantity);
-    };
-
-    /**
-     * 
-     * @param product 
      * reduced quantity of product type in cart
      */
     const reduceQuantity = (cartItem: ICartItem) => {
@@ -148,6 +148,7 @@ const CartProvider: FC = (props) => {
         return item;
       });
       setCart(updatedQuantity);
+      console.log(updatedQuantity);
     };
 
     /**
