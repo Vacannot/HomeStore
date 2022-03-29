@@ -26,7 +26,7 @@ export default function ProductPage({ product }) {
 
 	let Product = getProductById(id);
 
-  let name = `${Product.title} ${Product.description} ${Product.price}`;
+//   let name = `${Product.title} ${Product.description} ${Product.price}`;
 	
 	return (
 		<div style={ProductContainer}>
