@@ -14,11 +14,13 @@ function App() {
 		<StrictMode>
 			<BrowserRouter>
 				<CartProvider>
-				<OrderContextProvider>
-					<ThemeProvider>
+				
+					{/* <ThemeProvider> */}
+						<OrderContextProvider>
 						<Layout />
-					</ThemeProvider>
-				</OrderContextProvider>
+						</OrderContextProvider>
+					{/* </ThemeProvider> */}
+				
 				</CartProvider>
 			</BrowserRouter>
 		</StrictMode>

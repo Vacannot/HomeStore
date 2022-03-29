@@ -58,11 +58,11 @@ const UserInputForm = () => {
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
         <div>
-		<div 
-			style={{
-			display: 'flex',
-			flexDirection: 'row',
-			}}>
+        <div 
+          style={{
+          display: 'flex',
+          flexDirection: 'row',
+          }}>
           <TextField
             style={textFieldStyle}
             id="firstName"
@@ -96,7 +96,7 @@ const UserInputForm = () => {
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
           />
-		  </div>
+		   </div>
 		  	<div 
 			  style={{
 			  display: 'flex',
@@ -165,7 +165,9 @@ const UserInputForm = () => {
           />
         </div>
 		    </div>
-        <Button type="submit">Submit</Button>
+        <div style={ButtonDiv}>
+        <Button sx={SubmitButton} type="submit" variant="contained">Fortsätt</Button>
+        </div>
       </form>
     </div>
   );
@@ -181,6 +183,17 @@ const formDiv: CSSProperties = {
   display: "flex",
   justifyContent: "center",
 };
+
+const ButtonDiv: CSSProperties = {
+  display: 'flex',
+  justifyContent: 'right',
+}
+
+const SubmitButton: CSSProperties = {
+  display: 'flex',
+  backgroundColor: '#BFD8D5',
+  width: '10rem',
+}
 
 
 export default UserInputForm;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { CSSProperties } from '@mui/styled-engine';
@@ -8,6 +8,7 @@ import FormControlLabel, { FormControlLabelProps } from '@mui/material/FormContr
 import Radio from '@mui/material/Radio';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import { useOrderContext } from '../context/OrderContext';
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
 	checked: boolean;
@@ -22,6 +23,8 @@ const StyledFormControlLabel = styled((props: StyledFormControlLabelProps) => (
 }));
 
 function MyFormControlLabel(props: FormControlLabelProps) {
+	const { order } = useOrderContext();
+
 	const radioGroup = useRadioGroup();
 
 	let checked = false;
@@ -34,6 +37,16 @@ function MyFormControlLabel(props: FormControlLabelProps) {
 }
 
 export default function ShippingForm() {
+	const {  } = useOrderContext(); 
+
+	const [shippingState, setShippingState] = useState('')
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+		setShippingState(event.target.value);
+		console.log(shippingState);
+	}
+
 	return (
 		<Box
 			sx={{
@@ -50,9 +63,9 @@ export default function ShippingForm() {
 						justifyContent: 'center',
 						gap: '1rem',
 					}}>
-					<RadioGroup name='use-radio-group' defaultValue='first'>
+					<RadioGroup name='use-radio-group' defaultValue='DHL' onChange={handleChange}>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='first' label='1' control={<Radio />} />
+							<MyFormControlLabel value='DHL' label='1' control={<Radio />} />
 							<Paper sx={shippingButton}>
 								<h4 style={{ margin: '0' }}>Express 24h</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -62,7 +75,7 @@ export default function ShippingForm() {
 							</Paper>
 						</Box>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='second' label='2' control={<Radio />} />
+							<MyFormControlLabel value='Postnord' label='2' control={<Radio />} />
 							<Paper sx={shippingButton}>
 								<h4 style={{ margin: '0' }}>Standard 48h</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -72,14 +85,14 @@ export default function ShippingForm() {
 							</Paper>
 						</Box>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='third' label='3' control={<Radio />} />
+							<MyFormControlLabel value='Flaskpost' label='3' control={<Radio />} />
 							<Paper sx={shippingButton}>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
-									<h4 style={{ margin: '0' }}>Click and Collect</h4>
-									<div>3-5 arbetsdagar</div>
+									<h4 style={{ margin: '0' }}>Långsam Flaskpost</h4>
+									<div>3-5 månader</div>
 								</div>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
-									<h4 style={{ margin: '0' }}>Instabox</h4>
+									<h4 style={{ margin: '0' }}>Flaskpost</h4>
 									<div>Price: 0kr</div>
 								</div>
 							</Paper>

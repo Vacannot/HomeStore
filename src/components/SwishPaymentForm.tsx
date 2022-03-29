@@ -13,10 +13,11 @@ const validationSchema = yup.object({
 
 const SwishPaymentForm = () => {
   const { order } = useOrderContext();
+
   console.log(order.customer.number)
   const formik = useFormik({
     initialValues: {
-      swishNumber: order.customer.number,
+      swishNumber: order.customer.number
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {

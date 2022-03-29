@@ -25,6 +25,10 @@ interface IOrderContextValue {
     order: IOrderData,
     generateOrderId: () => number,
     createNewOrder: (customerInfo: ICustomer) => void,
+    DHL: boolean,
+    card: boolean,
+    invoice: boolean
+
 }
 
 const OrderContext = createContext<IOrderContextValue>({
@@ -45,6 +49,9 @@ const OrderContext = createContext<IOrderContextValue>({
     },
     generateOrderId: () => 0,
     createNewOrder: () => {},
+    swish: false,
+    card: false,
+    invoice: false,
 })
 
 export function useOrderContext() {
@@ -53,6 +60,11 @@ export function useOrderContext() {
 
 export const OrderContextProvider: FC = (props) => {
     const { cart, shipping } = useCart();
+
+    const [swish, setSwish] = useState(false);
+    const [card, setCard] = useState(false);
+    const [invoice, setInvoice] = useState(false);
+
     const [order, setOrder] = useState<IOrderData>({
         boughtItems: [],
         customer: {
@@ -103,8 +115,12 @@ export const OrderContextProvider: FC = (props) => {
             value={{
                 order,
                 generateOrderId,
-                createNewOrder
+                createNewOrder,
+                swish,
+                card,
+                invoice
             }}>
+                {props.children}
         </OrderContext.Provider>
     )
 }

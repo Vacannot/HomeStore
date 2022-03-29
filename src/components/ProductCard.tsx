@@ -7,17 +7,22 @@ import Typography from '@mui/material/Typography';
 import AddToCartSnackbar from './AddToCartSnackbar';
 import AddToFavoritesSnackbar from './AddToFavoritesSnackbar';
 import { Link } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
+import { IProduct } from '../mockedProducts';
+// import { useNavigation } from 'react-router-dom';
+
+type Props = {
+   product: IProduct;
+};
 
 export default function ProductCard({ product }) {
-	// const history = useHistory();
+	// const navigation = useNavigation();
 	// const goToProduct = () => {
-	// 	history.push('/product/' + product.id);
+	// 	navigation('/product/' + product.id);
 	// };
 
 	return (
 		<Card sx={CardStyle}>
-			<Link to={'/product' + product.id} style={LinkStyle}>
+			<Link to={'/produkt' + product.id} style={LinkStyle}>
 				<CardMedia
 					sx={ImageStyle}
 					component='img'
