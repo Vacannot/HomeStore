@@ -192,7 +192,7 @@ const ButtonDiv: CSSProperties = {
 const SubmitButton: CSSProperties = {
   display: 'flex',
   backgroundColor: '#BFD8D5',
-  width: '10rem',
+  width: '8rem',
 }
 
 
