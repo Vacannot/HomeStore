@@ -1,4 +1,4 @@
-import React, { createContext, FC, useContext, useState } from 'react';
+import React, { createContext, FC, useContext, useEffect, useState } from 'react';
 import CartItemCard from '../components/CartItemCard';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { IProduct, products } from '../mockedProducts';
@@ -14,7 +14,7 @@ interface ICartContextValue {
   shipping: IShippingProvider;
   // paymentMethod: string,
   addProductToCart: (product: IProduct) => void;
-  removeProductFromCart: (product: IProduct) => void;
+  removeProductFromCart: (product: ICartItem) => void;
   emptyCart: () => void;
   getSumPriceProducts: (product: ICartItem) => number;
   getTotalSum: (cartItem: ICartItem[]) => number;
@@ -49,6 +49,7 @@ export function useCart() {
 	return useContext(CartContext);
 }
 
+
 const CartProvider: FC = (props) => {
   const [cart, setCart] = useLocalStorageState<ICartItem[]>([], 'cart');
   const vat = 0.25;
@@ -70,11 +71,6 @@ const CartProvider: FC = (props) => {
       cartToSave.push({ product, quantity: 1 });
     }
     setCart(cartToSave);
-	console.log(cartToSave);
-	setTimeout(() => {
-		console.log("CART", cart);
-		
-	}, 1000);
   };
 
   /**
@@ -83,32 +79,16 @@ const CartProvider: FC = (props) => {
    *   Makes a copy of cart and finds index number for cart item id that matches product id.
    *  When found reduce item quantity and then saves updated cart to cart
    */
-  const removeProductFromCart = (product: IProduct) => {
+  const removeProductFromCart = (product: ICartItem) => {
     let cartToSave = [...cart];
-    const foundIndex = cartToSave.findIndex((cartItem) => cartItem.product.id === product.id);
+    const foundIndex = cartToSave.findIndex((cartItem) => cartItem.product.id === product.product.id);
     if (foundIndex >= 0) {
-      cartToSave[foundIndex].quantity--;
-      // if (cartToSave[foundIndex].quantity === 0) {
-      //   cartToSave = cart.filter((cartItem) => cartItem.product.id !== product.id);
-      // }
+      cartToSave.splice(foundIndex,1);
+      console.log(cartToSave)
     }
     setCart(cartToSave);
   }
 
-/**
- * 
- * @param product 
- * 
- */
-  const addQuantity = (product: ICartItem) => {
-      let quantityToSave = [...cart];
-      const foundIndex = quantityToSave.findIndex((cartItem) => cartItem.product.id === product.product.id);
-      if (foundIndex >= 0) {
-        quantityToSave[foundIndex].quantity++;
-      }
-      setCart(quantityToSave);
-      console.log(quantityToSave);
-  }
 
     /**
      *
@@ -133,6 +113,22 @@ const CartProvider: FC = (props) => {
       }
       return sum;
     };
+
+    /**
+     * 
+     * @param product 
+     * Makes a copy of cart. Founds the index number of the cart item that has a
+     * matching id with the product sent in from cart item card. If index is found adds 1 to products quantity
+     */
+    const addQuantity = (product: ICartItem) => {
+      let quantityToSave = [...cart];
+      const foundIndex = quantityToSave.findIndex((cartItem) => cartItem.product.id === product.product.id);
+    if (foundIndex >= 0) {
+      quantityToSave[foundIndex].quantity++;
+    }
+    setCart(quantityToSave);
+    console.log(quantityToSave);
+    }
 
     /**
      * 
