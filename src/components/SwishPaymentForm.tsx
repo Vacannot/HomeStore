@@ -14,7 +14,7 @@ const validationSchema = yup.object({
 const SwishPaymentForm = () => {
   const { order } = useOrderContext();
 
-  console.log(order.customer.number)
+
   const formik = useFormik({
     initialValues: {
       swishNumber: order.customer.number
@@ -25,12 +25,11 @@ const SwishPaymentForm = () => {
     },
   });
 
-  useEffect(() => {
-    console.log(order)
-  }, [order])
+//   // useEffect(() => {
+// /*   //   // console.log( */order)
+//   // }, [order])
 
   return (
-
   
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
@@ -39,8 +38,8 @@ const SwishPaymentForm = () => {
 			display: 'flex',
 			flexDirection: 'row',
 			}}>
-            <Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-				<h3>Swish Number</h3>
+          <Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+      	Swish Number
 			</Typography>
           <TextField
             style={textFieldStyle}

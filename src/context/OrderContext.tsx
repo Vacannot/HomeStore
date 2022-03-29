@@ -2,7 +2,6 @@ import React, { createContext, FC, useContext, useState } from 'react';
 import { ICartItem, useCart } from './CartContext';
 import { IShippingProvider } from '../shippigProvider';
 
-
 interface ICustomer {
     firstName: string,
     lastName: string,
@@ -25,10 +24,7 @@ interface IOrderContextValue {
     order: IOrderData,
     generateOrderId: () => number,
     createNewOrder: (customerInfo: ICustomer) => void,
-    DHL: boolean,
-    card: boolean,
-    invoice: boolean
-
+    setShippingMethod: (shippinginfo: string) => any
 }
 
 const OrderContext = createContext<IOrderContextValue>({
@@ -49,9 +45,7 @@ const OrderContext = createContext<IOrderContextValue>({
     },
     generateOrderId: () => 0,
     createNewOrder: () => {},
-    swish: false,
-    card: false,
-    invoice: false,
+    setShippingMethod: () => '',
 })
 
 export function useOrderContext() {
@@ -60,11 +54,6 @@ export function useOrderContext() {
 
 export const OrderContextProvider: FC = (props) => {
     const { cart, shipping } = useCart();
-
-    const [swish, setSwish] = useState(false);
-    const [card, setCard] = useState(false);
-    const [invoice, setInvoice] = useState(false);
-
     const [order, setOrder] = useState<IOrderData>({
         boughtItems: [],
         customer: {
@@ -80,6 +69,11 @@ export const OrderContextProvider: FC = (props) => {
         paymentMethod: '',
         shippingMethod: ''
     });
+
+    const setShippingMethod = (shippingInfo: string) => {
+        setOrder({...order, shippingMethod: shippingInfo});
+        return 
+    }
 
     const generateOrderId = () => {
         const maxNumber = 100000;
@@ -103,11 +97,11 @@ export const OrderContextProvider: FC = (props) => {
          let updatedOrder: IOrderData = {
                  boughtItems: boughtItems,
                  customer: customer,
-                 paymentMethod: '',
-                 shippingMethod: '',
+                 paymentMethod: order.paymentMethod,
+                 shippingMethod: order.shippingMethod,
          }
          setOrder(updatedOrder);
-         console.log(updatedOrder);
+        
     }
 
     return (
@@ -116,9 +110,7 @@ export const OrderContextProvider: FC = (props) => {
                 order,
                 generateOrderId,
                 createNewOrder,
-                swish,
-                card,
-                invoice
+                setShippingMethod
             }}>
                 {props.children}
         </OrderContext.Provider>
