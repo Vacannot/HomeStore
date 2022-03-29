@@ -29,10 +29,10 @@ function CartItemCard({product}: Props) {
 				<CardMedia sx={CardMediaStyle} component='img' image={product.product.image} alt='placeholder' />
 				<CardContent>
 					<Typography gutterBottom variant='body1' component='div'>
-						{product.title}
+						{product.product.title}
 					</Typography>
 					<Typography variant='body2' color='GrayText.secondary'>
-						{product.price} kr
+						{product.product.price} kr
 					</Typography>
 				</CardContent>
 			</div>
