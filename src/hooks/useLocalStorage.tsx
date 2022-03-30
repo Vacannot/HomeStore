@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
 export function useLocalStorageState<S>(defaultState: S, key: string) {
   const preparedState = localStorage[key]
     ? (JSON.parse(localStorage[key]) as S)
@@ -15,4 +14,3 @@ export function useLocalStorageState<S>(defaultState: S, key: string) {
   return [state, setState] as const;
 }
 
-// import { useEffect, useState } from "react";
