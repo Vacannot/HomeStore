@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { CSSProperties } from "react";
 import CheckoutAccordion from '../components/CheckoutAccordion';
 import { Typography } from '@mui/material';
+
 // import CartPage from './cartPage';
 
 const CheckoutPage = () => {
@@ -29,9 +30,12 @@ const CheckoutPage = () => {
 					width: '70%',
 				}}>
 				<CheckoutAccordion />
+
 			</div>
 		</div>
 	);
 };
+
+
 
 export default CheckoutPage;

@@ -9,7 +9,7 @@ export interface ICartItem {
 	quantity: number;
 }
 
-interface ICartContextValue {
+export interface ICartContextValue {
   cart: ICartItem[];
   shipping: IShippingProvider;
   // paymentMethod: string,
@@ -88,7 +88,6 @@ const CartProvider: FC = (props) => {
     }
     setCart(cartToSave);
   }
-
 
     /**
      *
