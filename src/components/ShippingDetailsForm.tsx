@@ -9,6 +9,7 @@ import { useCart } from '../context/CartContext'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+import { useOrderContext } from "../context/OrderContext";
 
 interface ShippingDetailsFormValues {
 firstName: string;
@@ -44,6 +45,14 @@ function ShippingDetailsForm () {
     const handleOnClickClean = () => {
         emptyCart();
     }
+
+    const { order } = useOrderContext();
+
+    const { getTotalSumExShip } = useCart();
+    const priceOfProducts = getTotalSumExShip(order.boughtItems);
+    const priceShipping = order.shippingPrice;
+
+    const priceTotal = priceOfProducts + priceShipping;
 
 
   const formik = useFormik({
@@ -184,7 +193,7 @@ function ShippingDetailsForm () {
 		    </div>
       </form>
         <Link to={"/order"}>
-          <Button sx={SubmitButton} type="submit" variant="contained" onClick={handleOnClickClean}>Slutför Köp</Button>
+          <Button sx={SubmitButton} type="submit" variant="contained" onClick={handleOnClickClean}>{priceTotal} Slutför Köp</Button>
         </Link>
       </div>
     </div>
