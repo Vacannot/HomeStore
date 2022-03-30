@@ -1,5 +1,5 @@
 import React, { createContext, FC, useContext, useEffect, useState } from 'react';
-import CartItemCard from '../components/cartItemCard';
+import CartItemCard from '../components/CartItemCard';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { IProduct, products } from '../mockedProducts';
 import { IShippingProvider } from '../shippigProvider';
