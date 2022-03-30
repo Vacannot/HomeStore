@@ -6,26 +6,20 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import QuantityCounter from './QuantityCounter';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { products, IProduct } from '../mockedProducts';
-import { ICartItem, useCart } from '../context/CartContext'
+import { ICartItem } from '../context/CartContext'
 
 interface Props {
 	product: ICartItem
 }
 
-function CartItemCard({product}: Props) {
+export default function ProductDetailedCard({product}: Props) {
 	const [price, setPrice] = useState(123);
 	const theme = useTheme();
-	const { removeProductFromCart } = useCart();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
 	
-	const handleOnClickDelete = () => {
-		removeProductFromCart(product);
-	}
-
 	return (
 		<Card sx={rootCardStyle}>
 			<div style={{ display: 'flex' }}>
@@ -39,12 +33,8 @@ function CartItemCard({product}: Props) {
 					</Typography>
 				</CardContent>
 			</div>
-
 			<CardActions sx={CardActionsStyle}>
 				<QuantityCounter product={product}/>
-				<IconButton sx={{ backgroundColor: '#DB7575' }} aria-label='remove item from cart' onClick={handleOnClickDelete}>
-					<DeleteIcon/>
-				</IconButton>
 			</CardActions>
 		</Card>
 	);
@@ -66,5 +56,3 @@ const CardMediaStyle: CSSProperties = {
 	height: '100%',
 	width: '50%',
 };
-
-export default CartItemCard;

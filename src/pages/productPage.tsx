@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import type { LinkProps } from "react-router-dom";
 import { CSSProperties } from 'react';
-import ProductCard from '../components/ProductCard';
+import ProductDetailedCard from '../components/ProductCard';
 import { Typography } from '@mui/material';
 import { IProduct, products } from '../mockedProducts';
 
@@ -33,7 +33,7 @@ export default function ProductPage({ product }) {
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
 				Produkt detaljer
 			</Typography>
-			<ProductCard product={product.id} />
+			<ProductDetailedCard product={product.id} />
 		</div>
 	);
 }
