@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import CardPaymentForm from './CardPaymentForm';
 import SwishPaymentForm from './SwishPaymentForm';
 import FakturaPaymentForm from './FakturaPaymentForm';
+import { useOrderContext } from '../context/OrderContext';
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
 	checked: boolean;
@@ -36,11 +37,11 @@ function MyFormControlLabel(props: FormControlLabelProps) {
 
 
 export default function PaymentOptionsForm() {
-
+	const { setPaymentMethod } = useOrderContext();
 	const [paymentOptionState, setPaymentOptionState] = useState('')
-
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setPaymentOptionState(event.target.value)
+		setPaymentMethod(event.target.value);
 	}
 
 	return (
@@ -67,7 +68,6 @@ export default function PaymentOptionsForm() {
 								<h4 style={{ margin: '0' }}>Direktbetalning med kort</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 									<h4 style={{ margin: '0' }}>Visa, MasterCard, etc.</h4>
-									<div>Pris: 0kr</div>
 								</div>
 							</Paper>
 							
@@ -82,7 +82,6 @@ export default function PaymentOptionsForm() {
 							<Paper sx={paymentOptionButton}>
 								<h4 style={{ margin: '0' }}>Direktbetalning med Swish</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
-									<div>Pris: 0kr</div>
 								</div>
 							</Paper>
 
