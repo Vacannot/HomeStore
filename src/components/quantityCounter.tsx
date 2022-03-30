@@ -3,39 +3,31 @@ import { Typography } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { useState, CSSProperties } from 'react';
-import { ICartItem, useCart } from '../context/CartContext';
 
-interface Props {
-    product: ICartItem
+
+
+function QuantityCounter() {
+    const [quantity, setQuantity] = useState(0);
+
+    return(
+        <div style={iconsDivStyle}>
+            <RemoveCircleIcon onClick={() => 
+                quantity === 0 ? setQuantity(0) : setQuantity(quantity - 1)}
+            />
+            <Typography>Antal {quantity}</Typography>
+            <AddCircleIcon onClick={() => setQuantity(quantity + 1)}/>
+        </div>
+        
+    )
 }
 
-function QuantityCounter({product}: Props) {
-    const { addQuantity, reduceQuantity } = useCart();
+const iconsDivStyle: CSSProperties = {
+    display: "flex", 
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "8rem",
 
-    const handleOnClickReduce = () => {
-        reduceQuantity(product) 
-    }
-
-    const handleOnClickAdd = () => {
-        addQuantity(product);
-    }
-
-        return(
-            <div style={iconsDivStyle}>
-                <RemoveCircleIcon onClick={handleOnClickReduce}/>
-                <Typography> Antal: {product.quantity}</Typography>
-                <AddCircleIcon onClick={handleOnClickAdd}/>
-            </div>
-        )
 }
-
-    const iconsDivStyle: CSSProperties = {
-        display: "flex", 
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: "8rem",
-    }
-
 
 export default QuantityCounter;
 
