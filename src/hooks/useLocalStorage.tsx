@@ -6,7 +6,6 @@ export function useLocalStorageState<S>(defaultState: S, key: string) {
     : defaultState;
   const [state, setState] = useState(preparedState);
 
-  // Saves the state to LS
   useEffect(() => {
     localStorage[key] = JSON.stringify(state);
   }, [state, key]);

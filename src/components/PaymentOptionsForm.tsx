@@ -95,7 +95,7 @@ export default function PaymentOptionsForm() {
 							<Paper sx={paymentOptionButton}>
                                 <h4 style={{ margin: '0' }}>Betala med Faktura</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
-									<div>Pris: 39kr</div>
+									{/* <div>Pris: 39kr</div> */}
 								</div>
 							</Paper>
 
