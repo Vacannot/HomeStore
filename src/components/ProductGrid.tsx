@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ProductCard from './ProductCard';
-import { product } from '../mockedProducts';
+import { products } from '../mockedProducts';
 
 const Item = styled(Paper)(({ theme }) => ({
 	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -19,8 +19,8 @@ export default function ProductGrid() {
 	return (
 		<div style={container}>
 			<Box sx={{ flexGrow: 1 }}>
-				<Grid container spacing={{ xs: 1 }} columns={{ xs: 6, sm: 8, md: 12, lg: 12 }}>
-					{product.map((product, id) => (
+				<Grid container spacing={{ xs: 1.5 }} columns={{ xs: 6, sm: 8, md: 12, lg: 12 }}>
+					{products.map((product, id) => (
 						<Grid key={id} style={gridItem} item xs={6} sm={4} md={4} lg={3}>
 							<ProductCard product={product} />
 						</Grid>
@@ -36,7 +36,7 @@ const container: CSSProperties = {
 	flexGrow: 1,
 	flexBasis: 0,
 	maxWidth: '80rem',
-	marginBlockStart: '3rem',
+	marginBlockStart: '1rem',
 };
 
 const gridItem: CSSProperties = {
@@ -44,5 +44,4 @@ const gridItem: CSSProperties = {
 	justifyContent: 'center',
 	alignItems: 'center',
 	flexDirection: 'column',
-	padding: '1rem',
 };

@@ -64,73 +64,50 @@ export default function CheckoutAccordion() {
 			}}>
 			<Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
 				<AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-						<h3>Mina uppgifter</h3>
+					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
+						Mina uppgifter
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					<Typography>
+				
 						<UserInputForm />
-					</Typography>
+		
 				</AccordionDetails>
 			</Accordion>
 			<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
 				<AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
-					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-						<h3>Betalningsalternativ</h3>
+					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
+						Betalningsalternativ
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					<Typography>
-{/* 						<Accordion expanded={expanded === 'panelPayment'} onChange={handleChange('panelPayment')}>
-							<AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
-								<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-									<h3>Betalningsalternativ</h3>
-								</Typography>
-							</AccordionSummary>
-						</Accordion> */}
-
+					
 						<PaymentOptionsForm />
-					</Typography>
-				</AccordionDetails>
-			</Accordion>
-			<Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-						<h3>Betalning</h3>
-					</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-					<Typography>
-
-						<CardPaymentForm />
-						<SwishPaymentForm />
-						<FakturaPaymentForm />
-					</Typography>
+					
 				</AccordionDetails>
 			</Accordion>
 			<Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-						<h3>Fraktalternativ</h3>
+					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
+						Fraktalternativ
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					<Typography>
+				
 						<ShippingForm />
-					</Typography>
+					
 				</AccordionDetails>
 			</Accordion>
 			<Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-						<h3>Leveransuppgifter</h3>
+					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
+						Leveransuppgifter
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					<Typography>
+				
 						<ShippingDetailsForm />
-					</Typography>
+					
 				</AccordionDetails>
 			</Accordion>
 

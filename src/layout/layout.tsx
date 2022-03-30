@@ -5,15 +5,17 @@ import Header from '../components/Header';
 import CartPage from '../pages/cartPage';
 import Footer from '../components/Footer';
 import CheckoutPage from '../pages/checkoutPage';
+import ProductPage from '../pages/productPage';
 
-function Layout() {
+export default function Layout() {
 	return (
 		<div style={rootStyle}>
 			<Header />
 			<Switch>
 				<Route path='/' exact component={StartPage} />
-				<Route path='/cartpage' component={CartPage} />
-				<Route path='/formpage' component={CheckoutPage} />
+				<Route path='/produkt/:id' component={ProductPage} />
+				<Route path='/varukorg' component={CartPage} />
+				<Route path='/kassa' component={CheckoutPage} />
 			</Switch>
 			<Footer />
 		</div>
@@ -25,5 +27,3 @@ const rootStyle: CSSProperties = {
 	display: 'flex',
 	flexDirection: 'column',
 };
-
-export default Layout;

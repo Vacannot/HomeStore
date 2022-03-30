@@ -1,18 +1,20 @@
-import React, { createContext, FC, useContext, useState} from "react";
-import { useLocalStorageState } from "../hooks/useLocalStorage";
-import { IProduct } from "../mockedProducts";
-import { IShippingProvider } from "../shippigProvider";
+import React, { createContext, FC, useContext, useEffect, useState } from 'react';
+import CartItemCard from '../components/CartItemCard';
+import { useLocalStorageState } from '../hooks/useLocalStorage';
+import { IProduct, products } from '../mockedProducts';
+import { IShippingProvider } from '../shippigProvider';
 
 export interface ICartItem {
 	product: IProduct;
-  	quantity: number;
+	quantity: number;
 }
 
 interface ICartContextValue {
   cart: ICartItem[];
   shipping: IShippingProvider;
+  // paymentMethod: string,
   addProductToCart: (product: IProduct) => void;
-  removeProductFromCart: (product: IProduct) => void;
+  removeProductFromCart: (product: ICartItem) => void;
   emptyCart: () => void;
   getSumPriceProducts: (product: ICartItem) => number;
   getTotalSum: (cartItem: ICartItem[]) => number;
@@ -30,6 +32,7 @@ export const CartContext = createContext<ICartContextValue>({
     price: 0,
     time: "",
   },
+  // paymentMethod: "",
   addProductToCart: () => {},
   removeProductFromCart: () => {},
   emptyCart: () => {},
@@ -43,12 +46,15 @@ export const CartContext = createContext<ICartContextValue>({
 });
 
 export function useCart() {
-  return useContext(CartContext);
+	return useContext(CartContext);
 }
+
 
 const CartProvider: FC = (props) => {
   const [cart, setCart] = useLocalStorageState<ICartItem[]>([], 'cart');
   const vat = 0.25;
+
+
 
  /**
   * 
@@ -65,11 +71,6 @@ const CartProvider: FC = (props) => {
       cartToSave.push({ product, quantity: 1 });
     }
     setCart(cartToSave);
-	console.log(cartToSave);
-	setTimeout(() => {
-		console.log("CART", cart);
-		
-	}, 1000);
   };
 
   /**
@@ -78,18 +79,16 @@ const CartProvider: FC = (props) => {
    *   Makes a copy of cart and finds index number for cart item id that matches product id.
    *  When found reduce item quantity and then saves updated cart to cart
    */
-  const removeProductFromCart = (product: IProduct) => {
+  const removeProductFromCart = (product: ICartItem) => {
     let cartToSave = [...cart];
-    const foundIndex = cartToSave.findIndex((cartItem) => cartItem.product.id === product.id);
+    const foundIndex = cartToSave.findIndex((cartItem) => cartItem.product.id === product.product.id);
     if (foundIndex >= 0) {
-      cartToSave[foundIndex].quantity--;
-      // if (cartToSave[foundIndex].quantity === 0) {
-      //   cartToSave = cart.filter((cartItem) => cartItem.product.id !== product.id);
-      // }
+      cartToSave.splice(foundIndex,1);
+      console.log(cartToSave)
     }
     setCart(cartToSave);
   }
-  
+
 
     /**
      *
@@ -118,17 +117,18 @@ const CartProvider: FC = (props) => {
     /**
      * 
      * @param product 
-     * @returns quantity of one product type in cart
+     * Makes a copy of cart. Founds the index number of the cart item that has a
+     * matching id with the product sent in from cart item card. If index is found adds 1 to products quantity
      */
-    const addQuantity = (cartItem: ICartItem) => {
-      const updatedQuantity = cart.map((item) => {
-        if (item.product.id === cartItem.product.id) {
-          return {...item, quantity: item.quantity++};
-        };
-        return item;
-      });
-      setCart(updatedQuantity);
-    };
+    const addQuantity = (product: ICartItem) => {
+      let quantityToSave = [...cart];
+      const foundIndex = quantityToSave.findIndex((cartItem) => cartItem.product.id === product.product.id);
+    if (foundIndex >= 0) {
+      quantityToSave[foundIndex].quantity++;
+    }
+    setCart(quantityToSave);
+    console.log(quantityToSave);
+    }
 
     /**
      * 
@@ -144,6 +144,7 @@ const CartProvider: FC = (props) => {
         return item;
       });
       setCart(updatedQuantity);
+      console.log(updatedQuantity);
     };
 
     /**
@@ -169,8 +170,6 @@ const CartProvider: FC = (props) => {
       // const orderid = require('order-id')('key');
       // const id = orderid.generate();
       return 123;
-
-
     };
 
     /**
@@ -195,6 +194,7 @@ const CartProvider: FC = (props) => {
             price: 0,
             time: "",
           },
+          // paymentMethod,
           addProductToCart,
           removeProductFromCart,
           emptyCart,

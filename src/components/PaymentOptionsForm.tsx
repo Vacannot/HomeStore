@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { CSSProperties } from '@mui/styled-engine';
@@ -8,6 +8,9 @@ import FormControlLabel, { FormControlLabelProps } from '@mui/material/FormContr
 import Radio from '@mui/material/Radio';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import CardPaymentForm from './CardPaymentForm';
+import SwishPaymentForm from './SwishPaymentForm';
+import FakturaPaymentForm from './FakturaPaymentForm';
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
 	checked: boolean;
@@ -23,17 +26,23 @@ const StyledFormControlLabel = styled((props: StyledFormControlLabelProps) => (
 
 function MyFormControlLabel(props: FormControlLabelProps) {
 	const radioGroup = useRadioGroup();
-
 	let checked = false;
-
 	if (radioGroup) {
 		checked = radioGroup.value === props.value;
 	}
-
 	return <StyledFormControlLabel checked={checked} {...props} />;
 }
 
+
+
 export default function PaymentOptionsForm() {
+
+	const [paymentOptionState, setPaymentOptionState] = useState('')
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setPaymentOptionState(event.target.value)
+	}
+
 	return (
 		<Box
 			sx={{
@@ -50,9 +59,10 @@ export default function PaymentOptionsForm() {
 						justifyContent: 'center',
 						gap: '1rem',
 					}}>
-					<RadioGroup name='use-radio-group' defaultValue='first'>
+					<RadioGroup name='use-radio-group' defaultValue='none' onChange={handleChange}>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='card' label='1' control={<Radio />} />
+							<MyFormControlLabel value='card' label='' control={<Radio />}/>
+
 							<Paper sx={paymentOptionButton}>
 								<h4 style={{ margin: '0' }}>Direktbetalning med kort</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -60,24 +70,39 @@ export default function PaymentOptionsForm() {
 									<div>Pris: 0kr</div>
 								</div>
 							</Paper>
+							
 						</Box>
+
+						{paymentOptionState === "card" && (
+							<CardPaymentForm/>
+						)}
+
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='swish' label='2' control={<Radio />} />
+							<MyFormControlLabel value='swish' label='' control={<Radio />} />
 							<Paper sx={paymentOptionButton}>
 								<h4 style={{ margin: '0' }}>Direktbetalning med Swish</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 									<div>Pris: 0kr</div>
 								</div>
 							</Paper>
+
+							{paymentOptionState === "swish" && (
+							<SwishPaymentForm/>
+						)}
+
 						</Box>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
-							<MyFormControlLabel value='faktura' label='3' control={<Radio />} />
+							<MyFormControlLabel value='faktura' label='' control={<Radio />} />
 							<Paper sx={paymentOptionButton}>
                                 <h4 style={{ margin: '0' }}>Betala med Faktura</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 									<div>Pris: 39kr</div>
 								</div>
 							</Paper>
+
+							{paymentOptionState === "faktura" && (
+							<FakturaPaymentForm/>)}
+
 						</Box>
 					</RadioGroup>
 				</div>
@@ -98,6 +123,7 @@ export default function PaymentOptionsForm() {
 
 const ButtonStyle: CSSProperties = {
 	backgroundColor: '#BFD8D5',
+	color: '#333333',
 	marginTop: '2rem',
 	padding: '0.5rem',
 	width: '8rem',

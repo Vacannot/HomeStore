@@ -1,17 +1,24 @@
 import React, { StrictMode } from "react";
 import { BrowserRouter } from "react-router-dom";
-import CartProvider, { useCart } from "./context/CartContext";
-
+import CartProvider from "./context/CartContext";
 import Layout from "./layout/layout";
+import ThemeProvider from "./context/themeContext";
+import { OrderContextProvider } from "./context/OrderContext";
+// import { useTheme } from '@mui/material';
 
 function App() {
-  const { cart } = useCart();
+  // const { theme } = useTheme();
+  // const { cart } = useCart();
 
   return (
     <StrictMode>
       <BrowserRouter>
         <CartProvider>
-          <Layout />
+          {/* <ThemeProvider> */}
+          <OrderContextProvider>
+            <Layout />
+          </OrderContextProvider>
+          {/* </ThemeProvider> */}
         </CartProvider>
       </BrowserRouter>
     </StrictMode>

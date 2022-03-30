@@ -17,7 +17,6 @@ import FormControl from '@mui/material/FormControl';
 // adress: string;
 // }
 
-
 const validationSchema = yup.object({
   cardNumber: yup.number().required("Enter a valid card, no less than 16 digits").min(16),
   cvc: yup.number().required("Enter a valid CVC").min(3),
@@ -38,9 +37,7 @@ const validationSchema = yup.object({
   .max(4, "Not a valid expiration date. Example: YY")
   .matches(/([0-9]{2})/, "Not a valid expiration date. Example: YY")
   .required("Expiration date is required"),
-
 });
-
 
 const CardPaymentForm = () => {
   const formik = useFormik({
@@ -61,12 +58,8 @@ const CardPaymentForm = () => {
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <div 
-            style={{
-            display: 'flex',
-            flexDirection: 'row',
-            }}>
-        
+        <div style={{ display: 'flex', flexDirection: 'column',}}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
             <TextField
               style={textFieldStyle}
               id="cardHolder"
@@ -78,7 +71,6 @@ const CardPaymentForm = () => {
               error={formik.touched.cardHolder && Boolean(formik.errors.cardHolder)}
               helperText={formik.touched.cardHolder && formik.errors.cardHolder}
             />
-
             <TextField
               style={textFieldStyle}
               id="cardNumber"
@@ -90,9 +82,10 @@ const CardPaymentForm = () => {
               error={formik.touched.cardNumber && Boolean(formik.errors.cardNumber)}
               helperText={formik.touched.cardNumber && formik.errors.cardNumber}
             />
-
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
             <TextField
-              style={textFieldStyle}
+              style={textFieldStyleSmall}
               id="cardMonth"
               name="cardMonth"
               label="Card Month"
@@ -102,9 +95,8 @@ const CardPaymentForm = () => {
               error={formik.touched.cardMonth && Boolean(formik.errors.cardMonth)}
               helperText={formik.touched.cardMonth && formik.errors.cardMonth}
             />
-            
             <TextField
-              style={textFieldStyle}
+              style={textFieldStyleSmall}
               id="cardYear"
               name="cardYear"
               label="Card Year"
@@ -115,7 +107,7 @@ const CardPaymentForm = () => {
               helperText={formik.touched.cardYear && formik.errors.cardYear}
             />
             <TextField
-              style={textFieldStyle}
+              style={textFieldStyleSmall}
               id="cvc"
               name="cvc"
               label="Cvc Code"
@@ -125,6 +117,7 @@ const CardPaymentForm = () => {
               error={formik.touched.cvc && Boolean(formik.errors.cvc)}
               helperText={formik.touched.cvc && formik.errors.cvc}
             />
+            </div>
 		      </div>
         </div>
       </form>
@@ -136,6 +129,12 @@ const textFieldStyle: CSSProperties = {
   margin: "1rem",
   display: "flex",
   width: "40ch",
+};
+
+const textFieldStyleSmall: CSSProperties = {
+  margin: "1rem",
+  display: "flex",
+  width: "20ch",
 };
 
 const formDiv: CSSProperties = {
