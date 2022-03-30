@@ -80,30 +80,30 @@ const OrderInfoPage = () => {
 }
 
 const ButtonStyle: CSSProperties = {
-    display: 'block',
-    backgroundColor: "#BFD8D5",
-    margin: '.5rem auto',
-    padding: "0.5rem",
-    boxShadow: "none",
+  display: "block",
+  backgroundColor: "#BFD8D5",
+  margin: ".5rem auto",
+  padding: "0.5rem",
+  boxShadow: "none",
 };
 
 const productInfoDivStyle: CSSProperties = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    border: '2px solid grey',
-    background: '#f3f3f3',
-    margin: '1rem'
+  display: "flex",
+  justifyContent: "space-between",
+  border: "2px solid grey",
+  background: "#f3f3f3",
+  margin: "1rem",
 };
 
 const priceInfoStyle: CSSProperties = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    background: 'grey',
-    margin: '0 1rem',
+  display: "flex",
+  justifyContent: "space-between",
+  background: "grey",
+  margin: "0 1rem",
 };
 
 const boldFont: CSSProperties = {
-    fontWeight: 'bold',
-}
+  fontWeight: "bold",
+};
 
 export default OrderInfoPage;
