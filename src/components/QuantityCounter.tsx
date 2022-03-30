@@ -3,32 +3,21 @@ import { Typography } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { useState, CSSProperties } from 'react';
-import { ICartItem, useCart } from '../context/CartContext';
 
-interface Props {
-    product: ICartItem
-}
 
-function QuantityCounter({product}: Props) {
-    const [UIquantity, setUIQuantity] = useState(product.quantity);
-    const { addQuantity, reduceQuantity } = useCart();
 
-    const handleOnClickReduce = () => {
-        UIquantity  === 1 ? setUIQuantity(1) : setUIQuantity(UIquantity - 1);
-        reduceQuantity(product) 
-    }
-
-    const handleOnClickAdd = () => {
-        setUIQuantity(UIquantity + 1);
-        addQuantity(product);
-    }
+function QuantityCounter() {
+    const [quantity, setQuantity] = useState(0);
 
     return(
         <div style={iconsDivStyle}>
-            <RemoveCircleIcon onClick={handleOnClickReduce}/>
-            <Typography> Antal: {product.quantity}</Typography>
-            <AddCircleIcon onClick={handleOnClickAdd}/>
+            <RemoveCircleIcon onClick={() => 
+                quantity === 0 ? setQuantity(0) : setQuantity(quantity - 1)}
+            />
+            <Typography>Antal {quantity}</Typography>
+            <AddCircleIcon onClick={() => setQuantity(quantity + 1)}/>
         </div>
+        
     )
 }
 
