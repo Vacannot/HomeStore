@@ -10,35 +10,32 @@ interface Props {
 }
 
 function QuantityCounter({product}: Props) {
-    const [UIquantity, setUIQuantity] = useState(product.quantity);
     const { addQuantity, reduceQuantity } = useCart();
 
     const handleOnClickReduce = () => {
-        UIquantity  === 1 ? setUIQuantity(1) : setUIQuantity(UIquantity - 1);
         reduceQuantity(product) 
     }
 
     const handleOnClickAdd = () => {
-        setUIQuantity(UIquantity + 1);
         addQuantity(product);
     }
 
-    return(
-        <div style={iconsDivStyle}>
-            <RemoveCircleIcon onClick={handleOnClickReduce}/>
-            <Typography> Antal: {product.quantity}</Typography>
-            <AddCircleIcon onClick={handleOnClickAdd}/>
-        </div>
-    )
+        return(
+            <div style={iconsDivStyle}>
+                <RemoveCircleIcon onClick={handleOnClickReduce}/>
+                <Typography> Antal: {product.quantity}</Typography>
+                <AddCircleIcon onClick={handleOnClickAdd}/>
+            </div>
+        )
 }
 
-const iconsDivStyle: CSSProperties = {
-    display: "flex", 
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "8rem",
+    const iconsDivStyle: CSSProperties = {
+        display: "flex", 
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "8rem",
+    }
 
-}
 
 export default QuantityCounter;
 
