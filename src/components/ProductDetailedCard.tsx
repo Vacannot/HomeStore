@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import QuantityCounter from './QuantityCounter';
+import QuantityCounter from './quantityCounter';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { products, IProduct } from '../mockedProducts';
