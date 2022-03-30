@@ -5,35 +5,45 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import image from '../assets/furniture.jpeg';
 import QuantityCounter from './QuantityCounter';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { products, IProduct } from '../mockedProducts';
+import { ICartItem, useCart } from '../context/CartContext'
 
-function CartItemCard() {
+interface Props {
+	product: ICartItem
+}
+
+function CartItemCard({product}: Props) {
 	const [price, setPrice] = useState(123);
 	const theme = useTheme();
+	const { removeProductFromCart } = useCart();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
+	
+	const handleOnClickDelete = () => {
+		removeProductFromCart(product);
+	}
 
 	return (
 		<Card sx={rootCardStyle}>
 			<div style={{ display: 'flex' }}>
-				<CardMedia sx={CardMediaStyle} component='img' image={image} alt='placeholder' />
+				<CardMedia sx={CardMediaStyle} component='img' image={product.product.image} alt='placeholder' />
 				<CardContent>
 					<Typography gutterBottom variant='body1' component='div'>
-						Produkt Title
+						{product.product.title}
 					</Typography>
 					<Typography variant='body2' color='GrayText.secondary'>
-						<p>Pris: {price} kr</p>
+						{product.product.price} kr
 					</Typography>
 				</CardContent>
 			</div>
 
 			<CardActions sx={CardActionsStyle}>
-				<QuantityCounter />
-				<IconButton sx={{ backgroundColor: '#DB7575' }} aria-label='remove item from cart'>
-					<DeleteIcon />
+				<QuantityCounter product={product}/>
+				<IconButton sx={{ backgroundColor: '#DB7575' }} aria-label='remove item from cart' onClick={handleOnClickDelete}>
+					<DeleteIcon/>
 				</IconButton>
 			</CardActions>
 		</Card>
