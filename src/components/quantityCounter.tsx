@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Typography } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-import { useState, CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { ICartItem, useCart } from '../context/CartContext';
 
 interface Props {
@@ -10,16 +10,13 @@ interface Props {
 }
 
 function QuantityCounter({product}: Props) {
-    const [UIquantity, setUIQuantity] = useState(product.quantity);
     const { addQuantity, reduceQuantity } = useCart();
 
     const handleOnClickReduce = () => {
-        UIquantity  === 1 ? setUIQuantity(1) : setUIQuantity(UIquantity - 1);
-        reduceQuantity(product) 
+        reduceQuantity(product)
     }
 
     const handleOnClickAdd = () => {
-        setUIQuantity(UIquantity + 1);
         addQuantity(product);
     }
 
@@ -37,7 +34,6 @@ const iconsDivStyle: CSSProperties = {
     flexDirection: "row",
     justifyContent: "space-between",
     width: "8rem",
-
 }
 
 export default QuantityCounter;

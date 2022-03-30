@@ -5,11 +5,11 @@ import * as yup from "yup";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { useCart } from '../context/CartContext'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { useOrderContext } from "../context/OrderContext";
+import { useCart } from '../context/CartContext'
 
 interface ShippingDetailsFormValues {
 firstName: string;
@@ -39,20 +39,39 @@ const validationSchema = yup.object({
 function ShippingDetailsForm () {
 
     const theme = useTheme();
-    const { emptyCart } = useCart();
     const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
+
+    const { emptyCart } = useCart();
+
     
     const handleOnClickClean = () => {
+        console.log("yo we waiting")
         emptyCart();
+        alert("Köp genomfört")
     }
+
+    const clean = () => {
+      console.log("started waiting")
+      delay(1000).then(() => handleOnClickClean());
+    }
+
+
+    const delay = time =>
+    new Promise(resolve => {
+    setTimeout(resolve, time);
+  });
+
+
+
+
 
     const { order } = useOrderContext();
 
     const { getTotalSumExShip } = useCart();
     const priceOfProducts = getTotalSumExShip(order.boughtItems);
-    const priceShipping = order.shippingPrice;
 
-    const priceTotal = priceOfProducts + priceShipping;
+    const priceTotal = priceOfProducts;
 
 
   const formik = useFormik({
@@ -193,7 +212,7 @@ function ShippingDetailsForm () {
 		    </div>
       </form>
         <Link to={"/order"}>
-          <Button sx={SubmitButton} type="submit" variant="contained" onClick={handleOnClickClean}>{priceTotal} Slutför Köp</Button>
+          <Button sx={SubmitButton} type="submit" variant="contained" onClick={clean}>{priceTotal} Slutför Köp</Button>
         </Link>
       </div>
     </div>
