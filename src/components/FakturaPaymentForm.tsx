@@ -4,18 +4,18 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const FakturaPaymentForm = () => {
-
   return (
     <div style={formDiv}>
-		<div 
-			style={{
-			display: 'flex',
-			flexDirection: 'row',
-			}}>
-            <Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-				<h3>Faktura kommer att skickas till din adress</h3>
-			</Typography>
-        </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        <Typography sx={{ display: "flex", justifyContent: "start" }}>
+          Faktura kommer att skickas till din adress
+        </Typography>
+      </div>
     </div>
   );
 };
