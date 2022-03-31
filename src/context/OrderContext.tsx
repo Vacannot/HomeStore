@@ -9,10 +9,11 @@ interface ICustomer {
   email: string;
   number: number;
   address: string;
-  zipcode: string;
+  zipcode: number;
   city: string;
   country: string;
 }
+
 
 export interface IOrderData {
   boughtItems: ICartItem[];
@@ -21,6 +22,7 @@ export interface IOrderData {
   shippingMethod: string;
   shippingPrice: number;
   orderId: number;
+
 }
 
 interface IOrderContextValue {
@@ -30,6 +32,7 @@ interface IOrderContextValue {
   setShippingMethod: (shippingInfo: string) => any;
   setPaymentMethod: (paymentInfo: string) => any;
   // emptyOrder: () => void,
+
 }
 
 const OrderContext = createContext<IOrderContextValue>({
@@ -49,12 +52,15 @@ const OrderContext = createContext<IOrderContextValue>({
     shippingMethod: "",
     shippingPrice: 111,
     orderId: 0,
+
   },
   generateOrderId: () => 0,
   createNewOrder: () => {},
   setShippingMethod: () => "",
+
   setPaymentMethod: () => "",
   // emptyOrder: () => ''
+
 });
 
 export function useOrderContext() {
@@ -169,6 +175,7 @@ export const OrderContextProvider: FC = (props) => {
         setShippingMethod,
         setPaymentMethod,
         // emptyOrder,
+
       }}
     >
       {props.children}
