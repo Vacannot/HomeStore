@@ -37,7 +37,7 @@ const ShippingDetailsForm = () => {
       firstName: "",
       lastName: "",
       email: "",
-      number: 0,
+      number: "",
       address: "",
       zipcode: "",
       city: "",
@@ -64,6 +64,10 @@ const ShippingDetailsForm = () => {
               id="firstName"
               name="firstName"
               label="Förnamn"
+              inputProps={{ maxLength: 20 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.firstName}
               onChange={formik.handleChange}
@@ -77,6 +81,10 @@ const ShippingDetailsForm = () => {
               id="lastName"
               name="lastName"
               label="Efternamn"
+              inputProps={{ maxLength: 20 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.lastName}
               onChange={formik.handleChange}
@@ -88,6 +96,10 @@ const ShippingDetailsForm = () => {
               id="email"
               name="email"
               label="E-post"
+              inputProps={{ maxLength: 25 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.email}
               onChange={formik.handleChange}
@@ -103,11 +115,11 @@ const ShippingDetailsForm = () => {
           >
             <TextField
               style={textFieldStyle}
-              id="tel"
+              type="tel"
+              id="number"
               name="number"
               label="Telefonnummer"
-              type="number"
-              inputProps={{ maxLength: 10 }}
+              inputProps={{ maxLength: 10, minLength: 10 }}
               InputProps={{
                 disableUnderline: true,
               }}
@@ -122,6 +134,10 @@ const ShippingDetailsForm = () => {
               id="address"
               name="address"
               label="Adress"
+              inputProps={{ maxLength: 20 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.address}
               onChange={formik.handleChange}
@@ -130,10 +146,11 @@ const ShippingDetailsForm = () => {
             />
             <TextField
               style={textFieldStyle}
+              type="tel"
               id="zipcode"
               name="zipcode"
               label="Zipcode"
-              inputProps={{ maxLength: 5 }}
+              inputProps={{ maxLength: 5, minLength: 10 }}
               InputProps={{
                 disableUnderline: true,
               }}

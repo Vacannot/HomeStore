@@ -11,7 +11,7 @@ interface UserInputFormValues {
   firstName: string;
   lastName: string;
   email: string;
-  number: string;
+  number: number;
   adress: string;
   zipcode: number;
   country: string;
@@ -120,10 +120,14 @@ const UserInputForm = () => {
           >
             <TextField
               style={textFieldStyle}
-              type="number"
+              type="tel"
               id="number"
               name="number"
               label="Telefonnummer"
+              inputProps={{ maxLength: 10, minLength: 10 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.number}
               onChange={formik.handleChange}
@@ -147,10 +151,14 @@ const UserInputForm = () => {
             />
             <TextField
               style={textFieldStyle}
-              type="number"
+              type="tel"
               id="zipcode"
               name="zipcode"
               label="Zipcode"
+              inputProps={{ maxLength: 5, minLength: 10 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.zipcode}
               onChange={formik.handleChange}

@@ -16,7 +16,7 @@ const SwishPaymentForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      swishNumber: "0" + order.customer.number,
+      swishNumber: order.customer.number,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
