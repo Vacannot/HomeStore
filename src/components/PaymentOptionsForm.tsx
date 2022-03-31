@@ -46,11 +46,7 @@ export default function PaymentOptionsForm() {
 
 	return (
 		<Box
-			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				justifyContent: 'center',
-			}}>
+			sx={{display: 'flex',flexDirection: 'column',justifyContent: 'center',}}>
 			<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 				<div
 					style={{
@@ -61,21 +57,32 @@ export default function PaymentOptionsForm() {
 						gap: '1rem',
 					}}>
 					<RadioGroup name='use-radio-group' defaultValue='none' onChange={handleChange}>
+
+						<div
+							style={{
+								display: 'flex',
+								flexDirection: 'column',
+								alignItems: 'center',
+								justifyContent: 'center',
+							}}>
+
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
 							<MyFormControlLabel value='card' label='' control={<Radio />}/>
-
 							<Paper sx={paymentOptionButton}>
 								<h4 style={{ margin: '0' }}>Direktbetalning med kort</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 									<h4 style={{ margin: '0' }}>Visa, MasterCard, etc.</h4>
 								</div>
 							</Paper>
-							
 						</Box>
 
 						{paymentOptionState === "card" && (
-							<CardPaymentForm/>
+								<CardPaymentForm/>
 						)}
+
+						</div>
+
+
 
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
 							<MyFormControlLabel value='swish' label='' control={<Radio />} />
