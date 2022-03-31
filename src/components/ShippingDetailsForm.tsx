@@ -5,6 +5,12 @@ import * as yup from "yup";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
+import { useOrderContext } from "../context/OrderContext";
+import { useCart } from '../context/CartContext'
+
 
 interface ShippingDetailsFormValues {
   firstName: string;
@@ -31,7 +37,44 @@ const validationSchema = yup.object({
   country: yup.string().required("Enter your country").min(2),
 });
 
-const ShippingDetailsForm = () => {
+function ShippingDetailsForm () {
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
+
+    const { emptyCart } = useCart();
+
+    
+    const handleOnClickClean = () => {
+        console.log("yo we waiting")
+        emptyCart();
+        alert("Köp genomfört")
+    }
+
+    const clean = () => {
+      console.log("started waiting")
+      delay(1000).then(() => handleOnClickClean());
+    }
+
+
+    const delay = time =>
+    new Promise(resolve => {
+    setTimeout(resolve, time);
+  });
+
+
+
+
+
+    const { order } = useOrderContext();
+
+    const { getTotalSumExShip } = useCart();
+    const priceOfProducts = getTotalSumExShip(order.boughtItems);
+
+    const priceTotal = priceOfProducts;
+
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -51,6 +94,14 @@ const ShippingDetailsForm = () => {
 
   return (
     <div style={formDiv}>
+          <div 
+            style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: 'black',
+            }}>
       <form onSubmit={formik.handleSubmit}>
         <div>
           <div
@@ -197,6 +248,10 @@ const ShippingDetailsForm = () => {
           </Button>
         </div>
       </form>
+        <Link to={"/order"}>
+          <Button sx={SubmitButton} type="submit" variant="contained" onClick={clean}>{priceTotal} Slutför Köp</Button>
+        </Link>
+      </div>
     </div>
   );
 };
@@ -216,6 +271,7 @@ const ButtonDiv: CSSProperties = {
   display: "flex",
   justifyContent: "right",
 };
+
 
 const SubmitButton: CSSProperties = {
   backgroundColor: "#BFD8D5",

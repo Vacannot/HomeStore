@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { CSSProperties } from "react";
 import CheckoutAccordion from '../components/CheckoutAccordion';
 import { Typography } from '@mui/material';
+
 // import CartPage from './cartPage';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext'
@@ -34,13 +35,11 @@ const CheckoutPage = () => {
 					width: '70%',
 				}}>
 				<CheckoutAccordion />
-				<Link to="/confirmation-page">
-					<button onClick={handleClick}>Order Info Page</button>
-				</Link>
-				
 			</div>
 		</div>
 	);
 };
+
+
 
 export default CheckoutPage;
