@@ -11,19 +11,20 @@ import { Link } from 'react-router-dom';
 import { useOrderContext } from "../context/OrderContext";
 import { useCart } from '../context/CartContext'
 
+
 interface ShippingDetailsFormValues {
-firstName: string;
-lastName: string;
-email: string;
-number: number;
-adress: string;
-zipcode: number;
-country: string;
-city: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  number: number;
+  adress: string;
+  zipcode: number;
+  country: string;
+  city: string;
 }
 
 const validationSchema = yup.object({
-  firstnName: yup.string().required("Please enter first name").min(2),
+  firstName: yup.string().required("Please enter first name").min(2),
   lastName: yup.string().required("Please enter last name").min(2),
   email: yup
     .string()
@@ -33,7 +34,7 @@ const validationSchema = yup.object({
   address: yup.string().required("Enter your adress").min(8),
   zipcode: yup.number().required("Enter your zipcode").min(5),
   city: yup.string().required("Enter your City").min(2),
-  country: yup.string().required("Enter your country").min(2)
+  country: yup.string().required("Enter your country").min(2),
 });
 
 function ShippingDetailsForm () {
@@ -103,20 +104,27 @@ function ShippingDetailsForm () {
             }}>
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <div 
+          <div
             style={{
-            display: 'flex',
-            flexDirection: 'row',
-            }}>
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
             <TextField
               style={textFieldStyle}
               id="firstName"
               name="firstName"
               label="Förnamn"
+              inputProps={{ maxLength: 20 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.firstName}
               onChange={formik.handleChange}
-              error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+              error={
+                formik.touched.firstName && Boolean(formik.errors.firstName)
+              }
               helperText={formik.touched.firstName && formik.errors.firstName}
             />
             <TextField
@@ -124,6 +132,10 @@ function ShippingDetailsForm () {
               id="lastName"
               name="lastName"
               label="Efternamn"
+              inputProps={{ maxLength: 20 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.lastName}
               onChange={formik.handleChange}
@@ -135,6 +147,10 @@ function ShippingDetailsForm () {
               id="email"
               name="email"
               label="E-post"
+              inputProps={{ maxLength: 25 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.email}
               onChange={formik.handleChange}
@@ -142,16 +158,22 @@ function ShippingDetailsForm () {
               helperText={formik.touched.email && formik.errors.email}
             />
           </div>
-            <div 
+          <div
             style={{
-            display: 'flex',
-            flexDirection: 'row',
-            }}>
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
             <TextField
               style={textFieldStyle}
+              type="tel"
               id="number"
               name="number"
               label="Telefonnummer"
+              inputProps={{ maxLength: 10, minLength: 10 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.number}
               onChange={formik.handleChange}
@@ -163,17 +185,26 @@ function ShippingDetailsForm () {
               id="address"
               name="address"
               label="Adress"
+              inputProps={{ maxLength: 20 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.address}
               onChange={formik.handleChange}
               error={formik.touched.address && Boolean(formik.errors.address)}
               helperText={formik.touched.address && formik.errors.address}
             />
-              <TextField
+            <TextField
               style={textFieldStyle}
+              type="tel"
               id="zipcode"
               name="zipcode"
               label="Zipcode"
+              inputProps={{ maxLength: 5, minLength: 10 }}
+              InputProps={{
+                disableUnderline: true,
+              }}
               fullWidth
               value={formik.values.zipcode}
               onChange={formik.handleChange}
@@ -181,12 +212,13 @@ function ShippingDetailsForm () {
               helperText={formik.touched.zipcode && formik.errors.zipcode}
             />
           </div>
-          <div 
-			      style={{
-			      display: 'flex',
-			      flexDirection: 'row',
-			    }}>
-              <TextField
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <TextField
               style={textFieldStyle}
               id="city"
               name="city"
@@ -197,7 +229,7 @@ function ShippingDetailsForm () {
               error={formik.touched.city && Boolean(formik.errors.city)}
               helperText={formik.touched.city && formik.errors.city}
             />
-              <TextField
+            <TextField
               style={textFieldStyle}
               id="country"
               name="country"
@@ -209,7 +241,12 @@ function ShippingDetailsForm () {
               helperText={formik.touched.country && formik.errors.country}
             />
           </div>
-		    </div>
+        </div>
+        <div style={ButtonDiv}>
+          <Button sx={SubmitButton} type="submit" variant="contained">
+            Fortsätt
+          </Button>
+        </div>
       </form>
         <Link to={"/order"}>
           <Button sx={SubmitButton} type="submit" variant="contained" onClick={clean}>{priceTotal} Slutför Köp</Button>
@@ -230,12 +267,19 @@ const formDiv: CSSProperties = {
   justifyContent: "center",
 };
 
+const ButtonDiv: CSSProperties = {
+  display: "flex",
+  justifyContent: "right",
+};
+
+
 const SubmitButton: CSSProperties = {
-	display: 'flex',
-	backgroundColor: '#BFD8D5',
-	width: '10rem',
-	marginTop: '2rem',
-  }
-
-
+  backgroundColor: "#BFD8D5",
+  color: "#333333",
+  marginTop: "2rem",
+  padding: "0.5rem",
+  width: "8rem",
+  boxShadow: "none",
+  textDecoration: "none",
+};
 export default ShippingDetailsForm;
