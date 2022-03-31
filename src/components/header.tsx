@@ -13,8 +13,14 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { ColorModeContext } from '../context/ColorModeContext';
 
 export default function Header() {
+	const { mode, toggleColorMode } = React.useContext(ColorModeContext);
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
 	const {
@@ -66,6 +72,21 @@ export default function Header() {
 								<ShoppingCartOutlinedIcon sx={{ fontSize: 28, color: 'black' }} />
 							</StyledBadge>
 						</Link>
+						<Box
+							sx={{
+								display: 'flex',
+								width: '100%',
+								alignItems: 'center',
+								justifyContent: 'center',
+								bgcolor: 'background.default',
+								color: 'text.primary',
+								borderRadius: 1,
+								p: 3,
+							}}>
+							<IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color='inherit'>
+								{theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+							</IconButton>
+						</Box>
 						<MenuIcon sx={{ fontSize: 28, color: 'black' }} />
 					</div>
 				</Toolbar>
@@ -79,7 +100,7 @@ const appBarStyle: CSSProperties = {
 
 const iconsDivStyle: CSSProperties = {
 	display: 'flex',
-	width: '8rem',
+	width: '12rem',
 	justifyContent: 'space-between',
 	textDecoration: 'none',
 	textDecorationColor: 'black',

@@ -2,25 +2,24 @@ import React, { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import CartProvider from './context/CartContext';
 import Layout from './layout/layout';
-import ThemeProvider from './context/themeContext';
+import { useTheme, ThemeProvider } from '@mui/material/styles';
+import { ColorModeContextProvider } from './context/ColorModeContext';
 import { OrderContextProvider } from './context/OrderContext';
-// import { useTheme } from '@mui/material';
 
 function App() {
-	// const { theme } = useTheme();
-	// const { cart } = useCart();
+	const theme = useTheme();
 
 	return (
 		<StrictMode>
 			<BrowserRouter>
 				<CartProvider>
-				
-					{/* <ThemeProvider> */}
-						<OrderContextProvider>
-						<Layout />
-						</OrderContextProvider>
-					{/* </ThemeProvider> */}
-				
+					<ColorModeContextProvider>
+						<ThemeProvider theme={theme}>
+							<OrderContextProvider>
+								<Layout />
+							</OrderContextProvider>
+						</ThemeProvider>
+					</ColorModeContextProvider>
 				</CartProvider>
 			</BrowserRouter>
 		</StrictMode>
