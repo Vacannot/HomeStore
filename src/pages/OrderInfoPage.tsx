@@ -6,15 +6,12 @@ import { FinishedOrderInfoDiv } from "../components/FinishedOrderInfoDiv";
 
 const OrderInfoPage = () => {
   const { order } = useOrderContext();
-
   const { getTotalSumExShip } = useCart();
-  const priceOfProducts = getTotalSumExShip(order.boughtItems);
-  console.log(getTotalSumExShip(order.boughtItems));
 
+  const priceOfProducts = getTotalSumExShip(order.boughtItems);
   const priceShipping = order.shippingPrice;
   const priceTotal = priceOfProducts + priceShipping;
   const priceVAT = Math.round(priceOfProducts * 0.25);
-  console.log(priceOfProducts);
 
   return (
     <Container maxWidth="sm">

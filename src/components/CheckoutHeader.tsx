@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/system';
-import Logo from './logo';
+import Logo from './Logo';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
