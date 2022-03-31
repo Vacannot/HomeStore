@@ -1,21 +1,22 @@
-import tremton from './assets/tremton.png';
-import justine from './assets/justine.png';
-import boom from './assets/boom.png';
-import air from './assets/air.png';
-import cato from './assets/cato.png';
-import waterfall from './assets/waterfall.png';
-import edge from './assets/edge.png';
-import cora from './assets/cora.png';
-import fallstone from './assets/fallstone.png';
-import buddy from './assets/buddy.png';
-import ocean from './assets/ocean.png';
+import tremton from './assets/images/tremton.png';
+import justine from './assets/images/justine.png';
+import boom from './assets/images/boom.png';
+import air from './assets/images/air.png';
+import cato from './assets/images/cato.png';
+import waterfall from './assets/images/waterfall.png';
+import edge from './assets/images/edge.png';
+import cora from './assets/images/cora.png';
+import fallstone from './assets/images/fallstone.png';
+import buddy from './assets/images/buddy.png';
+import ocean from './assets/images/ocean.png';
 
 export interface IProduct {
-	id: number;
+	id: string;
 	category: string;
 	title: string;
 	image: string;
-	description: string;
+	description_short: string;
+	description_long: string;
 	price: number;
 }
 
@@ -25,101 +26,130 @@ export interface IProduct {
 
 export const products: IProduct[] = [
 	{
-		id: 0,
+		id: '0',
 		category: 'sofa',
 		title: 'Justine',
 		image: justine,
-		description:
+		description_short:
 			'Justine är en trivsam 3-sits soffa i läder med 2 plymåer. Tillhörande ben i ek.',
+		description_long:
+			'Justine är en trivsam 3-sits soffa i läder med 2 plymåer. Sittdynorna har duntopp och är vändbara! Tillhörande ben i ek.',
 		price: 19899,
 	},
 	{
-		id: 1,
+		id: '1',
 		category: 'sofa',
 		title: 'Tremton',
 		image: tremton,
-		description:
+		description_short:
 			'Tremton 2-sits soffa i tyg Rocco grå. För dig som vill sitta riktigt gott framför en bra film eller brasan.',
+		description_long:
+			'Tremton 2-sits soffa i tyg Rocco grå. För dig som vill sitta riktigt gott framför en bra film eller brasan. Sittdynorna har duntopp och är vändbara!',
 		price: 14899,
 	},
 	{
-		id: 2,
+		id: '2',
 		category: 'sofa',
 		title: 'Boom',
 		image: boom,
-		description:
+		description_short:
 			'Boom är en en perfekt 3-sits soffa till inredningsfantasten. Soffan är klädd i tyg och är underbart mjuk att sitta i.',
+		description_long:
+			'Boom är en en perfekt 3-sits soffa till inredningsfantasten. Soffan är klädd i tyg och är underbart mjuk att sitta i. Sittdynorna har duntopp och är vändbara!',
 		price: 27499,
 	},
 	{
-		id: 3,
+		id: '3',
 		category: 'sofa',
 		title: 'Fallstone',
 		image: fallstone,
-		description:
+		description_short:
+			'Fallstone är en klassisk soffa med mjukt rundade former och med en stomme av björkplywood. ',
+		description_long:
 			'Fallstone är en klassisk soffa med mjukt rundade former och med en stomme av björkplywood. ',
 		price: 18499,
 	},
 	{
-		id: 4,
+		id: '4',
 		category: 'drawer',
 		title: 'Cora',
 		image: cora,
-		description:
+		description_short:
 			'I Cora sideboard förvarar du dina saker snyggt och praktiskt! Med både dolda och öppna utrymmen väljer du själv vad som ska gömmas undan och vad som gärna får synas.',
+		description_long:
+			'I Cora sideboard förvarar du dina saker snyggt och praktiskt! Med både dolda och öppna utrymmen väljer du själv vad som ska gömmas undan och vad som gärna får synas. Både lådor och dörrar är mjukstängande.',
+
 		price: 1499,
 	},
 	{
-		id: 5,
+		id: '5',
 		category: 'boll',
 		title: 'Edge',
 		image: edge,
-		description: 'Edge är en stilren byrå som passar lika bra i sovrummet som i hallen. ',
+		description_short: 'Edge är en stilren byrå som passar lika bra i sovrummet som i hallen. ',
+		description_long:
+			'Edge är en stilren byrå som passar lika bra i sovrummet som i hallen. Lådor är mjukstängande.',
+
 		price: 1299,
 	},
 	{
-		id: 6,
+		id: '6',
 		category: 'lamp',
 		title: 'Buddy',
 		image: buddy,
-		description:
+		description_short:
 			'Buddy taklampa har en stilren och tidlös design som passar in i många olika inredningsstilar. ',
+		description_long:
+			'Buddy taklampa har en stilren och tidlös design som passar in i många olika inredningsstilar. ',
+
 		price: 349,
 	},
 	{
-		id: 7,
+		id: '7',
 		category: 'lamp',
 		title: 'Waterfall',
 		image: waterfall,
-		description:
+		description_short:
 			'Med sina nio inglasade ljuskällor lyser Waterfall upp vilket rum som helst, i dubbel bemärkelse.',
+		description_long:
+			'Med sina nio inglasade ljuskällor lyser Waterfall upp vilket rum som helst, i dubbel bemärkelse.',
+
 		price: 799,
 	},
 	{
-		id: 8,
+		id: '8',
 		category: 'lamp',
 		title: 'Ocean',
 		image: ocean,
-		description:
+		description_short:
 			'Ocean är en stilren och modern lampa med ett tidlöst formspråk. Den sprider ett skönt ljus och är dimbar vilket gör att den passar lika bra över matbordet som soffbordet.',
+		description_long:
+			'Ocean är en stilren och modern lampa med ett tidlöst formspråk. Den sprider ett skönt ljus och är dimbar vilket gör att den passar lika bra över matbordet som soffbordet.',
+
 		price: 299,
 	},
 	{
-		id: 9,
+		id: '9',
 		category: 'lamp',
 		title: 'Cato',
 		image: cato,
-		description:
+		description_short:
 			'Taklampan Cato är otroligt fin och stilren. Materialet är glas och den sprider både vacker glans och ett behagligt ljus.',
+		description_long:
+			'Taklampan Cato är otroligt fin och stilren. Materialet är glas och den sprider både vacker glans och ett behagligt ljus.',
+
 		price: 999,
 	},
 	{
-		id: 10,
+		id: '10',
 		category: 'lamp',
 		title: 'Air',
 		image: air,
-		description:
+		description_short:
 			'En liten nätt taklampa i metall. Gör sig bra som solitär men har du möjlighet att hänga flera lampor tillsammans',
+		description_long:
+			'En liten nätt taklampa i metall. Gör sig bra som solitär men har du möjlighet att hänga flera lampor tillsammans',
+
 		price: 499,
 	},
 ];

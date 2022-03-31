@@ -1,18 +1,15 @@
-import * as React from 'react';
+import React, { CSSProperties } from 'react';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-// import CartPage from './../pages/cartPage';
 import UserInputForm from './UserInputForm';
 import ShippingForm from './ShippingForm';
-import CardPaymentForm from './CardPaymentForm';
 import PaymentOptionsForm from './PaymentOptionsForm';
 import ShippingDetailsForm from './ShippingDetailsForm';
-import FakturaPaymentForm from './FakturaPaymentForm';
-import SwishPaymentForm from './SwishPaymentForm'
+import { Button } from '@mui/material';
 
 const Accordion = styled((props: AccordionProps) => (
 	<MuiAccordion disableGutters elevation={6} square {...props} />
@@ -64,53 +61,97 @@ export default function CheckoutAccordion() {
 			}}>
 			<Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
 				<AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
-					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
-						Mina uppgifter
+					<Typography variant='h5' sx={{ display: 'flex', justifyContent: 'start' }}>
+						Kontaktinformation
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-				
-						<UserInputForm />
-		
+					<UserInputForm />
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'end',
+							gap: '2rem',
+						}}>
+						<Button sx={SubmitButton} type='submit' variant='contained'>
+							Nästa
+						</Button>
+					</div>
 				</AccordionDetails>
 			</Accordion>
 			<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
 				<AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
-					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
-						Betalningsalternativ
+					<Typography variant='h5' sx={{ display: 'flex', justifyContent: 'start' }}>
+						Betalningsmetod
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					
-						<PaymentOptionsForm />
-					
+					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+						Välj en betalningsmetod
+					</Typography>
+					<PaymentOptionsForm />
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'end',
+							gap: '2rem',
+						}}>
+						<Button sx={SubmitButton} type='submit' variant='contained'>
+							Nästa
+						</Button>
+					</div>
 				</AccordionDetails>
 			</Accordion>
 			<Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
+					<Typography variant='h5' sx={{ display: 'flex', justifyContent: 'start' }}>
 						Fraktalternativ
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-				
-						<ShippingForm />
-					
+					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+						Välj ett fraktalternativ
+					</Typography>
+					<ShippingForm />
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'end',
+							gap: '2rem',
+						}}>
+						<Button sx={SubmitButton} type='submit' variant='contained'>
+							Nästa
+						</Button>
+					</div>
 				</AccordionDetails>
 			</Accordion>
 			<Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
-					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
-						Leveransuppgifter
+					<Typography variant='h5' sx={{ display: 'flex', justifyContent: 'start' }}>
+						Översikt
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-				
-						<ShippingDetailsForm />
-					
+					<ShippingDetailsForm />
+
+					<Button sx={SubmitButton} type='submit' variant='contained'>
+						Nästa
+					</Button>
 				</AccordionDetails>
 			</Accordion>
-
 		</div>
 	);
 }
+
+const SubmitButton: CSSProperties = {
+	display: 'flex',
+	backgroundColor: '#BFD8D5',
+	color: '#333333',
+	marginTop: '2rem',
+	padding: '0.5rem',
+	width: '6rem',
+	fontWeight: '700',
+	boxShadow: 'none',
+	textDecoration: 'none',
+	gap: '2rem',
+};

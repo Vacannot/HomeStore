@@ -7,6 +7,15 @@ import Grid from '@mui/material/Grid';
 import ProductCard from './ProductCard';
 import { products } from '../mockedProducts';
 
+// interface Props {
+// 	product: IProduct;
+// }
+
+// type Product = {
+// 	product: IProduct;
+// 	addProductToCart: (product: IProduct) => void;
+// };
+
 const Item = styled(Paper)(({ theme }) => ({
 	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
 	...theme.typography.body2,

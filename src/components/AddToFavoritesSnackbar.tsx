@@ -13,6 +13,10 @@ interface Props {
 	product: IProduct;
 }
 
+function addProductToFavorites(product: IProduct) {
+	throw new Error('Function not implemented.');
+}
+
 export default function AddToFavoritesSnackbar(props: Props) {
 	const [popUpState, setPopUpState] = React.useState<State>({
 		open: false,
@@ -20,24 +24,11 @@ export default function AddToFavoritesSnackbar(props: Props) {
 		horizontal: 'center',
 	});
 	const { vertical, horizontal, open } = popUpState;
-	// const {
-	// 	cart,
-	// 	addProductToCart,
-	// 	removeProductFromCart,
-	// 	emptyCart,
-	// 	getSumPriceProducts,
-	// 	getTotalSum,
-	// 	addQuantity,
-	// 	reduceQuantity,
-	// 	getTotalQuantity,
-	// 	// createOrderId,
-	// 	calculateVatPrice,
-	// } = useCart();
 
 	const handleOnClickAdd = () => {
 		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
-		// addProductToFavorites(props.product);
-		console.log('Product added to list');
+		addProductToFavorites(props.product);
+		console.log('Product added to favorites list');
 	};
 
 	const handleOnClickClose = () => {
@@ -62,7 +53,7 @@ export default function AddToFavoritesSnackbar(props: Props) {
 				open={open}
 				autoHideDuration={1000}
 				onClose={handleOnClickClose}
-				message='Produkten har lagts till i din lista!'
+				message='Produkten har lagts till i din favoriter lista!'
 				key={vertical + horizontal}
 			/>
 		</div>

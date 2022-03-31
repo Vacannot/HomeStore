@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-//   Routes,
-  Route,
-//   Outlet,
-  Link,
-//   useSearchParams,
-  useParams,
-} from "react-router-dom";
-import type { LinkProps } from "react-router-dom";
+	//   Routes,
+	Route,
+	//   Outlet,
+	Link,
+	//   useSearchParams,
+	useParams,
+} from 'react-router-dom';
+import type { LinkProps } from 'react-router-dom';
 import { CSSProperties } from 'react';
 import ProductDetailedCard from '../components/ProductCard';
 import { Typography } from '@mui/material';
@@ -17,23 +17,30 @@ interface Props {
 	product: IProduct;
 }
 
-function getProductById(id: number) {
-  return products.find((product) => product.id === id);
-}
+// type Product = {
+// 	product: IProduct;
+// };
 
-export default function ProductPage({ product }) {
-	let { id } = useParams<"id">();
+// function getProductById(id: string) {
+// 	return products.find((product) => product.id === id);
+// }
 
-	let Product = getProductById(id);
+export default function ProductPage({ product }: Props) {
+	let { id } = useParams<'id'>();
 
-//   let name = `${Product.title} ${Product.description} ${Product.price}`;
-	
+	// let PRODUCT = getProductById('id');
+
+	//   let name = `${Product.title} ${Product.description} ${Product.price}`;
+
 	return (
 		<div style={ProductContainer}>
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
 				Produkt detaljer
 			</Typography>
-			<ProductDetailedCard product={product.id} />
+			{products.map((product) => {
+				return <ProductDetailedCard key={product.id} product={product} />;
+			})}
+			{/* <ProductDetailedCard product={product.PRODUCT.id} /> */}
 		</div>
 	);
 }

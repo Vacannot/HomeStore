@@ -9,23 +9,26 @@ import QuantityCounter from './QuantityCounter';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { products, IProduct } from '../mockedProducts';
-import { ICartItem } from '../context/CartContext'
+import { ICartItem } from '../context/CartContext';
 
 interface Props {
-	product: ICartItem
+	product: ICartItem;
 }
 
-function CartItemCard({product}: Props) {
+function CartItemCard({ product }: Props) {
 	const [price, setPrice] = useState(123);
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
-	
 
 	return (
 		<Card sx={rootCardStyle}>
 			<div style={{ display: 'flex' }}>
-				<CardMedia sx={CardMediaStyle} component='img' image={product.product.image} alt='placeholder' />
+				<CardMedia
+					sx={CardMediaStyle}
+					component='img'
+					image={product.product.image}
+					alt='placeholder'
+				/>
 				<CardContent>
 					<Typography gutterBottom variant='body1' component='div'>
 						{product.product.title}
@@ -35,11 +38,10 @@ function CartItemCard({product}: Props) {
 					</Typography>
 				</CardContent>
 			</div>
-
 			<CardActions sx={CardActionsStyle}>
-				<QuantityCounter product={product}/>
+				<QuantityCounter product={product} />
 				<IconButton sx={{ backgroundColor: '#DB7575' }} aria-label='remove item from cart'>
-					<DeleteIcon/>
+					<DeleteIcon />
 				</IconButton>
 			</CardActions>
 		</Card>

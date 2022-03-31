@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import { CSSProperties } from '@mui/styled-engine';
 import { styled } from '@mui/material/styles';
 import RadioGroup, { useRadioGroup } from '@mui/material/RadioGroup';
@@ -34,21 +33,21 @@ function MyFormControlLabel(props: FormControlLabelProps) {
 }
 
 export default function ShippingForm() {
-	const { setShippingMethod } = useOrderContext(); 
-	const [shippingState, setShippingState] = useState('')
+	const { setShippingMethod } = useOrderContext();
+	const [shippingState, setShippingState] = useState('');
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setShippingMethod(event.target.value);
-	}
+	};
 
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				justifyContent: 'center',
-			}}>
-			<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+		<div>
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'center',
+				}}>
 				<div
 					style={{
 						display: 'flex',
@@ -64,7 +63,7 @@ export default function ShippingForm() {
 								<h4 style={{ margin: '0' }}>Express 24h</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 									<h4 style={{ margin: '0' }}>DHL</h4>
-									<div>Price: 149kr</div>
+									<div>149kr</div>
 								</div>
 							</Paper>
 						</Box>
@@ -74,7 +73,7 @@ export default function ShippingForm() {
 								<h4 style={{ margin: '0' }}>Standard 48h</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 									<h4 style={{ margin: '0' }}>Postnord</h4>
-									<div>Price: 59kr</div>
+									<div>59kr</div>
 								</div>
 							</Paper>
 						</Box>
@@ -87,24 +86,24 @@ export default function ShippingForm() {
 								</div>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 									<h4 style={{ margin: '0' }}>Flaskpost</h4>
-									<div>Price: 0kr</div>
+									<div>0kr</div>
 								</div>
 							</Paper>
 						</Box>
 					</RadioGroup>
 				</div>
-			</div>
-		</Box>
+			</Box>
+		</div>
 	);
 }
 
 const shippingButton: CSSProperties = {
 	display: 'flex',
 	flexDirection: 'row',
-	backgroundColor: '#F4F3F3',
-	padding: '1rem',
 	justifyContent: 'space-between',
+	backgroundColor: '#F4F3F3',
 	color: '#333333',
+	padding: '1rem',
 	marginTop: '1rem',
 	width: '25rem',
 };

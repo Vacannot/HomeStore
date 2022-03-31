@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import image from '../assets/banner.png';
+import image from '../assets/images/banner.png';
 
 function Banner() {
 	return (

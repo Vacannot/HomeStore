@@ -48,7 +48,11 @@ export default function AddToCartSnackbar(props: Props) {
 	const buttons = (
 		<React.Fragment>
 			<div onClick={handleOnClickAdd}>
-				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large' onClick={() => addProductToCart(product)}>
+				<IconButton
+					sx={ButtonStyle}
+					aria-label='add to shopping cart'
+					size='large'
+					onClick={() => addProductToCart(props.product)}>
 					<ShoppingCartOutlinedIcon />
 				</IconButton>
 			</div>

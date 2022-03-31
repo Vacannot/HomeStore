@@ -9,24 +9,39 @@ import QuantityCounter from './QuantityCounter';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { products, IProduct } from '../mockedProducts';
-import { ICartItem } from '../context/CartContext'
+import { ICartItem } from '../context/CartContext';
 
+// interface Props {
+// 	product: IProduct;
+// }
 interface Props {
-	product: ICartItem
+	product: ICartItem;
 }
 
-export default function ProductDetailedCard({product}: Props) {
-	const [price, setPrice] = useState(123);
+export default function ProductDetailedCard({ product }: Props) {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
-	
+
 	return (
 		<Card sx={rootCardStyle}>
 			<div style={{ display: 'flex' }}>
-				<CardMedia sx={CardMediaStyle} component='img' image={product.product.image} alt='placeholder' />
+				<CardMedia
+					sx={CardMediaStyle}
+					component='img'
+					image={product.product.image}
+					alt='placeholder'
+				/>
 				<CardContent>
 					<Typography gutterBottom variant='body1' component='div'>
 						{product.product.title}
+					</Typography>
+					<Typography
+						sx={DescriptionStyle}
+						variant='body2'
+						paddingBottom={1}
+						color='text.secondary'
+						component='div'>
+						{product.product.description_long}
 					</Typography>
 					<Typography variant='body2' color='GrayText.secondary'>
 						{product.product.price} kr
@@ -34,7 +49,7 @@ export default function ProductDetailedCard({product}: Props) {
 				</CardContent>
 			</div>
 			<CardActions sx={CardActionsStyle}>
-				<QuantityCounter product={product}/>
+				<QuantityCounter product={product} />
 			</CardActions>
 		</Card>
 	);
@@ -55,4 +70,8 @@ const CardActionsStyle: CSSProperties = {
 const CardMediaStyle: CSSProperties = {
 	height: '100%',
 	width: '50%',
+};
+
+const DescriptionStyle: CSSProperties = {
+	height: '85px',
 };

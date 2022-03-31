@@ -14,7 +14,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from '../context/ColorModeContext';
@@ -72,21 +71,9 @@ export default function Header() {
 								<ShoppingCartOutlinedIcon sx={{ fontSize: 28, color: 'black' }} />
 							</StyledBadge>
 						</Link>
-						<Box
-							sx={{
-								display: 'flex',
-								width: '100%',
-								alignItems: 'center',
-								justifyContent: 'center',
-								bgcolor: 'background.default',
-								color: 'text.primary',
-								borderRadius: 1,
-								p: 3,
-							}}>
-							<IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color='inherit'>
-								{theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-							</IconButton>
-						</Box>
+						<IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color='inherit'>
+							{theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+						</IconButton>
 						<MenuIcon sx={{ fontSize: 28, color: 'black' }} />
 					</div>
 				</Toolbar>
@@ -96,6 +83,7 @@ export default function Header() {
 }
 const appBarStyle: CSSProperties = {
 	backgroundColor: '#BFD8D5',
+	// backgroundColor: {theme.palette.mode === 'dark' ? '#BFD8D5' : '#65716F' />}
 };
 
 const iconsDivStyle: CSSProperties = {

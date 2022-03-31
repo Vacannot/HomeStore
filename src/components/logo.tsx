@@ -1,6 +1,6 @@
-import bigLogo from '../assets/logo.png';
-import smallLogo from '../assets/small-logo.png';
 import React from 'react';
+import bigLogo from '../assets/logos/logo.png';
+import smallLogo from '../assets/logos/small-logo.png';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
