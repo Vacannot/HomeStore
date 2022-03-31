@@ -13,30 +13,30 @@ import SwishPaymentForm from './SwishPaymentForm';
 import FakturaPaymentForm from './FakturaPaymentForm';
 import { useOrderContext } from '../context/OrderContext';
 
+
 interface StyledFormControlLabelProps extends FormControlLabelProps {
-	checked: boolean;
+  checked: boolean;
 }
 
 const StyledFormControlLabel = styled((props: StyledFormControlLabelProps) => (
-	<FormControlLabel {...props} />
+  <FormControlLabel {...props} />
 ))(({ theme, checked }) => ({
-	'.MuiFormControlLabel-label': checked && {
-		color: theme.palette.primary.main,
-	},
+  ".MuiFormControlLabel-label": checked && {
+    color: theme.palette.primary.main,
+  },
 }));
 
 function MyFormControlLabel(props: FormControlLabelProps) {
-	const radioGroup = useRadioGroup();
-	let checked = false;
-	if (radioGroup) {
-		checked = radioGroup.value === props.value;
-	}
-	return <StyledFormControlLabel checked={checked} {...props} />;
+  const radioGroup = useRadioGroup();
+  let checked = false;
+  if (radioGroup) {
+    checked = radioGroup.value === props.value;
+  }
+  return <StyledFormControlLabel checked={checked} {...props} />;
 }
 
-
-
 export default function PaymentOptionsForm() {
+
 	const { setPaymentMethod } = useOrderContext();
 	const [paymentOptionState, setPaymentOptionState] = useState('')
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -118,25 +118,26 @@ export default function PaymentOptionsForm() {
 			</div>
 		</Box>
 	);
+
 }
 
 const ButtonStyle: CSSProperties = {
-	backgroundColor: '#BFD8D5',
-	color: '#333333',
-	marginTop: '2rem',
-	padding: '0.5rem',
-	width: '8rem',
-	boxShadow: 'none',
-	textDecoration: 'none',
+  backgroundColor: "#BFD8D5",
+  color: "#333333",
+  marginTop: "2rem",
+  padding: "0.5rem",
+  width: "8rem",
+  boxShadow: "none",
+  textDecoration: "none",
 };
 
 const paymentOptionButton: CSSProperties = {
-	display: 'flex',
-	flexDirection: 'row',
-	backgroundColor: '#F4F3F3',
-	padding: '1rem',
-	justifyContent: 'space-between',
-	color: '#333333',
-	marginTop: '1rem',
-	width: '25rem',
+  display: "flex",
+  flexDirection: "row",
+  backgroundColor: "#F4F3F3",
+  padding: "1rem",
+  justifyContent: "space-between",
+  color: "#333333",
+  marginTop: "1rem",
+  width: "25rem",
 };

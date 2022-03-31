@@ -5,19 +5,18 @@ import * as yup from "yup";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { useOrderContext } from '../context/OrderContext';
+import { useOrderContext } from "../context/OrderContext";
 
 const validationSchema = yup.object({
-    swishNumber: yup.string().required("Please enter number").min(10),
+  swishNumber: yup.string().required("Please enter number").min(10),
 });
 
 const SwishPaymentForm = () => {
   const { order } = useOrderContext();
 
-
   const formik = useFormik({
     initialValues: {
-      swishNumber: order.customer.number
+      swishNumber: order.customer.number,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -25,22 +24,22 @@ const SwishPaymentForm = () => {
     },
   });
 
-//   // useEffect(() => {
-// /*   //   // console.log( */order)
-//   // }, [order])
+  //   // useEffect(() => {
+  // /*   //   // console.log( */order)
+  //   // }, [order])
 
   return (
-  
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
-		<div 
-			style={{
-			display: 'flex',
-			flexDirection: 'row',
-			}}>
-          <Typography sx={{ display: 'flex', justifyContent: 'start' }}>
-      	Swish Number
-			</Typography>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
+          <Typography sx={{ display: "flex", justifyContent: "start" }}>
+            Swish Number
+          </Typography>
           <TextField
             style={textFieldStyle}
             id="swishNumber"
@@ -49,7 +48,9 @@ const SwishPaymentForm = () => {
             fullWidth
             value={formik.values.swishNumber}
             onChange={formik.handleChange}
-            error={formik.touched.swishNumber && Boolean(formik.errors.swishNumber)}
+            error={
+              formik.touched.swishNumber && Boolean(formik.errors.swishNumber)
+            }
             helperText={formik.touched.swishNumber && formik.errors.swishNumber}
           />
         </div>

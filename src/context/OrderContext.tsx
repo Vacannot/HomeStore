@@ -8,10 +8,11 @@ interface ICustomer {
   email: string;
   number: number;
   address: string;
-  zipcode: string;
+  zipcode: number;
   city: string;
   country: string;
 }
+
 
 export interface IOrderData {
   boughtItems: ICartItem[];
@@ -20,6 +21,7 @@ export interface IOrderData {
   shippingMethod: string;
   shippingPrice: number;
   orderId: number;
+
 }
 
 interface IOrderContextValue {
@@ -28,6 +30,7 @@ interface IOrderContextValue {
   createNewOrder: (customerInfo: ICustomer) => void;
   setShippingMethod: (shippingInfo: string) => any;
   setPaymentMethod: (paymentInfo: string) => any;
+
 }
 
 const OrderContext = createContext<IOrderContextValue>({
