@@ -37,7 +37,7 @@ export default function ProductPage({ product }: Props) {
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
 				Produkt detaljer
 			</Typography>
-			{products.map((product) => {
+			{products.map((product, id) => {
 				return <ProductDetailedCard key={product.id} product={product} />;
 			})}
 			{/* <ProductDetailedCard product={product.PRODUCT.id} /> */}

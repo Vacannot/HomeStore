@@ -3,20 +3,20 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import QuantityCounter from './QuantityCounter';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { products, IProduct } from '../mockedProducts';
-import { ICartItem } from '../context/CartContext';
+import { IProduct } from '../mockedProducts';
+// import { ICartItem } from '../context/CartContext';
 
-// interface Props {
-// 	product: IProduct;
-// }
 interface Props {
-	product: ICartItem;
+	product: IProduct;
+	quantity: number;
 }
+// interface Props {
+// 	product: ICartItem;
+// }
 
 export default function ProductDetailedCard({ product }: Props) {
 	const theme = useTheme();
@@ -28,12 +28,12 @@ export default function ProductDetailedCard({ product }: Props) {
 				<CardMedia
 					sx={CardMediaStyle}
 					component='img'
-					image={product.product.image}
+					image={product.image}
 					alt='placeholder'
 				/>
 				<CardContent>
 					<Typography gutterBottom variant='body1' component='div'>
-						{product.product.title}
+						{product.title}
 					</Typography>
 					<Typography
 						sx={DescriptionStyle}
@@ -41,15 +41,16 @@ export default function ProductDetailedCard({ product }: Props) {
 						paddingBottom={1}
 						color='text.secondary'
 						component='div'>
-						{product.product.description_long}
+						{product.description_long}
 					</Typography>
+					{/* <QuantityCounter product={product.quantity} /> */}
 					<Typography variant='body2' color='GrayText.secondary'>
-						{product.product.price} kr
+						{product.price} kr
 					</Typography>
 				</CardContent>
 			</div>
 			<CardActions sx={CardActionsStyle}>
-				<QuantityCounter product={product} />
+				{/* <QuantityCounter quantity={product} /> */}
 			</CardActions>
 		</Card>
 	);
