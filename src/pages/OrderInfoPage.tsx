@@ -1,7 +1,21 @@
 import React, { CSSProperties } from "react";
 import { Button, Container, Typography } from "@mui/material";
+import { useOrderContext } from "../context/OrderContext";
+import { useCart } from "../context/CartContext";
+import { FinishedOrderInfoDiv } from "../components/FinishedOrderInfoDiv";
 
 const OrderInfoPage = () => {
+  const { order } = useOrderContext();
+
+  const { getTotalSumExShip } = useCart();
+  const priceOfProducts = getTotalSumExShip(order.boughtItems);
+  console.log(getTotalSumExShip(order.boughtItems));
+
+  const priceShipping = order.shippingPrice;
+  const priceTotal = priceOfProducts + priceShipping;
+  const priceVAT = Math.round(priceOfProducts * 0.25);
+  console.log(priceOfProducts);
+
   return (
     <Container maxWidth="sm">
       <Typography variant="h5" sx={{ mt: 10, mb: 3 }}>
@@ -9,37 +23,35 @@ const OrderInfoPage = () => {
       </Typography>
       <div>
         <Typography variant="body1">
-          Ordernummer: <span style={boldFont}>00000</span>
+          Ordernummer: <span style={boldFont}>{order.orderId}</span>
         </Typography>
         <Typography variant="body1">
           Bekräftelsemail och kvitto skickars till mail{" "}
-          <span style={boldFont}>mail@mail.com</span> adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <span style={boldFont}>{order.customer.email}</span> adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </Typography>
       </div>
       <Container>
-        {/* map() items in cart */}
         <Typography sx={{ mt: 1, mr: 1 }} variant="body2">
           Information om din beställning:
         </Typography>
-        <div style={productInfoDivStyle}>
-          <p>Title of product</p>
-          <p>123kr</p>
-        </div>
+        {order.boughtItems.map((item) => (
+          <FinishedOrderInfoDiv product={item} key={item.product.id} />
+        ))}
       </Container>
-      <Container>
+      <Container sx={{ priceInfoContainerStyle }}>
         <div style={priceInfoStyle}>
           <p>Frakt:</p>
-          <p>Fraktsätt</p>
-          <p>59kr</p>
+          <p>{order.shippingMethod}</p>
+          <p>{order.shippingPrice}</p>
         </div>
         <div style={priceInfoStyle}>
           <p>Totalt:</p>
-          <p>428kr</p>
+          <p>{priceTotal} kr</p>
         </div>
-        <div style={priceInfoStyle}>
+        <div style={VATInfoStyle}>
           <p>Varav Moms:</p>
-          <p>29kr</p>
+          <p>{priceVAT} kr</p>
         </div>
       </Container>
 
@@ -48,9 +60,13 @@ const OrderInfoPage = () => {
           Leveransinformation:
         </Typography>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <span>namn namnsson</span>
-          <span>Adressgatan 0</span>
-          <span>123 45 Stad</span>
+          <span>
+            {order.customer.firstName} {order.customer.lastName}
+          </span>
+          <span>{order.customer.address}</span>
+          <span>
+            {order.customer.zipcode} {order.customer.city}
+          </span>
         </div>
       </div>
       <Button sx={ButtonStyle} variant="contained">
@@ -79,7 +95,18 @@ const productInfoDivStyle: CSSProperties = {
 const priceInfoStyle: CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
-  background: "grey",
+  margin: "0 1rem",
+};
+
+const priceInfoContainerStyle: CSSProperties = {
+  border: "2px solid grey",
+  backgroundColor: "red",
+};
+
+const VATInfoStyle: CSSProperties = {
+  fontSize: "14px",
+  display: "flex",
+  justifyContent: "space-between",
   margin: "0 1rem",
 };
 

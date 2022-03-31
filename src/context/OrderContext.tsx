@@ -1,30 +1,38 @@
 import React, { createContext, FC, useContext, useState } from "react";
 import { ICartItem, useCart } from "./CartContext";
 import { IShippingProvider } from "../shippigProvider";
+import { useLocalStorageState } from "../hooks/useLocalStorage";
 
 interface ICustomer {
   firstName: string;
   lastName: string;
   email: string;
-  number: string;
+  number: number;
   address: string;
-  zipcode: string;
+  zipcode: number;
   city: string;
   country: string;
 }
 
-interface IOrderData {
+
+export interface IOrderData {
   boughtItems: ICartItem[];
   customer: ICustomer;
   paymentMethod: string;
   shippingMethod: string;
+  shippingPrice: number;
+  orderId: number;
+
 }
 
 interface IOrderContextValue {
   order: IOrderData;
   generateOrderId: () => number;
   createNewOrder: (customerInfo: ICustomer) => void;
-  setShippingMethod: (shippinginfo: string) => any;
+  setShippingMethod: (shippingInfo: string) => any;
+  setPaymentMethod: (paymentInfo: string) => any;
+  // emptyOrder: () => void,
+
 }
 
 const OrderContext = createContext<IOrderContextValue>({
@@ -34,7 +42,7 @@ const OrderContext = createContext<IOrderContextValue>({
       firstName: "",
       lastName: "",
       email: "",
-      number: "",
+      number: 0,
       address: "",
       zipcode: "",
       city: "",
@@ -42,47 +50,81 @@ const OrderContext = createContext<IOrderContextValue>({
     },
     paymentMethod: "",
     shippingMethod: "",
+    shippingPrice: 111,
+    orderId: 0,
+
   },
   generateOrderId: () => 0,
   createNewOrder: () => {},
   setShippingMethod: () => "",
+
+  setPaymentMethod: () => "",
+  // emptyOrder: () => ''
+
 });
 
 export function useOrderContext() {
   return useContext(OrderContext);
 }
-
+// useLocalStorageState<IOrderData>
 export const OrderContextProvider: FC = (props) => {
-  const { cart, shipping } = useCart();
-  const [order, setOrder] = useState<IOrderData>({
-    boughtItems: [],
-    customer: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      number: "",
-      address: "",
-      zipcode: "",
-      city: "",
-      country: "",
+  const { cart } = useCart();
+  const [order, setOrder] = useLocalStorageState<IOrderData>(
+    {
+      boughtItems: [],
+      customer: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        number: 0,
+        address: "",
+        zipcode: "",
+        city: "",
+        country: "",
+      },
+      paymentMethod: "",
+      shippingMethod: "",
+      shippingPrice: 2221,
+      orderId: 0,
     },
-    paymentMethod: "",
-    shippingMethod: "",
-  });
+    "order"
+  );
 
   const setShippingMethod = (shippingInfo: string) => {
-    setOrder({ ...order, shippingMethod: shippingInfo });
+    let price = 0;
+    switch (shippingInfo) {
+      case "DHL":
+        price = 149;
+        console.log("är i dhl");
+        break;
+      case "Postnord":
+        price = 59;
+        console.log("är i postnord");
+        break;
+      case "Flaskpost":
+        price = 0;
+        console.log("är i flaskpost");
+        break;
+    }
+    setOrder({ ...order, shippingPrice: price, shippingMethod: shippingInfo });
+    console.log(order.shippingMethod);
+    console.log(order.shippingPrice);
     return;
+  };
+
+  const setPaymentMethod = (paymentInfo: string) => {
+    setOrder({ ...order, paymentMethod: paymentInfo });
   };
 
   const generateOrderId = () => {
     const maxNumber = 100000;
     const orderId = Math.floor(Math.random() * maxNumber + 1);
+    console.log(orderId);
     return orderId;
   };
 
   const createNewOrder = (customerInfo: ICustomer) => {
-    console.log(customerInfo);
+    const orderID = generateOrderId();
     const boughtItems = [...cart];
     const customer: ICustomer = {
       firstName: customerInfo.firstName,
@@ -99,9 +141,30 @@ export const OrderContextProvider: FC = (props) => {
       customer: customer,
       paymentMethod: order.paymentMethod,
       shippingMethod: order.shippingMethod,
+      shippingPrice: order.shippingPrice,
+      orderId: orderID,
     };
     setOrder(updatedOrder);
   };
+
+  // const emptyOrder = () => setOrder({
+  //     ...order,
+  //     boughtItems: [],
+  //     customer: {
+  //         firstName: '',
+  //         lastName: '',
+  //         email: '',
+  //         number: 0,
+  //         address: '',
+  //         zipcode: '',
+  //         city: '',
+  //         country: ''
+  //     },
+  //     paymentMethod: '',
+  //     shippingMethod: '',
+  //     shippingPrice: 666,
+  //     orderId: 0
+  // })
 
   return (
     <OrderContext.Provider
@@ -110,6 +173,9 @@ export const OrderContextProvider: FC = (props) => {
         generateOrderId,
         createNewOrder,
         setShippingMethod,
+        setPaymentMethod,
+        // emptyOrder,
+
       }}
     >
       {props.children}

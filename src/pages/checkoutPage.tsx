@@ -2,8 +2,13 @@ import React from 'react';
 import CheckoutAccordion from '../components/CheckoutAccordion';
 import { Typography } from '@mui/material';
 // import CartPage from './cartPage';
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext'
 
 const CheckoutPage = () => {
+	const {emptyCart} = useCart();
+	const handleClick = () => {emptyCart();}
+	
 	return (
 		<div
 			style={{
@@ -29,6 +34,10 @@ const CheckoutPage = () => {
 					width: '70%',
 				}}>
 				<CheckoutAccordion />
+				<Link to="/confirmation-page">
+					<button onClick={handleClick}>Order Info Page</button>
+				</Link>
+				
 			</div>
 		</div>
 	);

@@ -27,28 +27,27 @@ export default function AddToCartSnackbar({product}: Props) {
 		removeProductFromCart,
 		emptyCart,
 		getSumPriceProducts,
-		getTotalSum,
 		addQuantity,
 		reduceQuantity,
 		getTotalQuantity,
-		createOrderId,
-		calculateVatPrice,
 	} = useCart();
 
 	const handleOnClickAdd = () => {
-		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
+		console.log('här1')
 		addProductToCart(product);
-		console.log('Product added to cart');
+		setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
+		
+		return
 	};
 
-	const handleOnClickClose = () => {
+	const handleOnClose = () => {
 		setPopUpState({ ...popUpState, open: false });
 	};
 
 	const buttons = (
 		<React.Fragment>
-			<div onClick={handleOnClickAdd}>
-				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large' onClick={() => addProductToCart(product)}>
+			<div >
+				<IconButton sx={ButtonStyle} aria-label='add to shopping cart' size='large' onClick={handleOnClickAdd}>
 					<ShoppingCartOutlinedIcon />
 				</IconButton>
 			</div>
@@ -62,7 +61,7 @@ export default function AddToCartSnackbar({product}: Props) {
 				anchorOrigin={{ vertical, horizontal }}
 				open={open}
 				autoHideDuration={1000}
-				onClose={handleOnClickClose}
+				onClose={handleOnClose}
 				message='Produkten har lagts till i varukorgen!'
 				key={vertical + horizontal}
 			/>
