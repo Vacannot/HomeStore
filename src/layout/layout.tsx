@@ -6,16 +6,20 @@ import CartPage from '../pages/cartPage';
 import Footer from '../components/Footer';
 import CheckoutPage from '../pages/checkoutPage';
 import ProductPage from '../pages/productPage';
-import { products } from '../mockedProducts';
+import { IProduct } from '../mockedProducts';
 import FavoritesPage from '../pages/favoritesPage';
 
-export default function Layout() {
+interface Props {
+	product: IProduct;
+}
+
+export default function Layout({ product }: Props) {
 	return (
 		<div style={rootStyle}>
 			<Header />
 			<Routes>
 				<Route path='/' element={<StartPage />} />
-				<Route path='/produkt/:id' element={<ProductPage product={products} />} />
+				<Route path='/produkt/:id' element={<ProductPage product={product} />} />
 				<Route path='/favoriter' element={<FavoritesPage />} />
 				<Route path='/varukorg' element={<CartPage />} />
 				<Route path='/kassa' element={<CheckoutPage />} />

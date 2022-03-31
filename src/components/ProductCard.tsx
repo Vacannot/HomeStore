@@ -22,7 +22,7 @@ type Product = {
 export default function ProductCard({ product }: Props) {
 	const navigation = useNavigate();
 	const goToProduct = () => {
-		navigation('/product/' + product.id);
+		navigation('/produkt/' + product.id);
 	};
 
 	return (
