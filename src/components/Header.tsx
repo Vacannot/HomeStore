@@ -22,19 +22,7 @@ export default function Header() {
 	const { mode, toggleColorMode } = React.useContext(ColorModeContext);
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
-	const {
-		cart,
-		addProductToCart,
-		removeProductFromCart,
-		emptyCart,
-		getSumPriceProducts,
-		getTotalSum,
-		addQuantity,
-		reduceQuantity,
-		getTotalQuantity,
-		createOrderId,
-		calculateVatPrice,
-	} = useCart();
+	const { cart } = useCart();
 
 	const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 		'& .MuiBadge-badge': {
@@ -46,7 +34,6 @@ export default function Header() {
 	}));
 
 	let cartLength = 0;
-
 	cart.forEach((cartItem) => {
 		cartLength = cartLength + cartItem.quantity;
 	});
