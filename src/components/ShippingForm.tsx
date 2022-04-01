@@ -42,6 +42,8 @@ export default function ShippingForm() {
 		setShippingMethod(event.target.value);
 	}
 
+	let date = new Date();
+
 	return (
 		<Box
 			sx={{
@@ -67,6 +69,9 @@ export default function ShippingForm() {
 									<h4 style={{ margin: '0' }}>DHL</h4>
 									<div>Price: 149kr</div>
 								</div>
+
+								<div>Förväntat leverans datum: 2022/{date.getMonth() + 1}/{date.getDate() + 1}</div>
+
 							</Paper>
 						</Box>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
@@ -77,6 +82,9 @@ export default function ShippingForm() {
 									<h4 style={{ margin: '0' }}>Postnord</h4>
 									<div>Price: 59kr</div>
 								</div>
+
+								<div>Förväntat leverans datum: 2022/{date.getMonth() + 1}/{date.getDate() + 2}</div>
+
 							</Paper>
 						</Box>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
@@ -90,6 +98,9 @@ export default function ShippingForm() {
 									<h4 style={{ margin: '0' }}>Flaskpost</h4>
 									<div>Price: 0kr</div>
 								</div>
+
+								<div>Förväntat leverans datum: 2022/{date.getMonth() + 4}/{date.getDate() + 5}</div>
+
 							</Paper>
 						</Box>
 					</RadioGroup>
