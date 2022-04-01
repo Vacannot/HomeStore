@@ -30,8 +30,7 @@ export const products: IProduct[] = [
 		category: 'sofa',
 		title: 'Justine',
 		image: justine,
-		description_short:
-			'Justine är en trivsam 3-sits soffa i läder med 2 plymåer. Tillhörande ben i ek.',
+		description_short: '3-sits soffa i läder.',
 		description_long:
 			'Justine är en trivsam 3-sits soffa i läder med 2 plymåer. Sittdynorna har duntopp och är vändbara! Tillhörande ben i ek.',
 		price: 19899,
@@ -41,8 +40,7 @@ export const products: IProduct[] = [
 		category: 'sofa',
 		title: 'Tremton',
 		image: tremton,
-		description_short:
-			'Tremton 2-sits soffa i tyg Rocco grå. För dig som vill sitta riktigt gott framför en bra film eller brasan.',
+		description_short: '2-sits soffa i tyg.',
 		description_long:
 			'Tremton 2-sits soffa i tyg Rocco grå. För dig som vill sitta riktigt gott framför en bra film eller brasan. Sittdynorna har duntopp och är vändbara!',
 		price: 14899,
@@ -52,8 +50,7 @@ export const products: IProduct[] = [
 		category: 'sofa',
 		title: 'Boom',
 		image: boom,
-		description_short:
-			'Boom är en en perfekt 3-sits soffa till inredningsfantasten. Soffan är klädd i tyg och är underbart mjuk att sitta i.',
+		description_short: '3-sits i tyg.',
 		description_long:
 			'Boom är en en perfekt 3-sits soffa till inredningsfantasten. Soffan är klädd i tyg och är underbart mjuk att sitta i. Sittdynorna har duntopp och är vändbara!',
 		price: 27499,
@@ -63,8 +60,7 @@ export const products: IProduct[] = [
 		category: 'sofa',
 		title: 'Fallstone',
 		image: fallstone,
-		description_short:
-			'Fallstone är en klassisk soffa med mjukt rundade former och med en stomme av björkplywood. ',
+		description_short: '2-sits soffa i läderimitation.',
 		description_long:
 			'Fallstone är en klassisk soffa med mjukt rundade former och med en stomme av björkplywood. ',
 		price: 18499,
@@ -74,11 +70,9 @@ export const products: IProduct[] = [
 		category: 'drawer',
 		title: 'Cora',
 		image: cora,
-		description_short:
-			'I Cora sideboard förvarar du dina saker snyggt och praktiskt! Med både dolda och öppna utrymmen väljer du själv vad som ska gömmas undan och vad som gärna får synas.',
+		description_short: 'Sideboard.',
 		description_long:
 			'I Cora sideboard förvarar du dina saker snyggt och praktiskt! Med både dolda och öppna utrymmen väljer du själv vad som ska gömmas undan och vad som gärna får synas. Både lådor och dörrar är mjukstängande.',
-
 		price: 1499,
 	},
 	{
@@ -86,10 +80,8 @@ export const products: IProduct[] = [
 		category: 'boll',
 		title: 'Edge',
 		image: edge,
-		description_short: 'Edge är en stilren byrå som passar lika bra i sovrummet som i hallen. ',
-		description_long:
-			'Edge är en stilren byrå som passar lika bra i sovrummet som i hallen. Lådor är mjukstängande.',
-
+		description_short: 'Stilren byrå. ',
+		description_long: 'Byrå med mjukstängande lådor.',
 		price: 1299,
 	},
 	{
@@ -97,11 +89,9 @@ export const products: IProduct[] = [
 		category: 'lamp',
 		title: 'Buddy',
 		image: buddy,
-		description_short:
-			'Buddy taklampa har en stilren och tidlös design som passar in i många olika inredningsstilar. ',
+		description_short: 'Taklampa med tidlös design. ',
 		description_long:
 			'Buddy taklampa har en stilren och tidlös design som passar in i många olika inredningsstilar. ',
-
 		price: 349,
 	},
 	{
@@ -109,11 +99,9 @@ export const products: IProduct[] = [
 		category: 'lamp',
 		title: 'Waterfall',
 		image: waterfall,
-		description_short:
-			'Med sina nio inglasade ljuskällor lyser Waterfall upp vilket rum som helst, i dubbel bemärkelse.',
+		description_short: 'Lampa med nio inglasade ljuskällor.',
 		description_long:
 			'Med sina nio inglasade ljuskällor lyser Waterfall upp vilket rum som helst, i dubbel bemärkelse.',
-
 		price: 799,
 	},
 	{
@@ -121,11 +109,9 @@ export const products: IProduct[] = [
 		category: 'lamp',
 		title: 'Ocean',
 		image: ocean,
-		description_short:
-			'Ocean är en stilren och modern lampa med ett tidlöst formspråk. Den sprider ett skönt ljus och är dimbar vilket gör att den passar lika bra över matbordet som soffbordet.',
+		description_short: 'Lampa med ett tidlöst formspråk.',
 		description_long:
 			'Ocean är en stilren och modern lampa med ett tidlöst formspråk. Den sprider ett skönt ljus och är dimbar vilket gör att den passar lika bra över matbordet som soffbordet.',
-
 		price: 299,
 	},
 	{
@@ -133,11 +119,9 @@ export const products: IProduct[] = [
 		category: 'lamp',
 		title: 'Cato',
 		image: cato,
-		description_short:
-			'Taklampan Cato är otroligt fin och stilren. Materialet är glas och den sprider både vacker glans och ett behagligt ljus.',
+		description_short: 'Taklampa i glas.',
 		description_long:
 			'Taklampan Cato är otroligt fin och stilren. Materialet är glas och den sprider både vacker glans och ett behagligt ljus.',
-
 		price: 999,
 	},
 	{
@@ -145,11 +129,18 @@ export const products: IProduct[] = [
 		category: 'lamp',
 		title: 'Air',
 		image: air,
-		description_short:
-			'En liten nätt taklampa i metall. Gör sig bra som solitär men har du möjlighet att hänga flera lampor tillsammans',
+		description_short: 'Taklampa i metall.',
 		description_long:
 			'En liten nätt taklampa i metall. Gör sig bra som solitär men har du möjlighet att hänga flera lampor tillsammans',
-
 		price: 499,
 	},
 ];
+
+export const getProductsObject = (array) =>
+	array.reduce(
+		(obj, product) => ({
+			...obj,
+			[product.id]: product,
+		}),
+		{},
+	);
