@@ -207,7 +207,7 @@ const textFieldStyle: CSSProperties = {
   margin: "1rem",
   display: "flex",
   width: "35vw",
-  minWidth: "260px",
+  minWidth: "250px",
 };
 
 const formDiv: CSSProperties = {
