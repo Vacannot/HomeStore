@@ -95,16 +95,6 @@ export default function ShippingForm() {
 					</RadioGroup>
 				</div>
 			</div>
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'end',
-					gap: '2rem',
-				}}>
-				<Button sx={ButtonStyle} variant='contained'>
-					Fortsätt
-				</Button>
-			</div>
 		</Box>
 	);
 }
