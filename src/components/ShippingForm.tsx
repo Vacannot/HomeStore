@@ -110,14 +110,15 @@ export default function ShippingForm() {
 }
 
 const shippingButton: CSSProperties = {
-	display: 'flex',
-	flexDirection: 'row',
-	backgroundColor: '#F4F3F3',
-	padding: '1rem',
-	justifyContent: 'space-between',
-	color: '#333333',
-	marginTop: '1rem',
-	width: '25rem',
+	display: "flex",
+	flexDirection: "column",
+	backgroundColor: "#F4F3F3",
+	padding: "1rem",
+	justifyContent: "space-between",
+	color: "#333333",
+	marginTop: "1rem",
+	width: "25vw",
+	minWidth: "200px"
 };
 
 const ButtonStyle: CSSProperties = {

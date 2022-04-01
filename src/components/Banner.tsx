@@ -15,4 +15,5 @@ const BannerStyle: CSSProperties = {
 	height: 'auto',
 	maxWidth: '80rem',
 	marginTop: '5rem',
+	width: '100vw',
 };

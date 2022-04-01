@@ -4,13 +4,9 @@ import { Link } from "react-router-dom";
 import CartItemCard from "../components/CartItemCard";
 import { CartContext } from "../context/CartContext";
 
-import { useOrderContext } from "../context/OrderContext";
-import { useCart } from '../context/CartContext'
-
 function CartPage() {
   let { cart, getTotalSumExShip } = useContext(CartContext);
   const priceOfProducts = getTotalSumExShip(cart);
-
 
   return (
     <div style={rootStyle}>

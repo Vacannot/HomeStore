@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { makeStyles } from '@mui/styles';
@@ -48,25 +48,9 @@ export default function SwipeableTemporaryDrawer() {
 					<ListItemText>WELCOME</ListItemText>
 				</ListItem>
 				<ListItem button>
-					{/*           <Link to={home}> */}
+					    <Link to={"/"}>
 					<ListItemText> HEM </ListItemText>
-					{/*           </Link> */}
-				</ListItem>
-				<Divider />
-				<ListItem button>
-					<ListItemText> NYHETER </ListItemText>
-				</ListItem>
-				<Divider />
-				<ListItem button>
-					<ListItemText> INSPIRATION </ListItemText>
-				</ListItem>
-				<Divider />
-				<ListItem button>
-					<ListItemText> KATEGORIER </ListItemText>
-				</ListItem>
-				<Divider />
-				<ListItem button>
-					<ListItemText> MITT KONTO </ListItemText>
+					    </Link>
 				</ListItem>
 			</List>
 		</Box>

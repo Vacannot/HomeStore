@@ -31,10 +31,10 @@ const SwishPaymentForm = () => {
         <div
           style={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
-    
           <TextField
             style={textFieldStyle}
             id="swishNumber"
@@ -58,7 +58,8 @@ const SwishPaymentForm = () => {
 const textFieldStyle: CSSProperties = {
   margin: "1rem",
   display: "flex",
-  width: "40ch",
+  width: "20vw",
+  minWidth: "250px",
 };
 
 const formDiv: CSSProperties = {
