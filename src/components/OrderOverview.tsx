@@ -11,7 +11,6 @@ export const OrderOverview = () => {
   const priceShipping = order.shippingPrice;
   const priceTotal = priceOfProducts + priceShipping;
 
-
   return (
     <div>
       <Container sx={{ display: "flex" }}>
@@ -46,8 +45,19 @@ export const OrderOverview = () => {
           </Typography>
         </Container>
       </Container>
-      <Container sx={{ width: "100%", marginRight: "100%", marginTop: '2rem', padding: '2rem', borderTop: '2px solid rgba(0, 0, 0, 0.2)' }}>
-          <Typography variant="h6" sx={{marginLeft: '.5rem'}}>{order.boughtItems.length === 1 ? 'Produkt' : "Produkter"}</Typography>
+      <Container
+        sx={{
+          width: "100%",
+          marginRight: "100%",
+          marginTop: "2rem",
+          padding: "2rem",
+          borderTop: "2px solid rgba(0, 0, 0, 0.2)",
+        }}
+      >
+        <Typography variant="h6" sx={{ marginLeft: ".5rem" }}>
+          {order.boughtItems.length === 1 ? "Produkt" : "Produkter"}
+        </Typography>
+
         {order.boughtItems.map((item) => (
           <div key={item.product.id} style={productInfoStyle}>
             <Box
