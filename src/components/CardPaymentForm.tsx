@@ -56,6 +56,10 @@ const CardPaymentForm = () => {
     },
   });
 
+  const alertSaved = () => {
+    alert("Sparat!")
+  }
+
   return (
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
@@ -68,11 +72,9 @@ const CardPaymentForm = () => {
                   type="text"
                   id="cardHolder"
                   name="cardHolder"
-                  label="Card Holder Name"
+                  label="Kort innehavarens namn"
                   inputProps={{ maxLength: 25 }}
-                  InputProps={{
-                    disableUnderline: true,
-                  }}
+               
                   fullWidth
                   value={formik.values.cardHolder}
                   onChange={formik.handleChange}
@@ -87,14 +89,12 @@ const CardPaymentForm = () => {
               <Grid style={gridItem} item xs={12} md={6}>
                 <TextField
                   style={textFieldStyle}
-                  type="number"
+                  type="tel"
                   id="cardNumber"
                   name="cardNumber"
-                  label="Card Number"
-                  inputProps={{ maxLength: 16 }}
-                  InputProps={{
-                    disableUnderline: true,
-                  }}
+                  label="Kortnummer"
+                  inputProps={{ minLength: 16, maxLength: 16 }}
+                
                   fullWidth
                   value={formik.values.cardNumber}
                   onChange={formik.handleChange}
@@ -109,14 +109,11 @@ const CardPaymentForm = () => {
               <Grid style={gridItem} item xs={12} md={6}>
                 <TextField
                   style={textFieldStyleSmall}
-                  type="number"
+                  type="tel"
                   id="cardMonth"
                   name="cardMonth"
-                  label="Card Month"
+                  label="Kort månad"
                   inputProps={{ maxLength: 2 }}
-                  InputProps={{
-                    disableUnderline: true,
-                  }}
                   fullWidth
                   value={formik.values.cardMonth}
                   onChange={formik.handleChange}
@@ -129,10 +126,11 @@ const CardPaymentForm = () => {
               <Grid style={gridItem} item xs={12} md={6}>
                 <TextField
                   style={textFieldStyleSmall}
-                  type="number"
+                  type="tel"
                   id="cardYear"
                   name="cardYear"
-                  label="Card Year"
+                  label="Kort år"
+                  inputProps={{ maxLength: 2 }}
                   fullWidth
                   value={formik.values.cardYear}
                   onChange={formik.handleChange}
@@ -145,10 +143,11 @@ const CardPaymentForm = () => {
               <Grid style={gridItem} item xs={12} md={6}>
                 <TextField
                   style={textFieldStyleSmall}
-                  type="number"
+                  type="tel"
                   id="cvc"
                   name="cvc"
-                  label="Cvc Code"
+                  label="Cvc Kod"
+                  inputProps={{ maxLength: 3 }}
                   fullWidth
                   value={formik.values.cvc}
                   onChange={formik.handleChange}
@@ -157,12 +156,33 @@ const CardPaymentForm = () => {
                 />
               </Grid>
           </Grid>
+          <div style={buttonDiv}>
+            <Button sx={SubmitButton} onClick={alertSaved} type="submit" variant="contained">
+                Spara
+            </Button>
+          </div>
           </div>
         </div>
       </form>
     </div>
   );
 };
+
+const SubmitButton: CSSProperties = {
+  backgroundColor: "#BFD8D5",
+  color: "#333333",
+  marginTop: "1rem",
+  padding: "0.5rem",
+  width: "8rem",
+  boxShadow: "none",
+  textDecoration: "none",
+
+}
+
+const buttonDiv: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+}
 
 const textFieldStyle: CSSProperties = {
   margin: "1rem",
