@@ -1,6 +1,7 @@
 import React, { CSSProperties } from "react";
 import { Button, Container, Typography } from "@mui/material";
 import { useOrderContext } from "../context/OrderContext";
+import { Link } from 'react-router-dom';
 import { useCart } from "../context/CartContext";
 import { FinishedOrderInfoDiv } from "../components/FinishedOrderInfoDiv";
 
@@ -27,6 +28,7 @@ const OrderInfoPage = () => {
           <span style={boldFont}>{order.customer.email}</span> adipisicing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </Typography>
+
       </div>
       <Container>
         <Typography sx={{ mt: 1, mr: 1 }} variant="body2">
@@ -66,9 +68,11 @@ const OrderInfoPage = () => {
           </span>
         </div>
       </div>
-      <Button sx={ButtonStyle} variant="contained">
-        Gå till startsidan
-      </Button>
+      <Link to="/">
+        <Button sx={ButtonStyle} variant="contained">
+          Gå till startsidan
+        </Button>
+      </Link>
     </Container>
   );
 };
