@@ -8,6 +8,7 @@ import CheckoutPage from '../pages/checkoutPage';
 import ProductPage from '../pages/productPage';
 import { IProduct } from '../mockedProducts';
 import FavoritesPage from '../pages/favoritesPage';
+import OrderInfoPage from '../pages/OrderInfoPage';
 
 interface Props {
 	product: IProduct;
@@ -23,6 +24,7 @@ export default function Layout({ product }: Props) {
 				<Route path='/favoriter' element={<FavoritesPage />} />
 				<Route path='/varukorg' element={<CartPage />} />
 				<Route path='/kassa' element={<CheckoutPage />} />
+				<Route path='/order' element={OrderInfoPage} />
 			</Routes>
 			<Footer />
 		</div>

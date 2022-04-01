@@ -6,39 +6,44 @@ import { useState, CSSProperties } from 'react';
 import { ICartItem, useCart } from '../context/CartContext';
 
 interface Props {
-    product: ICartItem
+	product: ICartItem;
 }
 
-function QuantityCounter({product}: Props) {
-    const [UIquantity, setUIQuantity] = useState(product.quantity);
-    const { addQuantity, reduceQuantity } = useCart();
+function QuantityCounter({ product }: Props) {
+	const [UIquantity, setUIQuantity] = useState(product.quantity);
+	const { addQuantity, reduceQuantity } = useCart();
 
-    const handleOnClickReduce = () => {
-        UIquantity  === 1 ? setUIQuantity(1) : setUIQuantity(UIquantity - 1);
-        reduceQuantity(product) 
-    }
+	const handleOnClickReduce = () => {
+		UIquantity === 1 ? setUIQuantity(1) : setUIQuantity(UIquantity - 1);
+		reduceQuantity(product);
+	};
 
-    const handleOnClickAdd = () => {
-        setUIQuantity(UIquantity + 1);
-        addQuantity(product);
-    }
+	const handleOnClickAdd = () => {
+		//     setUIQuantity(UIquantity + 1);
+		// const { addQuantity, reduceQuantity } = useCart();
 
-    return(
-        <div style={iconsDivStyle}>
-            <RemoveCircleIcon onClick={handleOnClickReduce}/>
-            <Typography> Antal: {product.quantity}</Typography>
-            <AddCircleIcon onClick={handleOnClickAdd}/>
-        </div>
-    )
+		// const handleOnClickReduce = () => {
+		//     reduceQuantity(product)
+		// }
+
+		// const handleOnClickAdd = () => {
+		addQuantity(product);
+	};
+
+	return (
+		<div style={iconsDivStyle}>
+			<RemoveCircleIcon onClick={handleOnClickReduce} />
+			<Typography> Antal: {product.quantity}</Typography>
+			<AddCircleIcon onClick={handleOnClickAdd} />
+		</div>
+	);
 }
 
 const iconsDivStyle: CSSProperties = {
-    display: "flex", 
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "8rem",
-
-}
+	display: 'flex',
+	flexDirection: 'row',
+	justifyContent: 'space-between',
+	width: '8rem',
+};
 
 export default QuantityCounter;
-

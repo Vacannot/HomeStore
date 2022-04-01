@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import CardPaymentForm from './CardPaymentForm';
 import SwishPaymentForm from './SwishPaymentForm';
 import InvoicePaymentForm from './InvoicePaymentForm';
+import { useOrderContext } from '../context/OrderContext';
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
 	checked: boolean;
@@ -34,10 +35,11 @@ function MyFormControlLabel(props: FormControlLabelProps) {
 }
 
 export default function PaymentOptionsForm() {
+	const { setPaymentMethod } = useOrderContext();
 	const [paymentOptionState, setPaymentOptionState] = useState('');
-
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setPaymentOptionState(event.target.value);
+		setPaymentMethod(event.target.value);
 	};
 
 	return (
@@ -95,6 +97,16 @@ export default function PaymentOptionsForm() {
 	);
 }
 
+const ButtonStyle: CSSProperties = {
+	backgroundColor: '#BFD8D5',
+	color: '#333333',
+	marginTop: '2rem',
+	padding: '0.5rem',
+	width: '8rem',
+	boxShadow: 'none',
+	textDecoration: 'none',
+};
+
 const paymentOptionButton: CSSProperties = {
 	display: 'flex',
 	flexDirection: 'row',
@@ -103,5 +115,5 @@ const paymentOptionButton: CSSProperties = {
 	justifyContent: 'space-between',
 	color: '#333333',
 	marginTop: '1rem',
-	width: '30rem',
+	width: '25rem',
 };

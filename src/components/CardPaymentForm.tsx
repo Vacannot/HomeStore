@@ -1,7 +1,13 @@
 import React, { CSSProperties } from 'react';
+import ReactDOM from 'react-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 
 const validationSchema = yup.object({
 	cardNumber: yup.number().required('Enter a valid card, no less than 16 digits').min(16),
@@ -10,13 +16,15 @@ const validationSchema = yup.object({
 		.string()
 		.typeError('Not a name')
 		.matches(/([a-ö\s]+$)/, 'No numbers allowed')
-		.required('Enter the card holders name'),
+		.required('Enter the card holders name')
+		.min(25),
 	cardMonth: yup
 		.string()
 		.typeError('Not a valid expiration date. Example: MM')
 		.max(2, 'Not a valid expiration date. Example: MM')
 		.matches(/([0-9]{2})/, 'Not a valid expiration date. Example: MM')
-		.required('Expiration date is required'),
+		.required('Expiration date is required')
+		.min(2),
 	cardYear: yup
 		.string()
 		.typeError('Not a valid expiration date. Example: YY')
@@ -45,13 +53,22 @@ const CardPaymentForm = () => {
 			<form onSubmit={formik.handleSubmit}>
 				<div>
 					<div style={{ display: 'flex', flexDirection: 'column' }}>
-						<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+						<div
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'center',
+							}}>
 							<TextField
 								style={textFieldStyle}
-								variant='standard'
+								type='number'
 								id='cardHolder'
 								name='cardHolder'
 								label='Kortinnehavare'
+								inputProps={{ maxLength: 25 }}
+								InputProps={{
+									disableUnderline: true,
+								}}
 								fullWidth
 								value={formik.values.cardHolder}
 								onChange={formik.handleChange}
@@ -60,10 +77,14 @@ const CardPaymentForm = () => {
 							/>
 							<TextField
 								style={textFieldStyle}
-								variant='standard'
+								type='number'
 								id='cardNumber'
 								name='cardNumber'
 								label='Kortnummer'
+								inputProps={{ maxLength: 16 }}
+								InputProps={{
+									disableUnderline: true,
+								}}
 								fullWidth
 								value={formik.values.cardNumber}
 								onChange={formik.handleChange}
@@ -71,13 +92,22 @@ const CardPaymentForm = () => {
 								helperText={formik.touched.cardNumber && formik.errors.cardNumber}
 							/>
 						</div>
-						<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+						<div
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'center',
+							}}>
 							<TextField
 								style={textFieldStyleSmall}
-								variant='standard'
+								type='number'
 								id='cardMonth'
 								name='cardMonth'
-								label='/MM'
+								label='Kort Månad'
+								inputProps={{ maxLength: 2 }}
+								InputProps={{
+									disableUnderline: true,
+								}}
 								fullWidth
 								value={formik.values.cardMonth}
 								onChange={formik.handleChange}
@@ -86,10 +116,10 @@ const CardPaymentForm = () => {
 							/>
 							<TextField
 								style={textFieldStyleSmall}
-								variant='standard'
+								type='number'
 								id='cardYear'
 								name='cardYear'
-								label='/ÅÅ'
+								label='Kort År'
 								fullWidth
 								value={formik.values.cardYear}
 								onChange={formik.handleChange}
@@ -98,10 +128,10 @@ const CardPaymentForm = () => {
 							/>
 							<TextField
 								style={textFieldStyleSmall}
-								variant='standard'
+								type='number'
 								id='cvc'
 								name='cvc'
-								label='CVC-kod'
+								label='CCV Kod'
 								fullWidth
 								value={formik.values.cvc}
 								onChange={formik.handleChange}

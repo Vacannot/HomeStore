@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { CSSProperties } from "react";
 import CheckoutAccordion from '../components/CheckoutAccordion';
 import { Typography } from '@mui/material';
+
 // import CartPage from './cartPage';
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext'
 
 const CheckoutPage = () => {
+	const {emptyCart} = useCart();
+	const handleClick = () => {emptyCart();}
+	
 	return (
 		<div
 			style={{
@@ -33,5 +39,7 @@ const CheckoutPage = () => {
 		</div>
 	);
 };
+
+
 
 export default CheckoutPage;

@@ -1,7 +1,10 @@
 import React, { CSSProperties, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import { useOrderContext } from '../context/OrderContext';
 
 const validationSchema = yup.object({
@@ -21,6 +24,10 @@ const SwishPaymentForm = () => {
 		},
 	});
 
+	//   // useEffect(() => {
+	// /*   //   // console.log( */order)
+	//   // }, [order])
+
 	return (
 		<div style={formDiv}>
 			<form onSubmit={formik.handleSubmit}>
@@ -29,14 +36,14 @@ const SwishPaymentForm = () => {
 						display: 'flex',
 						flexDirection: 'row',
 					}}>
-					{/* <Typography sx={{ display: 'flex', justifyContent: 'start' }}>
+					<Typography sx={{ display: 'flex', justifyContent: 'start' }}>
 						Swish Number
-					</Typography> */}
+					</Typography>
 					<TextField
 						style={textFieldStyle}
 						id='swishNumber'
 						name='swishNumber'
-						label='Swish nummer'
+						label='Swish Number'
 						fullWidth
 						value={formik.values.swishNumber}
 						onChange={formik.handleChange}

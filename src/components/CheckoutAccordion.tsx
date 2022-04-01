@@ -140,6 +140,7 @@ export default function CheckoutAccordion() {
 				</AccordionDetails>
 			</Accordion>
 		</div>
+		
 	);
 }
 

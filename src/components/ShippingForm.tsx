@@ -37,6 +37,7 @@ export default function ShippingForm() {
 	const [shippingState, setShippingState] = useState('');
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		console.log('radiochange');
 		setShippingMethod(event.target.value);
 	};
 
