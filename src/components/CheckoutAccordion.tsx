@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 // import CartPage from './../pages/cartPage';
 import UserInputForm from './UserInputForm';
 import ShippingForm from './ShippingForm';
+import { CSSProperties } from '@mui/styled-engine';
 import CardPaymentForm from './CardPaymentForm';
 import PaymentOptionsForm from './PaymentOptionsForm';
 import ShippingDetailsForm from './ShippingDetailsForm';
@@ -62,6 +63,7 @@ export default function CheckoutAccordion() {
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
+				width: '80vw'
 			}}>
 			<Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
 				<AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
@@ -117,3 +119,8 @@ export default function CheckoutAccordion() {
 		
 	);
 }
+
+const accordionStyle: CSSProperties = {
+	width: '80vw',
+};
+

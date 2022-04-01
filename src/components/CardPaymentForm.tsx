@@ -65,7 +65,7 @@ const CardPaymentForm = () => {
             >
               <TextField
                 style={textFieldStyle}
-                type="number"
+                type="text"
                 id="cardHolder"
                 name="cardHolder"
                 label="Card Holder Name"

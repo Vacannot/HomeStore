@@ -14,9 +14,6 @@ function CartPage() {
 
   const { order } = useOrderContext();
 
-  const { getTotalSumExShip } = useCart();
-  const priceOfProducts = getTotalSumExShip(order.boughtItems);
-
   return (
     <div style={rootStyle}>
       <Typography align="center" variant="h4" sx={{ m: 1 }}>
