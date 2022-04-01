@@ -17,7 +17,19 @@ import { useCart } from '../context/CartContext';
 export default function Header() {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
-	const { cart } = useCart();
+	const {
+		cart,
+		addProductToCart,
+		removeProductFromCart,
+		emptyCart,
+		getSumPriceProducts,
+		getTotalSum,
+		addQuantity,
+		reduceQuantity,
+		getTotalQuantity,
+		createOrderId,
+		calculateVatPrice,
+	} = useCart();
 
 	const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 		'& .MuiBadge-badge': {
@@ -29,6 +41,7 @@ export default function Header() {
 	}));
 
 	let cartLength = 0;
+
 	cart.forEach((cartItem) => {
 		cartLength = cartLength + cartItem.quantity;
 	});
