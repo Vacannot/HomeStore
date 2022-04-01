@@ -9,13 +9,8 @@ import { useCart } from '../context/CartContext'
 
 function CartPage() {
   let { cart, getTotalSumExShip } = useContext(CartContext);
-
   const priceOfProducts = getTotalSumExShip(cart);
 
-  const { order } = useOrderContext();
-
-  const { getTotalSumExShip } = useCart();
-  const priceOfProducts = getTotalSumExShip(order.boughtItems);
 
   return (
     <div style={rootStyle}>

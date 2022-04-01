@@ -14,6 +14,8 @@ import ShippingDetailsForm from './ShippingDetailsForm';
 import FakturaPaymentForm from './FakturaPaymentForm';
 import SwishPaymentForm from './SwishPaymentForm'
 import { OrderOverview } from './OrderOverview';
+import { useOrderContext } from '../context/OrderContext';
+// import Accordion from '@mui/material/Accordion';
 
 const Accordion = styled((props: AccordionProps) => (
 	<MuiAccordion disableGutters elevation={6} square {...props} />
@@ -51,9 +53,12 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function CheckoutAccordion() {
 	const [expanded, setExpanded] = React.useState<string | false>('panel1');
+	const { order } = useOrderContext();
+	let formSubmitted = false;
 
 	const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
 		setExpanded(newExpanded ? panel : false);
+		formSubmitted = true;
 	};
 
 	return (
@@ -70,47 +75,37 @@ export default function CheckoutAccordion() {
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-				
 						<UserInputForm />
-		
 				</AccordionDetails>
 			</Accordion>
-			<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+			<Accordion disabled={!order.orderId ? true : false} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
 				<AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
 					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
 						Betalningsalternativ
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					
 						<PaymentOptionsForm />
-					
 				</AccordionDetails>
 			</Accordion>
-			<Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+			<Accordion disabled={!order.paymentMethod ? true : false} expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
 					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
 						Fraktalternativ
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-				
 						<ShippingForm />
-					
 				</AccordionDetails>
 			</Accordion>
-			<Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+			<Accordion disabled={!order.shippingMethod ? true : false} expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
 					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
 						Beställningsöverblick
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-				
-						{/* <ShippingDetailsForm /> */}
 						<OrderOverview />
-						
-					
 				</AccordionDetails>
 			</Accordion>
 		</div>

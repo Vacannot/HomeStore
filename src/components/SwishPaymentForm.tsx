@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { useOrderContext } from "../context/OrderContext";
 
 const validationSchema = yup.object({
-  swishNumber: yup.string().required("Please enter number").min(10),
+  swishNumber: yup.string().required("Ange telefonnummer").min(10),
 });
 
 const SwishPaymentForm = () => {
@@ -24,9 +24,6 @@ const SwishPaymentForm = () => {
     },
   });
 
-  //   // useEffect(() => {
-  // /*   //   // console.log( */order)
-  //   // }, [order])
 
   return (
     <div style={formDiv}>
@@ -37,14 +34,13 @@ const SwishPaymentForm = () => {
             flexDirection: "row",
           }}
         >
-          <Typography sx={{ display: "flex", justifyContent: "start" }}>
-            Swish Number
-          </Typography>
+    
           <TextField
             style={textFieldStyle}
             id="swishNumber"
             name="swishNumber"
-            label="Swish Number"
+            label="Swish Nummer"
+            inputProps={{ maxLength: 10, minLength: 10 }}        
             fullWidth
             value={formik.values.swishNumber}
             onChange={formik.handleChange}
