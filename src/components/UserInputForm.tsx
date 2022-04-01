@@ -9,7 +9,7 @@ interface UserInputFormValues {
 	firstName: string;
 	lastName: string;
 	email: string;
-	number: number;
+	number: string;
 	adress: string;
 	zipcode: number;
 	country: string;

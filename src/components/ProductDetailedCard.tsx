@@ -1,4 +1,4 @@
-import React, { CSSProperties} from 'react';
+import React, { CSSProperties } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -54,17 +54,18 @@ export default function ProductDetailedCard({ product }: Props) {
 			</CardActions>
 		</Card>
 	);
+}
 
 const rootCardStyle: CSSProperties = {
-  width: "70%",
-  maxWidth: "30rem;",
-  margin: "1rem auto",
-  display: "flex",
-  flexDirection: "column",
+	width: '70%',
+	maxWidth: '30rem;',
+	margin: '1rem auto',
+	display: 'flex',
+	flexDirection: 'column',
 };
 const CardActionsStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "space-around",
+	display: 'flex',
+	justifyContent: 'space-around',
 };
 
 const CardMediaStyle: CSSProperties = {
@@ -73,11 +74,11 @@ const CardMediaStyle: CSSProperties = {
 };
 
 const DescriptionStyle: CSSProperties = {
-	height: '85px',
-  height: "100%",
-  width: "50%",
+	// height: '85px',
+	height: '100%',
+	width: '50%',
 };
-	
+
 //   const [price, setPrice] = useState(123);
 //   const theme = useTheme();
 //   const matches = useMediaQuery(theme.breakpoints.up("sm"));
