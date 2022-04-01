@@ -69,7 +69,7 @@ const UserInputForm = () => {
               label="Förnamn"
               inputProps={{ maxLength: 25 }}
               InputProps={{
-                disableUnderline: true,
+              // //disableUnderline: true,
               }}
               fullWidth
               value={formik.values.firstName}
@@ -86,7 +86,7 @@ const UserInputForm = () => {
               label="Efternamn"
               inputProps={{ maxLength: 25 }}
               InputProps={{
-                disableUnderline: true,
+                //disableUnderline: true,
               }}
               fullWidth
               value={formik.values.lastName}
@@ -101,7 +101,7 @@ const UserInputForm = () => {
               label="E-post"
               inputProps={{ maxLength: 40 }}
               InputProps={{
-                disableUnderline: true,
+                //disableUnderline: true,
               }}
               fullWidth
               value={formik.values.email}
@@ -124,7 +124,7 @@ const UserInputForm = () => {
               label="Telefonnummer"
               inputProps={{ maxLength: 10, minLength: 10 }}
               InputProps={{
-                disableUnderline: true,
+                //disableUnderline: true,
               }}
               fullWidth
               value={formik.values.number}
@@ -139,7 +139,7 @@ const UserInputForm = () => {
               label="Adress"
               inputProps={{ maxLength: 30 }}
               InputProps={{
-                disableUnderline: true,
+                //disableUnderline: true,
               }}
               fullWidth
               value={formik.values.address}
@@ -155,7 +155,7 @@ const UserInputForm = () => {
               label="Postnummer"
               inputProps={{ maxLength: 5, minLength: 10 }}
               InputProps={{
-                disableUnderline: true,
+                //disableUnderline: true,
               }}
               fullWidth
               value={formik.values.zipcode}

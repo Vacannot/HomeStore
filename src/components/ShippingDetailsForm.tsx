@@ -57,11 +57,11 @@ function ShippingDetailsForm() {
     });
 
   const { order } = useOrderContext();
-
   const { getTotalSumExShip } = useCart();
-  const priceOfProducts = getTotalSumExShip(order.boughtItems);
 
-  const priceTotal = priceOfProducts;
+  const priceOfProducts = getTotalSumExShip(order.boughtItems);
+  const priceShipping = order.shippingPrice;
+  const priceTotal = priceOfProducts + priceShipping;
 
   const formik = useFormik({
     initialValues: {
@@ -231,24 +231,15 @@ function ShippingDetailsForm() {
                 error={formik.touched.country && Boolean(formik.errors.country)}
                 helperText={formik.touched.country && formik.errors.country}
               />
-            </div>
           </div>
-          <div style={ButtonDiv}>
-            <Button sx={SubmitButton} type="submit" variant="contained">
-              Fortsätt
-            </Button>
-          </div>
-        </form>
+        </div>
+        <div style={ButtonDiv}>
         <Link to={"/order"}>
-          <Button
-            sx={SubmitButton}
-            type="submit"
-            variant="contained"
-            onClick={clean}
-          >
-            {priceTotal} Slutför Köp
-          </Button>
+          <Button sx={SubmitButton} type="submit" variant="contained" onClick={clean}>Slutför Köp</Button>
         </Link>
+        </div>
+      </form>
+        <Typography variant="h6">Pris för valda produkter samt frakt: {priceTotal} </Typography>
       </div>
     </div>
   );
@@ -273,7 +264,6 @@ const ButtonDiv: CSSProperties = {
 const SubmitButton: CSSProperties = {
   backgroundColor: "#BFD8D5",
   color: "#333333",
-  marginTop: "2rem",
   padding: "0.5rem",
   width: "8rem",
   boxShadow: "none",

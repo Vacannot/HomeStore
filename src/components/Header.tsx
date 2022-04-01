@@ -13,6 +13,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import Menu from './Menu';
 
 export default function Header() {
 	const theme = useTheme();
@@ -53,7 +54,9 @@ export default function Header() {
 								<ShoppingCartOutlinedIcon sx={{ fontSize: 28, color: 'black' }} />
 							</StyledBadge>
 						</Link>
-						<MenuIcon sx={{ fontSize: 28, color: 'black' }} />
+						<Menu>
+							<MenuIcon sx={{ fontSize: 28, color: 'black' }} />
+						</Menu>
 					</div>
 				</Toolbar>
 			</AppBar>

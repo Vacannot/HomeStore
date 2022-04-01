@@ -95,6 +95,16 @@ export default function ShippingForm() {
 					</RadioGroup>
 				</div>
 			</div>
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'end',
+					gap: '2rem',
+				}}>
+				<Button sx={ButtonStyle} variant='contained'>
+					Fortsätt
+				</Button>
+			</div>
 		</Box>
 	);
 }
@@ -109,3 +119,13 @@ const shippingButton: CSSProperties = {
 	marginTop: '1rem',
 	width: '25rem',
 };
+
+const ButtonStyle: CSSProperties = {
+	backgroundColor: "#BFD8D5",
+	color: "#333333",
+	marginTop: "2rem",
+	padding: "0.5rem",
+	width: "8rem",
+	boxShadow: "none",
+	textDecoration: "none",
+  };

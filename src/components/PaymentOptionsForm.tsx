@@ -36,95 +36,95 @@ function MyFormControlLabel(props: FormControlLabelProps) {
 }
 
 export default function PaymentOptionsForm() {
-  const { setPaymentMethod } = useOrderContext();
-  const [paymentOptionState, setPaymentOptionState] = useState("");
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPaymentOptionState(event.target.value);
-    setPaymentMethod(event.target.value);
-  };
 
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1rem",
-          }}
-        >
-          <RadioGroup
-            name="use-radio-group"
-            defaultValue="none"
-            onChange={handleChange}
-          >
-            <Box style={{ display: "flex", flexDirection: "row" }}>
-              <MyFormControlLabel value="card" label="" control={<Radio />} />
+	const { setPaymentMethod } = useOrderContext();
+	const [paymentOptionState, setPaymentOptionState] = useState('')
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setPaymentOptionState(event.target.value)
+		setPaymentMethod(event.target.value);
+	}
 
-              <Paper sx={paymentOptionButton}>
-                <h4 style={{ margin: "0" }}>Direktbetalning med kort</h4>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <h4 style={{ margin: "0" }}>Visa, MasterCard, etc.</h4>
-                </div>
-              </Paper>
-            </Box>
+	return (
+		<Box
+			sx={{display: 'flex',flexDirection: 'column',justifyContent: 'center',}}>
+			<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						justifyContent: 'center',
+						gap: '1rem',
+					}}>
+					<RadioGroup name='use-radio-group' defaultValue='none' onChange={handleChange}>
 
-            {paymentOptionState === "card" && <CardPaymentForm />}
+						<div
+							style={{
+								display: 'flex',
+								flexDirection: 'column',
+								alignItems: 'center',
+								justifyContent: 'center',
+							}}>
 
-            <Box style={{ display: "flex", flexDirection: "row" }}>
-              <MyFormControlLabel value="swish" label="" control={<Radio />} />
-              <Paper sx={paymentOptionButton}>
-                <h4 style={{ margin: "0" }}>Direktbetalning med Swish</h4>
-                <div style={{ display: "flex", flexDirection: "column" }}></div>
-              </Paper>
+						<Box style={{ display: 'flex', flexDirection: 'row' }}>
+							<MyFormControlLabel value='card' label='' control={<Radio />}/>
+							<Paper sx={paymentOptionButton}>
+								<h4 style={{ margin: '0' }}>Direktbetalning med kort</h4>
+								<div style={{ display: 'flex', flexDirection: 'column' }}>
+									<h4 style={{ margin: '0' }}>Visa, MasterCard, etc.</h4>
+								</div>
+							</Paper>
+						</Box>
 
-              {paymentOptionState === "swish" && <SwishPaymentForm />}
-            </Box>
-            <Box style={{ display: "flex", flexDirection: "row" }}>
-              <MyFormControlLabel
-                value="faktura"
-                label=""
-                control={<Radio />}
-              />
-              <Paper sx={paymentOptionButton}>
-                <h4 style={{ margin: "0" }}>Betala med Faktura</h4>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  {/* <div>Pris: 39kr</div> */}
-                </div>
-              </Paper>
+						{paymentOptionState === "card" && (
+								<CardPaymentForm/>
+						)}
 
-              {paymentOptionState === "faktura" && <FakturaPaymentForm />}
-            </Box>
-          </RadioGroup>
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          gap: "2rem",
-        }}
-      >
-        <Button sx={ButtonStyle} type="submit" variant="contained">
-          Fortsätt
-        </Button>
-      </div>
-    </Box>
-  );
+						</div>
+
+
+
+						<Box style={{ display: 'flex', flexDirection: 'row' }}>
+							<MyFormControlLabel value='swish' label='' control={<Radio />} />
+							<Paper sx={paymentOptionButton}>
+								<h4 style={{ margin: '0' }}>Direktbetalning med Swish</h4>
+								<div style={{ display: 'flex', flexDirection: 'column' }}>
+								</div>
+							</Paper>
+
+							{paymentOptionState === "swish" && (
+							<SwishPaymentForm/>
+						)}
+
+						</Box>
+						<Box style={{ display: 'flex', flexDirection: 'row' }}>
+							<MyFormControlLabel value='faktura' label='' control={<Radio />} />
+							<Paper sx={paymentOptionButton}>
+                                <h4 style={{ margin: '0' }}>Betala med Faktura</h4>
+								<div style={{ display: 'flex', flexDirection: 'column' }}>
+									{/* <div>Pris: 39kr</div> */}
+								</div>
+							</Paper>
+
+							{paymentOptionState === "faktura" && (
+							<FakturaPaymentForm/>)}
+
+						</Box>
+					</RadioGroup>
+				</div>
+			</div>
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'end',
+					gap: '2rem',
+				}}>
+				<Button sx={ButtonStyle} type="submit" variant='contained'>
+					Fortsätt
+				</Button>
+			</div>
+		</Box>
+	);
 }
 
 const ButtonStyle: CSSProperties = {
