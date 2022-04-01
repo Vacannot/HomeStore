@@ -6,9 +6,7 @@ import { CartContext } from "../context/CartContext";
 
 function CartPage() {
   let { cart, getTotalSumExShip } = useContext(CartContext);
-
   const priceOfProducts = getTotalSumExShip(cart);
-
 
   return (
     <div style={rootStyle}>

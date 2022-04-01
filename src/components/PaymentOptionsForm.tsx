@@ -94,7 +94,7 @@ export default function PaymentOptionsForm() {
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
 							<MyFormControlLabel value='faktura' label='' control={<Radio />} />
 							<Paper sx={paymentOptionButton}>
-                                <h4 style={{ margin: '0' }}>Betala med Faktura</h4>
+                                <h4 style={{ margin: '0' }}>Betala med Faktura<span style={{fontSize: '13px', color: 'grey'}}>Skickas till angiven adress</span></h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 								</div>
 							</Paper>
@@ -112,9 +112,6 @@ export default function PaymentOptionsForm() {
 					justifyContent: 'end',
 					gap: '2rem',
 				}}>
-				<Button sx={ButtonStyle} variant='contained'>
-					Fortsätt
-				</Button>
 			</div>
 		</Box>
 	);
