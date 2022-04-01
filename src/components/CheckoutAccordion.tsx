@@ -13,6 +13,7 @@ import PaymentOptionsForm from './PaymentOptionsForm';
 import ShippingDetailsForm from './ShippingDetailsForm';
 import FakturaPaymentForm from './FakturaPaymentForm';
 import SwishPaymentForm from './SwishPaymentForm'
+import { OrderOverview } from './OrderOverview';
 
 const Accordion = styled((props: AccordionProps) => (
 	<MuiAccordion disableGutters elevation={6} square {...props} />
@@ -101,12 +102,14 @@ export default function CheckoutAccordion() {
 			<Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
 					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
-						Leveransuppgifter
+						Beställningsöverblick
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
 				
-						<ShippingDetailsForm />
+						{/* <ShippingDetailsForm /> */}
+						<OrderOverview />
+						
 					
 				</AccordionDetails>
 			</Accordion>
