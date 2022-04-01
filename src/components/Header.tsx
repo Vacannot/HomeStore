@@ -13,23 +13,12 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import Menu from './Menu';
 
 export default function Header() {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.up('sm'));
-	const {
-		cart,
-		addProductToCart,
-		removeProductFromCart,
-		emptyCart,
-		getSumPriceProducts,
-		getTotalSum,
-		addQuantity,
-		reduceQuantity,
-		getTotalQuantity,
-		createOrderId,
-		calculateVatPrice,
-	} = useCart();
+	const { cart } = useCart();
 
 	const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 		'& .MuiBadge-badge': {
@@ -41,7 +30,6 @@ export default function Header() {
 	}));
 
 	let cartLength = 0;
-
 	cart.forEach((cartItem) => {
 		cartLength = cartLength + cartItem.quantity;
 	});
@@ -66,7 +54,9 @@ export default function Header() {
 								<ShoppingCartOutlinedIcon sx={{ fontSize: 28, color: 'black' }} />
 							</StyledBadge>
 						</Link>
-						<MenuIcon sx={{ fontSize: 28, color: 'black' }} />
+						<Menu>
+							<MenuIcon sx={{ fontSize: 28, color: 'black' }} />
+						</Menu>
 					</div>
 				</Toolbar>
 			</AppBar>

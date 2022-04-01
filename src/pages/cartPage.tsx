@@ -4,8 +4,18 @@ import { Link } from "react-router-dom";
 import CartItemCard from "../components/CartItemCard";
 import { CartContext } from "../context/CartContext";
 
+import { useOrderContext } from "../context/OrderContext";
+import { useCart } from '../context/CartContext'
+
 function CartPage() {
   let { cart } = useContext(CartContext);
+
+  const { order } = useOrderContext();
+
+  const { getTotalSumExShip } = useCart();
+  const priceOfProducts = getTotalSumExShip(order.boughtItems);
+
+  const priceTotal = priceOfProducts;
 
   return (
     <div style={rootStyle}>
@@ -17,7 +27,7 @@ function CartPage() {
         return <CartItemCard key={cartItem.product.id} product={cartItem} />;
       })}
       <div style={paymentDivStyle}>
-        <Typography variant="h6">Total: Kr</Typography>
+        <Typography variant="h6">Total: {priceTotal}Kr</Typography>
         <Button sx={buttonStyle} variant="contained">
           <Link style={linkStyle} to="/kassa">
             Gå till kassan
