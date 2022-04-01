@@ -19,17 +19,17 @@ interface UserInputFormValues {
 }
 
 const validationSchema = yup.object({
-  firstName: yup.string().required("Please enter first name").min(2),
-  lastName: yup.string().required("Please enter last name").min(2),
+  firstName: yup.string().required("Ange ditt förnamn").min(2),
+  lastName: yup.string().required("Ange ditt efternamn").min(2),
   email: yup
     .string()
-    .email("Please enter a valid email")
-    .required("Please enter a valid email"),
-  number: yup.number().required("Please enter number").min(10),
-  address: yup.string().required("Enter your adress").min(8),
-  zipcode: yup.number().required("Enter your zipcode").min(5),
-  city: yup.string().required("Enter your City").min(2),
-  country: yup.string().required("Enter your country").min(2),
+    .email("Ange en giltig e-post")
+    .required("Ange en giltig e-post"),
+  number: yup.number().required("Ange ditt telefonnummer").min(10),
+  address: yup.string().required("Ange din adress").min(8),
+  zipcode: yup.number().required("Ange ditt postnummer").min(5),
+  city: yup.string().required("Ange din stad").min(2),
+  country: yup.string().required("Ange ditt land").min(2),
 });
 
 const UserInputForm = () => {
@@ -48,8 +48,6 @@ const UserInputForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(values);
       createNewOrder(values);
     },
   });
@@ -70,9 +68,6 @@ const UserInputForm = () => {
               name="firstName"
               label="Förnamn"
               inputProps={{ maxLength: 20 }}
-              InputProps={{
-              // //disableUnderline: true,
-              }}
               fullWidth
               value={formik.values.firstName}
               onChange={formik.handleChange}
@@ -86,10 +81,7 @@ const UserInputForm = () => {
               id="lastName"
               name="lastName"
               label="Efternamn"
-              inputProps={{ maxLength: 20 }}
-              InputProps={{
-                //disableUnderline: true,
-              }}
+              inputProps={{ maxLength: 20 }}             
               fullWidth
               value={formik.values.lastName}
               onChange={formik.handleChange}
@@ -101,10 +93,7 @@ const UserInputForm = () => {
               id="email"
               name="email"
               label="E-post"
-              inputProps={{ maxLength: 25 }}
-              InputProps={{
-                //disableUnderline: true,
-              }}
+              inputProps={{ maxLength: 50 }}            
               fullWidth
               value={formik.values.email}
               onChange={formik.handleChange}
@@ -125,9 +114,7 @@ const UserInputForm = () => {
               name="number"
               label="Telefonnummer"
               inputProps={{ maxLength: 10, minLength: 10 }}
-              InputProps={{
-                //disableUnderline: true,
-              }}
+              
               fullWidth
               value={formik.values.number}
               onChange={formik.handleChange}
@@ -139,10 +126,7 @@ const UserInputForm = () => {
               id="address"
               name="address"
               label="Adress"
-              inputProps={{ maxLength: 20 }}
-              InputProps={{
-                //disableUnderline: true,
-              }}
+              inputProps={{ maxLength: 20 }}            
               fullWidth
               value={formik.values.address}
               onChange={formik.handleChange}
@@ -154,11 +138,8 @@ const UserInputForm = () => {
               type="tel"
               id="zipcode"
               name="zipcode"
-              label="Zipcode"
-              inputProps={{ maxLength: 5, minLength: 10 }}
-              InputProps={{
-                //disableUnderline: true,
-              }}
+              label="Postnummer"
+              inputProps={{ maxLength: 5, minLength: 5 }}             
               fullWidth
               value={formik.values.zipcode}
               onChange={formik.handleChange}
@@ -176,7 +157,7 @@ const UserInputForm = () => {
               style={textFieldStyle}
               id="city"
               name="city"
-              label="City"
+              label="Stad"
               fullWidth
               value={formik.values.city}
               onChange={formik.handleChange}
@@ -187,7 +168,7 @@ const UserInputForm = () => {
               style={textFieldStyle}
               id="country"
               name="country"
-              label="Country"
+              label="Land"
               fullWidth
               value={formik.values.country}
               onChange={formik.handleChange}

@@ -12,9 +12,6 @@ const FakturaPaymentForm = () => {
           flexDirection: "row",
         }}
       >
-        <Typography sx={{ display: "flex", justifyContent: "start" }}>
-          Faktura kommer att skickas till din adress
-        </Typography>
       </div>
     </div>
   );
