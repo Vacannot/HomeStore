@@ -57,6 +57,7 @@ export const OrderOverview = () => {
         <Typography variant="h6" sx={{ marginLeft: ".5rem" }}>
           {order.boughtItems.length === 1 ? "Produkt" : "Produkter"}
         </Typography>
+
         {order.boughtItems.map((item) => (
           <div key={item.product.id} style={productInfoStyle}>
             <Box
