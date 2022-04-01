@@ -134,6 +134,9 @@ const CartProvider: FC = (props) => {
     setCart(updatedQuantity);
   };
 
+
+})
+
   /**
    *
    * @param cartItem

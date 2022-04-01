@@ -12,29 +12,33 @@ import Grid from '@mui/material/Grid';
 
 const validationSchema = yup.object({
   cardNumber: yup
-    .number()
-    .required("Enter a valid card, no less than 16 digits")
-    .min(16),
-  cvc: yup.number().required("Enter a valid CVC").min(3),
-  cardHolder: yup
-    .string()
-    .typeError("Not a name")
-    .matches(/([a-ö\s]+$)/, "No numbers allowed")
-    .required("Enter the card holders name")
-    .min(25),
-  cardMonth: yup
-    .string()
-    .typeError("Not a valid expiration date. Example: MM")
-    .max(2, "Not a valid expiration date. Example: MM")
-    .matches(/([0-9]{2})/, "Not a valid expiration date. Example: MM")
-    .required("Expiration date is required")
-    .min(2),
-  cardYear: yup
-    .string()
-    .typeError("Not a valid expiration date. Example: YY")
-    .max(4, "Not a valid expiration date. Example: YY")
-    .matches(/([0-9]{2})/, "Not a valid expiration date. Example: YY")
-    .required("Expiration date is required"),
+  .number()
+  .required("Ange ett giltigt kort, minst 16 siffror")
+  .min(16),
+cvc: yup
+.number()
+.typeError("Ange ett giltigt CVC")
+.required("Ange ett giltigt CVC")
+.min(3),
+cardHolder: yup
+  .string()
+  .typeError("Inget namn")
+  .matches(/([a-ö\s]+$)/, "No numbers allowed")
+  .required("Ange kortinnehavarens namn")
+  .min(25),
+cardMonth: yup
+  .string()
+  .typeError("Inte ett giltigt utgångsdatum. Exempel: MM")
+  .max(2, "Inte ett giltigt utgångsdatum. Exempel: MM")
+  .matches(/([0-9]{2})/, "Inte ett giltigt utgångsdatum. Exempel: MM")
+  .required("Ange utgångsdatum")
+  .min(2),
+cardYear: yup
+  .string()
+  .typeError("Inte ett giltigt utgångsdatum. Exempel: YY")
+  .max(4, "Inte ett giltigt utgångsdatum. Exempel: YY")
+  .matches(/([0-9]{2})/, "Inte ett giltigt utgångsdatum. Exempel: YY")
+  .required("Ange utgångsdatum"),
 });
 
 const CardPaymentForm = () => {
