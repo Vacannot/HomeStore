@@ -69,34 +69,28 @@ export default function PaymentOptionsForm() {
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
 							<MyFormControlLabel value='card' label='' control={<Radio />}/>
 							<Paper sx={paymentOptionButton}>
-								<h4 style={{ margin: '0' }}>Direktbetalning med kort</h4>
+								<h4 style={{ margin: '0', marginBottom: "10px"}}>Kortbetalning</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 									<h4 style={{ margin: '0' }}>Visa, MasterCard, etc.</h4>
 								</div>
 							</Paper>
 						</Box>
-
 						{paymentOptionState === "card" && (
 								<CardPaymentForm/>
 						)}
 
-						</div>
-
-
-
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
 							<MyFormControlLabel value='swish' label='' control={<Radio />} />
 							<Paper sx={paymentOptionButton}>
-								<h4 style={{ margin: '0' }}>Direktbetalning med Swish</h4>
+								<h4 style={{ margin: '0' }}>Swish</h4>
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 								</div>
 							</Paper>
-
-							{paymentOptionState === "swish" && (
+						</Box>				
+						{paymentOptionState === "swish" && (
 							<SwishPaymentForm/>
 						)}
 
-						</Box>
 						<Box style={{ display: 'flex', flexDirection: 'row' }}>
 							<MyFormControlLabel value='faktura' label='' control={<Radio />} />
 							<Paper sx={paymentOptionButton}>
@@ -104,11 +98,11 @@ export default function PaymentOptionsForm() {
 								<div style={{ display: 'flex', flexDirection: 'column' }}>
 								</div>
 							</Paper>
-
-							{/* {paymentOptionState === "faktura" && (
-							<FakturaPaymentForm/>)} */}
-
 						</Box>
+						{paymentOptionState === "faktura" && (
+							<FakturaPaymentForm/>)}
+						</div>
+
 					</RadioGroup>
 				</div>
 			</div>
@@ -136,11 +130,12 @@ const ButtonStyle: CSSProperties = {
 
 const paymentOptionButton: CSSProperties = {
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   backgroundColor: "#F4F3F3",
   padding: "1rem",
   justifyContent: "space-between",
   color: "#333333",
   marginTop: "1rem",
-  width: "25rem",
+  width: "25vw",
+  minWidth: "200px"
 };

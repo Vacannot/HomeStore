@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useOrderContext } from "../context/OrderContext";
+import Grid from '@mui/material/Grid';
 
 interface UserInputFormValues {
   firstName: string;
@@ -55,14 +56,10 @@ const UserInputForm = () => {
   return (
     <div style={formDiv}>
       <form onSubmit={formik.handleSubmit}>
-        <div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <TextField
+        <div style={formDiv}>
+          <Grid container columns={{ xs: 6, sm: 6, md: 12, lg: 12 }}>
+                <Grid style={gridItem} item xs={12} md={6}>
+              <TextField
               style={textFieldStyle}
               id="firstName"
               name="firstName"
@@ -76,6 +73,8 @@ const UserInputForm = () => {
               }
               helperText={formik.touched.firstName && formik.errors.firstName}
             />
+              </Grid>
+              <Grid style={gridItem} item xs={12} md={6}>
             <TextField
               style={textFieldStyle}
               id="lastName"
@@ -88,6 +87,8 @@ const UserInputForm = () => {
               error={formik.touched.lastName && Boolean(formik.errors.lastName)}
               helperText={formik.touched.lastName && formik.errors.lastName}
             />
+              </Grid>
+              <Grid style={gridItem} item xs={12} md={6}>
             <TextField
               style={textFieldStyle}
               id="email"
@@ -100,13 +101,8 @@ const UserInputForm = () => {
               error={formik.touched.email && Boolean(formik.errors.email)}
               helperText={formik.touched.email && formik.errors.email}
             />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
+            </Grid>
+            <Grid style={gridItem} item xs={12} md={6}>
             <TextField
               style={textFieldStyle}
               type="tel"
@@ -121,6 +117,8 @@ const UserInputForm = () => {
               error={formik.touched.number && Boolean(formik.errors.number)}
               helperText={formik.touched.number && formik.errors.number}
             />
+            </Grid>
+            <Grid style={gridItem} item xs={12} md={6}>
             <TextField
               style={textFieldStyle}
               id="address"
@@ -133,6 +131,8 @@ const UserInputForm = () => {
               error={formik.touched.address && Boolean(formik.errors.address)}
               helperText={formik.touched.address && formik.errors.address}
             />
+            </Grid>
+            <Grid style={gridItem} item xs={12} md={6}>
             <TextField
               style={textFieldStyle}
               type="tel"
@@ -146,13 +146,8 @@ const UserInputForm = () => {
               error={formik.touched.zipcode && Boolean(formik.errors.zipcode)}
               helperText={formik.touched.zipcode && formik.errors.zipcode}
             />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
+            </Grid>
+            <Grid style={gridItem} item xs={12} md={6}>
             <TextField
               style={textFieldStyle}
               id="city"
@@ -164,6 +159,8 @@ const UserInputForm = () => {
               error={formik.touched.city && Boolean(formik.errors.city)}
               helperText={formik.touched.city && formik.errors.city}
             />
+            </Grid>
+            <Grid style={gridItem} item xs={12} md={6}>
             <TextField
               style={textFieldStyle}
               id="country"
@@ -175,7 +172,9 @@ const UserInputForm = () => {
               error={formik.touched.country && Boolean(formik.errors.country)}
               helperText={formik.touched.country && formik.errors.country}
             />
-          </div>
+            </Grid>
+				  </Grid>
+            
         </div>
         <div style={ButtonDiv}>
           <Button sx={SubmitButton} type="submit" variant="contained">
@@ -190,7 +189,8 @@ const UserInputForm = () => {
 const textFieldStyle: CSSProperties = {
   margin: "1rem",
   display: "flex",
-  width: "40ch",
+  width: "35vw",
+  minWidth: "250px",
 };
 
 const formDiv: CSSProperties = {
@@ -200,7 +200,7 @@ const formDiv: CSSProperties = {
 
 const ButtonDiv: CSSProperties = {
   display: "flex",
-  justifyContent: "right",
+  justifyContent: "end",
 };
 
 const SubmitButton: CSSProperties = {
@@ -212,5 +212,11 @@ const SubmitButton: CSSProperties = {
   boxShadow: "none",
   textDecoration: "none",
 };
+
+const gridItem: CSSProperties = {
+	display: 'flex',
+	justifyContent: 'center',
+};
+
 
 export default UserInputForm;
