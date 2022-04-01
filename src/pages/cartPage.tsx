@@ -5,19 +5,20 @@ import CartItemCard from "../components/CartItemCard";
 import { CartContext } from "../context/CartContext";
 
 function CartPage() {
-  let { cart } = useContext(CartContext);
+  let { cart, getTotalSumExShip } = useContext(CartContext);
+
+  const priceOfProducts = getTotalSumExShip(cart);
 
   return (
     <div style={rootStyle}>
       <Typography align="center" variant="h4" sx={{ m: 1 }}>
         Varukorg
       </Typography>
-
       {cart.map((cartItem) => {
         return <CartItemCard key={cartItem.product.id} product={cartItem} />;
       })}
       <div style={paymentDivStyle}>
-        <Typography variant="h6">Total: Kr</Typography>
+        <Typography variant="h6">Total: {priceOfProducts} Kr</Typography>
         <Button sx={buttonStyle} variant="contained">
           <Link style={linkStyle} to="/kassa">
             Gå till kassan
