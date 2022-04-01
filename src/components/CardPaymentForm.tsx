@@ -1,39 +1,33 @@
 import React, { CSSProperties } from "react";
-import ReactDOM from "react-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 
 const validationSchema = yup.object({
   cardNumber: yup
     .number()
-    .required("Enter a valid card, no less than 16 digits")
+    .required("Ange ett giltigt kort, minst 16 siffror")
     .min(16),
-  cvc: yup.number().required("Enter a valid CVC").min(3),
+  cvc: yup.number().required("Ange ett giltigt CVC").min(3),
   cardHolder: yup
     .string()
-    .typeError("Not a name")
+    .typeError("Inget namn")
     .matches(/([a-ö\s]+$)/, "No numbers allowed")
-    .required("Enter the card holders name")
+    .required("Ange kortinnehavarens namn")
     .min(25),
   cardMonth: yup
     .string()
-    .typeError("Not a valid expiration date. Example: MM")
-    .max(2, "Not a valid expiration date. Example: MM")
-    .matches(/([0-9]{2})/, "Not a valid expiration date. Example: MM")
-    .required("Expiration date is required")
+    .typeError("Inte ett giltigt utgångsdatum. Exempel: MM")
+    .max(2, "Inte ett giltigt utgångsdatum. Exempel: MM")
+    .matches(/([0-9]{2})/, "Inte ett giltigt utgångsdatum. Exempel: MM")
+    .required("Ange utgångsdatum")
     .min(2),
   cardYear: yup
     .string()
-    .typeError("Not a valid expiration date. Example: YY")
-    .max(4, "Not a valid expiration date. Example: YY")
-    .matches(/([0-9]{2})/, "Not a valid expiration date. Example: YY")
-    .required("Expiration date is required"),
+    .typeError("Inte ett giltigt utgångsdatum. Exempel: YY")
+    .max(4, "Inte ett giltigt utgångsdatum. Exempel: YY")
+    .matches(/([0-9]{2})/, "Inte ett giltigt utgångsdatum. Exempel: YY")
+    .required("Ange utgångsdatum"),
 });
 
 const CardPaymentForm = () => {
@@ -65,10 +59,10 @@ const CardPaymentForm = () => {
             >
               <TextField
                 style={textFieldStyle}
-                type="number"
+                type="text"
                 id="cardHolder"
                 name="cardHolder"
-                label="Card Holder Name"
+                label="Kort innehavarens namn"
                 inputProps={{ maxLength: 25 }}
                 InputProps={{
                   disableUnderline: true,
@@ -88,7 +82,7 @@ const CardPaymentForm = () => {
                 type="number"
                 id="cardNumber"
                 name="cardNumber"
-                label="Card Number"
+                label="Kortnummer"
                 inputProps={{ maxLength: 16 }}
                 InputProps={{
                   disableUnderline: true,
@@ -116,7 +110,7 @@ const CardPaymentForm = () => {
                 type="number"
                 id="cardMonth"
                 name="cardMonth"
-                label="Card Month"
+                label="Kort månad"
                 inputProps={{ maxLength: 2 }}
                 InputProps={{
                   disableUnderline: true,
@@ -134,7 +128,7 @@ const CardPaymentForm = () => {
                 type="number"
                 id="cardYear"
                 name="cardYear"
-                label="Card Year"
+                label="Kort år"
                 fullWidth
                 value={formik.values.cardYear}
                 onChange={formik.handleChange}
@@ -148,7 +142,7 @@ const CardPaymentForm = () => {
                 type="number"
                 id="cvc"
                 name="cvc"
-                label="Cvc Code"
+                label="Cvc kod"
                 fullWidth
                 value={formik.values.cvc}
                 onChange={formik.handleChange}
