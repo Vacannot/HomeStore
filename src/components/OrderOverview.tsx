@@ -1,10 +1,10 @@
 import { Box, Container, Typography } from "@mui/material";
 import React, { CSSProperties } from "react";
 import { useOrderContext } from "../context/OrderContext";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { useCart } from "../context/CartContext";
-import Grid from '@mui/material/Grid';
+import Grid from "@mui/material/Grid";
 
 export const OrderOverview = () => {
   const { order } = useOrderContext();
@@ -17,26 +17,25 @@ export const OrderOverview = () => {
   const { emptyCart } = useCart();
 
   const handleOnClickClean = () => {
-      emptyCart();
-      alert("Köp genomfört")
-  }
+    emptyCart();
+    alert("Köp genomfört");
+  };
 
   const clean = () => {
     delay(1000).then(() => handleOnClickClean());
-  }
+  };
 
-  const delay = time =>
-  new Promise(resolve => {
-  setTimeout(resolve, time);
-});
+  const delay = (time) =>
+    new Promise((resolve) => {
+      setTimeout(resolve, time);
+    });
 
   return (
     <div>
-      <Container sx={{ display: "flex", }}>
+      <Container sx={{ display: "flex" }}>
         <Grid container columns={{ xs: 6, sm: 6, md: 12, lg: 12 }}>
-
           <Grid style={gridItem} item xs={12} md={6} lg={3}>
-            <Container sx={{ display: "flex", flexDirection: "column", }}>
+            <Container sx={{ display: "flex", flexDirection: "column" }}>
               <Typography variant="h6">Mina uppgifter</Typography>
               <Typography>
                 {order.customer.firstName} {order.customer.lastName}
@@ -50,7 +49,7 @@ export const OrderOverview = () => {
           </Grid>
 
           <Grid style={gridItem} item xs={12} md={6} lg={3}>
-            <Container sx={{ display: "flex", flexDirection: "column", }}>
+            <Container sx={{ display: "flex", flexDirection: "column" }}>
               <Typography variant="h6">Leveransmetod</Typography>
               <Typography>{order.shippingMethod}</Typography>
               <Typography>{order.shippingPrice} kr</Typography>
@@ -58,7 +57,7 @@ export const OrderOverview = () => {
           </Grid>
 
           <Grid style={gridItem} item xs={12} md={6} lg={3}>
-            <Container sx={{ display: "flex", flexDirection: "column", }}>
+            <Container sx={{ display: "flex", flexDirection: "column" }}>
               <Typography variant="h6">Betalmetod</Typography>
               <Typography>
                 {order.paymentMethod === "swish"
@@ -69,15 +68,13 @@ export const OrderOverview = () => {
           </Grid>
 
           <Grid style={gridItem} item xs={12} md={6} lg={3}>
-            <Container sx={{ display: "flex", flexDirection: "column", }}>
-              <Typography variant="h6">
-                Totalpris: {priceTotal} kr{" "}
-                
-              </Typography>
+            <Container sx={{ display: "flex", flexDirection: "column" }}>
+              <Typography variant="h6">Totalpris: {priceTotal} kr </Typography>
               <Typography variant="subtitle2">
-                <span style={{ fontSize: "15px", color: "grey" }}>(ink moms)</span>
+                <span style={{ fontSize: "15px", color: "grey" }}>
+                  (ink moms)
+                </span>
               </Typography>
-
             </Container>
           </Grid>
         </Grid>
@@ -99,13 +96,12 @@ export const OrderOverview = () => {
         {order.boughtItems.map((item) => (
           <div key={item.product.id} style={productInfoStyle}>
             <Grid container columns={{ xs: 6, sm: 6, md: 12, lg: 12 }}>
-
               <Grid style={gridItem} item xs={12} md={3} lg={3}>
                 <Box
-                component="img"
-                alt={item.product.title}
-                src={item.product.image}
-                sx={{ height: 100, width: 100 }}
+                  component="img"
+                  alt={item.product.title}
+                  src={item.product.image}
+                  sx={{ height: 100, width: 100 }}
                 />
               </Grid>
               <Grid style={gridItem} item xs={12} md={3} lg={3}>
@@ -118,20 +114,25 @@ export const OrderOverview = () => {
                 <Typography>{item.product.price} kr</Typography>
               </Grid>
               <Grid style={gridItem} item xs={12} md={3} lg={3}>
-              <Typography> {item.quantity * item.product.price} kr totalt</Typography>
+                <Typography>
+                  {" "}
+                  {item.quantity * item.product.price} kr totalt
+                </Typography>
               </Grid>
             </Grid>
-
-            
- 
-
-
           </div>
         ))}
       </Container>
-      <div style={{display: "flex", justifyContent: "right"}}>
+      <div style={{ display: "flex", justifyContent: "right" }}>
         <Link to={"/order"}>
-          <Button sx={SubmitButton} type="submit" variant="contained" onClick={clean}>Slutför Köp</Button>
+          <Button
+            sx={SubmitButton}
+            type="submit"
+            variant="contained"
+            onClick={clean}
+          >
+            Slutför Köp
+          </Button>
         </Link>
       </div>
     </div>
@@ -160,7 +161,7 @@ const SubmitButton: CSSProperties = {
 };
 
 const gridItem: CSSProperties = {
-	display: 'flex',
-	justifyContent: 'center',
+  display: "flex",
+  justifyContent: "center",
   marginBottom: "10px",
 };

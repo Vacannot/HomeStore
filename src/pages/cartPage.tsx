@@ -17,16 +17,17 @@ function CartPage() {
         return <CartItemCard key={cartItem.product.id} product={cartItem} />;
       })}
       <div style={paymentDivStyle}>
-
         <Typography variant="h6">Total: {priceOfProducts} Kr</Typography>
 
-        <Button disabled={priceOfProducts === 0 ? true : false} sx={buttonStyle} variant="contained">
+        <Button
+          disabled={priceOfProducts === 0 ? true : false}
+          sx={buttonStyle}
+          variant="contained"
+        >
           <Link style={linkStyle} to="/kassa">
             Gå till kassan
           </Link>
         </Button>
-
-
       </div>
     </div>
   );

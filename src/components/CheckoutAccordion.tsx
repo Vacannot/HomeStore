@@ -11,7 +11,6 @@ import UserInputForm from "./UserInputForm";
 import ShippingForm from "./ShippingForm";
 import PaymentOptionsForm from "./PaymentOptionsForm";
 import { OrderOverview } from "./OrderOverview";
-import { useOrderContext } from "../context/OrderContext";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={6} square {...props} />
