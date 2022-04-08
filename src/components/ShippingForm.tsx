@@ -14,6 +14,10 @@ interface StyledFormControlLabelProps extends FormControlLabelProps {
 	checked: boolean;
 }
 
+interface Props {
+	setOrderInfoDisabled
+}
+
 const StyledFormControlLabel = styled((props: StyledFormControlLabelProps) => (
 	<FormControlLabel {...props} />
 ))(({ theme, checked }) => ({
@@ -33,13 +37,13 @@ function MyFormControlLabel(props: FormControlLabelProps) {
 	return <StyledFormControlLabel checked={checked} {...props} />;
 }
 
-export default function ShippingForm() {
+export default function ShippingForm(props) {
 	const { setShippingMethod } = useOrderContext(); 
 	const [shippingState, setShippingState] = useState('')
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		console.log('radiochange');
 		setShippingMethod(event.target.value);
+		props.setOrderInfoDisabled(false);
 	}
 
 	let date = new Date();

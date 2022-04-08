@@ -146,7 +146,11 @@ const CartProvider: FC = (props) => {
     }
   };
 
-  const emptyCart = () => setCart([]);
+  const emptyCart = () => {
+    setCart([]);
+    localStorage.clear();
+    console.log(localStorage);
+  }
 
   return (
     <CartContext.Provider

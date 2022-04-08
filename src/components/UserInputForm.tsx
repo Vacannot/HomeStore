@@ -33,7 +33,11 @@ const validationSchema = yup.object({
   country: yup.string().required("Ange ditt land").min(2),
 });
 
-const UserInputForm = () => {
+interface Props {
+  setForm
+}
+
+const UserInputForm = (props) => {
   const { createNewOrder } = useOrderContext();
 
   const formik = useFormik({
@@ -49,6 +53,7 @@ const UserInputForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      props.setForm(false);
       createNewOrder(values);
     },
   });

@@ -18,6 +18,10 @@ interface StyledFormControlLabelProps extends FormControlLabelProps {
   checked: boolean;
 }
 
+interface Props {
+	setShipping
+}
+
 const StyledFormControlLabel = styled((props: StyledFormControlLabelProps) => (
   <FormControlLabel {...props} />
 ))(({ theme, checked }) => ({
@@ -35,13 +39,14 @@ function MyFormControlLabel(props: FormControlLabelProps) {
   return <StyledFormControlLabel checked={checked} {...props} />;
 }
 
-export default function PaymentOptionsForm() {
+export default function PaymentOptionsForm(props) {
 
 	const { setPaymentMethod } = useOrderContext();
 	const [paymentOptionState, setPaymentOptionState] = useState('')
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setPaymentOptionState(event.target.value)
 		setPaymentMethod(event.target.value);
+		props.setShippingDisabled(false);
 	}
 
 	return (

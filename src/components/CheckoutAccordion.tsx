@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
@@ -52,13 +52,16 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function CheckoutAccordion() {
-	const [expanded, setExpanded] = React.useState<string | false>('panel1');
+	const [expanded, setExpanded] = useState<string | false>('panel1');
+	const [isFormNotSubmitted, setIsFormNotSubmitted] = useState(true);
+	const [isShippingDisabled, setIsShippingDisabled] = useState(true);
+	const [isOrderInfoDisabled, setIsOrderInfoDisabled] = useState(true);
 	const { order } = useOrderContext();
-	let formSubmitted = false;
+
 
 	const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
 		setExpanded(newExpanded ? panel : false);
-		formSubmitted = true;
+		
 	};
 
 	return (
@@ -75,30 +78,30 @@ export default function CheckoutAccordion() {
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-						<UserInputForm />
+						<UserInputForm setForm={setIsFormNotSubmitted}/>
 				</AccordionDetails>
 			</Accordion>
-			<Accordion disabled={!order.orderId ? true : false} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+			<Accordion disabled={isFormNotSubmitted} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
 				<AccordionSummary aria-controls='panel2d-content' id='panel2d-header'>
 					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
 						Betalningsalternativ
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-						<PaymentOptionsForm />
+						<PaymentOptionsForm setShippingDisabled={setIsShippingDisabled}/>
 				</AccordionDetails>
 			</Accordion>
-			<Accordion disabled={!order.paymentMethod ? true : false} expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+			<Accordion disabled={isShippingDisabled} expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
 					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
 						Fraktalternativ
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-						<ShippingForm />
+						<ShippingForm setOrderInfoDisabled={setIsOrderInfoDisabled}/>
 				</AccordionDetails>
 			</Accordion>
-			<Accordion disabled={!order.shippingMethod ? true : false} expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+			<Accordion disabled={isOrderInfoDisabled} expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
 				<AccordionSummary aria-controls='panel3d-content' id='panel3d-header'>
 					<Typography variant="h5" sx={{ display: 'flex', justifyContent: 'start' }}>
 						Beställningsöverblick

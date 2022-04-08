@@ -17,13 +17,11 @@ export const OrderOverview = () => {
   const { emptyCart } = useCart();
 
   const handleOnClickClean = () => {
-      console.log("yo we waiting")
       emptyCart();
       alert("Köp genomfört")
   }
 
   const clean = () => {
-    console.log("started waiting")
     delay(1000).then(() => handleOnClickClean());
   }
 
