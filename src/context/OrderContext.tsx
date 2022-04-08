@@ -1,6 +1,6 @@
-import React, { createContext, FC, useContext, useState } from "react";
-import { ICartItem, useCart } from "./CartContext";
-import { useLocalStorageState } from "../hooks/useLocalStorage";
+import React, { createContext, FC, useContext, useState } from 'react';
+import { ICartItem, useCart } from './CartContext';
+import { useLocalStorageState } from '../hooks/useLocalStorage';
 
 interface ICustomer {
   firstName: string;
@@ -13,7 +13,6 @@ interface ICustomer {
   country: string;
 }
 
-
 export interface IOrderData {
   boughtItems: ICartItem[];
   customer: ICustomer;
@@ -21,7 +20,6 @@ export interface IOrderData {
   shippingMethod: string;
   shippingPrice: number;
   orderId: number;
-
 }
 
 interface IOrderContextValue {
@@ -30,31 +28,30 @@ interface IOrderContextValue {
   createNewOrder: (customerInfo: ICustomer) => void;
   setShippingMethod: (shippingInfo: string) => any;
   setPaymentMethod: (paymentInfo: string) => any;
-
 }
 
 const OrderContext = createContext<IOrderContextValue>({
   order: {
     boughtItems: [],
     customer: {
-      firstName: "",
-      lastName: "",
-      email: "",
+      firstName: '',
+      lastName: '',
+      email: '',
       number: 0,
-      address: "",
+      address: '',
       zipcode: 0,
-      city: "",
-      country: "",
+      city: '',
+      country: '',
     },
-    paymentMethod: "",
-    shippingMethod: "",
+    paymentMethod: '',
+    shippingMethod: '',
     shippingPrice: 111,
     orderId: 0,
   },
   generateOrderId: () => 0,
   createNewOrder: () => {},
-  setShippingMethod: () => "",
-  setPaymentMethod: () => "",
+  setShippingMethod: () => '',
+  setPaymentMethod: () => '',
 });
 
 export function useOrderContext() {
@@ -67,33 +64,33 @@ export const OrderContextProvider: FC = (props) => {
     {
       boughtItems: [],
       customer: {
-        firstName: "",
-        lastName: "",
-        email: "",
+        firstName: '',
+        lastName: '',
+        email: '',
         number: 0,
-        address: "",
+        address: '',
         zipcode: 0,
-        city: "",
-        country: "",
+        city: '',
+        country: '',
       },
-      paymentMethod: "",
-      shippingMethod: "",
+      paymentMethod: '',
+      shippingMethod: '',
       shippingPrice: 2221,
       orderId: 0,
     },
-    "order"
+    'order'
   );
 
   const setShippingMethod = (shippingInfo: string) => {
     let price = 0;
     switch (shippingInfo) {
-      case "DHL":
+      case 'DHL':
         price = 149;
         break;
-      case "Postnord":
+      case 'Postnord':
         price = 59;
         break;
-      case "Flaskpost":
+      case 'Flaskpost':
         price = 0;
         break;
     }

@@ -15,70 +15,74 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 export default function Header() {
-	const theme = useTheme();
-	const matches = useMediaQuery(theme.breakpoints.up('sm'));
-	const { cart } = useCart();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const { cart } = useCart();
 
-	const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
-		'& .MuiBadge-badge': {
-			right: -3,
-			top: 13,
-			border: `2px solid ${theme.palette.background.paper}`,
-			padding: '0 4px',
-		},
-	}));
+  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+    '& .MuiBadge-badge': {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: '0 4px',
+    },
+  }));
 
-	let cartLength = 0;
-	cart.forEach((cartItem) => {
-		cartLength = cartLength + cartItem.quantity;
-	});
+  let cartLength = 0;
+  cart.forEach((cartItem) => {
+    cartLength = cartLength + cartItem.quantity;
+  });
 
-	return (
-		<>
-			<CssBaseline />
-			<AppBar style={appBarStyle}>
-				<Toolbar variant='regular' sx={toolbarStyle}>
-					<Link to='/'>
-						<Logo />
-					</Link>
-					<Search />
-					<div style={iconsDivStyle}>
-						<Link to='/favoriter'>
-							<StyledBadge badgeContent={0} color='success'>
-								<FavoriteBorderOutlinedIcon sx={{ fontSize: 28, color: 'black' }} />
-							</StyledBadge>
-						</Link>
-						<Link to='/varukorg'>
-							<StyledBadge badgeContent={cartLength} color='success'>
-								<ShoppingCartOutlinedIcon sx={{ fontSize: 28, color: 'black' }} />
-							</StyledBadge>
-						</Link>
-						<MenuIcon sx={{ fontSize: 28, color: 'black' }} />
-					</div>
-				</Toolbar>
-			</AppBar>
-		</>
-	);
+  return (
+    <>
+      <CssBaseline />
+      <AppBar style={appBarStyle}>
+        <Toolbar variant="regular" sx={toolbarStyle}>
+          <Link to="/">
+            <Logo />
+          </Link>
+          <Search />
+          <div style={iconsDivStyle}>
+            <Link to="/favoriter">
+              <StyledBadge badgeContent={0} color="success">
+                <FavoriteBorderOutlinedIcon
+                  sx={{ fontSize: 28, color: 'black' }}
+                />
+              </StyledBadge>
+            </Link>
+            <Link to="/varukorg">
+              <StyledBadge badgeContent={cartLength} color="success">
+                <ShoppingCartOutlinedIcon
+                  sx={{ fontSize: 28, color: 'black' }}
+                />
+              </StyledBadge>
+            </Link>
+            <MenuIcon sx={{ fontSize: 28, color: 'black' }} />
+          </div>
+        </Toolbar>
+      </AppBar>
+    </>
+  );
 }
 const appBarStyle: CSSProperties = {
-	backgroundColor: '#BFD8D5',
+  backgroundColor: '#BFD8D5',
 };
 
 const iconsDivStyle: CSSProperties = {
-	display: 'flex',
-	width: '8rem',
-	justifyContent: 'space-between',
-	textDecoration: 'none',
-	textDecorationColor: 'black',
-	color: 'black',
+  display: 'flex',
+  width: '8rem',
+  justifyContent: 'space-between',
+  textDecoration: 'none',
+  textDecorationColor: 'black',
+  color: 'black',
 };
 
 const toolbarStyle: CSSProperties = {
-	display: 'flex',
-	alignSelf: 'center',
-	width: '80%',
-	maxWidth: '83rem',
-	padding: '0 1rem',
-	justifyContent: 'space-between',
-	backgroundColor: '#BFD8D5',
+  display: 'flex',
+  alignSelf: 'center',
+  width: '80%',
+  maxWidth: '83rem',
+  padding: '0 1rem',
+  justifyContent: 'space-between',
+  backgroundColor: '#BFD8D5',
 };

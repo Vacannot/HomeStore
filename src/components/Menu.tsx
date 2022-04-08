@@ -14,99 +14,103 @@ import MenuIcon from '@mui/icons-material/Menu';
 type Anchor = 'left' | 'right';
 
 export default function SwipeableTemporaryDrawer() {
-	const classes = useStyles();
+  const classes = useStyles();
 
-	const theme = useTheme();
-	const sizeSmall = useMediaQuery(theme.breakpoints.up('sm'));
+  const theme = useTheme();
+  const sizeSmall = useMediaQuery(theme.breakpoints.up('sm'));
 
-	const [state, setState] = React.useState({
-		left: false,
-		right: false,
-	});
+  const [state, setState] = React.useState({
+    left: false,
+    right: false,
+  });
 
-	const toggleDrawer =
-		(anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-			if (
-				event &&
-				event.type === 'keydown' &&
-				((event as React.KeyboardEvent).key === 'Tab' ||
-					(event as React.KeyboardEvent).key === 'Shift')
-			) {
-				return;
-			}
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event &&
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
 
-			setState({ ...state, [anchor]: open });
-		};
+      setState({ ...state, [anchor]: open });
+    };
 
-	const list = (anchor: Anchor) => (
-		<Box
-			sx={{ width: anchor === 'left' || anchor === 'right' ? 'auto' : 250 }}
-			onClick={toggleDrawer(anchor, false)}
-			onKeyDown={toggleDrawer(anchor, false)}>
-			<List>
-				<ListItem>
-					<ListItemText>WELCOME</ListItemText>
-				</ListItem>
-				<ListItem button>
-					    <Link to={"/"}>
-					<ListItemText> HEM </ListItemText>
-					    </Link>
-				</ListItem>
-			</List>
-		</Box>
-	);
+  const list = (anchor: Anchor) => (
+    <Box
+      sx={{ width: anchor === 'left' || anchor === 'right' ? 'auto' : 250 }}
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        <ListItem>
+          <ListItemText>WELCOME</ListItemText>
+        </ListItem>
+        <ListItem button>
+          <Link to={'/'}>
+            <ListItemText> HEM </ListItemText>
+          </Link>
+        </ListItem>
+      </List>
+    </Box>
+  );
 
-	if (sizeSmall === true) {
-		return (
-			<div>
-				{(['left'] as Anchor[]).map((anchor) => (
-					<React.Fragment key={anchor}>
-						<MenuIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuIcon>
-						<SwipeableDrawer
-							classes={{ paper: classes.paper }}
-							anchor={anchor}
-							open={state[anchor]}
-							onClose={toggleDrawer(anchor, false)}
-							onOpen={toggleDrawer(anchor, true)}>
-							{list(anchor)}
-						</SwipeableDrawer>
-					</React.Fragment>
-				))}
-			</div>
-		);
-	} else {
-		return (
-			<div>
-				{(['right'] as Anchor[]).map((anchor) => (
-					<React.Fragment key={anchor}>
-						<MenuIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuIcon>
-						<SwipeableDrawer
-							classes={{ paper: classes.paper }}
-							anchor={anchor}
-							open={state[anchor]}
-							onClose={toggleDrawer(anchor, false)}
-							onOpen={toggleDrawer(anchor, true)}>
-							{list(anchor)}
-						</SwipeableDrawer>
-					</React.Fragment>
-				))}
-			</div>
-		);
-	}
+  if (sizeSmall === true) {
+    return (
+      <div>
+        {(['left'] as Anchor[]).map((anchor) => (
+          <React.Fragment key={anchor}>
+            <MenuIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuIcon>
+            <SwipeableDrawer
+              classes={{ paper: classes.paper }}
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+              onOpen={toggleDrawer(anchor, true)}
+            >
+              {list(anchor)}
+            </SwipeableDrawer>
+          </React.Fragment>
+        ))}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        {(['right'] as Anchor[]).map((anchor) => (
+          <React.Fragment key={anchor}>
+            <MenuIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuIcon>
+            <SwipeableDrawer
+              classes={{ paper: classes.paper }}
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+              onOpen={toggleDrawer(anchor, true)}
+            >
+              {list(anchor)}
+            </SwipeableDrawer>
+          </React.Fragment>
+        ))}
+      </div>
+    );
+  }
 }
 
 const useStyles = makeStyles({
-	list: {
-		width: 250,
-		background: '#BFD8D5',
-		color: 'black',
-	},
-	fullList: {
-		width: 'auto',
-		background: '#BFD8D5',
-		color: 'black',
-	},
-	paper: {
-		background: '#BFD8D5',
-	},
+  list: {
+    width: 250,
+    background: '#BFD8D5',
+    color: 'black',
+  },
+  fullList: {
+    width: 'auto',
+    background: '#BFD8D5',
+    color: 'black',
+  },
+  paper: {
+    background: '#BFD8D5',
+  },
 });
