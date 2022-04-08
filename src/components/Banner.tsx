@@ -1,5 +1,5 @@
-import React, { CSSProperties } from "react";
-import image from "../assets/banner.png";
+import React, { CSSProperties } from 'react';
+import image from '../assets/banner.png';
 
 function Banner() {
   return (
@@ -12,8 +12,8 @@ function Banner() {
 export default Banner;
 
 const BannerStyle: CSSProperties = {
-  height: "auto",
-  maxWidth: "80rem",
-  marginTop: "5rem",
-  width: "100vw",
+  height: 'auto',
+  maxWidth: '80rem',
+  marginTop: '5rem',
+  width: '100vw',
 };

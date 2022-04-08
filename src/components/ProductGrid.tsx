@@ -1,17 +1,17 @@
-import * as React from "react";
-import { CSSProperties } from "react";
-import { experimentalStyled as styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import ProductCard from "./ProductCard";
-import { products } from "../mockedProducts";
+import * as React from 'react';
+import { CSSProperties } from 'react';
+import { experimentalStyled as styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import ProductCard from './ProductCard';
+import { products } from '../mockedProducts';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(2),
-  textAlign: "start",
+  textAlign: 'start',
   color: theme.palette.text.secondary,
 }));
 
@@ -36,16 +36,16 @@ export default function ProductGrid() {
 }
 
 const container: CSSProperties = {
-  display: "flex",
+  display: 'flex',
   flexGrow: 1,
   flexBasis: 0,
-  maxWidth: "80rem",
-  marginBlockStart: "1rem",
+  maxWidth: '80rem',
+  marginBlockStart: '1rem',
 };
 
 const gridItem: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
 };

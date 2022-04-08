@@ -1,8 +1,8 @@
-import { Button, Typography } from "@mui/material";
-import React, { CSSProperties, useContext } from "react";
-import { Link } from "react-router-dom";
-import CartItemCard from "../components/CartItemCard";
-import { CartContext } from "../context/CartContext";
+import { Button, Typography } from '@mui/material';
+import React, { CSSProperties, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import CartItemCard from '../components/CartItemCard';
+import { CartContext } from '../context/CartContext';
 
 function CartPage() {
   let { cart, getTotalSumExShip } = useContext(CartContext);
@@ -34,29 +34,29 @@ function CartPage() {
 }
 
 const rootStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  marginTop: "7rem",
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  marginTop: '7rem',
 };
 
 const buttonStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  margin: "1rem",
-  marginTop: "2rem",
-  backgroundColor: "#BFD8D5",
-  fontWeight: "700",
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  margin: '1rem',
+  marginTop: '2rem',
+  backgroundColor: '#BFD8D5',
+  fontWeight: '700',
 };
 
 const linkStyle: CSSProperties = {
-  textDecoration: "none",
-  color: "black",
+  textDecoration: 'none',
+  color: 'black',
 };
 
 const paymentDivStyle: CSSProperties = {
-  maxWidth: "20rem",
+  maxWidth: '20rem',
 };
 
 export default CartPage;

@@ -1,8 +1,8 @@
-import React from "react";
-import { CSSProperties } from "react";
-import ProductDetailedCard from "../components/ProductCard";
-import { Typography } from "@mui/material";
-import { products } from "../mockedProducts";
+import React from 'react';
+import { CSSProperties } from 'react';
+import ProductDetailedCard from '../components/ProductCard';
+import { Typography } from '@mui/material';
+import { products } from '../mockedProducts';
 
 export default function ProductPage() {
   let matchingProduct;
@@ -21,9 +21,9 @@ export default function ProductPage() {
 }
 
 const ProductContainer: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
-  marginTop: "7rem",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  marginTop: '7rem',
 };

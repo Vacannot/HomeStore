@@ -1,11 +1,11 @@
-import React, { CSSProperties, useEffect } from "react";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import TextField from "@mui/material/TextField";
-import { useOrderContext } from "../context/OrderContext";
+import React, { CSSProperties, useEffect } from 'react';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import TextField from '@mui/material/TextField';
+import { useOrderContext } from '../context/OrderContext';
 
 const validationSchema = yup.object({
-  swishNumber: yup.string().required("Ange telefonnummer").min(10),
+  swishNumber: yup.string().required('Ange telefonnummer').min(10),
 });
 
 const SwishPaymentForm = () => {
@@ -26,9 +26,9 @@ const SwishPaymentForm = () => {
       <form onSubmit={formik.handleSubmit}>
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
           }}
         >
           <TextField
@@ -52,15 +52,15 @@ const SwishPaymentForm = () => {
 };
 
 const textFieldStyle: CSSProperties = {
-  margin: "1rem",
-  display: "flex",
-  width: "20vw",
-  minWidth: "250px",
+  margin: '1rem',
+  display: 'flex',
+  width: '20vw',
+  minWidth: '250px',
 };
 
 const formDiv: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
+  display: 'flex',
+  justifyContent: 'center',
 };
 
 export default SwishPaymentForm;

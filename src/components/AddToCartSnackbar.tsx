@@ -1,9 +1,9 @@
-import React, { CSSProperties } from "react";
-import Snackbar, { SnackbarOrigin } from "@mui/material/Snackbar";
-import IconButton from "@mui/material/IconButton";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { IProduct } from "../mockedProducts";
-import { useCart } from "../context/CartContext";
+import React, { CSSProperties } from 'react';
+import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { IProduct } from '../mockedProducts';
+import { useCart } from '../context/CartContext';
 
 export interface IPopUpState extends SnackbarOrigin {
   open: boolean;
@@ -16,8 +16,8 @@ interface Props {
 export default function AddToCartSnackbar({ product }: Props) {
   const [popUpState, setPopUpState] = React.useState<IPopUpState>({
     open: false,
-    vertical: "top",
-    horizontal: "center",
+    vertical: 'top',
+    horizontal: 'center',
   });
 
   const { vertical, horizontal, open } = popUpState;
@@ -34,7 +34,7 @@ export default function AddToCartSnackbar({ product }: Props) {
 
   const handleOnClickAdd = () => {
     addProductToCart(product);
-    setPopUpState({ open: true, vertical: "top", horizontal: "right" });
+    setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
 
     return;
   };
@@ -74,8 +74,8 @@ export default function AddToCartSnackbar({ product }: Props) {
 }
 
 const ButtonStyle: CSSProperties = {
-  backgroundColor: "#BFD8D5",
-  textDecoration: "none",
-  textDecorationColor: "black",
-  color: "black",
+  backgroundColor: '#BFD8D5',
+  textDecoration: 'none',
+  textDecorationColor: 'black',
+  color: 'black',
 };

@@ -1,12 +1,12 @@
-import React, { CSSProperties } from "react";
-import { Switch, Route } from "react-router-dom";
-import StartPage from "../pages/startPage";
-import Header from "../components/Header";
-import CartPage from "../pages/cartPage";
-import Footer from "../components/Footer";
-import CheckoutPage from "../pages/checkoutPage";
-import ProductPage from "../pages/productPage";
-import OrderPage from "../pages/OrderInfoPage";
+import React, { CSSProperties } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import StartPage from '../pages/startPage';
+import Header from '../components/Header';
+import CartPage from '../pages/cartPage';
+import Footer from '../components/Footer';
+import CheckoutPage from '../pages/checkoutPage';
+import ProductPage from '../pages/productPage';
+import OrderPage from '../pages/OrderInfoPage';
 
 export default function Layout() {
   return (
@@ -25,7 +25,7 @@ export default function Layout() {
 }
 
 const rootStyle: CSSProperties = {
-  height: "100vh",
-  display: "flex",
-  flexDirection: "column",
+  height: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
 };

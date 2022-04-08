@@ -1,7 +1,7 @@
-import React from "react";
-import { CSSProperties } from "react";
-import Banner from "../components/Banner";
-import ProductGrid from "../components/ProductGrid";
+import React from 'react';
+import { CSSProperties } from 'react';
+import Banner from '../components/Banner';
+import ProductGrid from '../components/ProductGrid';
 
 const StartPage = () => {
   return (
@@ -15,9 +15,9 @@ const StartPage = () => {
 export default StartPage;
 
 const rootStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
-  margin: "1rem",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  margin: '1rem',
 };

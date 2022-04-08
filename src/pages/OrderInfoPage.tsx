@@ -1,9 +1,9 @@
-import React, { CSSProperties } from "react";
-import { Button, Container, Typography } from "@mui/material";
-import { useOrderContext } from "../context/OrderContext";
-import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
-import { FinishedOrderInfoDiv } from "../components/FinishedOrderInfoDiv";
+import React, { CSSProperties } from 'react';
+import { Button, Container, Typography } from '@mui/material';
+import { useOrderContext } from '../context/OrderContext';
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import { FinishedOrderInfoDiv } from '../components/FinishedOrderInfoDiv';
 
 const OrderInfoPage = () => {
   const { order } = useOrderContext();
@@ -24,7 +24,7 @@ const OrderInfoPage = () => {
           Ordernummer: <span style={boldFont}>{order.orderId}</span>
         </Typography>
         <Typography variant="body1">
-          Bekräftelsemail och kvitto skickars till mail{" "}
+          Bekräftelsemail och kvitto skickars till mail{' '}
           <span style={boldFont}>{order.customer.email}</span> adipisicing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </Typography>
@@ -54,10 +54,10 @@ const OrderInfoPage = () => {
       </Container>
 
       <div>
-        <Typography variant="h6" sx={{ marginTop: "1rem" }}>
+        <Typography variant="h6" sx={{ marginTop: '1rem' }}>
           Leveransinformation:
         </Typography>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span>
             {order.customer.firstName} {order.customer.lastName}
           </span>
@@ -77,41 +77,41 @@ const OrderInfoPage = () => {
 };
 
 const ButtonStyle: CSSProperties = {
-  display: "block",
-  backgroundColor: "#BFD8D5",
-  margin: ".5rem auto",
-  padding: "0.5rem",
-  boxShadow: "none",
+  display: 'block',
+  backgroundColor: '#BFD8D5',
+  margin: '.5rem auto',
+  padding: '0.5rem',
+  boxShadow: 'none',
 };
 
 const productInfoDivStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "space-between",
-  border: "2px solid grey",
-  background: "#f3f3f3",
-  margin: "1rem",
+  display: 'flex',
+  justifyContent: 'space-between',
+  border: '2px solid grey',
+  background: '#f3f3f3',
+  margin: '1rem',
 };
 
 const priceInfoStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "space-between",
-  margin: "0 1rem",
+  display: 'flex',
+  justifyContent: 'space-between',
+  margin: '0 1rem',
 };
 
 const priceInfoContainerStyle: CSSProperties = {
-  border: "2px solid grey",
-  backgroundColor: "red",
+  border: '2px solid grey',
+  backgroundColor: 'red',
 };
 
 const VATInfoStyle: CSSProperties = {
-  fontSize: "14px",
-  display: "flex",
-  justifyContent: "space-between",
-  margin: "0 1rem",
+  fontSize: '14px',
+  display: 'flex',
+  justifyContent: 'space-between',
+  margin: '0 1rem',
 };
 
 const boldFont: CSSProperties = {
-  fontWeight: "bold",
+  fontWeight: 'bold',
 };
 
 export default OrderInfoPage;

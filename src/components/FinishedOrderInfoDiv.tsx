@@ -1,7 +1,7 @@
-import { useMediaQuery, useTheme } from "@mui/material";
-import React, { CSSProperties } from "react";
-import { ICartItem } from "../context/CartContext";
-import { useCart } from "../context/CartContext";
+import { useMediaQuery, useTheme } from '@mui/material';
+import React, { CSSProperties } from 'react';
+import { ICartItem } from '../context/CartContext';
+import { useCart } from '../context/CartContext';
 
 interface Props {
   product: ICartItem;
@@ -9,7 +9,7 @@ interface Props {
 
 export const FinishedOrderInfoDiv = ({ product }: Props) => {
   const theme = useTheme();
-  const matches = useMediaQuery("(min-width:768px)");
+  const matches = useMediaQuery('(min-width:768px)');
   const { getSumPriceProducts } = useCart();
   const priceTotalPerProduct = getSumPriceProducts(product);
 
@@ -31,16 +31,16 @@ export const FinishedOrderInfoDiv = ({ product }: Props) => {
 };
 
 const rootStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-around",
-  backgroundColor: "beige",
-  padding: "1rem",
-  maxHeight: "20rem",
-  overflow: "scroll",
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  backgroundColor: 'beige',
+  padding: '1rem',
+  maxHeight: '20rem',
+  overflow: 'scroll',
 };
 
 const imgStyle: CSSProperties = {
-  width: "5rem",
-  height: "5rem",
+  width: '5rem',
+  height: '5rem',
 };

@@ -1,54 +1,54 @@
-import React, { CSSProperties } from "react";
-import ReactDOM from "react-dom";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Grid from "@mui/material/Grid";
+import React, { CSSProperties } from 'react';
+import ReactDOM from 'react-dom';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
 
 const validationSchema = yup.object({
   cardNumber: yup
     .number()
-    .required("Ange ett giltigt kort, minst 16 siffror")
+    .required('Ange ett giltigt kort, minst 16 siffror')
     .min(16),
   cvc: yup
     .number()
-    .typeError("Ange ett giltigt CVC")
-    .required("Ange ett giltigt CVC")
+    .typeError('Ange ett giltigt CVC')
+    .required('Ange ett giltigt CVC')
     .min(3),
   cardHolder: yup
     .string()
-    .typeError("Inget namn")
-    .matches(/([a-ö\s]+$)/, "No numbers allowed")
-    .required("Ange kortinnehavarens namn")
+    .typeError('Inget namn')
+    .matches(/([a-ö\s]+$)/, 'No numbers allowed')
+    .required('Ange kortinnehavarens namn')
     .min(25),
   cardMonth: yup
     .string()
-    .typeError("Inte ett giltigt utgångsdatum. Exempel: MM")
-    .max(2, "Inte ett giltigt utgångsdatum. Exempel: MM")
-    .matches(/([0-9]{2})/, "Inte ett giltigt utgångsdatum. Exempel: MM")
-    .required("Ange utgångsdatum")
+    .typeError('Inte ett giltigt utgångsdatum. Exempel: MM')
+    .max(2, 'Inte ett giltigt utgångsdatum. Exempel: MM')
+    .matches(/([0-9]{2})/, 'Inte ett giltigt utgångsdatum. Exempel: MM')
+    .required('Ange utgångsdatum')
     .min(2),
   cardYear: yup
     .string()
-    .typeError("Inte ett giltigt utgångsdatum. Exempel: YY")
-    .max(4, "Inte ett giltigt utgångsdatum. Exempel: YY")
-    .matches(/([0-9]{2})/, "Inte ett giltigt utgångsdatum. Exempel: YY")
-    .required("Ange utgångsdatum"),
+    .typeError('Inte ett giltigt utgångsdatum. Exempel: YY')
+    .max(4, 'Inte ett giltigt utgångsdatum. Exempel: YY')
+    .matches(/([0-9]{2})/, 'Inte ett giltigt utgångsdatum. Exempel: YY')
+    .required('Ange utgångsdatum'),
 });
 
 const CardPaymentForm = () => {
   const formik = useFormik({
     initialValues: {
-      cardNumber: "",
-      cardHolder: "",
-      cardMonth: "",
-      cardYear: "",
-      cvc: "",
+      cardNumber: '',
+      cardHolder: '',
+      cardMonth: '',
+      cardYear: '',
+      cvc: '',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -57,7 +57,7 @@ const CardPaymentForm = () => {
   });
 
   const alertSaved = () => {
-    alert("Sparat!");
+    alert('Sparat!');
   };
 
   return (
@@ -66,9 +66,9 @@ const CardPaymentForm = () => {
         <div>
           <div
             style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
+              display: 'flex',
+              justifyContent: 'center',
+              flexDirection: 'column',
             }}
           >
             <Grid container columns={{ xs: 6, sm: 6, md: 12, lg: 12 }}>
@@ -182,42 +182,42 @@ const CardPaymentForm = () => {
 };
 
 const SubmitButton: CSSProperties = {
-  backgroundColor: "#BFD8D5",
-  color: "#333333",
-  marginTop: "1rem",
-  padding: "0.5rem",
-  width: "8rem",
-  boxShadow: "none",
-  textDecoration: "none",
+  backgroundColor: '#BFD8D5',
+  color: '#333333',
+  marginTop: '1rem',
+  padding: '0.5rem',
+  width: '8rem',
+  boxShadow: 'none',
+  textDecoration: 'none',
 };
 
 const buttonDiv: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
+  display: 'flex',
+  justifyContent: 'center',
 };
 
 const textFieldStyle: CSSProperties = {
-  margin: "1rem",
-  display: "flex",
-  width: "20vw",
-  minWidth: "250px",
+  margin: '1rem',
+  display: 'flex',
+  width: '20vw',
+  minWidth: '250px',
 };
 
 const textFieldStyleSmall: CSSProperties = {
-  margin: "1rem",
-  display: "flex",
-  width: "20vw",
-  minWidth: "250px",
+  margin: '1rem',
+  display: 'flex',
+  width: '20vw',
+  minWidth: '250px',
 };
 
 const formDiv: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
+  display: 'flex',
+  justifyContent: 'center',
 };
 
 const gridItem: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
+  display: 'flex',
+  justifyContent: 'center',
 };
 
 export default CardPaymentForm;

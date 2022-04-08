@@ -1,15 +1,15 @@
-import React, { CSSProperties } from "react";
-import ReactDOM from "react-dom";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
-import { Link } from "react-router-dom";
-import { useOrderContext } from "../context/OrderContext";
-import { useCart } from "../context/CartContext";
+import React, { CSSProperties } from 'react';
+import ReactDOM from 'react-dom';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
+import { useOrderContext } from '../context/OrderContext';
+import { useCart } from '../context/CartContext';
 
 interface ShippingDetailsFormValues {
   firstName: string;
@@ -23,28 +23,28 @@ interface ShippingDetailsFormValues {
 }
 
 const validationSchema = yup.object({
-  firstName: yup.string().required("Ange ditt förnamn").min(2),
-  lastName: yup.string().required("Ange ditt efternamn").min(2),
+  firstName: yup.string().required('Ange ditt förnamn').min(2),
+  lastName: yup.string().required('Ange ditt efternamn').min(2),
   email: yup
     .string()
-    .email("Ange en giltig e-post")
-    .required("Ange en giltig e-post"),
-  number: yup.number().required("Ange ditt telefonnummer").min(10),
-  address: yup.string().required("Ange din adress").min(8),
-  zipcode: yup.number().required("Ange din postnummer").min(5),
-  city: yup.string().required("Ange din stad").min(2),
-  country: yup.string().required("Ange ditt land").min(2),
+    .email('Ange en giltig e-post')
+    .required('Ange en giltig e-post'),
+  number: yup.number().required('Ange ditt telefonnummer').min(10),
+  address: yup.string().required('Ange din adress').min(8),
+  zipcode: yup.number().required('Ange din postnummer').min(5),
+  city: yup.string().required('Ange din stad').min(2),
+  country: yup.string().required('Ange ditt land').min(2),
 });
 
 function ShippingDetailsForm() {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const { emptyCart } = useCart();
 
   const handleOnClickClean = () => {
     emptyCart();
-    alert("Köp genomfört");
+    alert('Köp genomfört');
   };
 
   const clean = () => {
@@ -65,14 +65,14 @@ function ShippingDetailsForm() {
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      number: "",
-      address: "",
-      zipcode: "",
-      city: "",
-      country: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      number: '',
+      address: '',
+      zipcode: '',
+      city: '',
+      country: '',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -84,19 +84,19 @@ function ShippingDetailsForm() {
     <div style={formDiv}>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "black",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: 'black',
         }}
       >
         <form onSubmit={formik.handleSubmit}>
           <div>
             <div
               style={{
-                display: "flex",
-                flexDirection: "row",
+                display: 'flex',
+                flexDirection: 'row',
               }}
             >
               <TextField
@@ -142,8 +142,8 @@ function ShippingDetailsForm() {
             </div>
             <div
               style={{
-                display: "flex",
-                flexDirection: "row",
+                display: 'flex',
+                flexDirection: 'row',
               }}
             >
               <TextField
@@ -187,8 +187,8 @@ function ShippingDetailsForm() {
             </div>
             <div
               style={{
-                display: "flex",
-                flexDirection: "row",
+                display: 'flex',
+                flexDirection: 'row',
               }}
             >
               <TextField
@@ -216,7 +216,7 @@ function ShippingDetailsForm() {
             </div>
           </div>
           <div style={ButtonDiv}>
-            <Link to={"/order"}>
+            <Link to={'/order'}>
               <Button
                 sx={SubmitButton}
                 type="submit"
@@ -229,7 +229,7 @@ function ShippingDetailsForm() {
           </div>
         </form>
         <Typography variant="h6">
-          Pris för valda produkter samt frakt: {priceTotal}{" "}
+          Pris för valda produkter samt frakt: {priceTotal}{' '}
         </Typography>
       </div>
     </div>
@@ -237,27 +237,27 @@ function ShippingDetailsForm() {
 }
 
 const textFieldStyle: CSSProperties = {
-  margin: "1rem",
-  display: "flex",
-  width: "40ch",
+  margin: '1rem',
+  display: 'flex',
+  width: '40ch',
 };
 
 const formDiv: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
+  display: 'flex',
+  justifyContent: 'center',
 };
 
 const ButtonDiv: CSSProperties = {
-  display: "flex",
-  justifyContent: "right",
+  display: 'flex',
+  justifyContent: 'right',
 };
 
 const SubmitButton: CSSProperties = {
-  backgroundColor: "#BFD8D5",
-  color: "#333333",
-  padding: "0.5rem",
-  width: "8rem",
-  boxShadow: "none",
-  textDecoration: "none",
+  backgroundColor: '#BFD8D5',
+  color: '#333333',
+  padding: '0.5rem',
+  width: '8rem',
+  boxShadow: 'none',
+  textDecoration: 'none',
 };
 export default ShippingDetailsForm;

@@ -1,13 +1,13 @@
-import React, { CSSProperties } from "react";
-import Card from "@mui/material/Card";
-import { CardActions } from "@mui/material";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import AddToCartSnackbar from "./AddToCartSnackbar";
-import AddToFavoritesSnackbar from "./AddToFavoritesSnackbar";
-import { Link } from "react-router-dom";
-import { IProduct } from "../mockedProducts";
+import React, { CSSProperties } from 'react';
+import Card from '@mui/material/Card';
+import { CardActions } from '@mui/material';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import AddToCartSnackbar from './AddToCartSnackbar';
+import AddToFavoritesSnackbar from './AddToFavoritesSnackbar';
+import { Link } from 'react-router-dom';
+import { IProduct } from '../mockedProducts';
 
 type Props = {
   product: IProduct;
@@ -16,7 +16,7 @@ type Props = {
 export default function ProductCard({ product }: Props) {
   return (
     <Card sx={CardStyle}>
-      <Link to={"/produkt/" + product.id} style={LinkStyle}>
+      <Link to={'/produkt/' + product.id} style={LinkStyle}>
         <CardMedia
           sx={ImageStyle}
           component="img"
@@ -26,7 +26,7 @@ export default function ProductCard({ product }: Props) {
         />
       </Link>
       <CardContent sx={CardContentStyle}>
-        <Link to={"/produkt/" + product.id} style={LinkStyle}>
+        <Link to={'/produkt/' + product.id} style={LinkStyle}>
           <Typography sx={TitleStyle} gutterBottom variant="h5" component="div">
             {product.title}
           </Typography>
@@ -61,43 +61,43 @@ const CardStyle: CSSProperties = {
 };
 
 const CardContentStyle: CSSProperties = {
-  marginBottom: ".5px",
-  paddingTop: "8px",
-  paddingRight: "8px",
-  paddingBottom: "0",
-  paddingLeft: "16px",
+  marginBottom: '.5px',
+  paddingTop: '8px',
+  paddingRight: '8px',
+  paddingBottom: '0',
+  paddingLeft: '16px',
 };
 
 const LinkStyle: CSSProperties = {
-  textDecoration: "none",
-  textDecorationColor: "black",
-  color: "black",
+  textDecoration: 'none',
+  textDecorationColor: 'black',
+  color: 'black',
 };
 
 const ImageStyle: CSSProperties = {
-  border: "1px solid grey",
+  border: '1px solid grey',
 };
 
 const TitleStyle: CSSProperties = {
-  paddingBottom: "0",
-  marginBottom: "2px",
+  paddingBottom: '0',
+  marginBottom: '2px',
 };
 
 const DescriptionStyle: CSSProperties = {
-  height: "85px",
+  height: '85px',
 };
 
 const CardActionStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "space-between",
+  display: 'flex',
+  justifyContent: 'space-between',
 };
 
 const CardAction: CSSProperties = {
-  paddingTop: "0",
+  paddingTop: '0',
 };
 
 const PriceStyle: CSSProperties = {
-  alignSelf: "center",
-  paddingLeft: "16px",
-  paddingTop: "16px",
+  alignSelf: 'center',
+  paddingLeft: '16px',
+  paddingTop: '16px',
 };

@@ -1,10 +1,10 @@
-import React, { CSSProperties } from "react";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import { useOrderContext } from "../context/OrderContext";
-import Grid from "@mui/material/Grid";
+import React, { CSSProperties } from 'react';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { useOrderContext } from '../context/OrderContext';
+import Grid from '@mui/material/Grid';
 
 interface UserInputFormValues {
   firstName: string;
@@ -22,17 +22,17 @@ interface Props {
 }
 
 const validationSchema = yup.object({
-  firstName: yup.string().required("Ange ditt förnamn").min(2),
-  lastName: yup.string().required("Ange ditt efternamn").min(2),
+  firstName: yup.string().required('Ange ditt förnamn').min(2),
+  lastName: yup.string().required('Ange ditt efternamn').min(2),
   email: yup
     .string()
-    .email("Ange en giltig e-post")
-    .required("Ange en giltig e-post"),
-  number: yup.number().required("Ange ditt telefonnummer").min(10),
-  address: yup.string().required("Ange din adress").min(8),
-  zipcode: yup.number().required("Ange ditt postnummer").min(5),
-  city: yup.string().required("Ange din stad").min(2),
-  country: yup.string().required("Ange ditt land").min(2),
+    .email('Ange en giltig e-post')
+    .required('Ange en giltig e-post'),
+  number: yup.number().required('Ange ditt telefonnummer').min(10),
+  address: yup.string().required('Ange din adress').min(8),
+  zipcode: yup.number().required('Ange ditt postnummer').min(5),
+  city: yup.string().required('Ange din stad').min(2),
+  country: yup.string().required('Ange ditt land').min(2),
 });
 
 const UserInputForm = (props) => {
@@ -40,14 +40,14 @@ const UserInputForm = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
+      firstName: '',
+      lastName: '',
+      email: '',
       number: 0,
-      address: "",
+      address: '',
       zipcode: 0,
-      city: "",
-      country: "",
+      city: '',
+      country: '',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -190,35 +190,35 @@ const UserInputForm = (props) => {
 };
 
 const textFieldStyle: CSSProperties = {
-  margin: "1rem",
-  display: "flex",
-  width: "35vw",
-  minWidth: "250px",
+  margin: '1rem',
+  display: 'flex',
+  width: '35vw',
+  minWidth: '250px',
 };
 
 const formDiv: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
+  display: 'flex',
+  justifyContent: 'center',
 };
 
 const ButtonDiv: CSSProperties = {
-  display: "flex",
-  justifyContent: "end",
+  display: 'flex',
+  justifyContent: 'end',
 };
 
 const SubmitButton: CSSProperties = {
-  backgroundColor: "#BFD8D5",
-  color: "#333333",
-  marginTop: "2rem",
-  padding: "0.5rem",
-  width: "8rem",
-  boxShadow: "none",
-  textDecoration: "none",
+  backgroundColor: '#BFD8D5',
+  color: '#333333',
+  marginTop: '2rem',
+  padding: '0.5rem',
+  width: '8rem',
+  boxShadow: 'none',
+  textDecoration: 'none',
 };
 
 const gridItem: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
+  display: 'flex',
+  justifyContent: 'center',
 };
 
 export default UserInputForm;

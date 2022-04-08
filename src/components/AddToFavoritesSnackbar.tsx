@@ -1,9 +1,9 @@
-import React, { CSSProperties } from "react";
-import Snackbar, { SnackbarOrigin } from "@mui/material/Snackbar";
-import CardActionArea from "@mui/material/CardActionArea";
-import IconButton from "@mui/material/IconButton";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { IProduct } from "../mockedProducts";
+import React, { CSSProperties } from 'react';
+import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import CardActionArea from '@mui/material/CardActionArea';
+import IconButton from '@mui/material/IconButton';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { IProduct } from '../mockedProducts';
 
 export interface State extends SnackbarOrigin {
   open: boolean;
@@ -16,13 +16,13 @@ interface Props {
 export default function AddToFavoritesSnackbar(props: Props) {
   const [popUpState, setPopUpState] = React.useState<State>({
     open: false,
-    vertical: "top",
-    horizontal: "center",
+    vertical: 'top',
+    horizontal: 'center',
   });
   const { vertical, horizontal, open } = popUpState;
 
   const handleOnClickAdd = () => {
-    setPopUpState({ open: true, vertical: "top", horizontal: "right" });
+    setPopUpState({ open: true, vertical: 'top', horizontal: 'right' });
   };
 
   const handleOnClickClose = () => {
@@ -59,8 +59,8 @@ export default function AddToFavoritesSnackbar(props: Props) {
 }
 
 const ButtonStyle: CSSProperties = {
-  backgroundColor: "#BFD8D5",
-  textDecoration: "none",
-  textDecorationColor: "black",
-  color: "black",
+  backgroundColor: '#BFD8D5',
+  textDecoration: 'none',
+  textDecorationColor: 'black',
+  color: 'black',
 };
