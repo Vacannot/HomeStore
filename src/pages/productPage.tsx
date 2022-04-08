@@ -13,27 +13,16 @@ import ProductDetailedCard from '../components/ProductCard';
 import { Typography } from '@mui/material';
 import { IProduct, products } from '../mockedProducts';
 
-interface Props {
-	product: IProduct;
-}
+export default function ProductPage() {
+	let matchingProduct;
 
-function getProductById(id: number) {
-  return products.find((product) => product.id === id);
-}
-
-export default function ProductPage({ product }) {
-	let { id } = useParams<"id">();
-
-	let Product = getProductById(id);
-
-//   let name = `${Product.title} ${Product.description} ${Product.price}`;
-	
+	matchingProduct = products.find((item) => window.location.pathname === `/produkt/${item.id}`);
 	return (
 		<div style={ProductContainer}>
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
 				Produkt detaljer
 			</Typography>
-			<ProductDetailedCard product={product.id} />
+			<ProductDetailedCard product={matchingProduct} />
 		</div>
 	);
 }

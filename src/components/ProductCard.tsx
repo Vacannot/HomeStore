@@ -14,15 +14,13 @@ type Props = {
    product: IProduct;
 };
 
-export default function ProductCard({ product }) {
-	// const navigation = useNavigation();
-	// const goToProduct = () => {
-	// 	navigation('/product/' + product.id);
-	// };
+export default function ProductCard({ product }: Props) {
+	// console.log(product);
+
 
 	return (
 		<Card sx={CardStyle}>
-			<Link to={'/produkt' + product.id} style={LinkStyle}>
+			<Link to={'/produkt/' + product.id} style={LinkStyle}>
 				<CardMedia
 					sx={ImageStyle}
 					component='img'
@@ -32,7 +30,7 @@ export default function ProductCard({ product }) {
 				/>
 			</Link>
 			<CardContent sx={CardContentStyle}>
-				<Link to={'/produkt' + product.id} style={LinkStyle}>
+				<Link to={'/produkt/' + product.id} style={LinkStyle}>
 					<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
 						{product.title}
 					</Typography>
