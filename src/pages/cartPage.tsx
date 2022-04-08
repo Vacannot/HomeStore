@@ -20,11 +20,13 @@ function CartPage() {
 
         <Typography variant="h6">Total: {priceOfProducts} Kr</Typography>
 
-        <Button sx={buttonStyle} variant="contained">
+        <Button disabled={priceOfProducts === 0 ? true : false} sx={buttonStyle} variant="contained">
           <Link style={linkStyle} to="/kassa">
             Gå till kassan
           </Link>
         </Button>
+
+
       </div>
     </div>
   );
