@@ -3,13 +3,13 @@ import { CSSProperties } from 'react';
 import ProductDetailedCard from '../components/ProductCard';
 import { Typography } from '@mui/material';
 import { products } from '../mockedProducts';
+import { useParams } from 'react-router-dom';
 
 export default function ProductPage() {
+  const params = useParams<{ id: string }>();
   let matchingProduct;
 
-  matchingProduct = products.find(
-    (item) => window.location.pathname === `/produkt/${item.id}`
-  );
+  matchingProduct = products.find((item) => params.id === String(item.id));
   return (
     <div style={ProductContainer}>
       <Typography align="center" variant="h4" sx={{ m: 1 }}>
