@@ -13,8 +13,7 @@ import PaymentOptionsForm from './PaymentOptionsForm';
 import { OrderOverview } from './OrderOverview';
 
 const Accordion = styled((props: AccordionProps) => (
-  <MuiAccordion disableGutte
-  rs elevation={6} square {...props} />
+  <MuiAccordion disableGutters elevation={6} square {...props} />
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
   '&:not(:last-child)': {
