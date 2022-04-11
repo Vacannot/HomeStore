@@ -6,6 +6,7 @@
     "scripts": {
         "start": "npm-run-all --parallel build-watch live-server",
         "build-watch": "webpack --watch",
+        "build": "webpack",
         "live-server": "live-server --watch=dist,index.html --entry-file=index.html"
     },
     "keywords": [],
