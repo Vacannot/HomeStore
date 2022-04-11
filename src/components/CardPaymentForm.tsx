@@ -25,7 +25,7 @@ const validationSchema = yup.object({
     .typeError('Inget namn')
     .matches(/([a-ö\s]+$)/, 'No numbers allowed')
     .required('Ange kortinnehavarens namn')
-    .min(25),
+    .min(2),
   cardMonth: yup
     .string()
     .typeError('Inte ett giltigt utgångsdatum. Exempel: MM')
