@@ -36,7 +36,7 @@ export default function ProductCard({ product }: Props) {
 						paddingBottom={1}
 						color='text.secondary'
 						component='div'>
-						{product.description_short}
+						{product.description_long}
 					</Typography>
 				</Link>
 			</CardContent>
@@ -56,7 +56,7 @@ export default function ProductCard({ product }: Props) {
 const CardStyle: CSSProperties = {
 	minWidth: 265,
 	maxWidth: 300,
-	height: 380,
+	height: 420,
 };
 
 const CardContentStyle: CSSProperties = {
@@ -84,7 +84,7 @@ const TitleStyle: CSSProperties = {
 };
 
 const DescriptionStyle: CSSProperties = {
-	height: '1.5rem',
+	height: '3.8rem',
 	fontFamily: 'Poppins-Regular',
 };
 
