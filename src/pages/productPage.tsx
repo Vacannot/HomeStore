@@ -13,7 +13,7 @@ export default function ProductPage() {
   return (
     <div style={ProductContainer}>
       <Typography align="center" variant="h4" sx={{ m: 1 }}>
-        Produkt detaljer
+        Produktdetaljer
       </Typography>
       <ProductCard product={matchingProduct} />
     </div>
