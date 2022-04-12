@@ -10,94 +10,95 @@ import { Link } from 'react-router-dom';
 import { IProduct } from '../mockedProducts';
 
 type Props = {
-  product: IProduct;
+	product: IProduct;
 };
 
 export default function ProductCard({ product }: Props) {
-  return (
-    <Card sx={CardStyle}>
-      <Link to={'/produkt/' + product.id} style={LinkStyle}>
-        <CardMedia
-          sx={ImageStyle}
-          component="img"
-          height="260"
-          image={product.image}
-          alt="image"
-        />
-      </Link>
-      <CardContent sx={CardContentStyle}>
-        <Link to={'/produkt/' + product.id} style={LinkStyle}>
-          <Typography sx={TitleStyle} gutterBottom variant="h5" component="div">
-            {product.title}
-          </Typography>
-          <Typography
-            sx={DescriptionStyle}
-            variant="body2"
-            paddingBottom={1}
-            color="text.secondary"
-            component="div"
-          >
-            {product.description}
-          </Typography>
-        </Link>
-      </CardContent>
-      <div style={CardActionStyle}>
-        <Typography sx={PriceStyle} gutterBottom variant="h6" component="div">
-          {product.price} kr
-        </Typography>
-        <CardActions style={CardAction}>
-          <AddToFavoritesSnackbar product={product} />
-          <AddToCartSnackbar product={product} />
-        </CardActions>
-      </div>
-    </Card>
-  );
+	return (
+		<Card sx={CardStyle}>
+			<Link to={'/produkt/' + product.id} style={LinkStyle}>
+				<CardMedia
+					sx={ImageStyle}
+					component='img'
+					height='260'
+					image={product.image}
+					alt='image'
+				/>
+			</Link>
+			<CardContent sx={CardContentStyle}>
+				<Link to={'/produkt/' + product.id} style={LinkStyle}>
+					<Typography sx={TitleStyle} gutterBottom variant='h5' component='div'>
+						{product.title}
+					</Typography>
+					<Typography
+						sx={DescriptionStyle}
+						variant='body2'
+						paddingBottom={1}
+						color='text.secondary'
+						component='div'>
+						{product.description_short}
+					</Typography>
+				</Link>
+			</CardContent>
+			<div style={CardActionStyle}>
+				<Typography sx={PriceStyle} gutterBottom variant='h6' component='div'>
+					{product.price} kr
+				</Typography>
+				<CardActions style={CardAction}>
+					<AddToFavoritesSnackbar product={product} />
+					<AddToCartSnackbar product={product} />
+				</CardActions>
+			</div>
+		</Card>
+	);
 }
 
 const CardStyle: CSSProperties = {
-  minWidth: 265,
-  maxWidth: 300,
-  height: 450,
+	minWidth: 265,
+	maxWidth: 300,
+	height: 380,
 };
 
 const CardContentStyle: CSSProperties = {
-  marginBottom: '.5px',
-  paddingTop: '8px',
-  paddingRight: '8px',
-  paddingBottom: '0',
-  paddingLeft: '16px',
+	marginBottom: '.5px',
+	paddingTop: '8px',
+	paddingRight: '8px',
+	paddingBottom: '0',
+	paddingLeft: '16px',
 };
 
 const LinkStyle: CSSProperties = {
-  textDecoration: 'none',
-  textDecorationColor: 'black',
-  color: 'black',
+	textDecoration: 'none',
+	textDecorationColor: 'black',
+	color: 'black',
 };
 
 const ImageStyle: CSSProperties = {
-  border: '1px solid grey',
+	border: '1px solid grey',
 };
 
 const TitleStyle: CSSProperties = {
-  paddingBottom: '0',
-  marginBottom: '2px',
+	paddingBottom: '0',
+	marginBottom: '2px',
+	fontFamily: 'Poppins',
 };
 
 const DescriptionStyle: CSSProperties = {
-  height: '85px',
+	height: '1.5rem',
+	fontFamily: 'Poppins-Regular',
 };
 
 const CardActionStyle: CSSProperties = {
-  display: 'flex',
-  justifyContent: 'space-between',
+	display: 'flex',
+	justifyContent: 'space-between',
 };
 
 const CardAction: CSSProperties = {
-  paddingTop: '0',
+	paddingTop: '0',
 };
 
 const PriceStyle: CSSProperties = {
-  alignSelf: 'center',
-  paddingLeft: '16px',
-  paddingTop: '16px',
+	alignSelf: 'center',
+	paddingLeft: '16px',
+	paddingTop: '16px',
 };
