@@ -56,7 +56,7 @@ export default function ProductCard({ product }: Props) {
 const CardStyle: CSSProperties = {
 	minWidth: 265,
 	maxWidth: 300,
-	height: 420,
+	height: 460,
 };
 
 const CardContentStyle: CSSProperties = {
@@ -84,7 +84,7 @@ const TitleStyle: CSSProperties = {
 };
 
 const DescriptionStyle: CSSProperties = {
-	height: '3.8rem',
+	height: '6.5rem',
 	fontFamily: 'Poppins-Regular',
 };
 
