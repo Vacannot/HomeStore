@@ -1,6 +1,6 @@
 import React from 'react';
 import { CSSProperties } from 'react';
-import ProductDetailedCard from '../components/ProductCard';
+import ProductCard from '../components/ProductCard';
 import { Typography } from '@mui/material';
 import { products } from '../mockedProducts';
 import { useParams } from 'react-router-dom';
@@ -15,7 +15,7 @@ export default function ProductPage() {
       <Typography align="center" variant="h4" sx={{ m: 1 }}>
         Produkt detaljer
       </Typography>
-      <ProductDetailedCard product={matchingProduct} />
+      <ProductCard product={matchingProduct} />
     </div>
   );
 }
