@@ -60,8 +60,8 @@ function CartItemCard({ product }: Props) {
 }
 
 const rootCardStyle: CSSProperties = {
-  width: "70%",
-  maxWidth: "30rem;",
+  width: "90%",
+  maxWidth: "25rem;",
   margin: "1rem auto",
   display: "flex",
   flexDirection: "column",
