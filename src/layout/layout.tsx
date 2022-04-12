@@ -6,15 +6,10 @@ import CartPage from '../pages/cartPage';
 import Footer from '../components/Footer';
 import CheckoutPage from '../pages/checkoutPage';
 import ProductPage from '../pages/productPage';
-import { IProduct } from '../mockedProducts';
 import FavoritesPage from '../pages/favoritesPage';
 import OrderInfoPage from '../pages/OrderInfoPage';
 
-interface Props {
-	product: IProduct;
-}
-
-export default function Layout({ product }: Props) {
+export default function Layout() {
 	return (
 		<div style={rootStyle}>
 			<Header />

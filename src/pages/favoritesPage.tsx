@@ -5,14 +5,6 @@ import { Typography } from '@mui/material';
 export default function FavoritesPage() {
 	return (
 		<div style={rootStyle}>
-			{/* style={{
-				display: 'flex',
-				flexDirection: 'column',
-				justifyContent: 'center',
-				alignContent: 'center',
-				alignItems: 'center',
-				marginTop: '6rem',
-			}}> */}
 			<Typography align='center' variant='h4' sx={{ m: 1 }}>
 				Favoriter
 			</Typography>
