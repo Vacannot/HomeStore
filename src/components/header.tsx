@@ -70,7 +70,6 @@ export default function Header() {
 }
 const appBarStyle: CSSProperties = {
 	backgroundColor: '#BFD8D5',
-	// backgroundColor: 'background.primary',
 	// backgroundColor: {theme.palette.mode === 'dark' ? '#BFD8D5' : '#65716F' />}
 };
 
@@ -90,5 +89,5 @@ const toolbarStyle: CSSProperties = {
 	maxWidth: '83rem',
 	padding: '0 1rem',
 	justifyContent: 'space-between',
-	backgroundColor: 'primary',
+	backgroundColor: '#BFD8D5',
 };
